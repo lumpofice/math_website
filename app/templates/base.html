@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+	<head>
+		{% if title %}
+		<title>{{ title }} - MATH</title>
+		{% else %}
+		<title>MassiveNap - MATH</title>
+		{% endif %}
+	</head>
+	<body>
+		<div><a href='/index'>Home</a></div>
+		<hr>
+		{% block content %}{% endblock %}
+	</body>
+</html>
