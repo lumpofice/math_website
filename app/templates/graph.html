@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<h1>Plot A Graph!</h1>
+	<form action='' method='post' novalidate>
+		{{ form.hidden_tag() }}
+		<p>
+			{{ form.lower_bound.label }}<br>
+			{{ form.lower_bound(size=32) }}
+		</p>
+		<p>
+			{{ form.upper_bound.label }}<br>
+			{{ form.upper_bound(size=32) }}
+		</p>
+		<p>
+			{{ form.submit() }}
+		</p>
+	</form>
+{% endblock %}
