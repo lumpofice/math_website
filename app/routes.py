@@ -6,7 +6,7 @@ from app.forms import GraphForm
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template('index.html', title='MassiveNap')
+    return render_template('index.html', title='MassiveDiscipline')
 
 
 @app.route('/graph', methods=['GET', 'POST'])
@@ -18,6 +18,11 @@ def graph():
         flash('Lower bound: {}, Upper bound: {}'\
         .format(form.lower_bound.data, form.upper_bound.data))
         
-        return redirect(url_for('index'))
+        return redirect(url_for('graph_results'))
     
     return render_template('graph.html', title='Graphs', form=form)
+
+
+@app.route('/graph_results')
+def graph_results():
+    return render_template('graph_results.html', title='MassiveDiscipline')

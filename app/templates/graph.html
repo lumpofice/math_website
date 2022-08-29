@@ -6,11 +6,17 @@
 		{{ form.hidden_tag() }}
 		<p>
 			{{ form.lower_bound.label }}<br>
-			{{ form.lower_bound(size=32) }}
+			{{ form.lower_bound(size=32) }}<br>
+			{% for error in form.lower_bound.errors %}
+			<span style='color: red;'>[{{ error }}]</span>
+			{% endfor %}
 		</p>
 		<p>
 			{{ form.upper_bound.label }}<br>
-			{{ form.upper_bound(size=32) }}
+			{{ form.upper_bound(size=32) }}<br>
+			{% for error in form.upper_bound.errors %}
+			<span style='color: red;'>[{{ error }}]</span>
+			{% endfor %}
 		</p>
 		<p>
 			{{ form.submit() }}
