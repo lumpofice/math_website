@@ -1,6 +1,7 @@
 from flask import render_template, flash, redirect, url_for
 from app import app
 from app.forms import GraphForm
+from app.geometric_processing import Geometric
 
 
 @app.route('/')
@@ -17,6 +18,9 @@ def graph():
         
         flash('Lower bound: {}, Upper bound: {}'\
         .format(form.lower_bound.data, form.upper_bound.data))
+        
+        geo = Geometric()
+        geo.graph(form.lower_bound.data, form.upper_bound.data)
         
         return redirect(url_for('graph_results'))
     
