@@ -1,20 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
-	<h1>Plot A Graph!</h1>
+	<h1>Plot A Graph of the Geometric Series!</h1>
 	<form action='' method='post' novalidate>
 		{{ form.hidden_tag() }}
 		<p>
-			{{ form.lower_bound.label }}<br>
-			{{ form.lower_bound(size=32) }}<br>
-			{% for error in form.lower_bound.errors %}
+			{{ form.base.label }}<br>
+			{{ form.base(size=32) }}<br>
+			{% for error in form.base.errors %}
 			<span style='color: red;'>[{{ error }}]</span>
 			{% endfor %}
 		</p>
 		<p>
-			{{ form.upper_bound.label }}<br>
-			{{ form.upper_bound(size=32) }}<br>
-			{% for error in form.upper_bound.errors %}
+			{{ form.scalar.label }}<br>
+			{{ form.scalar(size=32) }}<br>
+			{% for error in form.scalar.errors %}
 			<span style='color: red;'>[{{ error }}]</span>
 			{% endfor %}
 		</p>

@@ -16,11 +16,11 @@ def graph():
     
     if form.validate_on_submit():
         
-        flash('Lower bound: {}, Upper bound: {}'\
-        .format(form.lower_bound.data, form.upper_bound.data))
+        flash('Base: {}, Scalar: {}'\
+        .format(form.base.data, form.scalar.data))
         
         geo = Geometric()
-        geo.graph(form.lower_bound.data, form.upper_bound.data)
+        geo.graph(form.base.data, form.scalar.data)
         
         return redirect(url_for('graph_results'))
     
