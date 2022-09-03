@@ -1,18 +1,24 @@
 from flask import render_template, flash, redirect, url_for
 from app import app
-from app.forms import GraphForm
+from app.forms import *
 from app.geometric_processing import Geometric
 
 
 @app.route('/')
-@app.route('/index')
+@app.route('/index', methods=['GET', 'POST'])
 def index():
-    return render_template('index.html', title='MassiveDiscipline')
+    geometric = ChooseFunction()
+    
+    if geometric.validate_on_submit():
+        
+        return redirect(url_for('geometric'))
+    
+    return render_template('index.html', title='MassiveDiscipline', form=geometric)
 
 
-@app.route('/graph', methods=['GET', 'POST'])
-def graph():
-    form = GraphForm()
+@app.route('/geometric', methods=['GET', 'POST'])
+def geometric():
+    form = GeometricForm()
     
     if form.validate_on_submit():
         
@@ -24,7 +30,7 @@ def graph():
         
         return redirect(url_for('graph_results'))
     
-    return render_template('graph.html', title='Graphs', form=form)
+    return render_template('geometric.html', title='Graphs', form=form)
 
 
 @app.route('/graph_results')
