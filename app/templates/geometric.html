@@ -19,6 +19,20 @@
 			{% endfor %}
 		</p>
 		<p>
+			{{ form.epsilon.label }}<br>
+			{{ form.epsilon(size=32) }}<br>
+			{% for error in form.epsilon.errors %}
+			<span style='color: red;'>[{{ error }}]</span>
+			{% endfor %}
+		</p>
+		<p>
+			{{ form.large_m.label }}<br>
+			{{ form.large_m(size=32) }}<br>
+			{% for error in form.large_m.errors %}
+			<span style='color: red;'>[{{ error }}]</span>
+			{% endfor %}
+		</p>
+		<p>
 			{{ form.submit() }}
 		</p>
 	</form>

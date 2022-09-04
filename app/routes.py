@@ -5,15 +5,9 @@ from app.geometric_processing import Geometric
 
 
 @app.route('/')
-@app.route('/index', methods=['GET', 'POST'])
+@app.route('/index')
 def index():
-    geometric = ChooseFunction()
-    
-    if geometric.validate_on_submit():
-        
-        return redirect(url_for('geometric'))
-    
-    return render_template('index.html', title='MassiveDiscipline', form=geometric)
+    return render_template('index.html', title='MassiveDiscipline')
 
 
 @app.route('/geometric', methods=['GET', 'POST'])
@@ -22,15 +16,18 @@ def geometric():
     
     if form.validate_on_submit():
         
-        flash('Base: {}, Scalar: {}'\
-        .format(form.base.data, form.scalar.data))
+        flash('Base: {}, Scalar: {}, epsilon: {}, Large m: {}'\
+        .format(form.base.data, form.scalar.data, form.epsilon.data,\
+        form.large_m.data))
         
         geo = Geometric()
-        geo.graph(form.base.data, form.scalar.data)
+        geo.graph(form.base.data, form.scalar.data, form.epsilon.data,\
+        form.large_m.data)
         
         return redirect(url_for('graph_results'))
     
-    return render_template('geometric.html', title='Graphs', form=form)
+    return render_template('geometric.html', title='Geometric Series',\
+    form=form)
 
 
 @app.route('/graph_results')

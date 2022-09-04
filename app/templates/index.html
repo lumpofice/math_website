@@ -2,11 +2,8 @@
 
 {% block content %}
 	<h1>Welcome to MassiveDiscipline</h1>
-	<h2>Choose which sort of function you wish to work with</h2>
-	<form action='' method='post' novalidate>
-		{{ form.hidden_tag() }}
-		<p>
-			{{ form.submit() }}
-		</p>
-	</form>
+	<h2>Choose which object you wish to work with</h2>
+	<div>
+		<a href='{{ url_for("geometric") }}'>Geometric Series</a>
+	</div>
 {% endblock %}
