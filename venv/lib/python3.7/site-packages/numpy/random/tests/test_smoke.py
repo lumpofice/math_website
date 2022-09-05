@@ -1,14 +1,13 @@
 import pickle
-import time
 from functools import partial
 
 import numpy as np
 import pytest
 from numpy.testing import assert_equal, assert_, assert_array_equal
-from numpy.random import (Generator, MT19937, PCG64, Philox, SFC64, entropy)
+from numpy.random import (Generator, MT19937, PCG64, PCG64DXSM, Philox, SFC64)
 
 @pytest.fixture(scope='module',
-                params=(np.bool, np.int8, np.int16, np.int32, np.int64,
+                params=(np.bool_, np.int8, np.int16, np.int32, np.int64,
                         np.uint8, np.uint16, np.uint32, np.uint64))
 def dtype(request):
     return request.param
@@ -92,7 +91,7 @@ def warmup(rg, n=None):
     rg.random(n, dtype=np.float32)
 
 
-class RNG(object):
+class RNG:
     @classmethod
     def setup_class(cls):
         # Overridden in test classes. Place holder to silence IDE noise
@@ -130,7 +129,7 @@ class RNG(object):
             assert_(not comp_state(state, self.rg.bit_generator.state))
         else:
             bitgen_name = self.rg.bit_generator.__class__.__name__
-            pytest.skip('Advance is not supported by {0}'.format(bitgen_name))
+            pytest.skip(f'Advance is not supported by {bitgen_name}')
 
     def test_jump(self):
         state = self.rg.bit_generator.state
@@ -146,8 +145,8 @@ class RNG(object):
         else:
             bitgen_name = self.rg.bit_generator.__class__.__name__
             if bitgen_name not in ('SFC64',):
-                raise AttributeError('no "jumped" in %s' % bitgen_name)
-            pytest.skip('Jump is not supported by {0}'.format(bitgen_name))
+                raise AttributeError(f'no "jumped" in {bitgen_name}')
+            pytest.skip(f'Jump is not supported by {bitgen_name}')
 
     def test_uniform(self):
         r = self.rg.uniform(-1.0, 0.0, size=10)
@@ -448,8 +447,7 @@ class RNG(object):
     def test_seed_array(self):
         if self.seed_vector_bits is None:
             bitgen_name = self.bit_generator.__name__
-            pytest.skip('Vector seeding is not supported by '
-                        '{0}'.format(bitgen_name))
+            pytest.skip(f'Vector seeding is not supported by {bitgen_name}')
 
         if self.seed_vector_bits == 32:
             dtype = np.uint32
@@ -655,7 +653,7 @@ class RNG(object):
             rg.standard_gamma(1.0, out=existing[::3])
 
     def test_integers_broadcast(self, dtype):
-        if dtype == np.bool:
+        if dtype == np.bool_:
             upper = 2
             lower = 0
         else:
@@ -672,7 +670,7 @@ class RNG(object):
         assert_equal(a, c)
         self._reset_state()
         d = self.rg.integers(np.array(
-            [lower] * 10), np.array([upper], dtype=np.object), size=10,
+            [lower] * 10), np.array([upper], dtype=object), size=10,
             dtype=dtype)
         assert_equal(a, d)
         self._reset_state()
@@ -701,7 +699,7 @@ class RNG(object):
         assert out.shape == (1,)
 
     def test_integers_broadcast_errors(self, dtype):
-        if dtype == np.bool:
+        if dtype == np.bool_:
             upper = 2
             lower = 0
         else:
@@ -776,6 +774,18 @@ class TestPCG64(RNG):
         cls._extra_setup()
 
 
+class TestPCG64DXSM(RNG):
+    @classmethod
+    def setup_class(cls):
+        cls.bit_generator = PCG64DXSM
+        cls.advance = 2**63 + 2**31 + 2**15 + 1
+        cls.seed = [12345]
+        cls.rg = Generator(cls.bit_generator(*cls.seed))
+        cls.initial_state = cls.rg.bit_generator.state
+        cls.seed_vector_bits = 64
+        cls._extra_setup()
+
+
 class TestDefaultRNG(RNG):
     @classmethod
     def setup_class(cls):
@@ -806,23 +816,3 @@ class TestDefaultRNG(RNG):
             np.random.default_rng(-1)
         with pytest.raises(ValueError):
             np.random.default_rng([12345, -1])
-
-
-class TestEntropy(object):
-    def test_entropy(self):
-        e1 = entropy.random_entropy()
-        e2 = entropy.random_entropy()
-        assert_((e1 != e2))
-        e1 = entropy.random_entropy(10)
-        e2 = entropy.random_entropy(10)
-        assert_((e1 != e2).all())
-        e1 = entropy.random_entropy(10, source='system')
-        e2 = entropy.random_entropy(10, source='system')
-        assert_((e1 != e2).all())
-
-    def test_fallback(self):
-        e1 = entropy.random_entropy(source='fallback')
-        time.sleep(0.1)
-        e2 = entropy.random_entropy(source='fallback')
-        assert_((e1 != e2))
-

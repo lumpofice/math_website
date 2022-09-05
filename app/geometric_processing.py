@@ -75,3 +75,4 @@ class Geometric():
         fig.suptitle('Geometric Series', fontsize=20)
         plt.legend(prop={'size': 20})
         fig.savefig('app/static/images/geometric.png')
+

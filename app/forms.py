@@ -15,3 +15,9 @@ class GeometricForm(FlaskForm):
     large_m = IntegerField('Choose a large integer "m" between 1 and 1000'\
     'inclusive', validators=[DataRequired(), NumberRange(1, 1000)])
     submit = SubmitField('Show Graph')
+    
+
+class SquareFunctionForm(FlaskForm):
+    scalar = FloatField('Choose scalar', validators=[DataRequired()])
+    submit = SubmitField('Show Graph')
+

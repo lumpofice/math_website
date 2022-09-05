@@ -1,7 +1,6 @@
-from __future__ import division, absolute_import, print_function
-
 import os
 import sys
+import textwrap
 import types
 import re
 import warnings
@@ -10,9 +9,6 @@ from numpy.core.numerictypes import issubclass_, issubsctype, issubdtype
 from numpy.core.overrides import set_module
 from numpy.core import ndarray, ufunc, asarray
 import numpy as np
-
-# getargspec and formatargspec were removed in Python 3.6
-from numpy.compat import getargspec, formatargspec
 
 __all__ = [
     'issubclass_', 'issubsctype', 'issubdtype', 'deprecate',
@@ -55,7 +51,7 @@ def _set_function_name(func, name):
     return func
 
 
-class _Deprecate(object):
+class _Deprecate:
     """
     Decorator class to deprecate old functions.
 
@@ -119,6 +115,7 @@ class _Deprecate(object):
                         break
                     skip += len(line) + 1
                 doc = doc[skip:]
+            depdoc = textwrap.indent(depdoc, ' ' * indent)
             doc = '\n\n'.join([depdoc, doc])
         newfunc.__doc__ = doc
         try:
@@ -196,7 +193,32 @@ def deprecate(*args, **kwargs):
     else:
         return _Deprecate(*args, **kwargs)
 
-deprecate_with_doc = lambda msg: _Deprecate(message=msg)
+
+def deprecate_with_doc(msg):
+    """
+    Deprecates a function and includes the deprecation in its docstring.
+
+    This function is used as a decorator. It returns an object that can be
+    used to issue a DeprecationWarning, by passing the to-be decorated
+    function as argument, this adds warning to the to-be decorated function's
+    docstring and returns the new function object.
+
+    See Also
+    --------
+    deprecate : Decorate a function such that it issues a `DeprecationWarning`
+
+    Parameters
+    ----------
+    msg : str
+        Additional explanation of the deprecation. Displayed in the
+        docstring after the warning.
+
+    Returns
+    -------
+    obj : object
+
+    """
+    return _Deprecate(message=msg)
 
 
 #--------------------------------------------
@@ -554,9 +576,12 @@ def info(object=None, maxwidth=76, output=sys.stdout, toplevel='numpy'):
                   file=output
                   )
 
-    elif inspect.isfunction(object):
+    elif inspect.isfunction(object) or inspect.ismethod(object):
         name = object.__name__
-        arguments = formatargspec(*getargspec(object))
+        try:
+            arguments = str(inspect.signature(object))
+        except Exception:
+            arguments = "()"
 
         if len(name+arguments) > maxwidth:
             argstr = _split_line(name, arguments, maxwidth)
@@ -568,18 +593,10 @@ def info(object=None, maxwidth=76, output=sys.stdout, toplevel='numpy'):
 
     elif inspect.isclass(object):
         name = object.__name__
-        arguments = "()"
         try:
-            if hasattr(object, '__init__'):
-                arguments = formatargspec(
-                        *getargspec(object.__init__.__func__)
-                        )
-                arglist = arguments.split(', ')
-                if len(arglist) > 1:
-                    arglist[1] = "("+arglist[1]
-                    arguments = ", ".join(arglist[1:])
+            arguments = str(inspect.signature(object))
         except Exception:
-            pass
+            arguments = "()"
 
         if len(name+arguments) > maxwidth:
             argstr = _split_line(name, arguments, maxwidth)
@@ -595,72 +612,17 @@ def info(object=None, maxwidth=76, output=sys.stdout, toplevel='numpy'):
             print(inspect.getdoc(object), file=output)
 
         methods = pydoc.allmethods(object)
-        if methods != []:
+
+        public_methods = [meth for meth in methods if meth[0] != '_']
+        if public_methods:
             print("\n\nMethods:\n", file=output)
-            for meth in methods:
-                if meth[0] == '_':
-                    continue
+            for meth in public_methods:
                 thisobj = getattr(object, meth, None)
                 if thisobj is not None:
                     methstr, other = pydoc.splitdoc(
                             inspect.getdoc(thisobj) or "None"
                             )
                 print("  %s  --  %s" % (meth, methstr), file=output)
-
-    elif (sys.version_info[0] < 3
-            and isinstance(object, types.InstanceType)):
-        # check for __call__ method
-        # types.InstanceType is the type of the instances of oldstyle classes
-        print("Instance of class: ", object.__class__.__name__, file=output)
-        print(file=output)
-        if hasattr(object, '__call__'):
-            arguments = formatargspec(
-                    *getargspec(object.__call__.__func__)
-                    )
-            arglist = arguments.split(', ')
-            if len(arglist) > 1:
-                arglist[1] = "("+arglist[1]
-                arguments = ", ".join(arglist[1:])
-            else:
-                arguments = "()"
-
-            if hasattr(object, 'name'):
-                name = "%s" % object.name
-            else:
-                name = "<name>"
-            if len(name+arguments) > maxwidth:
-                argstr = _split_line(name, arguments, maxwidth)
-            else:
-                argstr = name + arguments
-
-            print(" " + argstr + "\n", file=output)
-            doc = inspect.getdoc(object.__call__)
-            if doc is not None:
-                print(inspect.getdoc(object.__call__), file=output)
-            print(inspect.getdoc(object), file=output)
-
-        else:
-            print(inspect.getdoc(object), file=output)
-
-    elif inspect.ismethod(object):
-        name = object.__name__
-        arguments = formatargspec(
-                *getargspec(object.__func__)
-                )
-        arglist = arguments.split(', ')
-        if len(arglist) > 1:
-            arglist[1] = "("+arglist[1]
-            arguments = ", ".join(arglist[1:])
-        else:
-            arguments = "()"
-
-        if len(name+arguments) > maxwidth:
-            argstr = _split_line(name, arguments, maxwidth)
-        else:
-            argstr = name + arguments
-
-        print(" " + argstr + "\n", file=output)
-        print(inspect.getdoc(object), file=output)
 
     elif hasattr(object, '__doc__'):
         print(inspect.getdoc(object), file=output)
@@ -788,13 +750,8 @@ def lookfor(what, module=None, import_modules=True, regenerate=False,
         if kind in ('module', 'object'):
             # don't show modules or objects
             continue
-        ok = True
         doc = docstring.lower()
-        for w in whats:
-            if w not in doc:
-                ok = False
-                break
-        if ok:
+        if all(w in doc for w in whats):
             found.append(name)
 
     # Relevance sort
@@ -874,15 +831,10 @@ def _lookfor_generate_cache(module, import_modules, regenerate):
         or newly generated.
 
     """
-    global _lookfor_caches
     # Local import to speed up numpy's import time.
     import inspect
 
-    if sys.version_info[0] >= 3:
-        # In Python3 stderr, stdout are text files.
-        from io import StringIO
-    else:
-        from StringIO import StringIO
+    from io import StringIO
 
     if module is None:
         module = "numpy"
@@ -1003,93 +955,6 @@ def _getmembers(item):
                    if hasattr(item, x)]
     return members
 
-#-----------------------------------------------------------------------------
-
-# The following SafeEval class and company are adapted from Michael Spencer's
-# ASPN Python Cookbook recipe: https://code.activestate.com/recipes/364469/
-#
-# Accordingly it is mostly Copyright 2006 by Michael Spencer.
-# The recipe, like most of the other ASPN Python Cookbook recipes was made
-# available under the Python license.
-#   https://en.wikipedia.org/wiki/Python_License
-
-# It has been modified to:
-#   * handle unary -/+
-#   * support True/False/None
-#   * raise SyntaxError instead of a custom exception.
-
-class SafeEval(object):
-    """
-    Object to evaluate constant string expressions.
-
-    This includes strings with lists, dicts and tuples using the abstract
-    syntax tree created by ``compiler.parse``.
-
-    .. deprecated:: 1.10.0
-
-    See Also
-    --------
-    safe_eval
-
-    """
-    def __init__(self):
-        # 2014-10-15, 1.10
-        warnings.warn("SafeEval is deprecated in 1.10 and will be removed.",
-                      DeprecationWarning, stacklevel=2)
-
-    def visit(self, node):
-        cls = node.__class__
-        meth = getattr(self, 'visit' + cls.__name__, self.default)
-        return meth(node)
-
-    def default(self, node):
-        raise SyntaxError("Unsupported source construct: %s"
-                          % node.__class__)
-
-    def visitExpression(self, node):
-        return self.visit(node.body)
-
-    def visitNum(self, node):
-        return node.n
-
-    def visitStr(self, node):
-        return node.s
-
-    def visitBytes(self, node):
-        return node.s
-
-    def visitDict(self, node,**kw):
-        return dict([(self.visit(k), self.visit(v))
-                     for k, v in zip(node.keys, node.values)])
-
-    def visitTuple(self, node):
-        return tuple([self.visit(i) for i in node.elts])
-
-    def visitList(self, node):
-        return [self.visit(i) for i in node.elts]
-
-    def visitUnaryOp(self, node):
-        import ast
-        if isinstance(node.op, ast.UAdd):
-            return +self.visit(node.operand)
-        elif isinstance(node.op, ast.USub):
-            return -self.visit(node.operand)
-        else:
-            raise SyntaxError("Unknown unary op: %r" % node.op)
-
-    def visitName(self, node):
-        if node.id == 'False':
-            return False
-        elif node.id == 'True':
-            return True
-        elif node.id == 'None':
-            return None
-        else:
-            raise SyntaxError("Unknown name: %s" % node.id)
-
-    def visitNameConstant(self, node):
-        return node.value
-
 
 def safe_eval(source):
     """
@@ -1150,10 +1015,11 @@ def _median_nancheck(data, result, axis, out):
         Input data to median function
     result : Array or MaskedArray
         Result of median function
-    axis : {int, sequence of int, None}, optional
-        Axis or axes along which the median was computed.
+    axis : int
+        Axis along which the median was computed.
     out : ndarray, optional
         Output array in which to place the result.
+
     Returns
     -------
     median : scalar or ndarray
@@ -1161,8 +1027,7 @@ def _median_nancheck(data, result, axis, out):
     """
     if data.size == 0:
         return result
-    data = np.moveaxis(data, axis, -1)
-    n = np.isnan(data[..., -1])
+    n = np.isnan(data.take(-1, axis=axis))
     # masked NaN values are ok
     if np.ma.isMaskedArray(n):
         n = n.filled(False)
@@ -1177,4 +1042,30 @@ def _median_nancheck(data, result, axis, out):
         result[n] = np.nan
     return result
 
+def _opt_info():
+    """
+    Returns a string contains the supported CPU features by the current build.
+
+    The string format can be explained as follows:
+        - dispatched features that are supported by the running machine
+          end with `*`.
+        - dispatched features that are "not" supported by the running machine
+          end with `?`.
+        - remained features are representing the baseline.
+    """
+    from numpy.core._multiarray_umath import (
+        __cpu_features__, __cpu_baseline__, __cpu_dispatch__
+    )
+
+    if len(__cpu_baseline__) == 0 and len(__cpu_dispatch__) == 0:
+        return ''
+
+    enabled_features = ' '.join(__cpu_baseline__)
+    for feature in __cpu_dispatch__:
+        if __cpu_features__[feature]:
+            enabled_features += f" {feature}*"
+        else:
+            enabled_features += f" {feature}?"
+
+    return enabled_features
 #-----------------------------------------------------------------------------

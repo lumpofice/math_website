@@ -14,8 +14,8 @@ extern "C" {
  */
 typedef void (*PyUFuncGenericFunction)
             (char **args,
-             npy_intp *dimensions,
-             npy_intp *strides,
+             npy_intp const *dimensions,
+             npy_intp const *strides,
              void *innerloopdata);
 
 /*
@@ -194,7 +194,11 @@ typedef struct _tagPyUFuncObject {
          * but this was never implemented. (This is also why the above
          * selector is called the "legacy" selector.)
          */
+    #if PY_VERSION_HEX >= 0x03080000
+        vectorcallfunc vectorcall;
+    #else
         void *reserved2;
+    #endif
         /*
          * A function which returns a masked inner loop for the ufunc.
          */
@@ -340,14 +344,6 @@ typedef struct _loop1d_info {
 
 #define UFUNC_PYVALS_NAME "UFUNC_PYVALS"
 
-#define UFUNC_CHECK_ERROR(arg) \
-        do {if ((((arg)->obj & UFUNC_OBJ_NEEDS_API) && PyErr_Occurred()) || \
-            ((arg)->errormask && \
-             PyUFunc_checkfperr((arg)->errormask, \
-                                (arg)->errobj, \
-                                &(arg)->first))) \
-                goto fail;} while (0)
-
 /*
  * THESE MACROS ARE DEPRECATED.
  * Use npy_set_floatstatus_* in the npymath library.
@@ -357,10 +353,6 @@ typedef struct _loop1d_info {
 #define UFUNC_FPE_UNDERFLOW     NPY_FPE_UNDERFLOW
 #define UFUNC_FPE_INVALID       NPY_FPE_INVALID
 
-#define UFUNC_CHECK_STATUS(ret) \
-    { \
-       ret = npy_clear_floatstatus(); \
-    }
 #define generate_divbyzero_error() npy_set_floatstatus_divbyzero()
 #define generate_overflow_error() npy_set_floatstatus_overflow()
 

@@ -1,16 +1,15 @@
-from __future__ import division, absolute_import, print_function
-
 __all__ = ['atleast_1d', 'atleast_2d', 'atleast_3d', 'block', 'hstack',
            'stack', 'vstack']
 
 import functools
+import itertools
 import operator
 import warnings
 
 from . import numeric as _nx
 from . import overrides
-from .numeric import array, asanyarray, newaxis
-from .multiarray import normalize_axis_index
+from .multiarray import array, asanyarray, normalize_axis_index
+from . import fromnumeric as _from_nx
 
 
 array_function_dispatch = functools.partial(
@@ -123,7 +122,7 @@ def atleast_2d(*arys):
         if ary.ndim == 0:
             result = ary.reshape(1, 1)
         elif ary.ndim == 1:
-            result = ary[newaxis, :]
+            result = ary[_nx.newaxis, :]
         else:
             result = ary
         res.append(result)
@@ -193,9 +192,9 @@ def atleast_3d(*arys):
         if ary.ndim == 0:
             result = ary.reshape(1, 1, 1)
         elif ary.ndim == 1:
-            result = ary[newaxis, :, newaxis]
+            result = ary[_nx.newaxis, :, _nx.newaxis]
         elif ary.ndim == 2:
-            result = ary[:, :, newaxis]
+            result = ary[:, :, _nx.newaxis]
         else:
             result = ary
         res.append(result)
@@ -247,30 +246,31 @@ def vstack(tup):
 
     See Also
     --------
-    stack : Join a sequence of arrays along a new axis.
-    hstack : Stack arrays in sequence horizontally (column wise).
-    dstack : Stack arrays in sequence depth wise (along third dimension).
     concatenate : Join a sequence of arrays along an existing axis.
-    vsplit : Split array into a list of multiple sub-arrays vertically.
-    block : Assemble arrays from blocks.
+    stack : Join a sequence of arrays along a new axis.
+    block : Assemble an nd-array from nested lists of blocks.
+    hstack : Stack arrays in sequence horizontally (column wise).
+    dstack : Stack arrays in sequence depth wise (along third axis).
+    column_stack : Stack 1-D arrays as columns into a 2-D array.
+    vsplit : Split an array into multiple sub-arrays vertically (row-wise).
 
     Examples
     --------
     >>> a = np.array([1, 2, 3])
-    >>> b = np.array([2, 3, 4])
+    >>> b = np.array([4, 5, 6])
     >>> np.vstack((a,b))
     array([[1, 2, 3],
-           [2, 3, 4]])
+           [4, 5, 6]])
 
     >>> a = np.array([[1], [2], [3]])
-    >>> b = np.array([[2], [3], [4]])
+    >>> b = np.array([[4], [5], [6]])
     >>> np.vstack((a,b))
     array([[1],
            [2],
            [3],
-           [2],
-           [3],
-           [4]])
+           [4],
+           [5],
+           [6]])
 
     """
     if not overrides.ARRAY_FUNCTION_ENABLED:
@@ -309,25 +309,26 @@ def hstack(tup):
 
     See Also
     --------
+    concatenate : Join a sequence of arrays along an existing axis.
     stack : Join a sequence of arrays along a new axis.
+    block : Assemble an nd-array from nested lists of blocks.
     vstack : Stack arrays in sequence vertically (row wise).
     dstack : Stack arrays in sequence depth wise (along third axis).
-    concatenate : Join a sequence of arrays along an existing axis.
-    hsplit : Split array along second axis.
-    block : Assemble arrays from blocks.
+    column_stack : Stack 1-D arrays as columns into a 2-D array.
+    hsplit : Split an array into multiple sub-arrays horizontally (column-wise).
 
     Examples
     --------
     >>> a = np.array((1,2,3))
-    >>> b = np.array((2,3,4))
+    >>> b = np.array((4,5,6))
     >>> np.hstack((a,b))
-    array([1, 2, 3, 2, 3, 4])
+    array([1, 2, 3, 4, 5, 6])
     >>> a = np.array([[1],[2],[3]])
-    >>> b = np.array([[2],[3],[4]])
+    >>> b = np.array([[4],[5],[6]])
     >>> np.hstack((a,b))
-    array([[1, 2],
-           [2, 3],
-           [3, 4]])
+    array([[1, 4],
+           [2, 5],
+           [3, 6]])
 
     """
     if not overrides.ARRAY_FUNCTION_ENABLED:
@@ -385,8 +386,8 @@ def stack(arrays, axis=0, out=None):
     See Also
     --------
     concatenate : Join a sequence of arrays along an existing axis.
+    block : Assemble an nd-array from nested lists of blocks.
     split : Split array into a list of multiple sub-arrays of equal size.
-    block : Assemble arrays from blocks.
 
     Examples
     --------
@@ -401,15 +402,15 @@ def stack(arrays, axis=0, out=None):
     (3, 4, 10)
 
     >>> a = np.array([1, 2, 3])
-    >>> b = np.array([2, 3, 4])
+    >>> b = np.array([4, 5, 6])
     >>> np.stack((a, b))
     array([[1, 2, 3],
-           [2, 3, 4]])
+           [4, 5, 6]])
 
     >>> np.stack((a, b), axis=-1)
-    array([[1, 2],
-           [2, 3],
-           [3, 4]])
+    array([[1, 4],
+           [2, 5],
+           [3, 6]])
 
     """
     if not overrides.ARRAY_FUNCTION_ENABLED:
@@ -435,9 +436,9 @@ def stack(arrays, axis=0, out=None):
 # Internal functions to eliminate the overhead of repeated dispatch in one of
 # the two possible paths inside np.block.
 # Use getattr to protect against __array_function__ being disabled.
-_size = getattr(_nx.size, '__wrapped__', _nx.size)
-_ndim = getattr(_nx.ndim, '__wrapped__', _nx.ndim)
-_concatenate = getattr(_nx.concatenate, '__wrapped__', _nx.concatenate)
+_size = getattr(_from_nx.size, '__wrapped__', _from_nx.size)
+_ndim = getattr(_from_nx.ndim, '__wrapped__', _from_nx.ndim)
+_concatenate = getattr(_from_nx.concatenate, '__wrapped__', _from_nx.concatenate)
 
 
 def _block_format_index(index):
@@ -471,7 +472,7 @@ def _block_check_depths_match(arrays, parent_index=[]):
     first_index : list of int
         The full index of an element from the bottom of the nesting in
         `arrays`. If any element at the bottom is an empty list, this will
-        refer to it, and the last index along the empty axis will be `None`.
+        refer to it, and the last index along the empty axis will be None.
     max_arr_ndim : int
         The maximum of the ndims of the arrays nested in `arrays`.
     final_size: int
@@ -531,20 +532,14 @@ def _atleast_nd(a, ndim):
 
 
 def _accumulate(values):
-    # Helper function because Python 2.7 doesn't have
-    # itertools.accumulate
-    value = 0
-    accumulated = []
-    for v in values:
-        value += v
-        accumulated.append(value)
-    return accumulated
+    return list(itertools.accumulate(values))
 
 
 def _concatenate_shapes(shapes, axis):
     """Given array shapes, return the resulting shape and slices prefixes.
 
-    These help in nested concatation.
+    These help in nested concatenation.
+    
     Returns
     -------
     shape: tuple of int
@@ -574,7 +569,7 @@ def _concatenate_shapes(shapes, axis):
         that was computed deeper in the recursion.
 
         These are returned as tuples to ensure that they can quickly be added
-        to existing slice tuple without creating a new tuple everytime.
+        to existing slice tuple without creating a new tuple every time.
 
     """
     # Cache a result that will be reused.
@@ -611,7 +606,7 @@ def _block_info_recursion(arrays, max_depth, result_ndim, depth=0):
         The arrays to check
     max_depth : list of int
         The number of nested lists
-    result_ndim: int
+    result_ndim : int
         The number of dimensions in thefinal array.
 
     Returns
@@ -677,8 +672,7 @@ def _block_dispatcher(arrays):
     # tuple. Also, we know that list.__array_function__ will never exist.
     if type(arrays) is list:
         for subarrays in arrays:
-            for subarray in _block_dispatcher(subarrays):
-                yield subarray
+            yield from _block_dispatcher(subarrays)
     else:
         yield arrays
 
@@ -731,12 +725,13 @@ def block(arrays):
 
     See Also
     --------
-    concatenate : Join a sequence of arrays together.
-    stack : Stack arrays in sequence along a new dimension.
-    hstack : Stack arrays in sequence horizontally (column wise).
+    concatenate : Join a sequence of arrays along an existing axis.
+    stack : Join a sequence of arrays along a new axis.
     vstack : Stack arrays in sequence vertically (row wise).
-    dstack : Stack arrays in sequence depth wise (along third dimension).
-    vsplit : Split array into a list of multiple sub-arrays vertically.
+    hstack : Stack arrays in sequence horizontally (column wise).
+    dstack : Stack arrays in sequence depth wise (along third axis).
+    column_stack : Stack 1-D arrays as columns into a 2-D array.
+    vsplit : Split an array into multiple sub-arrays vertically (row-wise).
 
     Notes
     -----
@@ -790,9 +785,9 @@ def block(arrays):
     array([1, 2, 3])
 
     >>> a = np.array([1, 2, 3])
-    >>> b = np.array([2, 3, 4])
+    >>> b = np.array([4, 5, 6])
     >>> np.block([a, b, 10])             # hstack([a, b, 10])
-    array([ 1,  2,  3,  2,  3,  4, 10])
+    array([ 1,  2,  3,  4,  5,  6, 10])
 
     >>> A = np.ones((2, 2), int)
     >>> B = 2 * A
@@ -803,10 +798,10 @@ def block(arrays):
     With a list of depth 2, `block` can be used in place of `vstack`:
 
     >>> a = np.array([1, 2, 3])
-    >>> b = np.array([2, 3, 4])
+    >>> b = np.array([4, 5, 6])
     >>> np.block([[a], [b]])             # vstack([a, b])
     array([[1, 2, 3],
-           [2, 3, 4]])
+           [4, 5, 6]])
 
     >>> A = np.ones((2, 2), int)
     >>> B = 2 * A

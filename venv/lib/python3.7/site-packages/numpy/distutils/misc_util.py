@@ -1,5 +1,3 @@
-from __future__ import division, absolute_import, print_function
-
 import os
 import re
 import sys
@@ -11,13 +9,11 @@ import subprocess
 import shutil
 import multiprocessing
 import textwrap
+import importlib.util
+from threading import local as tlocal
 
 import distutils
 from distutils.errors import DistutilsError
-try:
-    from threading import local as tlocal
-except ImportError:
-    from dummy_threading import local as tlocal
 
 # stores temporary directory of each thread to only create one per thread
 _tdata = tlocal()
@@ -34,10 +30,6 @@ def clean_up_temporary_directory():
 
 atexit.register(clean_up_temporary_directory)
 
-from numpy.distutils.compat import get_exception
-from numpy.compat import basestring
-from numpy.compat import npy_load_module
-
 __all__ = ['Configuration', 'get_numpy_include_dirs', 'default_config_dict',
            'dict_append', 'appendpath', 'generate_config_py',
            'get_cmd', 'allpath', 'get_mathlibs',
@@ -49,9 +41,10 @@ __all__ = ['Configuration', 'get_numpy_include_dirs', 'default_config_dict',
            'dot_join', 'get_frame', 'minrelpath', 'njoin',
            'is_sequence', 'is_string', 'as_list', 'gpaths', 'get_language',
            'quote_args', 'get_build_architecture', 'get_info', 'get_pkg_info',
-           'get_num_build_jobs']
+           'get_num_build_jobs', 'sanitize_cxx_flags',
+           'exec_mod_from_location']
 
-class InstallableLib(object):
+class InstallableLib:
     """
     Container to hold information on an installable library.
 
@@ -168,7 +161,6 @@ def get_path_from_frame(frame, parent_path=None):
             # we're probably running setup.py as execfile("setup.py")
             # (likely we're building an egg)
             d = os.path.abspath('.')
-            # hmm, should we use sys.argv[0] like in __builtin__ case?
 
     if parent_path is not None:
         d = rel_path(d, parent_path)
@@ -432,9 +424,9 @@ def msvc_runtime_major():
 #########################
 
 #XXX need support for .C that is also C++
-cxx_ext_match = re.compile(r'.*[.](cpp|cxx|cc)\Z', re.I).match
-fortran_ext_match = re.compile(r'.*[.](f90|f95|f77|for|ftn|f)\Z', re.I).match
-f90_ext_match = re.compile(r'.*[.](f90|f95)\Z', re.I).match
+cxx_ext_match = re.compile(r'.*\.(cpp|cxx|cc)\Z', re.I).match
+fortran_ext_match = re.compile(r'.*\.(f90|f95|f77|for|ftn|f)\Z', re.I).match
+f90_ext_match = re.compile(r'.*\.(f90|f95)\Z', re.I).match
 f90_module_name_match = re.compile(r'\s*module\s*(?P<name>[\w_]+)', re.I).match
 def _get_f90_modules(source):
     """Return a list of Fortran f90 module names that
@@ -453,7 +445,7 @@ def _get_f90_modules(source):
     return modules
 
 def is_string(s):
-    return isinstance(s, basestring)
+    return isinstance(s, str)
 
 def all_strings(lst):
     """Return True if all items in lst are string objects. """
@@ -728,7 +720,7 @@ def get_frame(level=0):
 
 ######################
 
-class Configuration(object):
+class Configuration:
 
     _list_keys = ['packages', 'ext_modules', 'data_files', 'include_dirs',
                   'libraries', 'headers', 'scripts', 'py_modules',
@@ -859,7 +851,7 @@ class Configuration(object):
             print(message)
 
     def warn(self, message):
-        sys.stderr.write('Warning: %s' % (message,))
+        sys.stderr.write('Warning: %s\n' % (message,))
 
     def set_options(self, **options):
         """
@@ -912,9 +904,8 @@ class Configuration(object):
         try:
             setup_name = os.path.splitext(os.path.basename(setup_py))[0]
             n = dot_join(self.name, subpackage_name, setup_name)
-            setup_module = npy_load_module('_'.join(n.split('.')),
-                                           setup_py,
-                                           ('.py', 'U', 1))
+            setup_module = exec_mod_from_location(
+                                '_'.join(n.split('.')), setup_py)
             if not hasattr(setup_module, 'configuration'):
                 if not self.options['assume_default_configuration']:
                     self.warn('Assuming default configuration '\
@@ -926,18 +917,8 @@ class Configuration(object):
             else:
                 pn = dot_join(*([parent_name] + subpackage_name.split('.')[:-1]))
                 args = (pn,)
-                def fix_args_py2(args):
-                    if setup_module.configuration.__code__.co_argcount > 1:
-                        args = args + (self.top_path,)
-                    return args
-                def fix_args_py3(args):
-                    if setup_module.configuration.__code__.co_argcount > 1:
-                        args = args + (self.top_path,)
-                    return args
-                if sys.version_info[0] < 3:
-                    args = fix_args_py2(args)
-                else:
-                    args = fix_args_py3(args)
+                if setup_module.configuration.__code__.co_argcount > 1:
+                    args = args + (self.top_path,)
                 config = setup_module.configuration(*args)
             if config.name!=dot_join(parent_name, subpackage_name):
                 self.warn('Subpackage %r configuration returned as %r' % \
@@ -1687,6 +1668,41 @@ class Configuration(object):
 
         and will be installed as foo.ini in the 'lib' subpath.
 
+        When cross-compiling with numpy distutils, it might be necessary to
+        use modified npy-pkg-config files.  Using the default/generated files
+        will link with the host libraries (i.e. libnpymath.a).  For
+        cross-compilation you of-course need to link with target libraries,
+        while using the host Python installation.
+
+        You can copy out the numpy/core/lib/npy-pkg-config directory, add a
+        pkgdir value to the .ini files and set NPY_PKG_CONFIG_PATH environment
+        variable to point to the directory with the modified npy-pkg-config
+        files.
+
+        Example npymath.ini modified for cross-compilation::
+
+            [meta]
+            Name=npymath
+            Description=Portable, core math library implementing C99 standard
+            Version=0.1
+
+            [variables]
+            pkgname=numpy.core
+            pkgdir=/build/arm-linux-gnueabi/sysroot/usr/lib/python3.7/site-packages/numpy/core
+            prefix=${pkgdir}
+            libdir=${prefix}/lib
+            includedir=${prefix}/include
+
+            [default]
+            Libs=-L${libdir} -lnpymath
+            Cflags=-I${includedir}
+            Requires=mlib
+
+            [msvc]
+            Libs=/LIBPATH:${libdir} npymath.lib
+            Cflags=/INCLUDE:${includedir}
+            Requires=mlib
+
         """
         if subst_dict is None:
             subst_dict = {}
@@ -1833,8 +1849,7 @@ class Configuration(object):
         """Return path's SVN revision number.
         """
         try:
-            output = subprocess.check_output(
-                ['svnversion'], shell=True, cwd=path)
+            output = subprocess.check_output(['svnversion'], cwd=path)
         except (subprocess.CalledProcessError, OSError):
             pass
         else:
@@ -1864,7 +1879,7 @@ class Configuration(object):
         """
         try:
             output = subprocess.check_output(
-                ['hg identify --num'], shell=True, cwd=path)
+                ['hg', 'identify', '--num'], cwd=path)
         except (subprocess.CalledProcessError, OSError):
             pass
         else:
@@ -1881,15 +1896,16 @@ class Configuration(object):
                 revision0 = f.read().strip()
 
             branch_map = {}
-            for line in file(branch_cache_fn, 'r'):
-                branch1, revision1  = line.split()[:2]
-                if revision1==revision0:
-                    branch0 = branch1
-                try:
-                    revision1 = int(revision1)
-                except ValueError:
-                    continue
-                branch_map[branch1] = revision1
+            with open(branch_cache_fn, 'r') as f:
+                for line in f:
+                    branch1, revision1  = line.split()[:2]
+                    if revision1==revision0:
+                        branch0 = branch1
+                    try:
+                        revision1 = int(revision1)
+                    except ValueError:
+                        continue
+                    branch_map[branch1] = revision1
 
             return branch_map.get(branch0)
 
@@ -1935,11 +1951,10 @@ class Configuration(object):
                 name = os.path.splitext(os.path.basename(fn))[0]
                 n = dot_join(self.name, name)
                 try:
-                    version_module = npy_load_module('_'.join(n.split('.')),
-                                                     fn, info)
-                except ImportError:
-                    msg = get_exception()
-                    self.warn(str(msg))
+                    version_module = exec_mod_from_location(
+                                        '_'.join(n.split('.')), fn)
+                except ImportError as e:
+                    self.warn(str(e))
                     version_module = None
                 if version_module is None:
                     continue
@@ -1948,6 +1963,13 @@ class Configuration(object):
                     version = getattr(version_module, a, None)
                     if version is not None:
                         break
+
+                # Try if versioneer module
+                try:
+                    version = version_module.get_versions()['version']
+                except AttributeError:
+                    pass
+
                 if version is not None:
                     break
 
@@ -2092,10 +2114,22 @@ def get_numpy_include_dirs():
     return include_dirs
 
 def get_npy_pkg_dir():
-    """Return the path where to find the npy-pkg-config directory."""
-    # XXX: import here for bootstrapping reasons
-    import numpy
-    d = os.path.join(os.path.dirname(numpy.__file__),
+    """Return the path where to find the npy-pkg-config directory.
+
+    If the NPY_PKG_CONFIG_PATH environment variable is set, the value of that
+    is returned.  Otherwise, a path inside the location of the numpy module is
+    returned.
+
+    The NPY_PKG_CONFIG_PATH can be useful when cross-compiling, maintaining
+    customized npy-pkg-config .ini files for the cross-compilation
+    environment, and using them when cross-compiling.
+
+    """
+    d = os.environ.get('NPY_PKG_CONFIG_PATH')
+    if d is not None:
+        return d
+    spec = importlib.util.find_spec('numpy')
+    d = os.path.join(os.path.dirname(spec.origin),
             'core', 'lib', 'npy-pkg-config')
     return d
 
@@ -2198,10 +2232,7 @@ def get_info(pkgname, dirs=None):
     return info
 
 def is_bootstrapping():
-    if sys.version_info[0] >= 3:
-        import builtins
-    else:
-        import __builtin__ as builtins
+    import builtins
 
     try:
         builtins.__NUMPY_SETUP__
@@ -2281,8 +2312,11 @@ def generate_config_py(target):
             extra_dll_dir = os.path.join(os.path.dirname(__file__), '.libs')
 
             if sys.platform == 'win32' and os.path.isdir(extra_dll_dir):
-                os.environ.setdefault('PATH', '')
-                os.environ['PATH'] += os.pathsep + extra_dll_dir
+                if sys.version_info >= (3, 8):
+                    os.add_dll_directory(extra_dll_dir)
+                else:
+                    os.environ.setdefault('PATH', '')
+                    os.environ['PATH'] += os.pathsep + extra_dll_dir
 
             """))
 
@@ -2294,6 +2328,51 @@ def generate_config_py(target):
                 return g.get(name, g.get(name + "_info", {}))
 
             def show():
+                """
+                Show libraries in the system on which NumPy was built.
+
+                Print information about various resources (libraries, library
+                directories, include directories, etc.) in the system on which
+                NumPy was built.
+
+                See Also
+                --------
+                get_include : Returns the directory containing NumPy C
+                              header files.
+
+                Notes
+                -----
+                Classes specifying the information to be printed are defined
+                in the `numpy.distutils.system_info` module.
+
+                Information may include:
+
+                * ``language``: language used to write the libraries (mostly
+                  C or f77)
+                * ``libraries``: names of libraries found in the system
+                * ``library_dirs``: directories containing the libraries
+                * ``include_dirs``: directories containing library header files
+                * ``src_dirs``: directories containing library source files
+                * ``define_macros``: preprocessor macros used by
+                  ``distutils.setup``
+                * ``baseline``: minimum CPU features required
+                * ``found``: dispatched features supported in the system
+                * ``not found``: dispatched features that are not supported
+                  in the system
+
+                Examples
+                --------
+                >>> import numpy as np
+                >>> np.show_config()
+                blas_opt_info:
+                    language = c
+                    define_macros = [('HAVE_CBLAS', None)]
+                    libraries = ['openblas', 'openblas']
+                    library_dirs = ['/usr/local/lib']
+                """
+                from numpy.core._multiarray_umath import (
+                    __cpu_features__, __cpu_baseline__, __cpu_dispatch__
+                )
                 for name,info_dict in globals().items():
                     if name[0] == "_" or type(info_dict) is not type({}): continue
                     print(name + ":")
@@ -2304,6 +2383,19 @@ def generate_config_py(target):
                         if k == "sources" and len(v) > 200:
                             v = v[:60] + " ...\n... " + v[-60:]
                         print("    %s = %s" % (k,v))
+
+                features_found, features_not_found = [], []
+                for feature in __cpu_dispatch__:
+                    if __cpu_features__[feature]:
+                        features_found.append(feature)
+                    else:
+                        features_not_found.append(feature)
+
+                print("Supported SIMD extensions in this NumPy install:")
+                print("    baseline = %s" % (','.join(__cpu_baseline__)))
+                print("    found = %s" % (','.join(features_found)))
+                print("    not found = %s" % (','.join(features_not_found)))
+
                     '''))
 
     return target
@@ -2321,3 +2413,26 @@ def get_build_architecture():
     # systems, so delay the import to here.
     from distutils.msvccompiler import get_build_architecture
     return get_build_architecture()
+
+
+_cxx_ignore_flags = {'-Werror=implicit-function-declaration', '-std=c99'}
+
+
+def sanitize_cxx_flags(cxxflags):
+    '''
+    Some flags are valid for C but not C++. Prune them.
+    '''
+    return [flag for flag in cxxflags if flag not in _cxx_ignore_flags]
+
+
+def exec_mod_from_location(modname, modfile):
+    '''
+    Use importlib machinery to import a module `modname` from the file
+    `modfile`. Depending on the `spec.loader`, the module may not be
+    registered in sys.modules.
+    '''
+    spec = importlib.util.spec_from_file_location(modname, modfile)
+    foo = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(foo)
+    return foo
+
