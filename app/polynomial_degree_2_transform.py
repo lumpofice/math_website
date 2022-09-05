@@ -30,19 +30,65 @@ class PolynomialDegree2Transform():
         ax.yaxis.set_ticks_position('left')
             
         # Plotting the functions
-        if h/x_scalar < 0:
-            x = np.linspace((h/x_scalar)-10, 10, 1000)
-            y_parent = x**2
-            y_transform = y_scalar*(x_scalar*(x-(h/x_scalar)))**2 + k
-            ax.plot(x, y_parent, label='Parent')
-            ax.plot(x, y_transform, label='Transform')
+        flag = True
+        while flag:
             
-        if h/x_scalar > 0:
-            x = np.linspace(-10, (h/x_scalar)+10, 1000)
-            y_parent = x**2
-            y_transform = y_scalar*(x_scalar*(x-(h/x_scalar)))**2 + k
-            ax.plot(x, y_parent, label='Parent')
-            ax.plot(x, y_transform, label='Transform')
+            if y_scalar == 0:
+                x = np.linspace(-10, 10, 1000)
+                y_parent = x**2
+                ax.plot(x, y_parent, label='Parent')
+                flag = False
+                break
+        
+            elif x_scalar == 0:
+                x = np.linspace(-10, 10, 1000)
+                y_parent = x**2
+                ax.plot(x, y_parent, label='Parent')
+                flag = False
+                break
+            
+            else:
+                if x_scalar != 1:
+                
+                    if h != 0:
+                
+                        if h/x_scalar < 0:
+                            x = np.linspace((h/x_scalar)-10, 10, 1000)
+                            y_parent = x**2
+                            y_transform = y_scalar*(\
+                            x_scalar*(x-(h/x_scalar)))**2 + k
+                            ax.plot(x, y_parent, label='Parent')
+                            ax.plot(x, y_transform, label='Transform')
+                            flag = False
+                            break
+            
+                        elif h/x_scalar > 0:
+                            x = np.linspace(-10, (h/x_scalar)+10, 1000)
+                            y_parent = x**2
+                            y_transform = y_scalar*(x_scalar*(\
+                            x-(h/x_scalar)))**2 + k
+                            ax.plot(x, y_parent, label='Parent')
+                            ax.plot(x, y_transform, label='Transform')
+                            flag = False
+                            break
+                
+                    else:
+                        x = np.linspace(-10, 10, 1000)
+                        y_parent = x**2
+                        y_transform = y_scalar*(x_scalar*(x))**2 + k
+                        ax.plot(x, y_parent, label='Parent')
+                        ax.plot(x, y_transform, label='Transform')
+                        flag = False
+                        break
+                
+                else:
+                    x = np.linspace(-10, 10, 1000)
+                    y_parent = x**2
+                    y_transform = y_scalar*(x-h)**2 + k
+                    ax.plot(x, y_parent, label='Parent')
+                    ax.plot(x, y_transform, label='Transform')
+                    flag = False
+                    break
         
         # Putting some restrictions and information on the graphing window
         plt.ylim(-10, 10)
