@@ -44,10 +44,11 @@ def polynomial_degree_2_transform():
     if form.validate_on_submit():
     
         square_transform = PolynomialDegree2Transform()
-        square_transform.graph(form.scalar.data)
+        square_transform.graph(form.horizontal_shift.data, form.x_scalar.data,\
+        form.y_scalar.data, form.vertical_shift.data)
         
         return redirect(url_for(\
-	'polynomial_degree_2_transform_graph_results'))
+        'polynomial_degree_2_transform_graph_results'))
     
     return render_template(\
     'polynomial_degree_2_transform.html',\

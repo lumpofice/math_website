@@ -18,6 +18,14 @@ class GeometricSeriesForm(FlaskForm):
     
 
 class PolynomialDegree2TransformForm(FlaskForm):
-    scalar = FloatField('Choose scalar', validators=[DataRequired()])
+    horizontal_shift = FloatField('Choose a horizontal shift between -5 and 5',\
+    validators=[DataRequired(), NumberRange(-5, 5)])
+    x_scalar = FloatField(\
+    'Choose a x_scalar between -5 and 5',\
+    validators=[DataRequired(), NumberRange(-5, 5)])
+    y_scalar = FloatField('Choose a y_scalar between -5 and 5',\
+    validators=[DataRequired(), NumberRange(-5, 5)])
+    vertical_shift = FloatField('Choose a vertical shift between -5 and 5',\
+    validators=[DataRequired(), NumberRange(-5, 5)])
     submit = SubmitField('Show Graph')
 
