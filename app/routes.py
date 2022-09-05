@@ -1,8 +1,8 @@
 from flask import render_template, flash, redirect, url_for
 from app import app
 from app.forms import *
-from app.geometric_processing import Geometric
-from app.square_function_transformation_processing import SquareFunction
+from app.geometric_series import GeometricSeries
+from app.polynomial_degree_2_transform import PolynomialDegree2Transform
 
 
 @app.route('/')
@@ -11,9 +11,9 @@ def index():
     return render_template('index.html', title='MassiveDiscipline')
 
 
-@app.route('/geometric', methods=['GET', 'POST'])
-def geometric():
-    form = GeometricForm()
+@app.route('/geometric_series', methods=['GET', 'POST'])
+def geometric_series():
+    form = GeometricSeriesForm()
     
     if form.validate_on_submit():
         
@@ -21,37 +21,43 @@ def geometric():
         .format(form.base.data, form.scalar.data, form.epsilon.data,\
         form.large_m.data))
         
-        geo = Geometric()
+        geo = GeometricSeries()
         geo.graph(form.base.data, form.scalar.data, form.epsilon.data,\
         form.large_m.data)
         
-        return redirect(url_for('graph_results'))
+        return redirect(url_for('geometric_series_graph_results'))
     
-    return render_template('geometric.html', title='Geometric Series',\
+    return render_template('geometric_series.html', title='Geometric Series',\
     form=form)
 
 
-@app.route('/graph_results')
-def graph_results():
-    return render_template('graph_results.html', title='MassiveDiscipline')
+@app.route('/geometric_series_graph_results')
+def geometric_series_graph_results():
+    return render_template(\
+    'geometric_series_graph_results.html', title='MassiveDiscipline')
 
 
-@app.route('/square_transform', methods=['GET', 'POST'])
-def square_transform():
-    form = SquareFunctionForm()
+@app.route('/polynomial_degree_2_transform', methods=['GET', 'POST'])
+def polynomial_degree_2_transform():
+    form = PolynomialDegree2TransformForm()
     
     if form.validate_on_submit():
     
-        square_transform = SquareFunction()
+        square_transform = PolynomialDegree2Transform()
         square_transform.graph(form.scalar.data)
         
-        return redirect(url_for('graph_results_square_transform'))
+        return redirect(url_for(\
+	'polynomial_degree_2_transform_graph_results'))
     
-    return render_template('square_transform.html', title='Square Function Transformation',\
+    return render_template(\
+    'polynomial_degree_2_transform.html',\
+    title='Polynomial Degree 2 Transformation',\
     form=form)
 
 
-@app.route('/graph_results_square_transform')
-def graph_results_square_transform():
-    return render_template('graph_results_square_transform.html', title='MassiveDiscipline')
+@app.route('/polynomial_degree_2_transform_graph_results')
+def polynomial_degree_2_transform_graph_results():
+    return render_template(\
+    'polynomial_degree_2_transform_graph_results.html',\
+    title='MassiveDiscipline')
 

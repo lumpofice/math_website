@@ -3,7 +3,7 @@ from wtforms import FloatField, SubmitField, IntegerField
 from wtforms.validators import DataRequired, NumberRange
     
     
-class GeometricForm(FlaskForm):
+class GeometricSeriesForm(FlaskForm):
     base = FloatField('Choose a base "r" between -0.99 and 0.99 inclusive',\
     validators=[DataRequired(),\
     NumberRange(-0.99, 0.99)])
@@ -17,7 +17,7 @@ class GeometricForm(FlaskForm):
     submit = SubmitField('Show Graph')
     
 
-class SquareFunctionForm(FlaskForm):
+class PolynomialDegree2TransformForm(FlaskForm):
     scalar = FloatField('Choose scalar', validators=[DataRequired()])
     submit = SubmitField('Show Graph')
 

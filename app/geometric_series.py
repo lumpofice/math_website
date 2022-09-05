@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-class Geometric():
+class GeometricSeries():
     
     
     def __init__(self):
@@ -74,5 +74,5 @@ class Geometric():
         plt.yticks(fontsize=20)
         fig.suptitle('Geometric Series', fontsize=20)
         plt.legend(prop={'size': 20})
-        fig.savefig('app/static/images/geometric.png')
+        fig.savefig('app/static/images/geometric_series.png')
 

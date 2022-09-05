@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-class SquareFunction():
+class PolynomialDegree2Transform():
     
     
     def __init__(self):
@@ -27,7 +27,8 @@ class SquareFunction():
         # remove the ticks from the top and right edges
         ax.xaxis.set_ticks_position('bottom')
         ax.yaxis.set_ticks_position('left')
-        fig.savefig('app/static/images/square_function_transform.png')
+        fig.savefig(\
+	'app/static/images/polynomial_degree_2_transform.png')
 
 
 
