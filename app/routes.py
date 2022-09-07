@@ -4,6 +4,8 @@ from app.forms import *
 from app.geometric_series import GeometricSeries
 from app.polynomial_degree_2_transform import PolynomialDegree2Transform
 from app.polynomial_degree_1_transform import PolynomialDegree1Transform
+from app.reciprocal_degree_0_by_degree_1_transform import\
+ReciprocalDegree0ByDegree1Transform
 
 
 @app.route('/')
