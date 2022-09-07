@@ -34,16 +34,36 @@ class ReciprocalDegree0ByDegree1Transform():
         while flag:
             
             if y_scalar == 0:
-                x = np.linspace(-10, 10, 1000)
-                y_parent = 1/x
-                ax.plot(x, y_parent, label='Parent')
+                domain = np.concatenate([
+                np.arange(-10, 0, 0.01),
+                np.arange(0.01, 10.01, 0.01)
+                ])
+                
+                y_parent_function = lambda x : 1/x
+                y_parent = []
+                
+                for i in domain:
+                    y_parent.append(y_parent_function(i))
+                    
+                y_parent = np.array(y_parent)
+                ax.plot(domain, y_parent, label='Parent')
                 flag = False
                 break
             
             elif x_scalar == 0:
-                x = np.linspace(-10, 10, 1000)
-                y_parent = 1/x
-                ax.plot(x, y_parent, label='Parent')
+                domain = np.concatenate([
+                np.arange(-10, 0, 0.01),
+                np.arange(0.01, 10.01, 0.01)
+                ])
+                
+                y_parent_function = lambda x : 1/x
+                y_parent = []
+                
+                for i in domain:
+                    y_parent.append(y_parent_function(i))
+                    
+                y_parent = np.array(y_parent)
+                ax.plot(domain, y_parent, label='Parent')
                 flag = False
                 break
             
@@ -53,15 +73,23 @@ class ReciprocalDegree0ByDegree1Transform():
                     if h != 0:
                 
                         if h/x_scalar < 0:
-                            x = np.linspace((h/x_scalar)-10, 10, 1000)
-                            y_parent = 1/x
+                            
+                            domain = np.arange((h/x_scalar)-10, 10.01, 0.1)
+                            
+                            y_parent = 1/domain
+                            y_parent[y_parent>100] = np.inf
+                            y_parent[y_parent>100] = np.inf
+                            
                             y_transform = y_scalar*(\
-                            1/(x_scalar*(x-(h/x_scalar)))) + k
-                            ax.plot(x, y_parent, label='Parent')
-                            ax.plot(x, y_transform, label='Transform')
+                            1/(x_scalar*(domain-(h/x_scalar)))) + k
+                            y_transform[y_transform>100] = np.inf
+                            y_transform[y_transform>100] = np.inf                            
+                            
+                            ax.plot(domain, y_parent, label='Parent')
+                            ax.plot(domain, y_transform, label='Transform')
                             flag = False
                             break
-            
+                            
                         elif h/x_scalar > 0:
                             x = np.linspace(-10, (h/x_scalar)+10, 1000)
                             y_parent = 1/x
@@ -94,7 +122,7 @@ class ReciprocalDegree0ByDegree1Transform():
         plt.ylim(-10, 10)
         plt.yticks(fontsize=20)
         plt.xticks(fontsize=20)
-        fig.suptitle('Polynomial Degree 2 Transform', fontsize=20)
+        fig.suptitle('Reciprocal Degree 0 by Degree 1 Transform', fontsize=20)
         plt.legend(prop={'size': 20})
             
         # Saving the figure to the static folder
