@@ -34,33 +34,23 @@ class ReciprocalDegree0ByDegree1Transform():
         while flag:
             
             if y_scalar == 0:
-                domain = np.concatenate([
-                np.arange(-10, 0, 0.01),
-                np.arange(0.01, 10.01, 0.01)
-                ])
-                
-                y_parent_function = lambda x : 1/x
-                y_parent = []
-                
-                for i in domain:
-                    y_parent.append(y_parent_function(i))
-                    
+                domain = np.arange(-10, 10.01, 0.1)
+                            
+                y_parent = 1/domain
+                y_parent[y_parent>1000] = np.inf
+                y_parent[y_parent<-1000] = np.inf
+                            
                 y_parent = np.array(y_parent)
                 ax.plot(domain, y_parent, label='Parent')
                 flag = False
                 break
             
             elif x_scalar == 0:
-                domain = np.concatenate([
-                np.arange(-10, 0, 0.01),
-                np.arange(0.01, 10.01, 0.01)
-                ])
-                
-                y_parent_function = lambda x : 1/x
-                y_parent = []
-                
-                for i in domain:
-                    y_parent.append(y_parent_function(i))
+                domain = np.arange(-10, 10.01, 0.1)
+                            
+                y_parent = 1/domain
+                y_parent[y_parent>1000] = np.inf
+                y_parent[y_parent<-1000] = np.inf
                     
                 y_parent = np.array(y_parent)
                 ax.plot(domain, y_parent, label='Parent')
@@ -77,13 +67,13 @@ class ReciprocalDegree0ByDegree1Transform():
                             domain = np.arange((h/x_scalar)-10, 10.01, 0.1)
                             
                             y_parent = 1/domain
-                            y_parent[y_parent>100] = np.inf
-                            y_parent[y_parent>100] = np.inf
+                            y_parent[y_parent>1000] = np.inf
+                            y_parent[y_parent<-1000] = np.inf
                             
                             y_transform = y_scalar*(\
                             1/(x_scalar*(domain-(h/x_scalar)))) + k
-                            y_transform[y_transform>100] = np.inf
-                            y_transform[y_transform>100] = np.inf                            
+                            y_transform[y_transform>1000] = np.inf
+                            y_transform[y_transform<-1000] = np.inf                            
                             
                             ax.plot(domain, y_parent, label='Parent')
                             ax.plot(domain, y_transform, label='Transform')
@@ -91,30 +81,51 @@ class ReciprocalDegree0ByDegree1Transform():
                             break
                             
                         elif h/x_scalar > 0:
-                            x = np.linspace(-10, (h/x_scalar)+10, 1000)
-                            y_parent = 1/x
+                            domain = np.arange(-10, (h/x_scalar)+10.01, 0.1)
+                            
+                            y_parent = 1/domain
+                            y_parent[y_parent>1000] = np.inf
+                            y_parent[y_parent<-1000] = np.inf
+                            
                             y_transform = y_scalar*(\
-                            1/(x_scalar*(x-(h/x_scalar)))) + k
-                            ax.plot(x, y_parent, label='Parent')
-                            ax.plot(x, y_transform, label='Transform')
+                            1/(x_scalar*(domain-(h/x_scalar)))) + k
+                            y_transform[y_transform>1000] = np.inf
+                            y_transform[y_transform<-1000] = np.inf
+                            
+                            ax.plot(domain, y_parent, label='Parent')
+                            ax.plot(domain, y_transform, label='Transform')
                             flag = False
                             break
                 
                     else:
-                        x = np.linspace(-10, 10, 1000)
-                        y_parent = 1/x
-                        y_transform = y_scalar*(1/(x_scalar*(x))) + k
-                        ax.plot(x, y_parent, label='Parent')
-                        ax.plot(x, y_transform, label='Transform')
+                        domain = np.arange(-10, 10.01, 0.1)
+                            
+                        y_parent = 1/domain
+                        y_parent[y_parent>1000] = np.inf
+                        y_parent[y_parent<-1000] = np.inf
+                        
+                        y_transform = y_scalar*(1/(x_scalar*(domain))) + k
+                        y_transform[y_transform>1000] = np.inf
+                        y_transform[y_transform<-1000] = np.inf
+                        
+                        ax.plot(domain, y_parent, label='Parent')
+                        ax.plot(domain, y_transform, label='Transform')
                         flag = False
                         break
                 
                 else:
-                    x = np.linspace(-10, 10, 1000)
-                    y_parent = 1/x
-                    y_transform = y_scalar*(1/(x-h)) + k
-                    ax.plot(x, y_parent, label='Parent')
-                    ax.plot(x, y_transform, label='Transform')
+                    domain = np.arange(-10, 10.01, 0.1)
+                            
+                    y_parent = 1/domain
+                    y_parent[y_parent>1000] = np.inf
+                    y_parent[y_parent<-1000] = np.inf
+                    
+                    y_transform = y_scalar*(1/(domain-h)) + k
+                    y_transform[y_transform>1000] = np.inf
+                    y_transform[y_transform<-1000] = np.inf
+                    
+                    ax.plot(domain, y_parent, label='Parent')
+                    ax.plot(domain, y_transform, label='Transform')
                     flag = False
                     break
         

@@ -1,1 +1,11 @@
 {% extends 'base.html' %}
+
+{% block content %}
+	<h1>Reciprocal Degree 0 by Degree 1 Transform Graph Results</h1>
+	<img
+		src='{{url_for (
+		"static", 
+		filename="images/reciprocal_degree_0_by_degree_1_transform.png"
+		) }}' align='middle'
+		/>
+{% endblock %}

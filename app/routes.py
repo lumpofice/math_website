@@ -96,3 +96,30 @@ def polynomial_degree_1_transform_graph_results():
     'polynomial_degree_1_transform_graph_results.html',\
     title='MassiveDiscipline')
 
+
+@app.route('/reciprocal_degree_0_by_degree_1_transform',\
+methods=['GET', 'POST'])
+def reciprocal_degree_0_by_degree_1_transform():
+    form = ReciprocalDegree0ByDegree1TransformForm()
+    
+    if form.validate_on_submit():
+    
+        reciprocal_transform = ReciprocalDegree0ByDegree1Transform()
+        reciprocal_transform.graph(\
+        form.horizontal_shift.data, form.x_scalar.data,\
+        form.y_scalar.data, form.vertical_shift.data)
+        
+        return redirect(url_for(\
+        'reciprocal_degree_0_by_degree_1_transform_graph_results'))
+    
+    return render_template(\
+    'reciprocal_degree_0_by_degree_1_transform.html',\
+    title='Reciprocal Degree 0 by Degree 1 Transformation',\
+    form=form)
+
+
+@app.route('/reciprocal_degree_0_by_degree_1_transform_graph_results')
+def reciprocal_degree_0_by_degree_1_transform_graph_results():
+    return render_template(\
+    'reciprocal_degree_0_by_degree_1_transform_graph_results.html',\
+    title='MassiveDiscipline')
