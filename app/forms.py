@@ -41,6 +41,21 @@ class PolynomialDegree1TransformForm(FlaskForm):
     
     
 class ReciprocalDegree0ByDegree1TransformForm(FlaskForm):
+    horizontal_shift = IntegerField(\
+    'Choose an integer horizontal shift between -5 and 5',\
+    validators=[InputRequired(), NumberRange(-5, 5)])
+    x_scalar = IntegerField(\
+    'Choose an integer x_scalar between -5 and 5',\
+    validators=[InputRequired(), NumberRange(-5, 5)])
+    y_scalar = IntegerField('Choose an integer y_scalar between -5 and 5',\
+    validators=[InputRequired(), NumberRange(-5, 5)])
+    vertical_shift = IntegerField(\
+    'Choose an integer vertical shift between -5 and 5',\
+    validators=[InputRequired(), NumberRange(-5, 5)])
+    submit = SubmitField('Show Graph')
+    
+
+class SquareRootTransformForm(FlaskForm):
     horizontal_shift = FloatField('Choose a horizontal shift between -5 and 5',\
     validators=[InputRequired(), NumberRange(-5, 5)])
     x_scalar = FloatField(\

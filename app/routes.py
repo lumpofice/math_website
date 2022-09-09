@@ -6,6 +6,7 @@ from app.polynomial_degree_2_transform import PolynomialDegree2Transform
 from app.polynomial_degree_1_transform import PolynomialDegree1Transform
 from app.reciprocal_degree_0_by_degree_1_transform import\
 ReciprocalDegree0ByDegree1Transform
+from app.square_root_transform import SquareRootTransform
 
 
 @app.route('/')
@@ -35,7 +36,7 @@ def geometric_series():
         
         return redirect(url_for('geometric_series_graph_results'))
     
-    return render_template('geometric_series.html', title='Geometric Series',\
+    return render_template('geometric_series.html', title='MassiveDiscipline',\
     form=form)
 
 
@@ -60,7 +61,7 @@ def polynomial_degree_2_transform():
     
     return render_template(\
     'polynomial_degree_2_transform.html',\
-    title='Polynomial Degree 2 Transformation',\
+    title='MassiveDiscipline',\
     form=form)
 
 
@@ -86,7 +87,7 @@ def polynomial_degree_1_transform():
     
     return render_template(\
     'polynomial_degree_1_transform.html',\
-    title='Polynomial Degree 1 Transformation',\
+    title='MassiveDiscipline',\
     form=form)
 
 
@@ -114,7 +115,7 @@ def reciprocal_degree_0_by_degree_1_transform():
     
     return render_template(\
     'reciprocal_degree_0_by_degree_1_transform.html',\
-    title='Reciprocal Degree 0 by Degree 1 Transformation',\
+    title='MassiveDiscipline',\
     form=form)
 
 
@@ -122,4 +123,32 @@ def reciprocal_degree_0_by_degree_1_transform():
 def reciprocal_degree_0_by_degree_1_transform_graph_results():
     return render_template(\
     'reciprocal_degree_0_by_degree_1_transform_graph_results.html',\
+    title='MassiveDiscipline')
+
+
+@app.route('/square_root_transform',\
+methods=['GET', 'POST'])
+def square_root_transform():
+    form = SquareRootTransformForm()
+    
+    if form.validate_on_submit():
+    
+        square_root_transform = SquareRootTransform()
+        square_root_transform.graph(\
+        form.horizontal_shift.data, form.x_scalar.data,\
+        form.y_scalar.data, form.vertical_shift.data)
+        
+        return redirect(url_for(\
+        'square_root_transform_graph_results'))
+    
+    return render_template(\
+    'square_root_transform.html',\
+    title='MassiveDiscipline',\
+    form=form)
+
+
+@app.route('/square_root_transform_graph_results')
+def square_root_transform_graph_results():
+    return render_template(\
+    'square_root_transform_graph_results.html',\
     title='MassiveDiscipline')

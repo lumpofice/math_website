@@ -58,10 +58,11 @@ class SquareRootTransform():
                 
                     if h != 0:
                 
-                        if h/x_scalar < 0:
+                        if x_scalar < 0:
                             
                             domain_parent = np.arange(0, 10.01, 0.01)
-                            domain = np.arange((h/x_scalar), 10.01, 0.01)
+                            domain = np.arange(\
+                            (h/x_scalar)-10, (h/x_scalar), 0.01)
                             
                             y_parent = np.sqrt(domain_parent)
                             y_transform = y_scalar*(\
@@ -72,7 +73,7 @@ class SquareRootTransform():
                             flag = False
                             break
                             
-                        elif h/x_scalar > 0:
+                        elif x_scalar > 0:
                             domain_parent = np.arange(0, 10.01, 0.01)
                             domain = np.arange(\
                             (h/x_scalar), (h/x_scalar)+10.01, 0.1)
@@ -101,14 +102,15 @@ class SquareRootTransform():
                             break
                         
                         elif x_scalar < 0:
+                            domain_parent = np.arange(0, 10.01, 0.01)
                             domain = np.arange(-10.01, 0.01, 0.01)
                             
-                            y_parent = np.sqrt(domain)
+                            y_parent = np.sqrt(domain_parent)
                         
                             y_transform = y_scalar*(\
                             np.sqrt(x_scalar*(domain))) + k
                         
-                            ax.plot(domain, y_parent, label='Parent')
+                            ax.plot(domain_parent, y_parent, label='Parent')
                             ax.plot(domain, y_transform, label='Transform')
                             flag = False
                             break
@@ -129,7 +131,7 @@ class SquareRootTransform():
         plt.ylim(-10, 10)
         plt.yticks(fontsize=20)
         plt.xticks(fontsize=20)
-        fig.suptitle('Reciprocal Degree 0 by Degree 1 Transform', fontsize=20)
+        fig.suptitle('Square Root Transform', fontsize=20)
         plt.legend(prop={'size': 20})
             
         # Saving the figure to the static folder
