@@ -34,7 +34,7 @@ class ReciprocalDegree0ByDegree1Transform():
         while flag:
             
             if y_scalar == 0:
-                domain = np.arange(-10, 10.01, 0.1)
+                domain = np.arange(-10, 10.01, 0.01)
                             
                 y_parent = 1/domain
                 y_parent[y_parent>1000] = np.inf
@@ -46,7 +46,7 @@ class ReciprocalDegree0ByDegree1Transform():
                 break
             
             elif x_scalar == 0:
-                domain = np.arange(-10, 10.01, 0.1)
+                domain = np.arange(-10, 10.01, 0.01)
                             
                 y_parent = 1/domain
                 y_parent[y_parent>1000] = np.inf
@@ -64,7 +64,7 @@ class ReciprocalDegree0ByDegree1Transform():
                 
                         if h/x_scalar < 0:
                             
-                            domain = np.arange((h/x_scalar)-10, 10.01, 0.1)
+                            domain = np.arange((h/x_scalar)-10, 10.01, 0.01)
                             
                             y_parent = 1/domain
                             y_parent[y_parent>1000] = np.inf
@@ -81,7 +81,7 @@ class ReciprocalDegree0ByDegree1Transform():
                             break
                             
                         elif h/x_scalar > 0:
-                            domain = np.arange(-10, (h/x_scalar)+10.01, 0.1)
+                            domain = np.arange(-10, (h/x_scalar)+10.01, 0.01)
                             
                             y_parent = 1/domain
                             y_parent[y_parent>1000] = np.inf
@@ -98,7 +98,7 @@ class ReciprocalDegree0ByDegree1Transform():
                             break
                 
                     else:
-                        domain = np.arange(-10, 10.01, 0.1)
+                        domain = np.arange(-10, 10.01, 0.01)
                             
                         y_parent = 1/domain
                         y_parent[y_parent>1000] = np.inf
@@ -114,7 +114,7 @@ class ReciprocalDegree0ByDegree1Transform():
                         break
                 
                 else:
-                    domain = np.arange(-10, 10.01, 0.1)
+                    domain = np.arange(-10, 10.01, 0.01)
                             
                     y_parent = 1/domain
                     y_parent[y_parent>1000] = np.inf
