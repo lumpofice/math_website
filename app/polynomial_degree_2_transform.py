@@ -36,14 +36,14 @@ class PolynomialDegree2Transform():
             if y_scalar == 0:
                 x = np.linspace(-10, 10, 1000)
                 y_parent = x**2
-                ax.plot(x, y_parent, label='$f(x)=x^{2}$')
+                ax.plot(x, y_parent, label=f'$f(x)=x^{2}$')
                 flag = False
                 break
         
             elif x_scalar == 0:
                 x = np.linspace(-10, 10, 1000)
                 y_parent = x**2
-                ax.plot(x, y_parent, label='$f(x)=x^{2}$')
+                ax.plot(x, y_parent, label=f'$f(x)=x^{2}$')
                 flag = False
                 break
             
@@ -57,14 +57,14 @@ class PolynomialDegree2Transform():
                             y_parent = x**2
                             y_transform = y_scalar*\
                             (x_scalar*x-(h/x_scalar))**2 + k
-                            ax.plot(x, y_parent, label='$f(x)=x^{2}$')
+                            ax.plot(x, y_parent, label=f'$f(x)=x^{2}$')
                             ax.plot(x, y_transform, label=f'$g(x)={y_scalar}$'\
                             f'$({x_scalar}x-({h}/{x_scalar}))^{2} + {k}$')
                             
                             # Plotting labeled ordered pairs
                             a_1 = h/x_scalar
-                            b_1 = y_scalar*(\
-                            x_scalar*(a_1-(h/x_scalar)))**2 + k
+                            b_1 = y_scalar*\
+                            (x_scalar*a_1-(h/x_scalar))**2 + k
                             ax.scatter(\
                             a_1, b_1,\
                             label='({:f}, {:f})'.format(a_1, b_1),\
@@ -72,8 +72,8 @@ class PolynomialDegree2Transform():
                             s=100, marker='s')
         
                             a_2 = (h/x_scalar)-0.5
-                            b_2 = y_scalar*(\
-                            x_scalar*(a_2-(h/x_scalar)))**2 + k
+                            b_2 = y_scalar*\
+                            (x_scalar*a_2-(h/x_scalar))**2 + k
                             ax.scatter(\
                             a_2, b_2,\
                             label='({:f}, {:f})'.format(a_2, b_2),\
@@ -81,8 +81,8 @@ class PolynomialDegree2Transform():
                             s=100, marker='s')
                 
                             a_3 = (h/x_scalar)+0.5
-                            b_3 = y_scalar*(\
-                            x_scalar*(a_3-(h/x_scalar)))**2 + k
+                            b_3 = y_scalar*\
+                            (x_scalar*a_3-(h/x_scalar))**2 + k
                             ax.scatter(\
                             a_3, b_3,\
                             label='({:f}, {:f})'.format(a_3, b_3),\
@@ -95,15 +95,16 @@ class PolynomialDegree2Transform():
                         elif h/x_scalar > 0:
                             x = np.linspace(-10, (h/x_scalar)+10, 1000)
                             y_parent = x**2
-                            y_transform = y_scalar*(x_scalar*(\
-                            x-(h/x_scalar)))**2 + k
-                            ax.plot(x, y_parent, label='Parent')
-                            ax.plot(x, y_transform, label='Transform')
+                            y_transform = y_scalar*\
+                            (x_scalar*x-(h/x_scalar))**2 + k
+                            ax.plot(x, y_parent, label=f'$f(x)=x^{2}$')
+                            ax.plot(x, y_transform, label=f'$g(x)={y_scalar}$'\
+                            f'$({x_scalar}x-({h}/{x_scalar}))^{2} + {k}$')
                             
                             # Plotting labeled ordered pairs
                             a_1 = h/x_scalar
-                            b_1 = y_scalar*(\
-                            x_scalar*(a_1-(h/x_scalar)))**2 + k
+                            b_1 = y_scalar*\
+                            (x_scalar*a_1-(h/x_scalar))**2 + k
                             ax.scatter(\
                             a_1, b_1,\
                             label='({:f}, {:f})'.format(a_1, b_1),\
@@ -111,8 +112,8 @@ class PolynomialDegree2Transform():
                             s=100, marker='s')
         
                             a_2 = (h/x_scalar)-0.5
-                            b_2 = y_scalar*(\
-                            x_scalar*(a_2-(h/x_scalar)))**2 + k
+                            b_2 = y_scalar*\
+                            (x_scalar*a_2-(h/x_scalar))**2 + k
                             ax.scatter(\
                             a_2, b_2,\
                             label='({:f}, {:f})'.format(a_2, b_2),\
@@ -120,8 +121,8 @@ class PolynomialDegree2Transform():
                             s=100, marker='s')
                 
                             a_3 = (h/x_scalar)+0.5
-                            b_3 = y_scalar*(\
-                            x_scalar*(a_3-(h/x_scalar)))**2 + k
+                            b_3 = y_scalar*\
+                            (x_scalar*a_3-(h/x_scalar))**2 + k
                             ax.scatter(\
                             a_3, b_3,\
                             label='({:f}, {:f})'.format(a_3, b_3),\
@@ -135,13 +136,14 @@ class PolynomialDegree2Transform():
                         x = np.linspace(-10, 10, 1000)
                         y_parent = x**2
                         y_transform = y_scalar*(x_scalar*(x))**2 + k
-                        ax.plot(x, y_parent, label='Parent')
-                        ax.plot(x, y_transform, label='Transform')
+                        ax.plot(x, y_parent, label=f'$f(x)=x^{2}$')
+                        ax.plot(x, y_transform, label=f'$g(x)={y_scalar}$'\
+                        f'$({x_scalar}x)^{2} + {k}$')
                         
                         # Plotting labeled ordered pairs
                         a_1 = h/x_scalar
-                        b_1 = y_scalar*(\
-                        x_scalar*(a_1-(h/x_scalar)))**2 + k
+                        b_1 = y_scalar*\
+                        (x_scalar*a_1)**2 + k
                         ax.scatter(\
                         a_1, b_1,\
                         label='({:f}, {:f})'.format(a_1, b_1),\
@@ -149,8 +151,8 @@ class PolynomialDegree2Transform():
                         s=100, marker='s')
         
                         a_2 = (h/x_scalar)-0.5
-                        b_2 = y_scalar*(\
-                        x_scalar*(a_2-(h/x_scalar)))**2 + k
+                        b_2 = y_scalar*\
+                        (x_scalar*a_2)**2 + k
                         ax.scatter(\
                         a_2, b_2,\
                         label='({:f}, {:f})'.format(a_2, b_2),\
@@ -158,8 +160,8 @@ class PolynomialDegree2Transform():
                         s=100, marker='s')
                 
                         a_3 = (h/x_scalar)+0.5
-                        b_3 = y_scalar*(\
-                        x_scalar*(a_3-(h/x_scalar)))**2 + k
+                        b_3 = y_scalar*\
+                        (x_scalar*a_3)**2 + k
                         ax.scatter(\
                         a_3, b_3,\
                         label='({:f}, {:f})'.format(a_3, b_3),\
@@ -173,13 +175,14 @@ class PolynomialDegree2Transform():
                     x = np.linspace(-10, 10, 1000)
                     y_parent = x**2
                     y_transform = y_scalar*(x-h)**2 + k
-                    ax.plot(x, y_parent, label='Parent')
-                    ax.plot(x, y_transform, label='Transform')
+                    ax.plot(x, y_parent, label=f'$f(x)=x^{2}$')
+                    ax.plot(x, y_transform, label=f'$g(x)={y_scalar}$'\
+                    f'$(x-{h})^{2} + {k}$')
                     
                     # Plotting labeled ordered pairs
                     a_1 = h/x_scalar
-                    b_1 = y_scalar*(\
-                    x_scalar*(a_1-(h/x_scalar)))**2 + k
+                    b_1 = y_scalar*\
+                    (a_1-h)**2 + k
                     ax.scatter(\
                     a_1, b_1,\
                     label='({:f}, {:f})'.format(a_1, b_1),\
@@ -187,8 +190,8 @@ class PolynomialDegree2Transform():
                     s=100, marker='s')
         
                     a_2 = (h/x_scalar)-0.5
-                    b_2 = y_scalar*(\
-                    x_scalar*(a_2-(h/x_scalar)))**2 + k
+                    b_2 = y_scalar*\
+                    (a_2-h)**2 + k
                     ax.scatter(\
                     a_2, b_2,\
                     label='({:f}, {:f})'.format(a_2, b_2),\
@@ -196,8 +199,8 @@ class PolynomialDegree2Transform():
                     s=100, marker='s')
                 
                     a_3 = (h/x_scalar)+0.5
-                    b_3 = y_scalar*(\
-                    x_scalar*(a_3-(h/x_scalar)))**2 + k
+                    b_3 = y_scalar*\
+                    (a_3-h)**2 + k
                     ax.scatter(\
                     a_3, b_3,\
                     label='({:f}, {:f})'.format(a_3, b_3),\

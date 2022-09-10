@@ -41,7 +41,7 @@ class ReciprocalDegree0ByDegree1Transform():
                 y_parent[y_parent<-1000] = np.inf
                             
                 y_parent = np.array(y_parent)
-                ax.plot(domain, y_parent, label='Parent')
+                ax.plot(domain, y_parent, label=f'$f(x)=1/x$')
                 flag = False
                 break
             
@@ -53,7 +53,7 @@ class ReciprocalDegree0ByDegree1Transform():
                 y_parent[y_parent<-1000] = np.inf
                     
                 y_parent = np.array(y_parent)
-                ax.plot(domain, y_parent, label='Parent')
+                ax.plot(domain, y_parent, label=f'$f(x)=1/x$')
                 flag = False
                 break
             
@@ -70,35 +70,43 @@ class ReciprocalDegree0ByDegree1Transform():
                             y_parent[y_parent>1000] = np.inf
                             y_parent[y_parent<-1000] = np.inf
                             
-                            y_transform = y_scalar*(\
-                            1/(x_scalar*(domain-(h/x_scalar)))) + k
+                            y_transform = y_scalar*\
+                            (1/(x_scalar*domain-(h/x_scalar))) + k
                             y_transform[y_transform>1000] = np.inf
                             y_transform[y_transform<-1000] = np.inf                            
                             
-                            ax.plot(domain, y_parent, label='Parent')
-                            ax.plot(domain, y_transform, label='Transform')
+                            ax.plot(domain, y_parent, label=f'$f(x)=1/x$')
+                            ax.plot(domain, y_transform,\
+                            label=f'$g(x)={y_scalar}$'\
+                            f'$(1/({x_scalar}x-({h}/{x_scalar}))) + {k}$')
                             
                             # Plotting labeled ordered pairs
                             a_1 = h/x_scalar-1
-                            b_1 = y_scalar*(\
-                            1/(x_scalar*(a_1-(h/x_scalar)))) + k
+                            b_1 = y_scalar*\
+                            (1/(x_scalar*a_1-(h/x_scalar))) + k
                             ax.scatter(\
                             a_1, b_1,\
-                            label='({0:.2g}, {0:.2g})'.format(a_1, b_1))
+                            label='({:f}, {:f})'.format(a_1, b_1),\
+                            c='orange',\
+                            s=100, marker='s')
         
                             a_2 = (h/x_scalar)-0.5
-                            b_2 = y_scalar*(\
-                            1/(x_scalar*(a_2-(h/x_scalar)))) + k
+                            b_2 = y_scalar*\
+                            (1/(x_scalar*a_2-(h/x_scalar))) + k
                             ax.scatter(\
                             a_2, b_2,\
-                            label='({0:.2g}, {0:.2g})'.format(a_2, b_2))
+                            label='({:f}, {:f})'.format(a_2, b_2),\
+                            c='cyan',\
+                            s=100, marker='s')
                 
                             a_3 = (h/x_scalar)+0.5
-                            b_3 = y_scalar*(\
-                            1/(x_scalar*(a_3-(h/x_scalar)))) + k
+                            b_3 = y_scalar*\
+                            (1/(x_scalar*a_3-(h/x_scalar))) + k
                             ax.scatter(\
                             a_3, b_3,\
-                            label='({0:.2g}, {0:.2g})'.format(a_3, b_3))
+                            label='({:f}, {:f})'.format(a_3, b_3),\
+                            c='purple',\
+                            s=100, marker='s')
                             
                             flag = False
                             break
@@ -110,35 +118,43 @@ class ReciprocalDegree0ByDegree1Transform():
                             y_parent[y_parent>1000] = np.inf
                             y_parent[y_parent<-1000] = np.inf
                             
-                            y_transform = y_scalar*(\
-                            1/(x_scalar*(domain-(h/x_scalar)))) + k
+                            y_transform = y_scalar*\
+                            (1/(x_scalar*domain-(h/x_scalar))) + k
                             y_transform[y_transform>1000] = np.inf
                             y_transform[y_transform<-1000] = np.inf
                             
-                            ax.plot(domain, y_parent, label='Parent')
-                            ax.plot(domain, y_transform, label='Transform')
+                            ax.plot(domain, y_parent, label=f'$f(x)=1/x$')
+                            ax.plot(domain, y_transform,\
+                            label=f'$g(x)={y_scalar}$'\
+                            f'$(1/({x_scalar}x-({h}/{x_scalar}))) + {k}$')
                             
                             # Plotting labeled ordered pairs
                             a_1 = h/x_scalar-1
-                            b_1 = y_scalar*(\
-                            1/(x_scalar*(a_1-(h/x_scalar)))) + k
+                            b_1 = y_scalar*\
+                            (1/(x_scalar*a_1-(h/x_scalar))) + k
                             ax.scatter(\
                             a_1, b_1,\
-                            label='({0:.2g}, {0:.2g})'.format(a_1, b_1))
+                            label='({:f}, {:f})'.format(a_1, b_1),\
+                            c='orange',\
+                            s=100, marker='s')
         
                             a_2 = (h/x_scalar)-0.5
-                            b_2 = y_scalar*(\
-                            1/(x_scalar*(a_2-(h/x_scalar)))) + k
+                            b_2 = y_scalar*\
+                            (1/(x_scalar*a_2-(h/x_scalar))) + k
                             ax.scatter(\
                             a_2, b_2,\
-                            label='({0:.2g}, {0:.2g})'.format(a_2, b_2))
+                            label='({:f}, {:f})'.format(a_2, b_2),\
+                            c='cyan',\
+                            s=100, marker='s')
                 
                             a_3 = (h/x_scalar)+0.5
-                            b_3 = y_scalar*(\
-                            1/(x_scalar*(a_3-(h/x_scalar)))) + k
+                            b_3 = y_scalar*\
+                            (1/(x_scalar*a_3-(h/x_scalar))) + k
                             ax.scatter(\
                             a_3, b_3,\
-                            label='({0:.2g}, {0:.2g})'.format(a_3, b_3))
+                            label='({:f}, {:f})'.format(a_3, b_3),\
+                            c='purple',\
+                            s=100, marker='s')
                             
                             flag = False
                             break
@@ -154,27 +170,35 @@ class ReciprocalDegree0ByDegree1Transform():
                         y_transform[y_transform>1000] = np.inf
                         y_transform[y_transform<-1000] = np.inf
                         
-                        ax.plot(domain, y_parent, label='Parent')
-                        ax.plot(domain, y_transform, label='Transform')
+                        ax.plot(domain, y_parent, label=f'$f(x)=1/x$')
+                        ax.plot(domain, y_transform,\
+                        label=f'$g(x)={y_scalar}$'\
+                        f'$(1/({x_scalar}x)) + {k}$')
                         
                         # Plotting labeled ordered pairs
                         a_1 = h/x_scalar-1
                         b_1 = y_scalar*(1/(x_scalar*(a_1))) + k
                         ax.scatter(\
                         a_1, b_1,\
-                        label='({0:.2g}, {0:.2g})'.format(a_1, b_1))
+                        label='({:f}, {:f})'.format(a_1, b_1),\
+                        c='orange',\
+                        s=100, marker='s')
         
                         a_2 = (h/x_scalar)-0.5
                         b_2 = y_scalar*(1/(x_scalar*(a_2))) + k
                         ax.scatter(\
                         a_2, b_2,\
-                        label='({0:.2g}, {0:.2g})'.format(a_2, b_2))
+                        label='({:f}, {:f})'.format(a_2, b_2),\
+                        c='cyan',\
+                        s=100, marker='s')
                 
                         a_3 = (h/x_scalar)+0.5
                         b_3 = y_scalar*(1/(x_scalar*(a_3))) + k
                         ax.scatter(\
                         a_3, b_3,\
-                        label='({0:.2g}, {0:.2g})'.format(a_3, b_3))
+                        label='({:f}, {:f})'.format(a_3, b_3),\
+                        c='purple',\
+                        s=100, marker='s')
                         
                         flag = False
                         break
@@ -190,27 +214,35 @@ class ReciprocalDegree0ByDegree1Transform():
                     y_transform[y_transform>1000] = np.inf
                     y_transform[y_transform<-1000] = np.inf
                     
-                    ax.plot(domain, y_parent, label='Parent')
-                    ax.plot(domain, y_transform, label='Transform')
+                    ax.plot(domain, y_parent, label=f'$f(x)=1/x$')
+                    ax.plot(domain, y_transform,\
+                    label=f'$g(x)={y_scalar}$'\
+                    f'$(1/(x-{h})) + {k}$')
                     
                     # Plotting labeled ordered pairs
                     a_1 = h/x_scalar-1
                     b_1 = y_scalar*(1/(a_1-h)) + k
                     ax.scatter(\
                     a_1, b_1,\
-                    label='({0:.2g}, {0:.2g})'.format(a_1, b_1))
+                    label='({:f}, {:f})'.format(a_1, b_1),\
+                    c='orange',\
+                    s=100, marker='s')
         
                     a_2 = (h/x_scalar)-0.5
                     b_2 = y_scalar*(1/(a_2-h)) + k
                     ax.scatter(\
                     a_2, b_2,\
-                    label='({0:.2g}, {0:.2g})'.format(a_2, b_2))
+                    label='({:f}, {:f})'.format(a_2, b_2),\
+                    c='cyan',\
+                    s=100, marker='s')
                 
                     a_3 = (h/x_scalar)+0.5
                     b_3 = y_scalar*(1/(a_3-h)) + k
                     ax.scatter(\
                     a_3, b_3,\
-                    label='({0:.2g}, {0:.2g})'.format(a_3, b_3))
+                    label='({:f}, {:f})'.format(a_3, b_3),\
+                    c='purple',\
+                    s=100, marker='s')
                     
                     flag = False
                     break
@@ -218,11 +250,15 @@ class ReciprocalDegree0ByDegree1Transform():
         # Plotting labeled ordered pairs for the parent
         a_1 = 1
         b_1 = 1/a_1
-        ax.scatter(a_1, b_1, label='({0:.2g}, {0:.2g})'.format(a_1, b_1))
+        ax.scatter(a_1, b_1, label='({:f}, {:f})'.format(a_1, b_1),\
+        c='red',\
+        s=100, marker='>')
         
         a_2 = -1
         b_2 = 1/a_2
-        ax.scatter(a_2, b_2, label='({0:.2g}, {0:.2g})'.format(a_2, b_2))
+        ax.scatter(a_2, b_2, label='({:f}, {:f})'.format(a_2, b_2),\
+        c='blue',\
+        s=100, marker='>')
         
         # Putting some restrictions and information on the graphing window
         plt.ylim(-10, 10)

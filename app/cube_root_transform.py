@@ -56,8 +56,8 @@ class CubeRootTransform():
                         if h/x_scalar < 0:
                             x = np.linspace((h/x_scalar)-10, 10, 1000)
                             y_parent = np.cbrt(x)
-                            y_transform = y_scalar*(\
-                            x_scalar*np.cbrt(x-(h/x_scalar))) + k
+                            y_transform = y_scalar*\
+                            np.cbrt(x_scalar*x-(h/x_scalar)) + k
                             ax.plot(x, y_parent, label='Parent')
                             ax.plot(x, y_transform, label='Transform')
                             flag = False
@@ -66,8 +66,8 @@ class CubeRootTransform():
                         elif h/x_scalar > 0:
                             x = np.linspace(-10, (h/x_scalar)+10, 1000)
                             y_parent = np.cbrt(x)
-                            y_transform = y_scalar*np.cbrt(x_scalar*(\
-                            x-(h/x_scalar))) + k
+                            y_transform = y_scalar*\
+                            np.cbrt(x_scalar*x-(h/x_scalar)) + k
                             ax.plot(x, y_parent, label='Parent')
                             ax.plot(x, y_transform, label='Transform')
                             flag = False
@@ -76,7 +76,8 @@ class CubeRootTransform():
                     else:
                         x = np.linspace(-10, 10, 1000)
                         y_parent = np.cbrt(x)
-                        y_transform = y_scalar*np.cbrt(x_scalar*(x)) + k
+                        y_transform = y_scalar*\
+                        np.cbrt(x_scalar*(x)) + k
                         ax.plot(x, y_parent, label='Parent')
                         ax.plot(x, y_transform, label='Transform')
                         flag = False
@@ -85,7 +86,8 @@ class CubeRootTransform():
                 else:
                     x = np.linspace(-10, 10, 1000)
                     y_parent = np.cbrt(x)
-                    y_transform = y_scalar*np.cbrt(x-h)**2 + k
+                    y_transform = y_scalar*\
+                    np.cbrt(x-h) + k
                     ax.plot(x, y_parent, label='Parent')
                     ax.plot(x, y_transform, label='Transform')
                     flag = False
