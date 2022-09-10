@@ -7,6 +7,7 @@ from app.polynomial_degree_1_transform import PolynomialDegree1Transform
 from app.reciprocal_degree_0_by_degree_1_transform import\
 ReciprocalDegree0ByDegree1Transform
 from app.square_root_transform import SquareRootTransform
+from app.cube_root_transform import CubeRootTransform
 
 
 @app.route('/')
@@ -151,4 +152,32 @@ def square_root_transform():
 def square_root_transform_graph_results():
     return render_template(\
     'square_root_transform_graph_results.html',\
+    title='MassiveDiscipline')
+
+
+@app.route('/cube_root_transform',\
+methods=['GET', 'POST'])
+def cube_root_transform():
+    form = CubeRootTransformForm()
+    
+    if form.validate_on_submit():
+    
+        cube_root_transform = CubeRootTransform()
+        cube_root_transform.graph(\
+        form.horizontal_shift.data, form.x_scalar.data,\
+        form.y_scalar.data, form.vertical_shift.data)
+        
+        return redirect(url_for(\
+        'cube_root_transform_graph_results'))
+    
+    return render_template(\
+    'cube_root_transform.html',\
+    title='MassiveDiscipline',\
+    form=form)
+
+
+@app.route('/cube_root_transform_graph_results')
+def cube_root_transform_graph_results():
+    return render_template(\
+    'cube_root_transform_graph_results.html',\
     title='MassiveDiscipline')
