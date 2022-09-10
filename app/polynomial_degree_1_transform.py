@@ -44,8 +44,34 @@ class PolynomialDegree1Transform():
                 y_transform = y_scalar*(x-h) + k
                 ax.plot(x, y_parent, label='Parent')
                 ax.plot(x, y_transform, label='Transform')
+                
+                # Plotting labeled ordered pairs
+                a_1 = h
+                b_1 = y_scalar*(a_1-h) + k
+                ax.scatter(\
+                a_1, b_1, label='({0:.2g}, {0:.2g})'.format(a_1, b_1))
+        
+                a_2 = h-2
+                b_2 = y_scalar*(a_2-h) + k
+                ax.scatter(\
+                a_2, b_2, label='({0:.2g}, {0:.2g})'.format(a_2, b_2))
+                
+                a_3 = h+2
+                b_3 = y_scalar*(a_3-h) + k
+                ax.scatter(\
+                a_3, b_3, label='({0:.2g}, {0:.2g})'.format(a_3, b_3))
+                
                 flag = False
                 break
+        
+        # Plotting labeled ordered pairs for the parent
+        a_1 = 1
+        b_1 = a_1
+        ax.scatter(a_1, b_1, label='({0:.2g}, {0:.2g})'.format(a_1, b_1))
+        
+        a_2 = -1
+        b_2 = a_2
+        ax.scatter(a_2, b_2, label='({0:.2g}, {0:.2g})'.format(a_2, b_2))
         
         # Putting some restrictions and information on the graphing window
         plt.ylim(-10, 10)
