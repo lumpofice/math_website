@@ -37,14 +37,14 @@ class CubeRootTransform():
             if y_scalar == 0:
                 x = np.linspace(-10, 10, 1000)
                 y_parent = np.cbrt(x)
-                ax.plot(x, y_parent, label='Parent')
+                ax.plot(x, y_parent, label=r'$f(x)=\sqrt[3]{x}$')
                 flag = False
                 break
         
             elif x_scalar == 0:
                 x = np.linspace(-10, 10, 1000)
                 y_parent = np.cbrt(x)
-                ax.plot(x, y_parent, label='Parent')
+                ax.plot(x, y_parent, label=r'$f(x)=\sqrt[3]{x}$')
                 flag = False
                 break
             
@@ -58,8 +58,38 @@ class CubeRootTransform():
                             y_parent = np.cbrt(x)
                             y_transform = y_scalar*\
                             np.cbrt(x_scalar*x-(h/x_scalar)) + k
-                            ax.plot(x, y_parent, label='Parent')
-                            ax.plot(x, y_transform, label='Transform')
+                            ax.plot(x, y_parent, label=r'$f(x)=\sqrt[3]{x}$')
+                            ax.plot(x, y_transform,\
+                            label=r'$a\sqrt[3]{bx-\dfrac{h}{b}}+k$')
+                            
+                            # Plotting labeled ordered pairs
+                            a_1 = h/x_scalar-1
+                            b_1 = y_scalar*\
+                            np.cbrt(x_scalar*a_1-(h/x_scalar)) + k
+                            ax.scatter(\
+                            a_1, b_1,\
+                            label='({:f}, {:f})'.format(a_1, b_1),\
+                            c='orange',\
+                            s=100, marker='s')
+                            
+                            a_2 = h/x_scalar+1
+                            b_2 = y_scalar*\
+                            np.cbrt(x_scalar*a_2-(h/x_scalar)) + k
+                            ax.scatter(\
+                            a_2, b_2,\
+                            label='({:f}, {:f})'.format(a_2, b_2),\
+                            c='cyan',\
+                            s=100, marker='s')
+                            
+                            a_3 = h/x_scalar-2
+                            b_3 = y_scalar*\
+                            np.cbrt(x_scalar*a_3-(h/x_scalar)) + k
+                            ax.scatter(\
+                            a_3, b_3,\
+                            label='({:f}, {:f})'.format(a_3, b_3),\
+                            c='purple',\
+                            s=100, marker='s')
+                            
                             flag = False
                             break
             
@@ -68,8 +98,38 @@ class CubeRootTransform():
                             y_parent = np.cbrt(x)
                             y_transform = y_scalar*\
                             np.cbrt(x_scalar*x-(h/x_scalar)) + k
-                            ax.plot(x, y_parent, label='Parent')
-                            ax.plot(x, y_transform, label='Transform')
+                            ax.plot(x, y_parent, label=r'$f(x)=\sqrt[3]{x}$')
+                            ax.plot(x, y_transform,\
+                            label=r'$a\sqrt[3]{bx-\dfrac{h}{b}}+k$')
+                            
+                            # Plotting labeled ordered pairs
+                            a_1 = h/x_scalar+1
+                            b_1 = y_scalar*\
+                            np.cbrt(x_scalar*a_1-(h/x_scalar)) + k
+                            ax.scatter(\
+                            a_1, b_1,\
+                            label='({:f}, {:f})'.format(a_1, b_1),\
+                            c='orange',\
+                            s=100, marker='s')
+                            
+                            a_2 = h/x_scalar
+                            b_2 = y_scalar*\
+                            np.cbrt(x_scalar*a_2-(h/x_scalar)) + k
+                            ax.scatter(\
+                            a_2, b_2,\
+                            label='({:f}, {:f})'.format(a_2, b_2),\
+                            c='cyan',\
+                            s=100, marker='s')
+                            
+                            a_3 = h/x_scalar+2
+                            b_3 = y_scalar*\
+                            np.cbrt(x_scalar*a_3-(h/x_scalar)) + k
+                            ax.scatter(\
+                            a_3, b_3,\
+                            label='({:f}, {:f})'.format(a_3, b_3),\
+                            c='purple',\
+                            s=100, marker='s')
+                            
                             flag = False
                             break
                 
@@ -78,8 +138,38 @@ class CubeRootTransform():
                         y_parent = np.cbrt(x)
                         y_transform = y_scalar*\
                         np.cbrt(x_scalar*(x)) + k
-                        ax.plot(x, y_parent, label='Parent')
-                        ax.plot(x, y_transform, label='Transform')
+                        ax.plot(x, y_parent, label=r'$f(x)=\sqrt[3]{x}$')
+                        ax.plot(x, y_transform,\
+                        label=r'$a\sqrt[3]{bx}+k$')
+                        
+                        # Plotting labeled ordered pairs
+                        a_1 = -1
+                        b_1 = y_scalar*\
+                        np.cbrt(x_scalar*a_1) + k
+                        ax.scatter(\
+                        a_1, b_1,\
+                        label='({:f}, {:f})'.format(a_1, b_1),\
+                        c='orange',\
+                        s=100, marker='s')
+                            
+                        a_2 = 1
+                        b_2 = y_scalar*\
+                        np.cbrt(x_scalar*a_2) + k
+                        ax.scatter(\
+                        a_2, b_2,\
+                        label='({:f}, {:f})'.format(a_2, b_2),\
+                        c='cyan',\
+                        s=100, marker='s')
+                            
+                        a_3 = -2
+                        b_3 = y_scalar*\
+                        np.cbrt(x_scalar*a_3) + k
+                        ax.scatter(\
+                        a_3, b_3,\
+                        label='({:f}, {:f})'.format(a_3, b_3),\
+                        c='purple',\
+                        s=100, marker='s')
+                        
                         flag = False
                         break
                 
@@ -88,10 +178,53 @@ class CubeRootTransform():
                     y_parent = np.cbrt(x)
                     y_transform = y_scalar*\
                     np.cbrt(x-h) + k
-                    ax.plot(x, y_parent, label='Parent')
-                    ax.plot(x, y_transform, label='Transform')
+                    ax.plot(x, y_parent, label=r'$f(x)=\sqrt[3]{x}$')
+                    ax.plot(x, y_transform,\
+                    label=r'$a\sqrt[3]{x-h}+k$')
+                    
+                    # Plotting labeled ordered pairs
+                    a_1 = -1
+                    b_1 = y_scalar*\
+                    np.cbrt(a_1-h) + k
+                    ax.scatter(\
+                    a_1, b_1,\
+                    label='({:f}, {:f})'.format(a_1, b_1),\
+                    c='orange',\
+                    s=100, marker='s')
+                            
+                    a_2 = 1
+                    b_2 = y_scalar*\
+                    np.cbrt(a_2-h) + k
+                    ax.scatter(\
+                    a_2, b_2,\
+                    label='({:f}, {:f})'.format(a_2, b_2),\
+                    c='cyan',\
+                    s=100, marker='s')
+                            
+                    a_3 = -2
+                    b_3 = y_scalar*\
+                    np.cbrt(a_3-h) + k
+                    ax.scatter(\
+                    a_3, b_3,\
+                    label='({:f}, {:f})'.format(a_3, b_3),\
+                    c='purple',\
+                    s=100, marker='s')
+                    
                     flag = False
                     break
+        
+        # Plotting labeled ordered pairs for the parent
+        p_1 = 1
+        q_1 = np.cbrt(p_1)
+        ax.scatter(p_1, q_1, label='({:f}, {:f})'.format(p_1, q_1),\
+        c='red',\
+        s=100, marker='>')
+        
+        p_2 = 2
+        q_2 = np.cbrt(p_2)
+        ax.scatter(p_2, q_2, label='({:f}, {:f})'.format(p_2, q_2),\
+        c='blue',\
+        s=100, marker='>')
         
         # Putting some restrictions and information on the graphing window
         plt.ylim(-10, 10)

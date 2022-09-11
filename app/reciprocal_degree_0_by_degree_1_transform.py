@@ -41,7 +41,7 @@ class ReciprocalDegree0ByDegree1Transform():
                 y_parent[y_parent<-1000] = np.inf
                             
                 y_parent = np.array(y_parent)
-                ax.plot(domain, y_parent, label=f'$f(x)=1/x$')
+                ax.plot(domain, y_parent, label=r'$f(x)=\dfrac{1}{x}$')
                 flag = False
                 break
             
@@ -53,7 +53,7 @@ class ReciprocalDegree0ByDegree1Transform():
                 y_parent[y_parent<-1000] = np.inf
                     
                 y_parent = np.array(y_parent)
-                ax.plot(domain, y_parent, label=f'$f(x)=1/x$')
+                ax.plot(domain, y_parent, label=r'$f(x)=\dfrac{1}{x}$')
                 flag = False
                 break
             
@@ -75,10 +75,11 @@ class ReciprocalDegree0ByDegree1Transform():
                             y_transform[y_transform>1000] = np.inf
                             y_transform[y_transform<-1000] = np.inf                            
                             
-                            ax.plot(domain, y_parent, label=f'$f(x)=1/x$')
+                            ax.plot(domain, y_parent,\
+                            label=r'$f(x)=\dfrac{1}{x}$')
                             ax.plot(domain, y_transform,\
-                            label=f'$g(x)={y_scalar}$'\
-                            f'$(1/({x_scalar}x-({h}/{x_scalar}))) + {k}$')
+                            label=r'$g(x)=a$'\
+                            r'$\dfrac{1}{bx-\dfrac{h}{b}} + k$')
                             
                             # Plotting labeled ordered pairs
                             a_1 = h/x_scalar-1
@@ -123,10 +124,11 @@ class ReciprocalDegree0ByDegree1Transform():
                             y_transform[y_transform>1000] = np.inf
                             y_transform[y_transform<-1000] = np.inf
                             
-                            ax.plot(domain, y_parent, label=f'$f(x)=1/x$')
+                            ax.plot(domain, y_parent,\
+                            label=r'$f(x)=\dfrac{1}{x}$')
                             ax.plot(domain, y_transform,\
-                            label=f'$g(x)={y_scalar}$'\
-                            f'$(1/({x_scalar}x-({h}/{x_scalar}))) + {k}$')
+                            label=r'$g(x)=a$'\
+                            r'$\dfrac{1}{bx-\dfrac{h}{b}} + k$')
                             
                             # Plotting labeled ordered pairs
                             a_1 = h/x_scalar-1
@@ -170,10 +172,11 @@ class ReciprocalDegree0ByDegree1Transform():
                         y_transform[y_transform>1000] = np.inf
                         y_transform[y_transform<-1000] = np.inf
                         
-                        ax.plot(domain, y_parent, label=f'$f(x)=1/x$')
+                        ax.plot(domain, y_parent,\
+                        label=r'$f(x)=\dfrac{1}{x}$')
                         ax.plot(domain, y_transform,\
-                        label=f'$g(x)={y_scalar}$'\
-                        f'$(1/({x_scalar}x)) + {k}$')
+                        label=r'$g(x)=a$'\
+                        r'$\dfrac{1}{bx} + k$')
                         
                         # Plotting labeled ordered pairs
                         a_1 = h/x_scalar-1
@@ -214,10 +217,11 @@ class ReciprocalDegree0ByDegree1Transform():
                     y_transform[y_transform>1000] = np.inf
                     y_transform[y_transform<-1000] = np.inf
                     
-                    ax.plot(domain, y_parent, label=f'$f(x)=1/x$')
+                    ax.plot(domain, y_parent,\
+                    label=r'$f(x)=\dfrac{1}{x}$')
                     ax.plot(domain, y_transform,\
-                    label=f'$g(x)={y_scalar}$'\
-                    f'$(1/(x-{h})) + {k}$')
+                    label=r'$g(x)=a$'\
+                    r'$\dfrac{1}{x-h} + k$')
                     
                     # Plotting labeled ordered pairs
                     a_1 = h/x_scalar-1
@@ -248,15 +252,15 @@ class ReciprocalDegree0ByDegree1Transform():
                     break
         
         # Plotting labeled ordered pairs for the parent
-        a_1 = 1
-        b_1 = 1/a_1
-        ax.scatter(a_1, b_1, label='({:f}, {:f})'.format(a_1, b_1),\
+        p_1 = 1
+        q_1 = 1/p_1
+        ax.scatter(p_1, q_1, label='({:f}, {:f})'.format(p_1, q_1),\
         c='red',\
         s=100, marker='>')
         
-        a_2 = -1
-        b_2 = 1/a_2
-        ax.scatter(a_2, b_2, label='({:f}, {:f})'.format(a_2, b_2),\
+        p_2 = -1
+        q_2 = 1/p_2
+        ax.scatter(p_2, q_2, label='({:f}, {:f})'.format(p_2, q_2),\
         c='blue',\
         s=100, marker='>')
         
@@ -265,7 +269,7 @@ class ReciprocalDegree0ByDegree1Transform():
         plt.yticks(fontsize=20)
         plt.xticks(fontsize=20)
         fig.suptitle('Reciprocal Degree 0 by Degree 1 Transform', fontsize=20)
-        plt.legend(prop={'size': 20})
+        plt.legend(prop={'size': 15})
             
         # Saving the figure to the static folder
         fig.savefig(\

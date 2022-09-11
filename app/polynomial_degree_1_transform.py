@@ -43,7 +43,7 @@ class PolynomialDegree1Transform():
                 y_parent = x
                 y_transform = y_scalar*(x-h) + k
                 ax.plot(x, y_parent, label='$f(x)=x$')
-                ax.plot(x, y_transform, label=f'$g(x)={y_scalar}(x-{h})+{k}$')
+                ax.plot(x, y_transform, label=r'$g(x)=a(x-h)+k$')
                 
                 # Plotting labeled ordered pairs
                 a_1 = h

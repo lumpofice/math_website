@@ -36,14 +36,14 @@ class PolynomialDegree2Transform():
             if y_scalar == 0:
                 x = np.linspace(-10, 10, 1000)
                 y_parent = x**2
-                ax.plot(x, y_parent, label=f'$f(x)=x^{2}$')
+                ax.plot(x, y_parent, label=r'$f(x)=x^{2}$')
                 flag = False
                 break
         
             elif x_scalar == 0:
                 x = np.linspace(-10, 10, 1000)
                 y_parent = x**2
-                ax.plot(x, y_parent, label=f'$f(x)=x^{2}$')
+                ax.plot(x, y_parent, label=r'$f(x)=x^{2}$')
                 flag = False
                 break
             
@@ -57,9 +57,9 @@ class PolynomialDegree2Transform():
                             y_parent = x**2
                             y_transform = y_scalar*\
                             (x_scalar*x-(h/x_scalar))**2 + k
-                            ax.plot(x, y_parent, label=f'$f(x)=x^{2}$')
-                            ax.plot(x, y_transform, label=f'$g(x)={y_scalar}$'\
-                            f'$({x_scalar}x-({h}/{x_scalar}))^{2} + {k}$')
+                            ax.plot(x, y_parent, label=r'$f(x)=x^{2}$')
+                            ax.plot(x, y_transform, label=r'$g(x)=a$'\
+                            r'$(bx-\dfrac{h}{b})^{2} + k$')
                             
                             # Plotting labeled ordered pairs
                             a_1 = h/x_scalar
@@ -97,9 +97,9 @@ class PolynomialDegree2Transform():
                             y_parent = x**2
                             y_transform = y_scalar*\
                             (x_scalar*x-(h/x_scalar))**2 + k
-                            ax.plot(x, y_parent, label=f'$f(x)=x^{2}$')
-                            ax.plot(x, y_transform, label=f'$g(x)={y_scalar}$'\
-                            f'$({x_scalar}x-({h}/{x_scalar}))^{2} + {k}$')
+                            ax.plot(x, y_parent, label=r'$f(x)=x^{2}$')
+                            ax.plot(x, y_transform, label=r'$g(x)=a$'\
+                            r'$(bx-\dfrac{h}{b})^{2} + k$')
                             
                             # Plotting labeled ordered pairs
                             a_1 = h/x_scalar
@@ -136,9 +136,9 @@ class PolynomialDegree2Transform():
                         x = np.linspace(-10, 10, 1000)
                         y_parent = x**2
                         y_transform = y_scalar*(x_scalar*(x))**2 + k
-                        ax.plot(x, y_parent, label=f'$f(x)=x^{2}$')
-                        ax.plot(x, y_transform, label=f'$g(x)={y_scalar}$'\
-                        f'$({x_scalar}x)^{2} + {k}$')
+                        ax.plot(x, y_parent, label=r'$f(x)=x^{2}$')
+                        ax.plot(x, y_transform, label=r'$g(x)=a$'\
+                        r'$(bx)^{2} + k$')
                         
                         # Plotting labeled ordered pairs
                         a_1 = h/x_scalar
@@ -175,9 +175,9 @@ class PolynomialDegree2Transform():
                     x = np.linspace(-10, 10, 1000)
                     y_parent = x**2
                     y_transform = y_scalar*(x-h)**2 + k
-                    ax.plot(x, y_parent, label=f'$f(x)=x^{2}$')
-                    ax.plot(x, y_transform, label=f'$g(x)={y_scalar}$'\
-                    f'$(x-{h})^{2} + {k}$')
+                    ax.plot(x, y_parent, label=r'$f(x)=x^{2}$')
+                    ax.plot(x, y_transform, label=r'$g(x)=a$'\
+                    r'$(x-h)^{2} + k$')
                     
                     # Plotting labeled ordered pairs
                     a_1 = h/x_scalar
