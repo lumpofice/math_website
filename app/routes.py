@@ -2,8 +2,9 @@ from flask import render_template, flash, redirect, url_for
 from app import app
 from app.forms import *
 from app.geometric_series import GeometricSeries
-from app.polynomial_degree_2_transform import PolynomialDegree2Transform
 from app.polynomial_degree_1_transform import PolynomialDegree1Transform
+from app.polynomial_degree_2_transform import PolynomialDegree2Transform
+from app.polynomial_degree_3_transform import PolynomialDegree3Transform
 from app.reciprocal_degree_0_by_degree_1_transform import\
 ReciprocalDegree0ByDegree1Transform
 from app.square_root_transform import SquareRootTransform
@@ -47,6 +48,32 @@ def geometric_series_graph_results():
     'geometric_series_graph_results.html', title='MassiveDiscipline')
 
 
+@app.route('/polynomial_degree_1_transform', methods=['GET', 'POST'])
+def polynomial_degree_1_transform():
+    form = PolynomialDegree1TransformForm()
+    
+    if form.validate_on_submit():
+    
+        id_transform = PolynomialDegree1Transform()
+        id_transform.graph(form.horizontal_shift.data,\
+        form.y_scalar.data, form.vertical_shift.data)
+        
+        return redirect(url_for(\
+        'polynomial_degree_1_transform_graph_results'))
+    
+    return render_template(\
+    'polynomial_degree_1_transform.html',\
+    title='MassiveDiscipline',\
+    form=form)
+
+
+@app.route('/polynomial_degree_1_transform_graph_results')
+def polynomial_degree_1_transform_graph_results():
+    return render_template(\
+    'polynomial_degree_1_transform_graph_results.html',\
+    title='MassiveDiscipline')
+
+
 @app.route('/polynomial_degree_2_transform', methods=['GET', 'POST'])
 def polynomial_degree_2_transform():
     form = PolynomialDegree2TransformForm()
@@ -73,29 +100,29 @@ def polynomial_degree_2_transform_graph_results():
     title='MassiveDiscipline')
 
 
-@app.route('/polynomial_degree_1_transform', methods=['GET', 'POST'])
-def polynomial_degree_1_transform():
-    form = PolynomialDegree1TransformForm()
+@app.route('/polynomial_degree_3_transform', methods=['GET', 'POST'])
+def polynomial_degree_3_transform():
+    form = PolynomialDegree3TransformForm()
     
     if form.validate_on_submit():
     
-        id_transform = PolynomialDegree1Transform()
-        id_transform.graph(form.horizontal_shift.data,\
+        cubed_transform = PolynomialDegree3Transform()
+        cubed_transform.graph(form.horizontal_shift.data, form.x_scalar.data,\
         form.y_scalar.data, form.vertical_shift.data)
         
         return redirect(url_for(\
-        'polynomial_degree_1_transform_graph_results'))
+        'polynomial_degree_3_transform_graph_results'))
     
     return render_template(\
-    'polynomial_degree_1_transform.html',\
+    'polynomial_degree_3_transform.html',\
     title='MassiveDiscipline',\
     form=form)
 
 
-@app.route('/polynomial_degree_1_transform_graph_results')
-def polynomial_degree_1_transform_graph_results():
+@app.route('/polynomial_degree_3_transform_graph_results')
+def polynomial_degree_3_transform_graph_results():
     return render_template(\
-    'polynomial_degree_1_transform_graph_results.html',\
+    'polynomial_degree_3_transform_graph_results.html',\
     title='MassiveDiscipline')
 
 

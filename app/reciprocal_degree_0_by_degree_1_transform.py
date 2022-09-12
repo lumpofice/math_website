@@ -37,8 +37,8 @@ class ReciprocalDegree0ByDegree1Transform():
                 domain = np.arange(-10, 10.01, 0.01)
                             
                 y_parent = 1/domain
-                y_parent[y_parent>1000] = np.inf
-                y_parent[y_parent<-1000] = np.inf
+                y_parent[y_parent>10] = np.inf
+                y_parent[y_parent<-10] = np.inf
                             
                 y_parent = np.array(y_parent)
                 ax.plot(domain, y_parent, label=r'$f(x)=\dfrac{1}{x}$')
@@ -49,8 +49,8 @@ class ReciprocalDegree0ByDegree1Transform():
                 domain = np.arange(-10, 10.01, 0.01)
                             
                 y_parent = 1/domain
-                y_parent[y_parent>1000] = np.inf
-                y_parent[y_parent<-1000] = np.inf
+                y_parent[y_parent>10] = np.inf
+                y_parent[y_parent<-10] = np.inf
                     
                 y_parent = np.array(y_parent)
                 ax.plot(domain, y_parent, label=r'$f(x)=\dfrac{1}{x}$')
@@ -67,13 +67,13 @@ class ReciprocalDegree0ByDegree1Transform():
                             domain = np.arange((h/x_scalar)-10, 10.01, 0.01)
                             
                             y_parent = 1/domain
-                            y_parent[y_parent>1000] = np.inf
-                            y_parent[y_parent<-1000] = np.inf
+                            y_parent[y_parent>10] = np.inf
+                            y_parent[y_parent<-10] = np.inf
                             
                             y_transform = y_scalar*\
                             (1/(x_scalar*domain-(h/x_scalar))) + k
-                            y_transform[y_transform>1000] = np.inf
-                            y_transform[y_transform<-1000] = np.inf                            
+                            y_transform[y_transform>100] = np.inf
+                            y_transform[y_transform<-100] = np.inf                            
                             
                             ax.plot(domain, y_parent,\
                             label=r'$f(x)=\dfrac{1}{x}$')
@@ -116,13 +116,13 @@ class ReciprocalDegree0ByDegree1Transform():
                             domain = np.arange(-10, (h/x_scalar)+10.01, 0.01)
                             
                             y_parent = 1/domain
-                            y_parent[y_parent>1000] = np.inf
-                            y_parent[y_parent<-1000] = np.inf
+                            y_parent[y_parent>10] = np.inf
+                            y_parent[y_parent<-10] = np.inf
                             
                             y_transform = y_scalar*\
                             (1/(x_scalar*domain-(h/x_scalar))) + k
-                            y_transform[y_transform>1000] = np.inf
-                            y_transform[y_transform<-1000] = np.inf
+                            y_transform[y_transform>100] = np.inf
+                            y_transform[y_transform<-100] = np.inf
                             
                             ax.plot(domain, y_parent,\
                             label=r'$f(x)=\dfrac{1}{x}$')
@@ -165,12 +165,12 @@ class ReciprocalDegree0ByDegree1Transform():
                         domain = np.arange(-10, 10.01, 0.01)
                             
                         y_parent = 1/domain
-                        y_parent[y_parent>1000] = np.inf
-                        y_parent[y_parent<-1000] = np.inf
+                        y_parent[y_parent>10] = np.inf
+                        y_parent[y_parent<-10] = np.inf
                         
                         y_transform = y_scalar*(1/(x_scalar*(domain))) + k
-                        y_transform[y_transform>1000] = np.inf
-                        y_transform[y_transform<-1000] = np.inf
+                        y_transform[y_transform>100] = np.inf
+                        y_transform[y_transform<-100] = np.inf
                         
                         ax.plot(domain, y_parent,\
                         label=r'$f(x)=\dfrac{1}{x}$')
@@ -210,12 +210,12 @@ class ReciprocalDegree0ByDegree1Transform():
                     domain = np.arange(-10, 10.01, 0.01)
                             
                     y_parent = 1/domain
-                    y_parent[y_parent>1000] = np.inf
-                    y_parent[y_parent<-1000] = np.inf
+                    y_parent[y_parent>10] = np.inf
+                    y_parent[y_parent<-10] = np.inf
                     
                     y_transform = y_scalar*(1/(domain-h)) + k
-                    y_transform[y_transform>1000] = np.inf
-                    y_transform[y_transform<-1000] = np.inf
+                    y_transform[y_transform>100] = np.inf
+                    y_transform[y_transform<-100] = np.inf
                     
                     ax.plot(domain, y_parent,\
                     label=r'$f(x)=\dfrac{1}{x}$')

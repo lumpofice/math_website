@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<h1>Polynomial Degree 3 Transform Graph Results</h1>
+	<img
+		src='{{url_for (
+		"static", filename="images/polynomial_degree_3_transform.png"
+		) }}' align='middle'
+		/>
+{% endblock %}
