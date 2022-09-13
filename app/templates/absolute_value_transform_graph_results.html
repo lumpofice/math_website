@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<h1>Absolute Value Transform Graph Results</h1>
+	<img
+		src='{{url_for (
+		"static", filename="images/absolute_value_transform.png"
+		) }}' align='middle'
+		/>
+{% endblock %}

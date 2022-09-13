@@ -5,6 +5,7 @@ from app.geometric_series import GeometricSeries
 from app.polynomial_degree_1_transform import PolynomialDegree1Transform
 from app.polynomial_degree_2_transform import PolynomialDegree2Transform
 from app.polynomial_degree_3_transform import PolynomialDegree3Transform
+from app.absolute_value_transform import AbsoluteValueTransform
 from app.reciprocal_degree_0_by_degree_1_transform import\
 ReciprocalDegree0ByDegree1Transform
 from app.square_root_transform import SquareRootTransform
@@ -123,6 +124,33 @@ def polynomial_degree_3_transform():
 def polynomial_degree_3_transform_graph_results():
     return render_template(\
     'polynomial_degree_3_transform_graph_results.html',\
+    title='MassiveDiscipline')
+
+
+@app.route('/absolute_value_transform', methods=['GET', 'POST'])
+def absolute_value_transform():
+    form = AbsoluteValueTransformForm()
+    
+    if form.validate_on_submit():
+    
+        absolute_value_transform = AbsoluteValueTransform()
+        absolute_value_transform.graph(\
+        form.horizontal_shift.data, form.x_scalar.data,\
+        form.y_scalar.data, form.vertical_shift.data)
+        
+        return redirect(url_for(\
+        'absolute_value_transform_graph_results'))
+    
+    return render_template(\
+    'absolute_value_transform.html',\
+    title='MassiveDiscipline',\
+    form=form)
+
+
+@app.route('/absolute_value_transform_graph_results')
+def absolute_value_transform_graph_results():
+    return render_template(\
+    'absolute_value_transform_graph_results.html',\
     title='MassiveDiscipline')
 
 
