@@ -83,7 +83,7 @@ def polynomial_degree_2_transform():
     
         square_transform = PolynomialDegree2Transform()
         square_transform.graph(form.horizontal_shift.data, form.x_scalar.data,\
-        form.y_scalar.data, form.vertical_shift.data)
+        form.x_reflection.data, form.y_scalar.data, form.vertical_shift.data)
         
         return redirect(url_for(\
         'polynomial_degree_2_transform_graph_results'))

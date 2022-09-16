@@ -11,11 +11,11 @@ class PolynomialDegree2Transform():
         pass
     
     
-    def graph(self, h, x_scalar, y_scalar, k):
+    def graph(self, h, x_scalar, x_reflection, y_scalar, k):
         
         # h: Horizontal shift on the argument
-        # x_scalar: Reflective/Non-reflective scalar on the argument
-        # and the horizontal shift
+        # x_scalar: Scalar on the argument and the horizontal shift
+        # x_reflection: -1 or 1 on the x variable (reflection about y-axis)
         # y_scalar: Reflective/Non-reflective scalar on the function value
         # before the vertical shift
         # k: Vertical Shift the function value
@@ -47,33 +47,40 @@ class PolynomialDegree2Transform():
                 flag = False
                 break
             
+            elif x_reflection == 0:
+                x = np.linspace(-10, 10, 1000)
+                y_parent = x**2
+                ax.plot(x, y_parent, label=r'$f(x)=x^{2}$')
+                flag = False
+                break
+            
             else:
                 if x_scalar != 1:
                 
                     if h != 0:
                 
-                        if h/x_scalar < 0:
-                            x = np.linspace((h/x_scalar)-10, 10, 1000)
+                        if h < 0:
+                            x = np.linspace(h-10, 10, 1000)
                             y_parent = x**2
                             y_transform = y_scalar*\
-                            (x_scalar*x-(h/x_scalar))**2 + k
+                            (x_scalar*(x_reflection*x-h))**2 + k
                             ax.plot(x, y_parent, label=r'$f(x)=x^{2}$')
                             ax.plot(x, y_transform, label=r'$g(x)=a$'\
-                            r'$(bx-\dfrac{h}{b})^{2} + k$')
+                            r'$(b(cx-h))^{2} + k$')
                             
                             # Plotting labeled ordered pairs
-                            a_1 = h/x_scalar
+                            a_1 = h
                             b_1 = y_scalar*\
-                            (x_scalar*a_1-(h/x_scalar))**2 + k
+                            (x_scalar*(x_reflection*a_1-h))**2 + k
                             ax.scatter(\
                             a_1, b_1,\
                             label='({:f}, {:f})'.format(a_1, b_1),\
                             c='orange',\
                             s=100, marker='s')
         
-                            a_2 = (h/x_scalar)-0.5
+                            a_2 = h-0.5
                             b_2 = y_scalar*\
-                            (x_scalar*a_2-(h/x_scalar))**2 + k
+                            (x_scalar*(x_reflection*a_2-h))**2 + k
                             ax.scatter(\
                             a_2, b_2,\
                             label='({:f}, {:f})'.format(a_2, b_2),\
@@ -82,7 +89,7 @@ class PolynomialDegree2Transform():
                 
                             a_3 = (h/x_scalar)+0.5
                             b_3 = y_scalar*\
-                            (x_scalar*a_3-(h/x_scalar))**2 + k
+                            (x_scalar*(x_reflection*a_3-h))**2 + k
                             ax.scatter(\
                             a_3, b_3,\
                             label='({:f}, {:f})'.format(a_3, b_3),\
@@ -92,37 +99,37 @@ class PolynomialDegree2Transform():
                             flag = False
                             break
             
-                        elif h/x_scalar > 0:
-                            x = np.linspace(-10, (h/x_scalar)+10, 1000)
+                        elif h > 0:
+                            x = np.linspace(-10, h+10, 1000)
                             y_parent = x**2
                             y_transform = y_scalar*\
-                            (x_scalar*x-(h/x_scalar))**2 + k
+                            (x_scalar*(x_reflection*x-h))**2 + k
                             ax.plot(x, y_parent, label=r'$f(x)=x^{2}$')
                             ax.plot(x, y_transform, label=r'$g(x)=a$'\
-                            r'$(bx-\dfrac{h}{b})^{2} + k$')
+                            r'$(b(cx-h))^{2} + k$')
                             
                             # Plotting labeled ordered pairs
-                            a_1 = h/x_scalar
+                            a_1 = h
                             b_1 = y_scalar*\
-                            (x_scalar*a_1-(h/x_scalar))**2 + k
+                            (x_scalar*(x_reflection*a_1-h))**2 + k
                             ax.scatter(\
                             a_1, b_1,\
                             label='({:f}, {:f})'.format(a_1, b_1),\
                             c='orange',\
                             s=100, marker='s')
         
-                            a_2 = (h/x_scalar)-0.5
+                            a_2 = h-0.5
                             b_2 = y_scalar*\
-                            (x_scalar*a_2-(h/x_scalar))**2 + k
+                            (x_scalar*(x_reflection*a_2-h))**2 + k
                             ax.scatter(\
                             a_2, b_2,\
                             label='({:f}, {:f})'.format(a_2, b_2),\
                             c='cyan',\
                             s=100, marker='s')
                 
-                            a_3 = (h/x_scalar)+0.5
+                            a_3 = h+0.5
                             b_3 = y_scalar*\
-                            (x_scalar*a_3-(h/x_scalar))**2 + k
+                            (x_scalar*(x_reflection*a_3-h))**2 + k
                             ax.scatter(\
                             a_3, b_3,\
                             label='({:f}, {:f})'.format(a_3, b_3),\
@@ -135,33 +142,34 @@ class PolynomialDegree2Transform():
                     else:
                         x = np.linspace(-10, 10, 1000)
                         y_parent = x**2
-                        y_transform = y_scalar*(x_scalar*(x))**2 + k
+                        y_transform = y_scalar*\
+                        (x_scalar*x_reflection*x)**2 + k
                         ax.plot(x, y_parent, label=r'$f(x)=x^{2}$')
                         ax.plot(x, y_transform, label=r'$g(x)=a$'\
-                        r'$(bx)^{2} + k$')
+                        r'$(bcx)^{2} + k$')
                         
                         # Plotting labeled ordered pairs
-                        a_1 = h/x_scalar
+                        a_1 = h
                         b_1 = y_scalar*\
-                        (x_scalar*a_1)**2 + k
+                        (x_scalar*x_reflection*a_1)**2 + k
                         ax.scatter(\
                         a_1, b_1,\
                         label='({:f}, {:f})'.format(a_1, b_1),\
                         c='orange',\
                         s=100, marker='s')
         
-                        a_2 = (h/x_scalar)-0.5
+                        a_2 = h-0.5
                         b_2 = y_scalar*\
-                        (x_scalar*a_2)**2 + k
+                        (x_scalar*x_reflection*a_2)**2 + k
                         ax.scatter(\
                         a_2, b_2,\
                         label='({:f}, {:f})'.format(a_2, b_2),\
                         c='cyan',\
                         s=100, marker='s')
                 
-                        a_3 = (h/x_scalar)+0.5
+                        a_3 = h+0.5
                         b_3 = y_scalar*\
-                        (x_scalar*a_3)**2 + k
+                        (x_scalar*x_reflection*a_3)**2 + k
                         ax.scatter(\
                         a_3, b_3,\
                         label='({:f}, {:f})'.format(a_3, b_3),\
@@ -174,33 +182,33 @@ class PolynomialDegree2Transform():
                 else:
                     x = np.linspace(-10, 10, 1000)
                     y_parent = x**2
-                    y_transform = y_scalar*(x-h)**2 + k
+                    y_transform = y_scalar*(x_reflection*x-h)**2 + k
                     ax.plot(x, y_parent, label=r'$f(x)=x^{2}$')
                     ax.plot(x, y_transform, label=r'$g(x)=a$'\
-                    r'$(x-h)^{2} + k$')
+                    r'$(cx-h)^{2} + k$')
                     
                     # Plotting labeled ordered pairs
-                    a_1 = h/x_scalar
+                    a_1 = h
                     b_1 = y_scalar*\
-                    (a_1-h)**2 + k
+                    (x_reflection*a_1-h)**2 + k
                     ax.scatter(\
                     a_1, b_1,\
                     label='({:f}, {:f})'.format(a_1, b_1),\
                     c='orange',\
                     s=100, marker='s')
         
-                    a_2 = (h/x_scalar)-0.5
+                    a_2 = h-0.5
                     b_2 = y_scalar*\
-                    (a_2-h)**2 + k
+                    (x_reflection*a_2-h)**2 + k
                     ax.scatter(\
                     a_2, b_2,\
                     label='({:f}, {:f})'.format(a_2, b_2),\
                     c='cyan',\
                     s=100, marker='s')
                 
-                    a_3 = (h/x_scalar)+0.5
+                    a_3 = h+0.5
                     b_3 = y_scalar*\
-                    (a_3-h)**2 + k
+                    (x_reflection*a_3-h)**2 + k
                     ax.scatter(\
                     a_3, b_3,\
                     label='({:f}, {:f})'.format(a_3, b_3),\
