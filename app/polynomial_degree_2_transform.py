@@ -5,6 +5,10 @@ import matplotlib.pyplot as plt
 
 
 class PolynomialDegree2Transform():
+    """
+    This class will serve as the template for constructing and graphing
+    polynomials of degree 2.
+    """
     
     
     def __init__(self):
@@ -12,6 +16,28 @@ class PolynomialDegree2Transform():
     
     
     def graph(self, h, x_scalar, x_reflection, y_scalar, k):
+        """
+        ORDER OF TRANSFORMATION:
+        Let p be the parent function
+        1) Let s_x(x) = bx. This is the x_scalar. Then p(s_x(x)) = p(bx). 
+        2) Let h(x) = x-h. This is the horizontal shift.
+        Then p(s_x(h(x))) = p(b(x-h)). 
+        3) Let r_x(x) = -x. This is x_reflection (reflection across the y-axis).
+        Then p(s_x(h(r_x(x)))) = p(b(-x-h))
+        4) Let s_y(x) = ap(x). This is the y_scalar.
+        Then s_y(p(s_x(h(r_x(x))))) = ap(b(-x-h))
+        5) Let r_y(x) = -p(x). This is the y_reflection
+        (reflection across the x-axis). The y_scalar and y_reflection can be
+        consolidated to a single variable: y_scalar.
+        Then r_y(s_y(p(s_x(h(r_x(x)))))) = -ap(b(-x-h))
+        6) Let v(x) = p(x) + k. This is the vertical shift.
+        Then v(r_y(s_y(p(s_x(h(r_x(x))))))) = -ap(b(-x-h)) + k
+        With the preceding definitions, we have the following order that must
+        be followed when constructing the graphs of these transforms:
+        Let \circ represent the symbol for function composition. Then
+        (v \circ r_y \circ s_y \circ p \circ s_x \circ h \circ r_x)(x)
+        is the order in which a transform is to be constructed.
+        """
         
         # h: Horizontal shift on the argument
         # x_scalar: Scalar on the argument and the horizontal shift

@@ -10,6 +10,7 @@ from app.reciprocal_degree_0_by_degree_1_transform import\
 ReciprocalDegree0ByDegree1Transform
 from app.square_root_transform import SquareRootTransform
 from app.cube_root_transform import CubeRootTransform
+import numpy as np
 
 
 @app.route('/')
@@ -80,6 +81,24 @@ def polynomial_degree_2_transform():
     form = PolynomialDegree2TransformForm()
     
     if form.validate_on_submit():
+        
+        if form.y_scalar.data >= 0:
+            flash('h={} ____ b={} ____ c={} ____ a={} ____ k={} ____ '\
+            'domain=({}, {}) ____ '\
+            'range=({}, {})'\
+            .format(form.horizontal_shift.data, form.x_scalar.data,\
+            form.x_reflection.data, form.y_scalar.data,\
+            form.vertical_shift.data, -np.inf, np.inf,\
+            form.vertical_shift.data, np.inf))
+        
+        if form.y_scalar.data < 0:
+            flash('h={} ____ b={} ____ c={} ____ a={} ____ k={} ____ '\
+            'domain=({}, {}) ____ '\
+            'range=({}, {})'\
+            .format(form.horizontal_shift.data, form.x_scalar.data,\
+            form.x_reflection.data, form.y_scalar.data,\
+            form.vertical_shift.data, -np.inf, np.inf,\
+            -np.inf, form.vertical_shift.data))
     
         square_transform = PolynomialDegree2Transform()
         square_transform.graph(form.horizontal_shift.data, form.x_scalar.data,\
