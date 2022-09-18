@@ -19,6 +19,13 @@
 			{% endfor %}
 		</p>
 		<p>
+			{{ form.x_reflection.label }}<br>
+			{{ form.x_reflection(size=32) }}<br>
+			{% for error in form.x_reflection.errors %}
+			<span style='color: red;'>[{{ error }}]</span>
+			{% endfor %}
+		</p>
+		<p>
 			{{ form.y_scalar.label }}<br>
 			{{ form.y_scalar(size=32) }}<br>
 			{% for error in form.y_scalar.errors %}

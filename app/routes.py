@@ -125,10 +125,18 @@ def polynomial_degree_3_transform():
     form = PolynomialDegree3TransformForm()
     
     if form.validate_on_submit():
+        
+        flash('h={} ____ b={} ____ c={} ____ a={} ____ k={} ____ '\
+        'domain=({}, {}) ____ '\
+        'range=({}, {})'\
+        .format(form.horizontal_shift.data, form.x_scalar.data,\
+        form.x_reflection.data, form.y_scalar.data,\
+        form.vertical_shift.data, -np.inf, np.inf,\
+        -np.inf, np.inf))
     
         cubed_transform = PolynomialDegree3Transform()
         cubed_transform.graph(form.horizontal_shift.data, form.x_scalar.data,\
-        form.y_scalar.data, form.vertical_shift.data)
+        form.x_reflection.data, form.y_scalar.data, form.vertical_shift.data)
         
         return redirect(url_for(\
         'polynomial_degree_3_transform_graph_results'))
