@@ -219,7 +219,7 @@ def square_root_transform():
         square_root_transform = SquareRootTransform()
         square_root_transform.graph(\
         form.horizontal_shift.data, form.x_scalar.data,\
-        form.y_scalar.data, form.vertical_shift.data)
+        form.x_reflection.data, form.y_scalar.data, form.vertical_shift.data)
         
         return redirect(url_for(\
         'square_root_transform_graph_results'))

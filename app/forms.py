@@ -80,6 +80,9 @@ class SquareRootTransformForm(FlaskForm):
     x_scalar = FloatField(\
     'Choose a x_scalar between -5 and 5',\
     validators=[InputRequired(), NumberRange(-5, 5)])
+    x_reflection = IntegerField(\
+    'If an x_reflection is desired, choose -1, else choose 1',\
+    validators=[InputRequired(), NumberRange(-1, 1)])
     y_scalar = FloatField('Choose a y_scalar between -5 and 5',\
     validators=[InputRequired(), NumberRange(-5, 5)])
     vertical_shift = FloatField('Choose a vertical shift between -5 and 5',\
