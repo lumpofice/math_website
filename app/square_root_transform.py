@@ -84,44 +84,44 @@ class SquareRootTransform():
                 
                     if h != 0:
                 
-                        if x_scalar < 0:
+                        if x_reflection < 0:
                             
                             domain_parent = np.arange(0, 10.01, 0.01)
                             domain = np.arange(\
-                            (h/(x_scalar)**2)-10, (h/(x_scalar)**2), 0.01)
+                            -h-10, -h, 0.01)
                             
                             y_parent = np.sqrt(domain_parent)
                             y_transform = y_scalar*\
-                            np.sqrt(x_scalar*domain-(h/x_scalar)) + k                            
+                            np.sqrt(x_scalar*(x_reflection*domain-h)) + k                            
                             
                             ax.plot(domain_parent, y_parent,\
                             label=r'$f(x)=\sqrt{x}$')
                             ax.plot(domain, y_transform,\
                             label=r'$g(x)=a$'\
-                            r'$\sqrt{bx-\dfrac{h}{b}} + k$')
+                            r'$\sqrt{b(cx-h)} + k$')
                             
                             # Plotting labeled ordered pairs
-                            a_1 = (h/(x_scalar)**2)-1
+                            a_1 = -h-1
                             b_1 = y_scalar*\
-                            np.sqrt(x_scalar*a_1-(h/x_scalar)) + k
+                            np.sqrt(x_scalar*(x_reflection*a_1-h)) + k
                             ax.scatter(\
                             a_1, b_1,\
                             label='({:f}, {:f})'.format(a_1, b_1),\
                             c='orange',\
                             s=100, marker='s')
                             
-                            a_2 = (h/(x_scalar)**2)-2
+                            a_2 = -h-2
                             b_2 = y_scalar*\
-                            np.sqrt(x_scalar*a_2-(h/x_scalar)) + k
+                            np.sqrt(x_scalar*(x_reflection*a_2-h)) + k
                             ax.scatter(\
                             a_2, b_2,\
                             label='({:f}, {:f})'.format(a_2, b_2),\
                             c='cyan',\
                             s=100, marker='s')
                             
-                            a_3 = (h/(x_scalar)**2)-3
+                            a_3 = -h-3
                             b_3 = y_scalar*\
-                            np.sqrt(x_scalar*a_3-(h/x_scalar)) + k
+                            np.sqrt(x_scalar*(x_reflection*a_3-h)) + k
                             ax.scatter(\
                             a_3, b_3,\
                             label='({:f}, {:f})'.format(a_3, b_3),\
@@ -131,43 +131,43 @@ class SquareRootTransform():
                             flag = False
                             break
                             
-                        elif x_scalar > 0:
+                        elif x_reflection > 0:
                             domain_parent = np.arange(0, 10.01, 0.01)
                             domain = np.arange(\
-                            (h/(x_scalar)**2), (h/(x_scalar)**2)+10.01, 0.1)
+                            h, h+10.01, 0.1)
                             
                             y_parent = np.sqrt(domain_parent)
                             y_transform = y_scalar*\
-                            np.sqrt(x_scalar*domain-(h/x_scalar)) + k                            
+                            np.sqrt(x_scalar*(x_reflection*domain-h)) + k                            
                             
                             ax.plot(domain_parent, y_parent,\
                             label=r'$f(x)=\sqrt{x}$')
                             ax.plot(domain, y_transform,\
                             label=r'$g(x)=a$'\
-                            r'$\sqrt{bx-\dfrac{h}{b}} + k$')
+                            r'$\sqrt{b(cx-h)} + k$')
                             
                             # Plotting labeled ordered pairs
-                            a_1 = (h/(x_scalar)**2)+1
+                            a_1 = h+1
                             b_1 = y_scalar*\
-                            np.sqrt(x_scalar*a_1-(h/x_scalar)) + k
+                            np.sqrt(x_scalar*(x_reflection*a_1-h)) + k
                             ax.scatter(\
                             a_1, b_1,\
                             label='({:f}, {:f})'.format(a_1, b_1),\
                             c='orange',\
                             s=100, marker='s')
                             
-                            a_2 = (h/(x_scalar)**2)+2
+                            a_2 = h+2
                             b_2 = y_scalar*\
-                            np.sqrt(x_scalar*a_2-(h/x_scalar)) + k
+                            np.sqrt(x_scalar*(x_reflection*a_2-h)) + k
                             ax.scatter(\
                             a_2, b_2,\
                             label='({:f}, {:f})'.format(a_2, b_2),\
                             c='cyan',\
                             s=100, marker='s')
                             
-                            a_3 = (h/(x_scalar)**2)+3
+                            a_3 = h+3
                             b_3 = y_scalar*\
-                            np.sqrt(x_scalar*a_3-(h/x_scalar)) + k
+                            np.sqrt(x_scalar*(x_reflection*a_3-h)) + k
                             ax.scatter(\
                             a_3, b_3,\
                             label='({:f}, {:f})'.format(a_3, b_3),\
@@ -178,24 +178,24 @@ class SquareRootTransform():
                             break
                 
                     else:
-                        if x_scalar > 0:
+                        if x_reflection > 0:
                             domain = np.arange(0, 10.01, 0.01)
                             
                             y_parent = np.sqrt(domain)
                         
                             y_transform = y_scalar*\
-                            np.sqrt(x_scalar*domain) + k
+                            np.sqrt(x_scalar*x_reflection*domain) + k
                         
                             ax.plot(domain, y_parent,\
                             label=r'$f(x)=\sqrt{x}$')
                             ax.plot(domain, y_transform,\
                             label=r'$g(x)=a$'\
-                            r'$\sqrt{bx} + k$')
+                            r'$\sqrt{bcx} + k$')
                             
                             # Plotting labeled ordered pairs
                             a_1 = 1
                             b_1 = y_scalar*\
-                            np.sqrt(x_scalar*a_1) + k
+                            np.sqrt(x_scalar*x_reflection*a_1) + k
                             ax.scatter(\
                             a_1, b_1,\
                             label='({:f}, {:f})'.format(a_1, b_1),\
@@ -204,7 +204,7 @@ class SquareRootTransform():
                             
                             a_2 = 1.5
                             b_2 = y_scalar*\
-                            np.sqrt(x_scalar*a_2) + k
+                            np.sqrt(x_scalar*x_reflection*a_2) + k
                             ax.scatter(\
                             a_2, b_2,\
                             label='({:f}, {:f})'.format(a_2, b_2),\
@@ -213,7 +213,7 @@ class SquareRootTransform():
                             
                             a_3 = 2
                             b_3 = y_scalar*\
-                            np.sqrt(x_scalar*a_3) + k
+                            np.sqrt(x_scalar*x_reflection*a_3) + k
                             ax.scatter(\
                             a_3, b_3,\
                             label='({:f}, {:f})'.format(a_3, b_3),\
@@ -223,25 +223,25 @@ class SquareRootTransform():
                             flag = False
                             break
                         
-                        elif x_scalar < 0:
+                        elif x_reflection < 0:
                             domain_parent = np.arange(0, 10.01, 0.01)
                             domain = np.arange(-10.01, 0.01, 0.01)
                             
                             y_parent = np.sqrt(domain_parent)
                         
                             y_transform = y_scalar*\
-                            np.sqrt(x_scalar*domain) + k
+                            np.sqrt(x_scalar*x_reflection*domain) + k
                         
                             ax.plot(domain_parent, y_parent,\
                             label=r'$f(x)=\sqrt{x}$')
                             ax.plot(domain, y_transform,\
                             label=r'$g(x)=a$'\
-                            r'$\sqrt{bx} + k$')
+                            r'$\sqrt{bcx} + k$')
                             
                             # Plotting labeled ordered pairs
                             a_1 = -1
                             b_1 = y_scalar*\
-                            np.sqrt(x_scalar*a_1) + k
+                            np.sqrt(x_scalar*x_reflection*a_1) + k
                             ax.scatter(\
                             a_1, b_1,\
                             label='({:f}, {:f})'.format(a_1, b_1),\
@@ -250,7 +250,7 @@ class SquareRootTransform():
                             
                             a_2 = -2
                             b_2 = y_scalar*\
-                            np.sqrt(x_scalar*a_2) + k
+                            np.sqrt(x_scalar*x_reflection*a_2) + k
                             ax.scatter(\
                             a_2, b_2,\
                             label='({:f}, {:f})'.format(a_2, b_2),\
@@ -259,7 +259,7 @@ class SquareRootTransform():
                             
                             a_3 = -1.5
                             b_3 = y_scalar*\
-                            np.sqrt(x_scalar*a_3) + k
+                            np.sqrt(x_scalar*x_reflection*a_3) + k
                             ax.scatter(\
                             a_3, b_3,\
                             label='({:f}, {:f})'.format(a_3, b_3),\
@@ -270,48 +270,97 @@ class SquareRootTransform():
                             break
                 
                 else:
-                    domain_parent = np.arange(0, 10.01, 0.01)
-                    domain = np.arange(h, 10.01, 0.01)
-                            
-                    y_parent = np.sqrt(domain_parent)
-                    y_transform = y_scalar*np.sqrt(domain-h) + k
+                    if x_reflection > 0:
                     
-                    ax.plot(domain_parent, y_parent,\
-                    label=r'$f(x)=\sqrt{x}$')
-                    ax.plot(domain, y_transform,\
-                    label=r'$g(x)=a$'\
-                    r'$\sqrt{x-h} + k$')
-                    
-                    # Plotting labeled ordered pairs
-                    a_1 = h+1
-                    b_1 = y_scalar*\
-                    np.sqrt(a_1-h) + k
-                    ax.scatter(\
-                    a_1, b_1,\
-                    label='({:f}, {:f})'.format(a_1, b_1),\
-                    c='orange',\
-                    s=100, marker='s')
+                        domain_parent = np.arange(0, 10.01, 0.01)
+                        domain = np.arange(h, h+10.01, 0.01)
                             
-                    a_2 = h+2
-                    b_2 = y_scalar*\
-                    np.sqrt(a_2-h) + k
-                    ax.scatter(\
-                    a_2, b_2,\
-                    label='({:f}, {:f})'.format(a_2, b_2),\
-                    c='cyan',\
-                    s=100, marker='s')
-                            
-                    a_3 = h+3
-                    b_3 = y_scalar*\
-                    np.sqrt(a_3-h) + k
-                    ax.scatter(\
-                    a_3, b_3,\
-                    label='({:f}, {:f})'.format(a_3, b_3),\
-                    c='purple',\
-                    s=100, marker='s')
+                        y_parent = np.sqrt(domain_parent)
+                        y_transform = y_scalar*\
+                        np.sqrt(x_reflection*domain-h) + k
                     
-                    flag = False
-                    break
+                        ax.plot(domain_parent, y_parent,\
+                        label=r'$f(x)=\sqrt{x}$')
+                        ax.plot(domain, y_transform,\
+                        label=r'$g(x)=a$'\
+                        r'$\sqrt{cx-h} + k$')
+                    
+                        # Plotting labeled ordered pairs
+                        a_1 = h+1
+                        b_1 = y_scalar*\
+                        np.sqrt(x_reflection*a_1-h) + k
+                        ax.scatter(\
+                        a_1, b_1,\
+                        label='({:f}, {:f})'.format(a_1, b_1),\
+                        c='orange',\
+                        s=100, marker='s')
+                            
+                        a_2 = h+2
+                        b_2 = y_scalar*\
+                        np.sqrt(x_reflection*a_2-h) + k
+                        ax.scatter(\
+                        a_2, b_2,\
+                        label='({:f}, {:f})'.format(a_2, b_2),\
+                        c='cyan',\
+                        s=100, marker='s')
+                            
+                        a_3 = h+3
+                        b_3 = y_scalar*\
+                        np.sqrt(x_reflection*a_3-h) + k
+                        ax.scatter(\
+                        a_3, b_3,\
+                        label='({:f}, {:f})'.format(a_3, b_3),\
+                        c='purple',\
+                        s=100, marker='s')
+                    
+                        flag = False
+                        break
+                    
+                    elif x_reflection < 0:
+                    
+                        domain_parent = np.arange(0, 10.01, 0.01)
+                        domain = np.arange(-h-10.01, -h, 0.01)
+                            
+                        y_parent = np.sqrt(domain_parent)
+                        y_transform = y_scalar*\
+                        np.sqrt(x_reflection*domain-h) + k
+                    
+                        ax.plot(domain_parent, y_parent,\
+                        label=r'$f(x)=\sqrt{x}$')
+                        ax.plot(domain, y_transform,\
+                        label=r'$g(x)=a$'\
+                        r'$\sqrt{cx-h} + k$')
+                    
+                        # Plotting labeled ordered pairs
+                        a_1 = -h-1
+                        b_1 = y_scalar*\
+                        np.sqrt(x_reflection*a_1-h) + k
+                        ax.scatter(\
+                        a_1, b_1,\
+                        label='({:f}, {:f})'.format(a_1, b_1),\
+                        c='orange',\
+                        s=100, marker='s')
+                            
+                        a_2 = -h-2
+                        b_2 = y_scalar*\
+                        np.sqrt(x_reflection*a_2-h) + k
+                        ax.scatter(\
+                        a_2, b_2,\
+                        label='({:f}, {:f})'.format(a_2, b_2),\
+                        c='cyan',\
+                        s=100, marker='s')
+                            
+                        a_3 = -h-3
+                        b_3 = y_scalar*\
+                        np.sqrt(x_reflection*a_3-h) + k
+                        ax.scatter(\
+                        a_3, b_3,\
+                        label='({:f}, {:f})'.format(a_3, b_3),\
+                        c='purple',\
+                        s=100, marker='s')
+                    
+                        flag = False
+                        break
         
         # Plotting labeled ordered pairs for the parent
         p_1 = 1
