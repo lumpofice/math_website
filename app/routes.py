@@ -215,6 +215,50 @@ def square_root_transform():
     form = SquareRootTransformForm()
     
     if form.validate_on_submit():
+        
+        if form.y_scalar.data >= 0:
+            
+            if form.x_reflection.data >= 0:
+            
+                flash('h={} ____ b={} ____ c={} ____ a={} ____ k={} ____ '\
+                'domain=({}, {}) ____ '\
+                'range=({}, {})'\
+                .format(form.horizontal_shift.data, form.x_scalar.data,\
+                form.x_reflection.data, form.y_scalar.data,\
+                form.vertical_shift.data, form.horizontal_shift.data, np.inf,\
+                form.vertical_shift.data, np.inf))
+                
+            if form.x_reflection.data < 0:
+                
+                flash('h={} ____ b={} ____ c={} ____ a={} ____ k={} ____ '\
+                'domain=({}, {}) ____ '\
+                'range=({}, {})'\
+                .format(form.horizontal_shift.data, form.x_scalar.data,\
+                form.x_reflection.data, form.y_scalar.data,\
+                form.vertical_shift.data, -np.inf, -form.horizontal_shift.data,\
+                form.vertical_shift.data, np.inf))
+        
+        if form.y_scalar.data < 0:
+            
+            if form.x_reflection.data >= 0:
+            
+                flash('h={} ____ b={} ____ c={} ____ a={} ____ k={} ____ '\
+                'domain=({}, {}) ____ '\
+                'range=({}, {})'\
+                .format(form.horizontal_shift.data, form.x_scalar.data,\
+                form.x_reflection.data, form.y_scalar.data,\
+                form.vertical_shift.data, form.horizontal_shift.data, np.inf,\
+                -np.inf, form.vertical_shift.data))
+                
+            if form.x_reflection.data < 0:
+                
+                flash('h={} ____ b={} ____ c={} ____ a={} ____ k={} ____ '\
+                'domain=({}, {}) ____ '\
+                'range=({}, {})'\
+                .format(form.horizontal_shift.data, form.x_scalar.data,\
+                form.x_reflection.data, form.y_scalar.data,\
+                form.vertical_shift.data, -np.inf, -form.horizontal_shift.data,\
+                np.inf, form.vertical_shift.data))
     
         square_root_transform = SquareRootTransform()
         square_root_transform.graph(\
