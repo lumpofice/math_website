@@ -55,6 +55,13 @@ def polynomial_degree_1_transform():
     form = PolynomialDegree1TransformForm()
     
     if form.validate_on_submit():
+        
+        flash('h = {} ____ a = {} ____ k = {} ____ '\
+        'domain = ({}, {}) ____ '\
+        'range = ({}, {})'\
+        .format(form.horizontal_shift.data, form.y_scalar.data,\
+        form.vertical_shift.data, -np.inf, np.inf,\
+        -np.inf, np.inf))
     
         id_transform = PolynomialDegree1Transform()
         id_transform.graph(form.horizontal_shift.data,\
@@ -83,18 +90,20 @@ def polynomial_degree_2_transform():
     if form.validate_on_submit():
         
         if form.y_scalar.data >= 0:
-            flash('h={} ____ b={} ____ c={} ____ a={} ____ k={} ____ '\
-            'domain=({}, {}) ____ '\
-            'range=({}, {})'\
+            flash('h = {} ____ b = {} ____ c = {} ____ a = {} ____ '\
+            'k = {} ____ '\
+            'domain = ({}, {}) ____ '\
+            'range = ({}, {})'\
             .format(form.horizontal_shift.data, form.x_scalar.data,\
             form.x_reflection.data, form.y_scalar.data,\
             form.vertical_shift.data, -np.inf, np.inf,\
             form.vertical_shift.data, np.inf))
         
         if form.y_scalar.data < 0:
-            flash('h={} ____ b={} ____ c={} ____ a={} ____ k={} ____ '\
-            'domain=({}, {}) ____ '\
-            'range=({}, {})'\
+            flash('h = {} ____ b = {} ____ c = {} ____ a = {} ____ '\
+            'k = {} ____ '\
+            'domain = ({}, {}) ____ '\
+            'range = ({}, {})'\
             .format(form.horizontal_shift.data, form.x_scalar.data,\
             form.x_reflection.data, form.y_scalar.data,\
             form.vertical_shift.data, -np.inf, np.inf,\
@@ -126,9 +135,9 @@ def polynomial_degree_3_transform():
     
     if form.validate_on_submit():
         
-        flash('h={} ____ b={} ____ c={} ____ a={} ____ k={} ____ '\
-        'domain=({}, {}) ____ '\
-        'range=({}, {})'\
+        flash('h = {} ____ b = {} ____ c = {} ____ a = {} ____ k = {} ____ '\
+        'domain = ({}, {}) ____ '\
+        'range = ({}, {})'\
         .format(form.horizontal_shift.data, form.x_scalar.data,\
         form.x_reflection.data, form.y_scalar.data,\
         form.vertical_shift.data, -np.inf, np.inf,\
@@ -220,9 +229,10 @@ def square_root_transform():
             
             if form.x_reflection.data >= 0:
             
-                flash('h={} ____ b={} ____ c={} ____ a={} ____ k={} ____ '\
-                'domain=({}, {}) ____ '\
-                'range=({}, {})'\
+                flash('h = {} ____ b = {} ____ c = {} ____ a = {} ____ '\
+                'k = {} ____ '\
+                'domain = ({}, {}) ____ '\
+                'range = ({}, {})'\
                 .format(form.horizontal_shift.data, form.x_scalar.data,\
                 form.x_reflection.data, form.y_scalar.data,\
                 form.vertical_shift.data, form.horizontal_shift.data, np.inf,\
@@ -230,9 +240,10 @@ def square_root_transform():
                 
             if form.x_reflection.data < 0:
                 
-                flash('h={} ____ b={} ____ c={} ____ a={} ____ k={} ____ '\
-                'domain=({}, {}) ____ '\
-                'range=({}, {})'\
+                flash('h = {} ____ b = {} ____ c = {} ____ a = {} ____ '\
+                'k = {} ____ '\
+                'domain = ({}, {}) ____ '\
+                'range = ({}, {})'\
                 .format(form.horizontal_shift.data, form.x_scalar.data,\
                 form.x_reflection.data, form.y_scalar.data,\
                 form.vertical_shift.data, -np.inf, -form.horizontal_shift.data,\
@@ -242,9 +253,10 @@ def square_root_transform():
             
             if form.x_reflection.data >= 0:
             
-                flash('h={} ____ b={} ____ c={} ____ a={} ____ k={} ____ '\
-                'domain=({}, {}) ____ '\
-                'range=({}, {})'\
+                flash('h = {} ____ b = {} ____ c = {} ____ a = {} ____ '\
+                'k = {} ____ '\
+                'domain = ({}, {}) ____ '\
+                'range = ({}, {})'\
                 .format(form.horizontal_shift.data, form.x_scalar.data,\
                 form.x_reflection.data, form.y_scalar.data,\
                 form.vertical_shift.data, form.horizontal_shift.data, np.inf,\
@@ -252,9 +264,10 @@ def square_root_transform():
                 
             if form.x_reflection.data < 0:
                 
-                flash('h={} ____ b={} ____ c={} ____ a={} ____ k={} ____ '\
-                'domain=({}, {}) ____ '\
-                'range=({}, {})'\
+                flash('h = {} ____ b = {} ____ c = {} ____ a = {} ____ '\
+                'k = {} ____ '\
+                'domain = ({}, {}) ____ '\
+                'range = ({}, {})'\
                 .format(form.horizontal_shift.data, form.x_scalar.data,\
                 form.x_reflection.data, form.y_scalar.data,\
                 form.vertical_shift.data, -np.inf, -form.horizontal_shift.data,\
