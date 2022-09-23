@@ -199,7 +199,7 @@ def reciprocal_degree_0_by_degree_1_transform():
     
         reciprocal_transform = ReciprocalDegree0ByDegree1Transform()
         reciprocal_transform.graph(\
-        form.horizontal_shift.data, form.x_scalar.data,\
+        form.horizontal_shift.data, form.x_scalar.data, form.x_reflection.data,\
         form.y_scalar.data, form.vertical_shift.data)
         
         return redirect(url_for(\

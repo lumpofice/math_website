@@ -11,7 +11,7 @@ class ReciprocalDegree0ByDegree1Transform():
         pass
     
     
-    def graph(self, h, x_scalar, y_scalar, k):
+    def graph(self, h, x_scalar, x_reflection, y_scalar, k):
         
         # h: Horizontal shift on the argument
         # x_scalar: Reflective/Non-reflective scalar on the argument
