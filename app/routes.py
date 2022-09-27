@@ -196,6 +196,17 @@ def reciprocal_degree_0_by_degree_1_transform():
     form = ReciprocalDegree0ByDegree1TransformForm()
     
     if form.validate_on_submit():
+        
+        flash('h = {} ____ b = {} ____ c = {} ____ a = {} ____ k = {} ____ '\
+        'domain = {{x : x < {} and {} < x}} ____ '\
+        'range = {{g(x) : g(x) < {} and {} < g(x)}} ____ VA: x = {} ____ '\
+        'HA: y = {}'\
+        .format(form.horizontal_shift.data, form.x_scalar.data,\
+        form.x_reflection.data, form.y_scalar.data,\
+        form.vertical_shift.data,\
+        form.horizontal_shift.data, form.horizontal_shift.data,\
+        form.vertical_shift.data, form.vertical_shift.data,\
+        form.horizontal_shift.data, form.vertical_shift.data))
     
         reciprocal_transform = ReciprocalDegree0ByDegree1Transform()
         reciprocal_transform.graph(\

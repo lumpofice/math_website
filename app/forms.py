@@ -64,8 +64,8 @@ class ReciprocalDegree0ByDegree1TransformForm(FlaskForm):
     'Choose an integer horizontal shift between -5 and 5',\
     validators=[InputRequired(), NumberRange(-5, 5)])
     x_scalar = IntegerField(\
-    'Choose an integer x_scalar between -5 and 5',\
-    validators=[InputRequired(), NumberRange(-5, 5)])
+    'Choose an integer x_scalar between 0 and 5',\
+    validators=[InputRequired(), NumberRange(0, 5)])
     x_reflection = IntegerField(\
     'If an x_reflection is desired, choose -1, else choose 1',\
     validators=[InputRequired(), NumberRange(-1, 1)])
