@@ -56,12 +56,22 @@ def polynomial_degree_1_transform():
     
     if form.validate_on_submit():
         
-        flash('h = {} ____ a = {} ____ k = {} ____ '\
-        'domain = ({}, {}) ____ '\
-        'range = ({}, {})'\
-        .format(form.horizontal_shift.data, form.y_scalar.data,\
-        form.vertical_shift.data, -np.inf, np.inf,\
-        -np.inf, np.inf))
+        if form.x_scalar.data == 0:
+            flash('Parent Function Only')
+            
+        elif form.y_scalar.data == 0:
+            flash('Parent Function Only')
+            
+        elif form.x_reflection.data == 0:
+            flash('Parent Function Only')
+        
+        else:
+            flash('h = {} ____ a = {} ____ k = {} ____ '\
+            'domain = ({}, {}) ____ '\
+            'range = ({}, {})'\
+            .format(form.horizontal_shift.data, form.y_scalar.data,\
+            form.vertical_shift.data, -np.inf, np.inf,\
+            -np.inf, np.inf))
     
         id_transform = PolynomialDegree1Transform()
         id_transform.graph(form.horizontal_shift.data,\
@@ -89,25 +99,36 @@ def polynomial_degree_2_transform():
     
     if form.validate_on_submit():
         
-        if form.y_scalar.data >= 0:
-            flash('h = {} ____ b = {} ____ c = {} ____ a = {} ____ '\
-            'k = {} ____ '\
-            'domain = ({}, {}) ____ '\
-            'range = ({}, {})'\
-            .format(form.horizontal_shift.data, form.x_scalar.data,\
-            form.x_reflection.data, form.y_scalar.data,\
-            form.vertical_shift.data, -np.inf, np.inf,\
-            form.vertical_shift.data, np.inf))
+        if form.x_scalar.data == 0:
+            flash('Parent Function Only')
+            
+        elif form.y_scalar.data == 0:
+            flash('Parent Function Only')
+            
+        elif form.x_reflection.data == 0:
+            flash('Parent Function Only')
         
-        if form.y_scalar.data < 0:
-            flash('h = {} ____ b = {} ____ c = {} ____ a = {} ____ '\
-            'k = {} ____ '\
-            'domain = ({}, {}) ____ '\
-            'range = ({}, {})'\
-            .format(form.horizontal_shift.data, form.x_scalar.data,\
-            form.x_reflection.data, form.y_scalar.data,\
-            form.vertical_shift.data, -np.inf, np.inf,\
-            -np.inf, form.vertical_shift.data))
+        else:
+        
+            if form.y_scalar.data >= 0:
+                flash('h = {} ____ b = {} ____ c = {} ____ a = {} ____ '\
+                'k = {} ____ '\
+                'domain = ({}, {}) ____ '\
+                'range = ({}, {})'\
+                .format(form.horizontal_shift.data, form.x_scalar.data,\
+                form.x_reflection.data, form.y_scalar.data,\
+                form.vertical_shift.data, -np.inf, np.inf,\
+                form.vertical_shift.data, np.inf))
+        
+            if form.y_scalar.data < 0:
+                flash('h = {} ____ b = {} ____ c = {} ____ a = {} ____ '\
+                'k = {} ____ '\
+                'domain = ({}, {}) ____ '\
+                'range = ({}, {})'\
+                .format(form.horizontal_shift.data, form.x_scalar.data,\
+                form.x_reflection.data, form.y_scalar.data,\
+                form.vertical_shift.data, -np.inf, np.inf,\
+                -np.inf, form.vertical_shift.data))
     
         square_transform = PolynomialDegree2Transform()
         square_transform.graph(form.horizontal_shift.data, form.x_scalar.data,\
@@ -135,13 +156,24 @@ def polynomial_degree_3_transform():
     
     if form.validate_on_submit():
         
-        flash('h = {} ____ b = {} ____ c = {} ____ a = {} ____ k = {} ____ '\
-        'domain = ({}, {}) ____ '\
-        'range = ({}, {})'\
-        .format(form.horizontal_shift.data, form.x_scalar.data,\
-        form.x_reflection.data, form.y_scalar.data,\
-        form.vertical_shift.data, -np.inf, np.inf,\
-        -np.inf, np.inf))
+        if form.x_scalar.data == 0:
+            flash('Parent Function Only')
+            
+        elif form.y_scalar.data == 0:
+            flash('Parent Function Only')
+            
+        elif form.x_reflection.data == 0:
+            flash('Parent Function Only')
+        
+        else:
+            flash('h = {} ____ b = {} ____ c = {} ____ a = {} ____ '\
+            'k = {} ____ '\
+            'domain = ({}, {}) ____ '\
+            'range = ({}, {})'\
+            .format(form.horizontal_shift.data, form.x_scalar.data,\
+            form.x_reflection.data, form.y_scalar.data,\
+            form.vertical_shift.data, -np.inf, np.inf,\
+            -np.inf, np.inf))
     
         cubed_transform = PolynomialDegree3Transform()
         cubed_transform.graph(form.horizontal_shift.data, form.x_scalar.data,\
@@ -197,16 +229,27 @@ def reciprocal_degree_0_by_degree_1_transform():
     
     if form.validate_on_submit():
         
-        flash('h = {} ____ b = {} ____ c = {} ____ a = {} ____ k = {} ____ '\
-        'domain = {{x : x < {} and {} < x}} ____ '\
-        'range = {{g(x) : g(x) < {} and {} < g(x)}} ____ VA: x = {} ____ '\
-        'HA: y = {}'\
-        .format(form.horizontal_shift.data, form.x_scalar.data,\
-        form.x_reflection.data, form.y_scalar.data,\
-        form.vertical_shift.data,\
-        form.horizontal_shift.data, form.horizontal_shift.data,\
-        form.vertical_shift.data, form.vertical_shift.data,\
-        form.horizontal_shift.data, form.vertical_shift.data))
+        if form.x_scalar.data == 0:
+            flash('Parent Function Only')
+            
+        elif form.y_scalar.data == 0:
+            flash('Parent Function Only')
+            
+        elif form.x_reflection.data == 0:
+            flash('Parent Function Only')
+        
+        else:
+            flash('h = {} ____ b = {} ____ c = {} ____ a = {} ____ '\
+            'k = {} ____ '\
+            'domain = {{x : x < {} and {} < x}} ____ '\
+            'range = {{g(x) : g(x) < {} and {} < g(x)}} ____ VA: x = {} ____ '\
+            'HA: y = {}'\
+            .format(form.horizontal_shift.data, form.x_scalar.data,\
+            form.x_reflection.data, form.y_scalar.data,\
+            form.vertical_shift.data,\
+            form.horizontal_shift.data, form.horizontal_shift.data,\
+            form.vertical_shift.data, form.vertical_shift.data,\
+            form.horizontal_shift.data, form.vertical_shift.data))
     
         reciprocal_transform = ReciprocalDegree0ByDegree1Transform()
         reciprocal_transform.graph(\
