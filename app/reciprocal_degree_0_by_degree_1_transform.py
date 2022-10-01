@@ -121,35 +121,67 @@ class ReciprocalDegree0ByDegree1Transform():
                             r'$\dfrac{1}{b(cx-h)} + k$')
                             
                             # Plotting labeled ordered pairs
-                            a_1 = h-1
-                            b_1 = y_scalar*\
-                            (1/(x_scalar*(x_reflection*a_1-h))) + k
-                            ax.scatter(\
-                            a_1, b_1,\
-                            label='({:f}, {:f})'.format(a_1, b_1),\
-                            c='orange',\
-                            s=100, marker='s')
+                            if h < 0:
+                                a_1 = h-1
+                                b_1 = y_scalar*\
+                                (1/(x_scalar*(x_reflection*a_1-h))) + k
+                                ax.scatter(\
+                                a_1, b_1,\
+                                label='({:f}, {:f})'.format(a_1, b_1),\
+                                c='orange',\
+                                s=100, marker='s')
         
-                            a_2 = h+1
-                            b_2 = y_scalar*\
-                            (1/(x_scalar*(x_reflection*a_2-h))) + k
-                            ax.scatter(\
-                            a_2, b_2,\
-                            label='({:f}, {:f})'.format(a_2, b_2),\
-                            c='cyan',\
-                            s=100, marker='s')
+                                a_2 = h-2
+                                b_2 = y_scalar*\
+                                (1/(x_scalar*(x_reflection*a_2-h))) + k
+                                ax.scatter(\
+                                a_2, b_2,\
+                                label='({:f}, {:f})'.format(a_2, b_2),\
+                                c='cyan',\
+                                s=100, marker='s')
                 
-                            a_3 = h-2
-                            b_3 = y_scalar*\
-                            (1/(x_scalar*(x_reflection*a_3-h))) + k
-                            ax.scatter(\
-                            a_3, b_3,\
-                            label='({:f}, {:f})'.format(a_3, b_3),\
-                            c='purple',\
-                            s=100, marker='s')
+                                a_3 = h-3
+                                b_3 = y_scalar*\
+                                (1/(x_scalar*(x_reflection*a_3-h))) + k
+                                ax.scatter(\
+                                a_3, b_3,\
+                                label='({:f}, {:f})'.format(a_3, b_3),\
+                                c='purple',\
+                                s=100, marker='s')
                             
-                            flag = False
-                            break
+                                flag = False
+                                break
+                            
+                            elif h > 0:
+                                a_1 = h+1
+                                b_1 = y_scalar*\
+                                (1/(x_scalar*(x_reflection*a_1-h))) + k
+                                ax.scatter(\
+                                a_1, b_1,\
+                                label='({:f}, {:f})'.format(a_1, b_1),\
+                                c='orange',\
+                                s=100, marker='s')
+        
+                                a_2 = h+2
+                                b_2 = y_scalar*\
+                                (1/(x_scalar*(x_reflection*a_2-h))) + k
+                                ax.scatter(\
+                                a_2, b_2,\
+                                label='({:f}, {:f})'.format(a_2, b_2),\
+                                c='cyan',\
+                                s=100, marker='s')
+                
+                                a_3 = h+3
+                                b_3 = y_scalar*\
+                                (1/(x_scalar*(x_reflection*a_3-h))) + k
+                                ax.scatter(\
+                                a_3, b_3,\
+                                label='({:f}, {:f})'.format(a_3, b_3),\
+                                c='purple',\
+                                s=100, marker='s')
+                            
+                                flag = False
+                                break
                             
                         elif x_reflection > 0:
                             domain = np.arange(h-10, h+10.01, 0.01)
