@@ -55,14 +55,8 @@ def polynomial_degree_1_transform():
     form = PolynomialDegree1TransformForm()
     
     if form.validate_on_submit():
-        
-        if form.x_scalar.data == 0:
-            flash('Parent Function Only')
             
-        elif form.y_scalar.data == 0:
-            flash('Parent Function Only')
-            
-        elif form.x_reflection.data == 0:
+        if form.y_scalar.data == 0:
             flash('Parent Function Only')
         
         else:
