@@ -16,7 +16,7 @@ class CubeRootTransform():
         pass
     
     
-    def graph(self, h, x_scalar, y_scalar, k):
+    def graph(self, h, x_scalar, x_reflection, y_scalar, k):
         """
         ORDER OF TRANSFORMATION:
         Let p be the parent function
@@ -74,42 +74,49 @@ class CubeRootTransform():
                 flag = False
                 break
             
+            elif x_reflection == 0:
+                x = np.linspace(-10, 10, 1000)
+                y_parent = np.cbrt(x)
+                ax.plot(x, y_parent, label=r'$f(x)=\sqrt[3]{x}$')
+                flag = False
+                break
+            
             else:
                 if x_scalar != 1:
                 
                     if h != 0:
                 
-                        if h/x_scalar < 0:
-                            x = np.linspace((h/x_scalar)-10, 10, 1000)
+                        if h < 0:
+                            x = np.linspace(h-10, 10, 1000)
                             y_parent = np.cbrt(x)
                             y_transform = y_scalar*\
-                            np.cbrt(x_scalar*x-(h/x_scalar)) + k
+                            np.cbrt(x_scalar*(x_reflection*x-h)) + k
                             ax.plot(x, y_parent, label=r'$f(x)=\sqrt[3]{x}$')
                             ax.plot(x, y_transform,\
-                            label=r'$a\sqrt[3]{bx-\dfrac{h}{b}}+k$')
+                            label=r'$a\sqrt[3]{b(cx-h)}+k$')
                             
                             # Plotting labeled ordered pairs
-                            a_1 = h/x_scalar-1
+                            a_1 = h
                             b_1 = y_scalar*\
-                            np.cbrt(x_scalar*a_1-(h/x_scalar)) + k
+                            np.cbrt(x_scalar*(x_reflection*a_1-h)) + k
                             ax.scatter(\
                             a_1, b_1,\
                             label='({:f}, {:f})'.format(a_1, b_1),\
                             c='orange',\
                             s=100, marker='s')
                             
-                            a_2 = h/x_scalar+1
+                            a_2 = h+1
                             b_2 = y_scalar*\
-                            np.cbrt(x_scalar*a_2-(h/x_scalar)) + k
+                            np.cbrt(x_scalar*(x_reflection*a_2-h)) + k
                             ax.scatter(\
                             a_2, b_2,\
                             label='({:f}, {:f})'.format(a_2, b_2),\
                             c='cyan',\
                             s=100, marker='s')
                             
-                            a_3 = h/x_scalar-2
+                            a_3 = h-1
                             b_3 = y_scalar*\
-                            np.cbrt(x_scalar*a_3-(h/x_scalar)) + k
+                            np.cbrt(x_scalar*(x_reflection*a_3-h)) + k
                             ax.scatter(\
                             a_3, b_3,\
                             label='({:f}, {:f})'.format(a_3, b_3),\
@@ -119,37 +126,37 @@ class CubeRootTransform():
                             flag = False
                             break
             
-                        elif h/x_scalar > 0:
-                            x = np.linspace(-10, (h/x_scalar)+10, 1000)
+                        elif h > 0:
+                            x = np.linspace(-10, h+10, 1000)
                             y_parent = np.cbrt(x)
                             y_transform = y_scalar*\
-                            np.cbrt(x_scalar*x-(h/x_scalar)) + k
+                            np.cbrt(x_scalar*(x_reflection*x-h)) + k
                             ax.plot(x, y_parent, label=r'$f(x)=\sqrt[3]{x}$')
                             ax.plot(x, y_transform,\
-                            label=r'$a\sqrt[3]{bx-\dfrac{h}{b}}+k$')
+                            label=r'$a\sqrt[3]{b(cx-h)}+k$')
                             
                             # Plotting labeled ordered pairs
-                            a_1 = h/x_scalar+1
+                            a_1 = h
                             b_1 = y_scalar*\
-                            np.cbrt(x_scalar*a_1-(h/x_scalar)) + k
+                            np.cbrt(x_scalar*(x_reflection*a_1-h)) + k
                             ax.scatter(\
                             a_1, b_1,\
                             label='({:f}, {:f})'.format(a_1, b_1),\
                             c='orange',\
                             s=100, marker='s')
                             
-                            a_2 = h/x_scalar
+                            a_2 = h+1
                             b_2 = y_scalar*\
-                            np.cbrt(x_scalar*a_2-(h/x_scalar)) + k
+                            np.cbrt(x_scalar*(x_reflection*a_2-h)) + k
                             ax.scatter(\
                             a_2, b_2,\
                             label='({:f}, {:f})'.format(a_2, b_2),\
                             c='cyan',\
                             s=100, marker='s')
                             
-                            a_3 = h/x_scalar+2
+                            a_3 = h-1
                             b_3 = y_scalar*\
-                            np.cbrt(x_scalar*a_3-(h/x_scalar)) + k
+                            np.cbrt(x_scalar*(x_reflection*a_3-h)) + k
                             ax.scatter(\
                             a_3, b_3,\
                             label='({:f}, {:f})'.format(a_3, b_3),\
@@ -163,15 +170,15 @@ class CubeRootTransform():
                         x = np.linspace(-10, 10, 1000)
                         y_parent = np.cbrt(x)
                         y_transform = y_scalar*\
-                        np.cbrt(x_scalar*(x)) + k
+                        np.cbrt(x_scalar*x_reflection*x) + k
                         ax.plot(x, y_parent, label=r'$f(x)=\sqrt[3]{x}$')
                         ax.plot(x, y_transform,\
-                        label=r'$a\sqrt[3]{bx}+k$')
+                        label=r'$a\sqrt[3]{bcx}+k$')
                         
                         # Plotting labeled ordered pairs
                         a_1 = -1
                         b_1 = y_scalar*\
-                        np.cbrt(x_scalar*a_1) + k
+                        np.cbrt(x_scalar*x_reflection*a_1) + k
                         ax.scatter(\
                         a_1, b_1,\
                         label='({:f}, {:f})'.format(a_1, b_1),\
@@ -180,7 +187,7 @@ class CubeRootTransform():
                             
                         a_2 = 1
                         b_2 = y_scalar*\
-                        np.cbrt(x_scalar*a_2) + k
+                        np.cbrt(x_scalar*x_reflection*a_2) + k
                         ax.scatter(\
                         a_2, b_2,\
                         label='({:f}, {:f})'.format(a_2, b_2),\
@@ -189,7 +196,7 @@ class CubeRootTransform():
                             
                         a_3 = -2
                         b_3 = y_scalar*\
-                        np.cbrt(x_scalar*a_3) + k
+                        np.cbrt(x_scalar*x_reflection*a_3) + k
                         ax.scatter(\
                         a_3, b_3,\
                         label='({:f}, {:f})'.format(a_3, b_3),\
@@ -203,15 +210,15 @@ class CubeRootTransform():
                     x = np.linspace(-10, 10, 1000)
                     y_parent = np.cbrt(x)
                     y_transform = y_scalar*\
-                    np.cbrt(x-h) + k
+                    np.cbrt(x_reflection*x-h) + k
                     ax.plot(x, y_parent, label=r'$f(x)=\sqrt[3]{x}$')
                     ax.plot(x, y_transform,\
-                    label=r'$a\sqrt[3]{x-h}+k$')
+                    label=r'$a\sqrt[3]{cx-h}+k$')
                     
                     # Plotting labeled ordered pairs
                     a_1 = -1
                     b_1 = y_scalar*\
-                    np.cbrt(a_1-h) + k
+                    np.cbrt(x_reflection*a_1-h) + k
                     ax.scatter(\
                     a_1, b_1,\
                     label='({:f}, {:f})'.format(a_1, b_1),\
@@ -220,7 +227,7 @@ class CubeRootTransform():
                             
                     a_2 = 1
                     b_2 = y_scalar*\
-                    np.cbrt(a_2-h) + k
+                    np.cbrt(x_reflection*a_2-h) + k
                     ax.scatter(\
                     a_2, b_2,\
                     label='({:f}, {:f})'.format(a_2, b_2),\
@@ -229,7 +236,7 @@ class CubeRootTransform():
                             
                     a_3 = -2
                     b_3 = y_scalar*\
-                    np.cbrt(a_3-h) + k
+                    np.cbrt(x_reflection*a_3-h) + k
                     ax.scatter(\
                     a_3, b_3,\
                     label='({:f}, {:f})'.format(a_3, b_3),\

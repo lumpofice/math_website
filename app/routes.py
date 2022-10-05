@@ -379,10 +379,29 @@ def cube_root_transform():
     form = CubeRootTransformForm()
     
     if form.validate_on_submit():
+        
+        if form.x_scalar.data == 0:
+            flash('Parent Function Only')
+            
+        elif form.y_scalar.data == 0:
+            flash('Parent Function Only')
+            
+        elif form.x_reflection.data == 0:
+            flash('Parent Function Only')
+        
+        else:
+            flash('h = {} ____ b = {} ____ c = {} ____ a = {} ____ '\
+            'k = {} ____ '\
+            'domain = ({}, {}) ____ '\
+            'range = ({}, {})'\
+            .format(form.horizontal_shift.data, form.x_scalar.data,\
+            form.x_reflection.data, form.y_scalar.data,\
+            form.vertical_shift.data, -np.inf, np.inf,\
+            -np.inf, np.inf))
     
         cube_root_transform = CubeRootTransform()
         cube_root_transform.graph(\
-        form.horizontal_shift.data, form.x_scalar.data,\
+        form.horizontal_shift.data, form.x_scalar.data, form.x_reflection.data,\
         form.y_scalar.data, form.vertical_shift.data)
         
         return redirect(url_for(\
