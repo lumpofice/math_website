@@ -10,6 +10,7 @@ from app.reciprocal_degree_0_by_degree_1_transform import\
 ReciprocalDegree0ByDegree1Transform
 from app.square_root_transform import SquareRootTransform
 from app.cube_root_transform import CubeRootTransform
+from app.exponential_transform import ExponentialTransform
 import numpy as np
 
 
@@ -417,4 +418,67 @@ def cube_root_transform():
 def cube_root_transform_graph_results():
     return render_template(\
     'cube_root_transform_graph_results.html',\
+    title='MassiveDiscipline')
+
+
+@app.route('/exponential_transform',\
+methods=['GET', 'POST'])
+def exponential_transform():
+    form = ExponentialTransformForm()
+    
+    if form.validate_on_submit():
+        
+        if form.x_scalar.data == 0:
+            flash('Parent Function Only')
+            
+        elif form.y_scalar.data == 0:
+            flash('Parent Function Only')
+            
+        elif form.x_reflection.data == 0:
+            flash('Parent Function Only')
+        
+        else:
+            
+            if form.y_scalar.data > 0:
+                flash('B = {} ____ h = {} ____ b = {} ____ c = {} ____ '\
+                'a = {} ____ '\
+                'k = {} ____ '\
+                'domain = ({}, {}) ____ '\
+                'range = ({}, {})'\
+                .format(form.base.data, form.horizontal_shift.data,\
+                form.x_scalar.data,\
+                form.x_reflection.data, form.y_scalar.data,\
+                form.vertical_shift.data, -np.inf, np.inf,\
+                form.vertical_shift.data, np.inf))
+                
+            elif form.y_scalar.data < 0:
+                flash('B = {} ____ h = {} ____ b = {} ____ c = {} ____ '\
+                'a = {} ____ '\
+                'k = {} ____ '\
+                'domain = ({}, {}) ____ '\
+                'range = ({}, {})'\
+                .format(form.horizontal_shift.data, form.x_scalar.data,\
+                form.x_reflection.data, form.y_scalar.data,\
+                form.vertical_shift.data, -np.inf, np.inf,\
+                -np.inf, form.vertical_shift.data))
+    
+        exponential_transform = ExponentialTransform()
+        exponential_transform.graph(\
+        form.base.data,\
+        form.horizontal_shift.data, form.x_scalar.data, form.x_reflection.data,\
+        form.y_scalar.data, form.vertical_shift.data)
+        
+        return redirect(url_for(\
+        'exponential_transform_graph_results'))
+    
+    return render_template(\
+    'exponential_transform.html',\
+    title='MassiveDiscipline',\
+    form=form)
+
+
+@app.route('/exponential_transform_graph_results')
+def exponential_transform_graph_results():
+    return render_template(\
+    'exponential_transform_graph_results.html',\
     title='MassiveDiscipline')

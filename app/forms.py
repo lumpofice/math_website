@@ -123,3 +123,21 @@ class AbsoluteValueTransformForm(FlaskForm):
     vertical_shift = FloatField('Choose a vertical shift between -5 and 5',\
     validators=[InputRequired(), NumberRange(-5, 5)])
     submit = SubmitField('Show Graph')
+    
+
+class ExponentialTransformForm(FlaskForm):
+    base = FloatField('Choose a base between 0.1 and 3.1',\
+    validators=[InputRequired(), NumberRange(0.1, 3.1)])
+    horizontal_shift = FloatField('Choose a horizontal shift between -5 and 5',\
+    validators=[InputRequired(), NumberRange(-5, 5)])
+    x_scalar = FloatField(\
+    'Choose a x_scalar between 0 and 5',\
+    validators=[InputRequired(), NumberRange(0, 5)])
+    x_reflection = IntegerField(\
+    'If an x_reflection is desired, choose -1, else choose 1',\
+    validators=[InputRequired(), NumberRange(-1, 1)])
+    y_scalar = FloatField('Choose a y_scalar between -5 and 5',\
+    validators=[InputRequired(), NumberRange(-5, 5)])
+    vertical_shift = FloatField('Choose a vertical shift between -5 and 5',\
+    validators=[InputRequired(), NumberRange(-5, 5)])
+    submit = SubmitField('Show Graph')
