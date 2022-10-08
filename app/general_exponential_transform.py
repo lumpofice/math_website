@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-class ExponentialTransform():
+class GeneralExponentialTransform():
     """
     This class will serve as the template for constructing and graphing
     exponential functions.
@@ -209,7 +209,7 @@ class ExponentialTransform():
                     y_parent = base**x
                     y_transform = y_scalar*\
                     base**(x_reflection*x-h) + k
-                    ax.plot(x, y_parent, label=r'$f(x)=x^{3}$')
+                    ax.plot(x, y_parent, label=r'$f(x)=B^{x}$')
                     ax.plot(x, y_transform, label=r'$g(x)=a$'\
                     r'$B^{cx-h} + k$')
                     
@@ -261,12 +261,12 @@ class ExponentialTransform():
         plt.ylim(-10, 10)
         plt.yticks(fontsize=20)
         plt.xticks(fontsize=20)
-        fig.suptitle('Exponential Transform', fontsize=20)
+        fig.suptitle('General Exponential Transform', fontsize=20)
         plt.legend(prop={'size': 15})
             
         # Saving the figure to the static folder
         fig.savefig(\
-        'app/static/images/exponential_transform.png')
+        'app/static/images/general_exponential_transform.png')
 
 
 

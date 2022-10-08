@@ -125,7 +125,7 @@ class AbsoluteValueTransformForm(FlaskForm):
     submit = SubmitField('Show Graph')
     
 
-class ExponentialTransformForm(FlaskForm):
+class GeneralExponentialTransformForm(FlaskForm):
     base = FloatField('Choose a base between 0.1 and 3.1',\
     validators=[InputRequired(), NumberRange(0.1, 3.1)])
     horizontal_shift = FloatField('Choose a horizontal shift between -5 and 5',\
