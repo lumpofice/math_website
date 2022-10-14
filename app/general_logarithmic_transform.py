@@ -140,36 +140,45 @@ class GeneralLogarithmicTransform():
                             break
             
                         elif h > 0:
-                            x = np.linspace(-10, h+10, 1000)
-                            y_parent = base**x
+                            x_parent = np.linspace(0.001, 10, 1000)
+                            x_transform = np.linspace(h+0.001, 10+h, 1000)
+                            y_parent = np.log(x_parent)/np.log(base)
+                            y_parent[y_parent>10] = np.inf
+                            y_parent[y_parent<-10] = np.inf
                             y_transform = y_scalar*\
-                            base**(x_scalar*(x_reflection*x-h)) + k
-                            ax.plot(x, y_parent, label=r'$f(x)=B^{x}$')
-                            ax.plot(x, y_transform, label=r'$g(x)=a$'\
-                            r'$B^{b(cx-h)} + k$')
+                            np.log(x_scalar*(x_reflection*x_transform-h))/\
+                            np.log(x_scalar*(x_reflection*base-h)) + k
+                            y_transform[y_transform>10] = np.inf
+                            y_transform[y_transform<-10] = np.inf
+                            ax.plot(x_parent, y_parent, label=r'$f(x)=B^{x}$')
+                            ax.plot(x_transform, y_transform, label=r'$g(x)=a$'\
+                            r'$log_{B}(b(cx-h)) + k$')
                             
                             # Plotting labeled ordered pairs
-                            a_1 = h
+                            a_1 = h+1
                             b_1 = y_scalar*\
-                            base**(x_scalar*(x_reflection*a_1-h)) + k
+                            np.log(x_scalar*(x_reflection*a_1-h))/\
+                            np.log(x_scalar*(x_reflection*base-h)) + k
                             ax.scatter(\
                             a_1, b_1,\
                             label='({:f}, {:f})'.format(a_1, b_1),\
                             c='orange',\
                             s=100, marker='s')
         
-                            a_2 = h-0.5
+                            a_2 = h+2
                             b_2 = y_scalar*\
-                            base**(x_scalar*(x_reflection*a_2-h)) + k
+                            np.log(x_scalar*(x_reflection*a_2-h))/\
+                            np.log(x_scalar*(x_reflection*base-h)) + k
                             ax.scatter(\
                             a_2, b_2,\
                             label='({:f}, {:f})'.format(a_2, b_2),\
                             c='cyan',\
                             s=100, marker='s')
                 
-                            a_3 = h+0.5
+                            a_3 = h+3
                             b_3 = y_scalar*\
-                            base**(x_scalar*(x_reflection*a_3-h)) + k
+                            np.log(x_scalar*(x_reflection*a_3-h))/\
+                            np.log(x_scalar*(x_reflection*base-h)) + k
                             ax.scatter(\
                             a_3, b_3,\
                             label='({:f}, {:f})'.format(a_3, b_3),\
