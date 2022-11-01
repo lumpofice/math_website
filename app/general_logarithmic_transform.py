@@ -86,6 +86,7 @@ class GeneralLogarithmicTransform():
                 break
             
             else:
+                
                 if x_scalar != 1:
                 
                     if h != 0:
@@ -610,6 +611,110 @@ class GeneralLogarithmicTransform():
                     
                                 flag = False
                                 break
+                        
+                    else:
+                        
+                        if x_reflection > 0:
+                            x = np.linspace(0.001, 10, 1000)
+                            x_transform = np.linspace(0.001, 10, 1000)
+                            y_parent = np.log(x)/np.log(base)
+                            y_parent[y_parent>10] = np.inf
+                            y_parent[y_parent<-10] = np.inf
+                            y_transform = y_scalar*\
+                            np.log(x_reflection*x_transform)/\
+                            np.log(base) + k
+                            y_transform[y_transform>10] = np.inf
+                            y_transform[y_transform<-10] = np.inf
+                            ax.plot(x, y_parent,\
+                            label=r'$f(x)=log_{B} (x)$')
+                            ax.plot(x_transform, y_transform,\
+                            label=r'$g(x)=a$'\
+                            r'$log_{B}(cx) + k$')
+                    
+                            # Plotting labeled ordered pairs
+                            a_1 = 1
+                            b_1 = y_scalar*\
+                            np.log(x_reflection*a_1)/\
+                            np.log(base) + k
+                            ax.scatter(\
+                            a_1, b_1,\
+                            label='({:f}, {:f})'.format(a_1, b_1),\
+                            c='orange',\
+                            s=100, marker='s')
+        
+                            a_2 = 2
+                            b_2 = y_scalar*\
+                            np.log(x_reflection*a_2)/\
+                            np.log(base) + k
+                            ax.scatter(\
+                            a_2, b_2,\
+                            label='({:f}, {:f})'.format(a_2, b_2),\
+                            c='cyan',\
+                            s=100, marker='s')
+                
+                            a_3 = 3
+                            b_3 = y_scalar*\
+                            np.log(x_reflection*a_3)/\
+                            np.log(base) + k
+                            ax.scatter(\
+                            a_3, b_3,\
+                            label='({:f}, {:f})'.format(a_3, b_3),\
+                            c='purple',\
+                            s=100, marker='s')
+                    
+                            flag = False
+                            break
+                        
+                        elif x_reflection < 0:
+                            x = np.linspace(0.001, 10, 1000)
+                            x_transform = np.linspace(-10, -0.001, 1000)
+                            y_parent = np.log(x)/np.log(base)
+                            y_parent[y_parent>10] = np.inf
+                            y_parent[y_parent<-10] = np.inf
+                            y_transform = y_scalar*\
+                            np.log(x_reflection*x_transform)/\
+                            np.log(base) + k
+                            y_transform[y_transform>10] = np.inf
+                            y_transform[y_transform<-10] = np.inf
+                            ax.plot(x, y_parent,\
+                            label=r'$f(x)=log_{B}(x)$')
+                            ax.plot(x_transform, y_transform,\
+                            label=r'$g(x)=a$'\
+                            r'$log_{B}(cx) + k$')
+                    
+                            # Plotting labeled ordered pairs
+                            a_1 = -1
+                            b_1 = y_scalar*\
+                            np.log(x_reflection*a_1)/\
+                            np.log(base) + k
+                            ax.scatter(\
+                            a_1, b_1,\
+                            label='({:f}, {:f})'.format(a_1, b_1),\
+                            c='orange',\
+                            s=100, marker='s')
+        
+                            a_2 = -2
+                            b_2 = y_scalar*\
+                            np.log(x_reflection*a_2)/\
+                            np.log(base) + k
+                            ax.scatter(\
+                            a_2, b_2,\
+                            label='({:f}, {:f})'.format(a_2, b_2),\
+                            c='cyan',\
+                            s=100, marker='s')
+                
+                            a_3 = -3
+                            b_3 = y_scalar*\
+                            np.log(x_reflection*a_3)/\
+                            np.log(base) + k
+                            ax.scatter(\
+                            a_3, b_3,\
+                            label='({:f}, {:f})'.format(a_3, b_3),\
+                            c='purple',\
+                            s=100, marker='s')
+                    
+                            flag = False
+                            break
         
         # Plotting labeled ordered pairs for the parent
         p_1 = 1
