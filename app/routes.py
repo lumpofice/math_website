@@ -525,8 +525,9 @@ def general_logarithmic_transform():
                 .format(form.base.data, form.horizontal_shift.data,\
                 form.x_scalar.data,\
                 form.x_reflection.data, form.y_scalar.data,\
-                form.vertical_shift.data, -np.inf, form.horizontal_shift.data,\
-                -np.inf, np.inf, form.horizontal_shift.data))
+                form.vertical_shift.data, -np.inf,\
+                (-1)*form.horizontal_shift.data,\
+                -np.inf, np.inf, (-1)*form.horizontal_shift.data))
     
         general_logarithmic_transform = GeneralLogarithmicTransform()
         general_logarithmic_transform.graph(\
