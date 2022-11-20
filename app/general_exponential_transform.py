@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 class GeneralExponentialTransform():
     """
     This class will serve as the template for constructing and graphing
-    exponential functions.
+    exponential functions with user-chosen bases between 0.1 and 3.1.
     """
     
     def __init__(self):
