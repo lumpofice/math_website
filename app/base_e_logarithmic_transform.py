@@ -4,17 +4,17 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-class GeneralLogarithmicTransform():
+class BaseELogarithmicTransform():
     """
     This class will serve as the template for constructing and graphing
-    logarithmic functions with user-chosen bases between 0.1 and 3.1.
+    logarithmic functions with base e.
     """
     
     def __init__(self):
         pass
     
     
-    def graph(self, base, h, x_scalar, x_reflection, y_scalar, k):
+    def graph(self, h, x_scalar, x_reflection, y_scalar, k):
         """
         ORDER OF TRANSFORMATION:
         Let p be the parent function
@@ -60,28 +60,28 @@ class GeneralLogarithmicTransform():
             
             if y_scalar == 0:
                 x = np.linspace(0.001, 10, 1000)
-                y_parent = np.log(x)/np.log(base)
+                y_parent = np.log(x)
                 y_parent[y_parent>10] = np.inf
                 y_parent[y_parent<-10] = np.inf
-                ax.plot(x, y_parent, label=r'$f(x)=\log_B (x)$')
+                ax.plot(x, y_parent, label=r'$f(x)=\ln (x)$')
                 flag = False
                 break
         
             elif x_scalar == 0:
                 x = np.linspace(0.001, 10, 1000)
-                y_parent = np.log(x)/np.log(base)
+                y_parent = np.log(x)
                 y_parent[y_parent>10] = np.inf
                 y_parent[y_parent<-10] = np.inf
-                ax.plot(x, y_parent, label=r'$f(x)=\log_B (x)$')
+                ax.plot(x, y_parent, label=r'$f(x)=\ln (x)$')
                 flag = False
                 break
             
             elif x_reflection == 0:
                 x = np.linspace(0.001, 10, 1000)
-                y_parent = np.log(x)/np.log(base)
+                y_parent = np.log(x)
                 y_parent[y_parent>10] = np.inf
                 y_parent[y_parent<-10] = np.inf
-                ax.plot(x, y_parent, label=r'$f(x)=\log_B (x)$')
+                ax.plot(x, y_parent, label=r'$f(x)=\ln (x)$')
                 flag = False
                 break
             
@@ -96,25 +96,25 @@ class GeneralLogarithmicTransform():
                             if x_reflection > 0:
                                 x_parent = np.linspace(0.001, 10, 1000)
                                 x_transform = np.linspace(h+0.001, 10, 1000)
-                                y_parent = np.log(x_parent)/np.log(base)
+                                y_parent = np.log(x_parent)
                                 y_parent[y_parent>10] = np.inf
                                 y_parent[y_parent<-10] = np.inf
                                 y_transform = y_scalar*\
-                                np.log(x_scalar*(x_reflection*x_transform-h))/\
-                                np.log(base) + k
+                                np.log(x_scalar*(x_reflection*x_transform-h))\
+                                + k
                                 y_transform[y_transform>10] = np.inf
                                 y_transform[y_transform<-10] = np.inf
                                 ax.plot(x_parent, y_parent,\
-                                label=r'$f(x)=log_{B} (x)$')
+                                label=r'$f(x)=ln (x)$')
                                 ax.plot(x_transform, y_transform,\
                                 label=r'$g(x)=a$'\
-                                r'$log_{B}(b(cx-h)) + k$')
+                                r'$ln(b(cx-h)) + k$')
                             
                                 # Plotting labeled ordered pairs
                                 a_1 = h+1
                                 b_1 = y_scalar*\
-                                np.log(x_scalar*(x_reflection*a_1-h))/\
-                                np.log(base) + k
+                                np.log(x_scalar*(x_reflection*a_1-h))\
+                                + k
                                 ax.scatter(\
                                 a_1, b_1,\
                                 label='({:f}, {:f})'.format(a_1, b_1),\
@@ -123,8 +123,8 @@ class GeneralLogarithmicTransform():
         
                                 a_2 = h+2
                                 b_2 = y_scalar*\
-                                np.log(x_scalar*(x_reflection*a_2-h))/\
-                                np.log(base) + k
+                                np.log(x_scalar*(x_reflection*a_2-h))\
+                                + k
                                 ax.scatter(\
                                 a_2, b_2,\
                                 label='({:f}, {:f})'.format(a_2, b_2),\
@@ -133,8 +133,8 @@ class GeneralLogarithmicTransform():
                 
                                 a_3 = h+3
                                 b_3 = y_scalar*\
-                                np.log(x_scalar*(x_reflection*a_3-h))/\
-                                np.log(base) + k
+                                np.log(x_scalar*(x_reflection*a_3-h))\
+                                + k
                                 ax.scatter(\
                                 a_3, b_3,\
                                 label='({:f}, {:f})'.format(a_3, b_3),\
@@ -147,25 +147,25 @@ class GeneralLogarithmicTransform():
                             elif x_reflection < 0:
                                 x_parent = np.linspace(0.001, 10, 1000)
                                 x_transform = np.linspace(-10, -(h+0.001), 1000)
-                                y_parent = np.log(x_parent)/np.log(base)
+                                y_parent = np.log(x_parent)
                                 y_parent[y_parent>10] = np.inf
                                 y_parent[y_parent<-10] = np.inf
                                 y_transform = y_scalar*\
-                                np.log(x_scalar*(x_reflection*x_transform-h))/\
-                                np.log(base) + k
+                                np.log(x_scalar*(x_reflection*x_transform-h))\
+                                + k
                                 y_transform[y_transform>10] = np.inf
                                 y_transform[y_transform<-10] = np.inf
                                 ax.plot(x_parent, y_parent,\
-                                label=r'$f(x)=log_{B} (x)$')
+                                label=r'$f(x)=ln (x)$')
                                 ax.plot(x_transform, y_transform,\
                                 label=r'$g(x)=a$'\
-                                r'$log_{B}(b(cx-h)) + k$')
+                                r'$ln(b(cx-h)) + k$')
                             
                                 # Plotting labeled ordered pairs
                                 a_1 = h-1
                                 b_1 = y_scalar*\
-                                np.log(x_scalar*(x_reflection*a_1-h))/\
-                                np.log(base) + k
+                                np.log(x_scalar*(x_reflection*a_1-h))\
+                                + k
                                 ax.scatter(\
                                 a_1, b_1,\
                                 label='({:f}, {:f})'.format(a_1, b_1),\
@@ -174,8 +174,8 @@ class GeneralLogarithmicTransform():
         
                                 a_2 = h-2
                                 b_2 = y_scalar*\
-                                np.log(x_scalar*(x_reflection*a_2-h))/\
-                                np.log(base) + k
+                                np.log(x_scalar*(x_reflection*a_2-h))\
+                                + k
                                 ax.scatter(\
                                 a_2, b_2,\
                                 label='({:f}, {:f})'.format(a_2, b_2),\
@@ -184,8 +184,8 @@ class GeneralLogarithmicTransform():
                 
                                 a_3 = h-3
                                 b_3 = y_scalar*\
-                                np.log(x_scalar*(x_reflection*a_3-h))/\
-                                np.log(base) + k
+                                np.log(x_scalar*(x_reflection*a_3-h))\
+                                + k
                                 ax.scatter(\
                                 a_3, b_3,\
                                 label='({:f}, {:f})'.format(a_3, b_3),\
@@ -200,25 +200,25 @@ class GeneralLogarithmicTransform():
                             if x_reflection > 0:
                                 x_parent = np.linspace(0.001, 10, 1000)
                                 x_transform = np.linspace(h+0.001, 10+h, 1000)
-                                y_parent = np.log(x_parent)/np.log(base)
+                                y_parent = np.log(x_parent)
                                 y_parent[y_parent>10] = np.inf
                                 y_parent[y_parent<-10] = np.inf
                                 y_transform = y_scalar*\
-                                np.log(x_scalar*(x_reflection*x_transform-h))/\
-                                np.log(base) + k
+                                np.log(x_scalar*(x_reflection*x_transform-h))\
+                                + k
                                 y_transform[y_transform>10] = np.inf
                                 y_transform[y_transform<-10] = np.inf
                                 ax.plot(x_parent, y_parent,\
-                                label=r'$f(x)=log_{B} (x)$')
+                                label=r'$f(x)=ln (x)$')
                                 ax.plot(x_transform, y_transform,\
                                 label=r'$g(x)=a$'\
-                                r'$log_{B}(b(cx-h)) + k$')
+                                r'$ln(b(cx-h)) + k$')
                             
                                 # Plotting labeled ordered pairs
                                 a_1 = h+1
                                 b_1 = y_scalar*\
-                                np.log(x_scalar*(x_reflection*a_1-h))/\
-                                np.log(base) + k
+                                np.log(x_scalar*(x_reflection*a_1-h))\
+                                + k
                                 ax.scatter(\
                                 a_1, b_1,\
                                 label='({:f}, {:f})'.format(a_1, b_1),\
@@ -227,8 +227,8 @@ class GeneralLogarithmicTransform():
         
                                 a_2 = h+2
                                 b_2 = y_scalar*\
-                                np.log(x_scalar*(x_reflection*a_2-h))/\
-                                np.log(base) + k
+                                np.log(x_scalar*(x_reflection*a_2-h))\
+                                + k
                                 ax.scatter(\
                                 a_2, b_2,\
                                 label='({:f}, {:f})'.format(a_2, b_2),\
@@ -237,8 +237,8 @@ class GeneralLogarithmicTransform():
                 
                                 a_3 = h+3
                                 b_3 = y_scalar*\
-                                np.log(x_scalar*(x_reflection*a_3-h))/\
-                                np.log(base) + k
+                                np.log(x_scalar*(x_reflection*a_3-h))\
+                                + k
                                 ax.scatter(\
                                 a_3, b_3,\
                                 label='({:f}, {:f})'.format(a_3, b_3),\
@@ -251,25 +251,25 @@ class GeneralLogarithmicTransform():
                             elif x_reflection < 0:
                                 x_parent = np.linspace(0.001, 10, 1000)
                                 x_transform = np.linspace(-10-h, -h-0.001, 1000)
-                                y_parent = np.log(x_parent)/np.log(base)
+                                y_parent = np.log(x_parent)
                                 y_parent[y_parent>10] = np.inf
                                 y_parent[y_parent<-10] = np.inf
                                 y_transform = y_scalar*\
-                                np.log(x_scalar*(x_reflection*x_transform-h))/\
-                                np.log(base) + k
+                                np.log(x_scalar*(x_reflection*x_transform-h))\
+                                + k
                                 y_transform[y_transform>10] = np.inf
                                 y_transform[y_transform<-10] = np.inf
                                 ax.plot(x_parent, y_parent,\
-                                label=r'$f(x)=log_{B} (x)$')
+                                label=r'$f(x)=ln (x)$')
                                 ax.plot(x_transform, y_transform,\
                                 label=r'$g(x)=a$'\
-                                r'$log_{B}(b(cx-h)) + k$')
+                                r'$ln(b(cx-h)) + k$')
                             
                                 # Plotting labeled ordered pairs
                                 a_1 = -h-1
                                 b_1 = y_scalar*\
-                                np.log(x_scalar*(x_reflection*a_1-h))/\
-                                np.log(base) + k
+                                np.log(x_scalar*(x_reflection*a_1-h))\
+                                + k
                                 ax.scatter(\
                                 a_1, b_1,\
                                 label='({:f}, {:f})'.format(a_1, b_1),\
@@ -278,8 +278,8 @@ class GeneralLogarithmicTransform():
         
                                 a_2 = -h-2
                                 b_2 = y_scalar*\
-                                np.log(x_scalar*(x_reflection*a_2-h))/\
-                                np.log(base) + k
+                                np.log(x_scalar*(x_reflection*a_2-h))\
+                                + k
                                 ax.scatter(\
                                 a_2, b_2,\
                                 label='({:f}, {:f})'.format(a_2, b_2),\
@@ -288,8 +288,8 @@ class GeneralLogarithmicTransform():
                 
                                 a_3 = -h-3
                                 b_3 = y_scalar*\
-                                np.log(x_scalar*(x_reflection*a_3-h))/\
-                                np.log(base) + k
+                                np.log(x_scalar*(x_reflection*a_3-h))\
+                                + k
                                 ax.scatter(\
                                 a_3, b_3,\
                                 label='({:f}, {:f})'.format(a_3, b_3),\
@@ -303,24 +303,24 @@ class GeneralLogarithmicTransform():
                         
                         if x_reflection > 0:
                             x_parent = np.linspace(0.001, 10, 1000)
-                            y_parent = np.log(x_parent)/np.log(base)
+                            y_parent = np.log(x_parent)
                             y_parent[y_parent>10] = np.inf
                             y_parent[y_parent<-10] = np.inf
                             y_transform = y_scalar*\
-                            np.log(x_scalar*x_reflection*x_parent)/\
-                            np.log(base) + k
+                            np.log(x_scalar*x_reflection*x_parent)\
+                            + k
                             y_transform[y_transform>10] = np.inf
                             y_transform[y_transform<-10] = np.inf
                             ax.plot(x_parent, y_parent,\
-                            label=r'$f(x)=log_{B} (x)$')
+                            label=r'$f(x)=ln (x)$')
                             ax.plot(x_parent, y_transform, label=r'$g(x)=a$'\
-                            r'$log_{B}(bcx) + k$')
+                            r'$ln(bcx) + k$')
                             
                             # Plotting labeled ordered pairs
                             a_1 = 1
                             b_1 = y_scalar*\
-                            np.log(x_scalar*x_reflection*a_1)/\
-                            np.log(base) + k
+                            np.log(x_scalar*x_reflection*a_1)\
+                            + k
                             ax.scatter(\
                             a_1, b_1,\
                             label='({:f}, {:f})'.format(a_1, b_1),\
@@ -329,8 +329,8 @@ class GeneralLogarithmicTransform():
         
                             a_2 = 2
                             b_2 = y_scalar*\
-                            np.log(x_scalar*x_reflection*a_2)/\
-                            np.log(base) + k
+                            np.log(x_scalar*x_reflection*a_2)\
+                            + k
                             ax.scatter(\
                             a_2, b_2,\
                             label='({:f}, {:f})'.format(a_2, b_2),\
@@ -339,8 +339,8 @@ class GeneralLogarithmicTransform():
                 
                             a_3 = 3
                             b_3 = y_scalar*\
-                            np.log(x_scalar*x_reflection*a_3)/\
-                            np.log(base) + k
+                            np.log(x_scalar*x_reflection*a_3)\
+                            + k
                             ax.scatter(\
                             a_3, b_3,\
                             label='({:f}, {:f})'.format(a_3, b_3),\
@@ -353,24 +353,24 @@ class GeneralLogarithmicTransform():
                         elif x_reflection < 0:
                             x_parent = np.linspace(0.001, 10, 1000)
                             x_transform = np.linspace(-10, -0.001, 1000)
-                            y_parent = np.log(x_parent)/np.log(base)
+                            y_parent = np.log(x_parent)
                             y_parent[y_parent>10] = np.inf
                             y_parent[y_parent<-10] = np.inf
                             y_transform = y_scalar*\
-                            np.log(x_scalar*x_reflection*x_transform)/\
-                            np.log(base) + k
+                            np.log(x_scalar*x_reflection*x_transform)\
+                            + k
                             y_transform[y_transform>10] = np.inf
                             y_transform[y_transform<-10] = np.inf
                             ax.plot(x_parent, y_parent,\
-                            label=r'$f(x)=log_{B} (x)$')
+                            label=r'$f(x)=ln (x)$')
                             ax.plot(x_transform, y_transform, label=r'$g(x)=a$'\
-                            r'$log_{B}(bcx) + k$')
+                            r'$ln(bcx) + k$')
                             
                             # Plotting labeled ordered pairs
                             a_1 = -1
                             b_1 = y_scalar*\
-                            np.log(x_scalar*x_reflection*a_1)/\
-                            np.log(base) + k
+                            np.log(x_scalar*x_reflection*a_1)\
+                            + k
                             ax.scatter(\
                             a_1, b_1,\
                             label='({:f}, {:f})'.format(a_1, b_1),\
@@ -379,8 +379,8 @@ class GeneralLogarithmicTransform():
         
                             a_2 = -2
                             b_2 = y_scalar*\
-                            np.log(x_scalar*x_reflection*a_2)/\
-                            np.log(base) + k
+                            np.log(x_scalar*x_reflection*a_2)\
+                            + k
                             ax.scatter(\
                             a_2, b_2,\
                             label='({:f}, {:f})'.format(a_2, b_2),\
@@ -389,8 +389,8 @@ class GeneralLogarithmicTransform():
                 
                             a_3 = -3
                             b_3 = y_scalar*\
-                            np.log(x_scalar*x_reflection*a_3)/\
-                            np.log(base) + k
+                            np.log(x_scalar*x_reflection*a_3)\
+                            + k
                             ax.scatter(\
                             a_3, b_3,\
                             label='({:f}, {:f})'.format(a_3, b_3),\
@@ -409,25 +409,25 @@ class GeneralLogarithmicTransform():
                             if x_reflection > 0:
                                 x = np.linspace(0.001, 10, 1000)
                                 x_transform = np.linspace(h+0.001, 10+h, 1000)
-                                y_parent = np.log(x)/np.log(base)
+                                y_parent = np.log(x)
                                 y_parent[y_parent>10] = np.inf
                                 y_parent[y_parent<-10] = np.inf
                                 y_transform = y_scalar*\
-                                np.log(x_reflection*x_transform-h)/\
-                                np.log(base) + k
+                                np.log(x_reflection*x_transform-h)\
+                                + k
                                 y_transform[y_transform>10] = np.inf
                                 y_transform[y_transform<-10] = np.inf
                                 ax.plot(x, y_parent,\
-                                label=r'$f(x)=log_{B} (x)$')
+                                label=r'$f(x)=ln (x)$')
                                 ax.plot(x_transform, y_transform,\
                                 label=r'$g(x)=a$'\
-                                r'$log_{B}(cx-h) + k$')
+                                r'$ln(cx-h) + k$')
                     
                                 # Plotting labeled ordered pairs
                                 a_1 = h+1
                                 b_1 = y_scalar*\
-                                np.log(x_reflection*a_1-h)/\
-                                np.log(base) + k
+                                np.log(x_reflection*a_1-h)\
+                                + k
                                 ax.scatter(\
                                 a_1, b_1,\
                                 label='({:f}, {:f})'.format(a_1, b_1),\
@@ -436,8 +436,8 @@ class GeneralLogarithmicTransform():
         
                                 a_2 = h+2
                                 b_2 = y_scalar*\
-                                np.log(x_reflection*a_2-h)/\
-                                np.log(base) + k
+                                np.log(x_reflection*a_2-h)\
+                                + k
                                 ax.scatter(\
                                 a_2, b_2,\
                                 label='({:f}, {:f})'.format(a_2, b_2),\
@@ -446,8 +446,8 @@ class GeneralLogarithmicTransform():
                 
                                 a_3 = h+3
                                 b_3 = y_scalar*\
-                                np.log(x_reflection*a_3-h)/\
-                                np.log(base) + k
+                                np.log(x_reflection*a_3-h)\
+                                + k
                                 ax.scatter(\
                                 a_3, b_3,\
                                 label='({:f}, {:f})'.format(a_3, b_3),\
@@ -460,25 +460,25 @@ class GeneralLogarithmicTransform():
                             elif x_reflection < 0:
                                 x = np.linspace(0.001, 10, 1000)
                                 x_transform = np.linspace(-10-h, -h-0.001, 1000)
-                                y_parent = np.log(x)/np.log(base)
+                                y_parent = np.log(x)
                                 y_parent[y_parent>10] = np.inf
                                 y_parent[y_parent<-10] = np.inf
                                 y_transform = y_scalar*\
-                                np.log(x_reflection*x_transform-h)/\
-                                np.log(base) + k
+                                np.log(x_reflection*x_transform-h)\
+                                + k
                                 y_transform[y_transform>10] = np.inf
                                 y_transform[y_transform<-10] = np.inf
                                 ax.plot(x, y_parent,\
-                                label=r'$f(x)=log_{B} (x)$')
+                                label=r'$f(x)=ln (x)$')
                                 ax.plot(x_transform, y_transform,\
                                 label=r'$g(x)=a$'\
-                                r'$log_{B}(cx-h) + k$')
+                                r'$ln(cx-h) + k$')
                     
                                 # Plotting labeled ordered pairs
                                 a_1 = h-1
                                 b_1 = y_scalar*\
-                                np.log(x_reflection*a_1-h)/\
-                                np.log(base) + k
+                                np.log(x_reflection*a_1-h)\
+                                + k
                                 ax.scatter(\
                                 a_1, b_1,\
                                 label='({:f}, {:f})'.format(a_1, b_1),\
@@ -487,8 +487,8 @@ class GeneralLogarithmicTransform():
         
                                 a_2 = h-2
                                 b_2 = y_scalar*\
-                                np.log(x_reflection*a_2-h)/\
-                                np.log(base) + k
+                                np.log(x_reflection*a_2-h)\
+                                + k
                                 ax.scatter(\
                                 a_2, b_2,\
                                 label='({:f}, {:f})'.format(a_2, b_2),\
@@ -497,8 +497,8 @@ class GeneralLogarithmicTransform():
                 
                                 a_3 = h-3
                                 b_3 = y_scalar*\
-                                np.log(x_reflection*a_3-h)/\
-                                np.log(base) + k
+                                np.log(x_reflection*a_3-h)\
+                                + k
                                 ax.scatter(\
                                 a_3, b_3,\
                                 label='({:f}, {:f})'.format(a_3, b_3),\
@@ -513,25 +513,25 @@ class GeneralLogarithmicTransform():
                             if x_reflection > 0:
                                 x = np.linspace(0.001, 10, 1000)
                                 x_transform = np.linspace(h+0.001, 10+h, 1000)
-                                y_parent = np.log(x)/np.log(base)
+                                y_parent = np.log(x)
                                 y_parent[y_parent>10] = np.inf
                                 y_parent[y_parent<-10] = np.inf
                                 y_transform = y_scalar*\
-                                np.log(x_reflection*x_transform-h)/\
-                                np.log(base) + k
+                                np.log(x_reflection*x_transform-h)\
+                                + k
                                 y_transform[y_transform>10] = np.inf
                                 y_transform[y_transform<-10] = np.inf
                                 ax.plot(x, y_parent,\
-                                label=r'$f(x)=log_{B} (x)$')
+                                label=r'$f(x)=ln (x)$')
                                 ax.plot(x_transform, y_transform,\
                                 label=r'$g(x)=a$'\
-                                r'$log_{B}(cx-h) + k$')
+                                r'$ln(cx-h) + k$')
                     
                                 # Plotting labeled ordered pairs
                                 a_1 = h+1
                                 b_1 = y_scalar*\
-                                np.log(x_reflection*a_1-h)/\
-                                np.log(base) + k
+                                np.log(x_reflection*a_1-h)\
+                                + k
                                 ax.scatter(\
                                 a_1, b_1,\
                                 label='({:f}, {:f})'.format(a_1, b_1),\
@@ -540,8 +540,8 @@ class GeneralLogarithmicTransform():
         
                                 a_2 = h+2
                                 b_2 = y_scalar*\
-                                np.log(x_reflection*a_2-h)/\
-                                np.log(base) + k
+                                np.log(x_reflection*a_2-h)\
+                                + k
                                 ax.scatter(\
                                 a_2, b_2,\
                                 label='({:f}, {:f})'.format(a_2, b_2),\
@@ -550,8 +550,8 @@ class GeneralLogarithmicTransform():
                 
                                 a_3 = h+3
                                 b_3 = y_scalar*\
-                                np.log(x_reflection*a_3-h)/\
-                                np.log(base) + k
+                                np.log(x_reflection*a_3-h)\
+                                + k
                                 ax.scatter(\
                                 a_3, b_3,\
                                 label='({:f}, {:f})'.format(a_3, b_3),\
@@ -564,25 +564,25 @@ class GeneralLogarithmicTransform():
                             elif x_reflection < 0:
                                 x = np.linspace(0.001, 10, 1000)
                                 x_transform = np.linspace(-10-h, -h-0.001, 1000)
-                                y_parent = np.log(x)/np.log(base)
+                                y_parent = np.log(x)
                                 y_parent[y_parent>10] = np.inf
                                 y_parent[y_parent<-10] = np.inf
                                 y_transform = y_scalar*\
-                                np.log(x_reflection*x_transform-h)/\
-                                np.log(base) + k
+                                np.log(x_reflection*x_transform-h)\
+                                + k
                                 y_transform[y_transform>10] = np.inf
                                 y_transform[y_transform<-10] = np.inf
                                 ax.plot(x, y_parent,\
-                                label=r'$f(x)=log_{B}(x)$')
+                                label=r'$f(x)=ln(x)$')
                                 ax.plot(x_transform, y_transform,\
                                 label=r'$g(x)=a$'\
-                                r'$log_{B}(cx-h) + k$')
+                                r'$ln(cx-h) + k$')
                     
                                 # Plotting labeled ordered pairs
                                 a_1 = -h-1
                                 b_1 = y_scalar*\
-                                np.log(x_reflection*a_1-h)/\
-                                np.log(base) + k
+                                np.log(x_reflection*a_1-h)\
+                                + k
                                 ax.scatter(\
                                 a_1, b_1,\
                                 label='({:f}, {:f})'.format(a_1, b_1),\
@@ -591,8 +591,8 @@ class GeneralLogarithmicTransform():
         
                                 a_2 = -h-2
                                 b_2 = y_scalar*\
-                                np.log(x_reflection*a_2-h)/\
-                                np.log(base) + k
+                                np.log(x_reflection*a_2-h)\
+                                + k
                                 ax.scatter(\
                                 a_2, b_2,\
                                 label='({:f}, {:f})'.format(a_2, b_2),\
@@ -601,8 +601,8 @@ class GeneralLogarithmicTransform():
                 
                                 a_3 = -h-3
                                 b_3 = y_scalar*\
-                                np.log(x_reflection*a_3-h)/\
-                                np.log(base) + k
+                                np.log(x_reflection*a_3-h)\
+                                + k
                                 ax.scatter(\
                                 a_3, b_3,\
                                 label='({:f}, {:f})'.format(a_3, b_3),\
@@ -617,25 +617,25 @@ class GeneralLogarithmicTransform():
                         if x_reflection > 0:
                             x = np.linspace(0.001, 10, 1000)
                             x_transform = np.linspace(0.001, 10, 1000)
-                            y_parent = np.log(x)/np.log(base)
+                            y_parent = np.log(x)
                             y_parent[y_parent>10] = np.inf
                             y_parent[y_parent<-10] = np.inf
                             y_transform = y_scalar*\
-                            np.log(x_reflection*x_transform)/\
-                            np.log(base) + k
+                            np.log(x_reflection*x_transform)\
+                            + k
                             y_transform[y_transform>10] = np.inf
                             y_transform[y_transform<-10] = np.inf
                             ax.plot(x, y_parent,\
-                            label=r'$f(x)=log_{B} (x)$')
+                            label=r'$f(x)=ln (x)$')
                             ax.plot(x_transform, y_transform,\
                             label=r'$g(x)=a$'\
-                            r'$log_{B}(cx) + k$')
+                            r'$ln(cx) + k$')
                     
                             # Plotting labeled ordered pairs
                             a_1 = 1
                             b_1 = y_scalar*\
-                            np.log(x_reflection*a_1)/\
-                            np.log(base) + k
+                            np.log(x_reflection*a_1)\
+                            + k
                             ax.scatter(\
                             a_1, b_1,\
                             label='({:f}, {:f})'.format(a_1, b_1),\
@@ -644,8 +644,8 @@ class GeneralLogarithmicTransform():
         
                             a_2 = 2
                             b_2 = y_scalar*\
-                            np.log(x_reflection*a_2)/\
-                            np.log(base) + k
+                            np.log(x_reflection*a_2)\
+                            + k
                             ax.scatter(\
                             a_2, b_2,\
                             label='({:f}, {:f})'.format(a_2, b_2),\
@@ -654,8 +654,8 @@ class GeneralLogarithmicTransform():
                 
                             a_3 = 3
                             b_3 = y_scalar*\
-                            np.log(x_reflection*a_3)/\
-                            np.log(base) + k
+                            np.log(x_reflection*a_3)\
+                            + k
                             ax.scatter(\
                             a_3, b_3,\
                             label='({:f}, {:f})'.format(a_3, b_3),\
@@ -668,25 +668,25 @@ class GeneralLogarithmicTransform():
                         elif x_reflection < 0:
                             x = np.linspace(0.001, 10, 1000)
                             x_transform = np.linspace(-10, -0.001, 1000)
-                            y_parent = np.log(x)/np.log(base)
+                            y_parent = np.log(x)
                             y_parent[y_parent>10] = np.inf
                             y_parent[y_parent<-10] = np.inf
                             y_transform = y_scalar*\
-                            np.log(x_reflection*x_transform)/\
-                            np.log(base) + k
+                            np.log(x_reflection*x_transform)\
+                            + k
                             y_transform[y_transform>10] = np.inf
                             y_transform[y_transform<-10] = np.inf
                             ax.plot(x, y_parent,\
-                            label=r'$f(x)=log_{B}(x)$')
+                            label=r'$f(x)=ln(x)$')
                             ax.plot(x_transform, y_transform,\
                             label=r'$g(x)=a$'\
-                            r'$log_{B}(cx) + k$')
+                            r'$ln(cx) + k$')
                     
                             # Plotting labeled ordered pairs
                             a_1 = -1
                             b_1 = y_scalar*\
-                            np.log(x_reflection*a_1)/\
-                            np.log(base) + k
+                            np.log(x_reflection*a_1)\
+                            + k
                             ax.scatter(\
                             a_1, b_1,\
                             label='({:f}, {:f})'.format(a_1, b_1),\
@@ -695,8 +695,8 @@ class GeneralLogarithmicTransform():
         
                             a_2 = -2
                             b_2 = y_scalar*\
-                            np.log(x_reflection*a_2)/\
-                            np.log(base) + k
+                            np.log(x_reflection*a_2)\
+                            + k
                             ax.scatter(\
                             a_2, b_2,\
                             label='({:f}, {:f})'.format(a_2, b_2),\
@@ -705,8 +705,8 @@ class GeneralLogarithmicTransform():
                 
                             a_3 = -3
                             b_3 = y_scalar*\
-                            np.log(x_reflection*a_3)/\
-                            np.log(base) + k
+                            np.log(x_reflection*a_3)\
+                            + k
                             ax.scatter(\
                             a_3, b_3,\
                             label='({:f}, {:f})'.format(a_3, b_3),\
@@ -718,39 +718,47 @@ class GeneralLogarithmicTransform():
         
         # Plotting labeled ordered pairs for the parent
         p_1 = 1
-        q_1 = np.log(p_1)/np.log(base)
+        q_1 = np.log(p_1)
         ax.scatter(p_1, q_1, label='({:f}, {:f})'.format(p_1, q_1),\
         c='red',\
         s=100, marker='>')
         
         p_2 = 2
-        q_2 = np.log(p_2)/np.log(base)
+        q_2 = np.log(p_2)
         ax.scatter(p_2, q_2, label='({:f}, {:f})'.format(p_2, q_2),\
         c='blue',\
         s=100, marker='>')
         
         p_3 = 4
-        q_3 = np.log(p_3)/np.log(base)
+        q_3 = np.log(p_3)
         ax.scatter(p_3, q_3, label='({:f}, {:f})'.format(p_3, q_3),\
         c='green',\
         s=100, marker='>')
         
         p_4 = 8
-        q_4 = np.log(p_4)/np.log(base)
+        q_4 = np.log(p_4)
         ax.scatter(p_4, q_4, label='({:f}, {:f})'.format(p_4, q_4),\
         c='pink',\
         s=100, marker='>')
+        
+        p_5 = np.exp(1)
+        q_5 = np.log(p_5)
+        ax.scatter(p_5, q_5, label='({:f}, {:f})'.format(p_5, q_5),\
+        c='red',\
+        s=100, marker='o')
         
         # Putting some restrictions and information on the graphing window
         plt.ylim(-10, 10)
         plt.yticks(fontsize=20)
         plt.xticks(fontsize=20)
-        fig.suptitle('General Logarithmic Transform', fontsize=20)
+        fig.suptitle('Base e Logarithmic Transform', fontsize=20)
         plt.legend(prop={'size': 15})
             
         # Saving the figure to the static folder
         fig.savefig(\
-        'app/static/images/general_logarithmic_transform.png')
+        'app/static/images/base_e_logarithmic_transform.png')
+
+
 
 
 
