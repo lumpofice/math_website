@@ -13,6 +13,7 @@ from app.cube_root_transform import CubeRootTransform
 from app.general_exponential_transform import GeneralExponentialTransform
 from app.general_logarithmic_transform import GeneralLogarithmicTransform
 from app.base_e_exponential_transform import BaseEExponentialTransform
+from app.base_e_logarithmic_transform import BaseELogarithmicTransform
 import numpy as np
 
 
@@ -612,4 +613,68 @@ def base_e_exponential_transform():
 def base_e_exponential_transform_graph_results():
     return render_template(\
     'base_e_exponential_transform_graph_results.html',\
+    title='MassiveDiscipline')
+
+
+@app.route('/base_e_logarithmic_transform',\
+methods=['GET', 'POST'])
+def base_e_logarithmic_transform():
+    form = BaseELogarithmicTransformForm()
+    
+    if form.validate_on_submit():
+        
+        if form.x_scalar.data == 0:
+            flash('Parent Function Only')
+            
+        elif form.y_scalar.data == 0:
+            flash('Parent Function Only')
+            
+        elif form.x_reflection.data == 0:
+            flash('Parent Function Only')
+        
+        else:
+            
+            if form.x_reflection.data > 0:
+                flash('h = {} ____ b = {} ____ c = {} ____ '\
+                'a = {} ____ '\
+                'k = {} ____ '\
+                'domain = ({}, {}) ____ '\
+                'range = ({}, {}) ____ VA: x = {}'\
+                .format(form.horizontal_shift.data,\
+                form.x_scalar.data,\
+                form.x_reflection.data, form.y_scalar.data,\
+                form.vertical_shift.data, form.horizontal_shift.data, np.inf,\
+                -np.inf, np.inf, form.horizontal_shift.data))
+                
+            elif form.x_reflection.data < 0:
+                flash('h = {} ____ b = {} ____ c = {} ____ '\
+                'a = {} ____ '\
+                'k = {} ____ '\
+                'domain = ({}, {}) ____ '\
+                'range = ({}, {}) ____ VA: x = {}'\
+                .format(form.horizontal_shift.data,\
+                form.x_scalar.data,\
+                form.x_reflection.data, form.y_scalar.data,\
+                form.vertical_shift.data, -np.inf,\
+                (-1)*form.horizontal_shift.data,\
+                -np.inf, np.inf, (-1)*form.horizontal_shift.data))
+    
+        base_e_logarithmic_transform = BaseELogarithmicTransform()
+        base_e_logarithmic_transform.graph(\
+        form.horizontal_shift.data, form.x_scalar.data, form.x_reflection.data,\
+        form.y_scalar.data, form.vertical_shift.data)
+        
+        return redirect(url_for(\
+        'base_e_logarithmic_transform_graph_results'))
+    
+    return render_template(\
+    'base_e_logarithmic_transform.html',\
+    title='MassiveDiscipline',\
+    form=form)
+
+
+@app.route('/base_e_logarithmic_transform_graph_results')
+def base_e_logarithmic_transform_graph_results():
+    return render_template(\
+    'base_e_logarithmic_transform_graph_results.html',\
     title='MassiveDiscipline')
