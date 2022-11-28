@@ -1,7 +1,15 @@
 from flask_wtf import FlaskForm
-from wtforms import FloatField, SubmitField, IntegerField
+from wtforms import StringField, FloatField, SubmitField, IntegerField,\
+     PasswordField, BooleanField
 from wtforms.validators import DataRequired, NumberRange, InputRequired
     
+    
+class LoginForm(FlaskForm):
+    username = StringField('Username', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    remember_me = BooleanField('Remember Me')
+    submit = SubmitField('Sign In')
+
     
 class GeometricSeriesForm(FlaskForm):
     base = FloatField('Choose a base "r" between -0.99 and 0.99 inclusive',\

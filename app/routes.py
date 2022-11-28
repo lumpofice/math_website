@@ -28,6 +28,12 @@ def score():
     return render_template('score.html', title='MassiveDiscipline')
 
 
+@app.route('/login')
+def login():
+    form = LoginForm()
+    return render_template('login.html', title='MassiveDiscipline', form=form)
+
+
 @app.route('/geometric_series', methods=['GET', 'POST'])
 def geometric_series():
     form = GeometricSeriesForm()
