@@ -1,4 +1,4 @@
-from flask import render_template, flash, redirect, url_for
+from flask import render_template, flash, redirect, url_for, request
 from app import app
 from app.forms import *
 from app.geometric_series import GeometricSeries
@@ -14,13 +14,15 @@ from app.general_exponential_transform import GeneralExponentialTransform
 from app.general_logarithmic_transform import GeneralLogarithmicTransform
 from app.base_e_exponential_transform import BaseEExponentialTransform
 from app.base_e_logarithmic_transform import BaseELogarithmicTransform
-from flask_login import current_user, login_user
+from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User
+from werkzeug.urls import url_parse
 import numpy as np
 
 
 @app.route('/')
 @app.route('/index')
+@login_required
 def index():
     return render_template('index.html', title='MassiveDiscipline')
 
@@ -41,8 +43,18 @@ def login():
             flash('Invalid username or password')
             return redirect(url_for('login'))
         login_user(user, remember=form.remember_me.data)
+        next_page = request.args.get('next')
+        if not next_page or url_parse(next_page).netloc != '':
+            next_page = url_for('index')
+        return redirect(next_page)
         return redirect(url_for('index'))
     return render_template('login.html', title='MassiveDiscipline', form=form)
+
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
 
 
 @app.route('/geometric_series', methods=['GET', 'POST'])
