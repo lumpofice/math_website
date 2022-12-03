@@ -15,21 +15,9 @@ from app.general_logarithmic_transform import GeneralLogarithmicTransform
 from app.base_e_exponential_transform import BaseEExponentialTransform
 from app.base_e_logarithmic_transform import BaseELogarithmicTransform
 from flask_login import current_user, login_user, logout_user, login_required
-from app.models import User
+from app.models import User, Post
 from werkzeug.urls import url_parse
 import numpy as np
-
-
-@app.route('/')
-@app.route('/index')
-@login_required
-def index():
-    return render_template('index.html', title='MassiveDiscipline')
-
-
-@app.route('/score')
-def score():
-    return render_template('score.html', title='MassiveDiscipline')
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -49,6 +37,24 @@ def login():
         return redirect(next_page)
         return redirect(url_for('index'))
     return render_template('login.html', title='MassiveDiscipline', form=form)
+
+
+@app.route('/')
+@app.route('/index')
+@login_required
+def index():
+    posts = [
+        {
+            'author': {'username': 'suzanne'},
+            'body': 'Beautiful!'
+        }
+    ]
+    return render_template('index.html', title='MassiveDiscipline', posts=posts)
+
+
+@app.route('/score')
+def score():
+    return render_template('score.html', title='MassiveDiscipline')
 
 
 @app.route('/logout')

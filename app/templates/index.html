@@ -1,7 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-	<h1>Welcome</h1>
+	<h1>Welcome, {{ current_user.username }}</h1>
+	{% for post in posts %}
+	<div>
+		<p>{{ post.author.username }} says: <b>{{ post.body }}</b></p>
+	</div>
+	{% endfor %}
 	<h3>Choose which object you wish to work with</h3>
 	<div> 
 		<h2>Series of Numbers</h2>
