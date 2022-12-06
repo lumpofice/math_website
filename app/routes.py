@@ -1,4 +1,9 @@
+'''importing flask methods and libraries'''
 from flask import render_template, flash, redirect, url_for, request
+from flask_login import current_user, login_user, logout_user, login_required
+from werkzeug.urls import url_parse
+
+'''importing objects, methods, and scripts from the application'''
 from app import app, db
 from app.forms import *
 from app.geometric_series import GeometricSeries
@@ -7,35 +12,50 @@ from app.polynomial_degree_2_transform import PolynomialDegree2Transform
 from app.polynomial_degree_3_transform import PolynomialDegree3Transform
 from app.absolute_value_transform import AbsoluteValueTransform
 from app.reciprocal_degree_0_by_degree_1_transform import\
-ReciprocalDegree0ByDegree1Transform
+    ReciprocalDegree0ByDegree1Transform
 from app.square_root_transform import SquareRootTransform
 from app.cube_root_transform import CubeRootTransform
 from app.general_exponential_transform import GeneralExponentialTransform
 from app.general_logarithmic_transform import GeneralLogarithmicTransform
 from app.base_e_exponential_transform import BaseEExponentialTransform
 from app.base_e_logarithmic_transform import BaseELogarithmicTransform
-from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Post
-from werkzeug.urls import url_parse
+
+'''importing computational libraries'''
 import numpy as np
 
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    
+    
     if current_user.is_authenticated:
         return redirect(url_for('index'))
+    
+    
     form = LoginForm()
+    
+    
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
+        
+        
         if user is None or not user.check_password(form.password.data):
             flash('Invalid username or password')
             return redirect(url_for('login'))
+        
+        
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
+        
+        
         if not next_page or url_parse(next_page).netloc != '':
             next_page = url_for('index')
+            
+            
         return redirect(next_page)
-        return redirect(url_for('index'))
+    
+    
     return render_template('login.html', title='MassiveDiscipline', form=form)
 
 
