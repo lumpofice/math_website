@@ -27,6 +27,9 @@ import numpy as np
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    '''This is the login page, to which anonymous users will be directed,
+while nonanonymous users will see, in place of the "login" link in the header,
+a link in the header allowing them to "logout" of the site.'''
     
     
     if current_user.is_authenticated:
@@ -61,9 +64,17 @@ def login():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+    '''First-time visitors to this page may register by submitting a pair of
+email and password credentials to the login page of the site.'''
+    
+    
     if current_user.is_authenticated:
         return redirect(url_for('index'))
+    
+    
     form = RegistrationForm()
+    
+    
     if form.validate_on_submit():
         user = User(username=form.username.data, email=form.email.data)
         user.set_password(form.password.data)
@@ -71,6 +82,8 @@ def register():
         db.session.commit()
         flash('You are now a registered user!')
         return redirect(url_for('login'))
+    
+    
     return render_template('register.html', title='MassiveDiscipline',\
         form=form)
 
@@ -79,22 +92,36 @@ def register():
 @app.route('/index')
 @login_required
 def index():
+    '''This is the homepage of the site. Currently, posts are displayed on
+this page.'''
+    
+    
     posts = [
         {
             'author': {'username': 'suzanne'},
             'body': 'Beautiful!'
         }
     ]
+    
+    
     return render_template('index.html', title='MassiveDiscipline', posts=posts)
 
 
 @app.route('/score')
 def score():
+    '''This is the page on which I am keeping score of the success students
+are meeting in my course.'''
+    
+    
     return render_template('score.html', title='MassiveDiscipline')
 
 
 @app.route('/logout')
 def logout():
+    '''This is the "logout" link nonanonymous users will see in the header
+once they are logged into the site.'''
+    
+    
     logout_user()
     return redirect(url_for('index'))
 
