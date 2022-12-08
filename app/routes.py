@@ -128,167 +128,227 @@ once they are logged into the site.'''
 
 @app.route('/geometric_series', methods=['GET', 'POST'])
 def geometric_series():
+    '''This function constructs a graph of the geometric series, from parametes
+input by the user.'''
+    
+    
     form = GeometricSeriesForm()
     
+    
     if form.validate_on_submit():
-        
         flash('Base: {}, Scalar: {}, epsilon: {}, Large m: {}'\
-        .format(form.base.data, form.scalar.data, form.epsilon.data,\
-        form.large_m.data))
-        
+            .format(form.base.data, form.scalar.data, form.epsilon.data,\
+            form.large_m.data))
         geo = GeometricSeries()
         geo.graph(form.base.data, form.scalar.data, form.epsilon.data,\
-        form.large_m.data)
-        
+            form.large_m.data)
         return redirect(url_for('geometric_series_graph_results'))
     
+    
     return render_template('geometric_series.html', title='MassiveDiscipline',\
-    form=form)
+        form=form)
 
 
 @app.route('/geometric_series_graph_results')
 def geometric_series_graph_results():
+    '''This function displays the graph of the geometric series constructed
+from parameters input by the user.'''
+    
+    
     return render_template(\
-    'geometric_series_graph_results.html', title='MassiveDiscipline')
+        'geometric_series_graph_results.html', title='MassiveDiscipline')
 
 
 @app.route('/polynomial_degree_1_transform', methods=['GET', 'POST'])
 def polynomial_degree_1_transform():
+    '''This function constructs the graph of the parent polynomial degree 1
+function, overlaid by a transformed polynomial degree 1 function, based on
+transformations input by the user.'''
+    
+    
     form = PolynomialDegree1TransformForm()
     
+    
     if form.validate_on_submit():
+            
             
         if form.y_scalar.data == 0:
             flash('Parent Function Only')
         
+        
         else:
             flash('h = {} ____ a = {} ____ k = {} ____ '\
-            'domain = ({}, {}) ____ '\
-            'range = ({}, {})'\
-            .format(form.horizontal_shift.data, form.y_scalar.data,\
-            form.vertical_shift.data, -np.inf, np.inf,\
-            -np.inf, np.inf))
+                'domain = ({}, {}) ____ '\
+                'range = ({}, {})'\
+                .format(form.horizontal_shift.data, form.y_scalar.data,\
+                form.vertical_shift.data, -np.inf, np.inf,\
+                -np.inf, np.inf))
+    
     
         id_transform = PolynomialDegree1Transform()
         id_transform.graph(form.horizontal_shift.data,\
-        form.y_scalar.data, form.vertical_shift.data)
+            form.y_scalar.data, form.vertical_shift.data)
+        
         
         return redirect(url_for(\
-        'polynomial_degree_1_transform_graph_results'))
+            'polynomial_degree_1_transform_graph_results'))
+    
     
     return render_template(\
-    'polynomial_degree_1_transform.html',\
-    title='MassiveDiscipline',\
-    form=form)
+        'polynomial_degree_1_transform.html',\
+        title='MassiveDiscipline',\
+        form=form)
 
 
 @app.route('/polynomial_degree_1_transform_graph_results')
 def polynomial_degree_1_transform_graph_results():
+    '''This function displays the parent of transformed polynomial degree 1
+functions.'''
+    
+    
     return render_template(\
-    'polynomial_degree_1_transform_graph_results.html',\
-    title='MassiveDiscipline')
+        'polynomial_degree_1_transform_graph_results.html',\
+        title='MassiveDiscipline')
 
 
 @app.route('/polynomial_degree_2_transform', methods=['GET', 'POST'])
 def polynomial_degree_2_transform():
+    '''This function constructs the graph of the parent polynomial degree 2
+function, overlaid by a transformed polynomial degree 2 function, based on
+transformations input by the user.'''
+    
+    
     form = PolynomialDegree2TransformForm()
     
+    
     if form.validate_on_submit():
+        
         
         if form.x_scalar.data == 0:
             flash('Parent Function Only')
             
+            
         elif form.y_scalar.data == 0:
             flash('Parent Function Only')
+            
             
         elif form.x_reflection.data == 0:
             flash('Parent Function Only')
         
+        
         else:
+        
         
             if form.y_scalar.data >= 0:
                 flash('h = {} ____ b = {} ____ c = {} ____ a = {} ____ '\
-                'k = {} ____ '\
-                'domain = ({}, {}) ____ '\
-                'range = ({}, {})'\
-                .format(form.horizontal_shift.data, form.x_scalar.data,\
-                form.x_reflection.data, form.y_scalar.data,\
-                form.vertical_shift.data, -np.inf, np.inf,\
-                form.vertical_shift.data, np.inf))
+                    'k = {} ____ '\
+                    'domain = ({}, {}) ____ '\
+                    'range = ({}, {})'\
+                    .format(form.horizontal_shift.data, form.x_scalar.data,\
+                    form.x_reflection.data, form.y_scalar.data,\
+                    form.vertical_shift.data, -np.inf, np.inf,\
+                    form.vertical_shift.data, np.inf))
+        
         
             elif form.y_scalar.data < 0:
                 flash('h = {} ____ b = {} ____ c = {} ____ a = {} ____ '\
-                'k = {} ____ '\
-                'domain = ({}, {}) ____ '\
-                'range = ({}, {})'\
-                .format(form.horizontal_shift.data, form.x_scalar.data,\
-                form.x_reflection.data, form.y_scalar.data,\
-                form.vertical_shift.data, -np.inf, np.inf,\
-                -np.inf, form.vertical_shift.data))
+                    'k = {} ____ '\
+                    'domain = ({}, {}) ____ '\
+                    'range = ({}, {})'\
+                    .format(form.horizontal_shift.data, form.x_scalar.data,\
+                    form.x_reflection.data, form.y_scalar.data,\
+                    form.vertical_shift.data, -np.inf, np.inf,\
+                    -np.inf, form.vertical_shift.data))
+    
     
         square_transform = PolynomialDegree2Transform()
         square_transform.graph(form.horizontal_shift.data, form.x_scalar.data,\
-        form.x_reflection.data, form.y_scalar.data, form.vertical_shift.data)
+            form.x_reflection.data, form.y_scalar.data,\
+            form.vertical_shift.data)
+        
         
         return redirect(url_for(\
-        'polynomial_degree_2_transform_graph_results'))
+            'polynomial_degree_2_transform_graph_results'))
+    
     
     return render_template(\
-    'polynomial_degree_2_transform.html',\
-    title='MassiveDiscipline',\
-    form=form)
+        'polynomial_degree_2_transform.html',\
+        title='MassiveDiscipline',\
+        form=form)
 
 
 @app.route('/polynomial_degree_2_transform_graph_results')
 def polynomial_degree_2_transform_graph_results():
+    '''This function displays the parent of transformed polynomial degree 2
+functions.'''
+    
+    
     return render_template(\
-    'polynomial_degree_2_transform_graph_results.html',\
-    title='MassiveDiscipline')
+        'polynomial_degree_2_transform_graph_results.html',\
+        title='MassiveDiscipline')
 
 
 @app.route('/polynomial_degree_3_transform', methods=['GET', 'POST'])
 def polynomial_degree_3_transform():
+    '''This function constructs the graph of the parent polynomial degree 3
+function, overlaid by a transformed polynomial degree 3 function, based on
+transformations input by the user.'''
+    
+    
     form = PolynomialDegree3TransformForm()
     
+    
     if form.validate_on_submit():
+        
         
         if form.x_scalar.data == 0:
             flash('Parent Function Only')
             
+            
         elif form.y_scalar.data == 0:
             flash('Parent Function Only')
+            
             
         elif form.x_reflection.data == 0:
             flash('Parent Function Only')
         
+        
         else:
             flash('h = {} ____ b = {} ____ c = {} ____ a = {} ____ '\
-            'k = {} ____ '\
-            'domain = ({}, {}) ____ '\
-            'range = ({}, {})'\
-            .format(form.horizontal_shift.data, form.x_scalar.data,\
-            form.x_reflection.data, form.y_scalar.data,\
-            form.vertical_shift.data, -np.inf, np.inf,\
-            -np.inf, np.inf))
+                'k = {} ____ '\
+                'domain = ({}, {}) ____ '\
+                'range = ({}, {})'\
+                .format(form.horizontal_shift.data, form.x_scalar.data,\
+                form.x_reflection.data, form.y_scalar.data,\
+                form.vertical_shift.data, -np.inf, np.inf,\
+                -np.inf, np.inf))
+    
     
         cubed_transform = PolynomialDegree3Transform()
         cubed_transform.graph(form.horizontal_shift.data, form.x_scalar.data,\
-        form.x_reflection.data, form.y_scalar.data, form.vertical_shift.data)
+            form.x_reflection.data, form.y_scalar.data,\
+            form.vertical_shift.data)
+        
         
         return redirect(url_for(\
-        'polynomial_degree_3_transform_graph_results'))
+            'polynomial_degree_3_transform_graph_results'))
+    
     
     return render_template(\
-    'polynomial_degree_3_transform.html',\
-    title='MassiveDiscipline',\
-    form=form)
+        'polynomial_degree_3_transform.html',\
+        title='MassiveDiscipline',\
+        form=form)
 
 
 @app.route('/polynomial_degree_3_transform_graph_results')
 def polynomial_degree_3_transform_graph_results():
+    '''This function displays the parent of transformed polynomial degree 3
+functions.'''
+    
+    
     return render_template(\
-    'polynomial_degree_3_transform_graph_results.html',\
-    title='MassiveDiscipline')
+        'polynomial_degree_3_transform_graph_results.html',\
+        title='MassiveDiscipline')
 
 
 @app.route('/absolute_value_transform', methods=['GET', 'POST'])
