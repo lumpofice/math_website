@@ -202,7 +202,7 @@ transformations input by the user.'''
 
 @app.route('/polynomial_degree_1_transform_graph_results')
 def polynomial_degree_1_transform_graph_results():
-    '''This function displays the parent of transformed polynomial degree 1
+    '''This function displays the parent and transformed polynomial degree 1
 functions.'''
     
     
@@ -279,7 +279,7 @@ transformations input by the user.'''
 
 @app.route('/polynomial_degree_2_transform_graph_results')
 def polynomial_degree_2_transform_graph_results():
-    '''This function displays the parent of transformed polynomial degree 2
+    '''This function displays the parent and transformed polynomial degree 2
 functions.'''
     
     
@@ -342,7 +342,7 @@ transformations input by the user.'''
 
 @app.route('/polynomial_degree_3_transform_graph_results')
 def polynomial_degree_3_transform_graph_results():
-    '''This function displays the parent of transformed polynomial degree 3
+    '''This function displays the parent and transformed polynomial degree 3
 functions.'''
     
     
@@ -353,110 +353,152 @@ functions.'''
 
 @app.route('/absolute_value_transform', methods=['GET', 'POST'])
 def absolute_value_transform():
+    '''This function constructs the graph of the parent absolute value
+function, overlaid by a transformed absolute value function, based on
+transformations input by the user.'''
+    
+    
     form = AbsoluteValueTransformForm()
     
+    
     if form.validate_on_submit():
+        
         
         if form.x_scalar.data == 0:
             flash('Parent Function Only')
             
+            
         elif form.y_scalar.data == 0:
             flash('Parent Function Only')
+            
             
         elif form.x_reflection.data == 0:
             flash('Parent Function Only')
         
+        
         else:
+            
             
             if form.y_scalar.data > 0:
                 flash('h = {} ____ b = {} ____ c = {} ____ a = {} ____ '\
-                'k = {} ____ '\
-                'domain = ({}, {}) ____ '\
-                'range = ({}, {})'\
-                .format(form.horizontal_shift.data, form.x_scalar.data,\
-                form.x_reflection.data, form.y_scalar.data,\
-                form.vertical_shift.data, -np.inf, np.inf,\
-                form.vertical_shift.data, np.inf))
+                    'k = {} ____ '\
+                    'domain = ({}, {}) ____ '\
+                    'range = ({}, {})'\
+                    .format(form.horizontal_shift.data, form.x_scalar.data,\
+                    form.x_reflection.data, form.y_scalar.data,\
+                    form.vertical_shift.data, -np.inf, np.inf,\
+                    form.vertical_shift.data, np.inf))
+            
             
             elif form.y_scalar.data < 0:
                 flash('h = {} ____ b = {} ____ c = {} ____ a = {} ____ '\
-                'k = {} ____ '\
-                'domain = ({}, {}) ____ '\
-                'range = ({}, {})'\
-                .format(form.horizontal_shift.data, form.x_scalar.data,\
-                form.x_reflection.data, form.y_scalar.data,\
-                form.vertical_shift.data, -np.inf, np.inf,\
-                -np.inf, form.vertical_shift.data))
+                    'k = {} ____ '\
+                    'domain = ({}, {}) ____ '\
+                    'range = ({}, {})'\
+                    .format(form.horizontal_shift.data, form.x_scalar.data,\
+                    form.x_reflection.data, form.y_scalar.data,\
+                    form.vertical_shift.data, -np.inf, np.inf,\
+                    -np.inf, form.vertical_shift.data))
+    
     
         absolute_value_transform = AbsoluteValueTransform()
         absolute_value_transform.graph(\
-        form.horizontal_shift.data, form.x_scalar.data, form.x_reflection.data,\
-        form.y_scalar.data, form.vertical_shift.data)
+            form.horizontal_shift.data, form.x_scalar.data,\
+            form.x_reflection.data,\
+            form.y_scalar.data, form.vertical_shift.data)
+        
         
         return redirect(url_for(\
-        'absolute_value_transform_graph_results'))
+            'absolute_value_transform_graph_results'))
+    
     
     return render_template(\
-    'absolute_value_transform.html',\
-    title='MassiveDiscipline',\
-    form=form)
+        'absolute_value_transform.html',\
+        title='MassiveDiscipline',\
+        form=form)
 
 
 @app.route('/absolute_value_transform_graph_results')
 def absolute_value_transform_graph_results():
+    '''This function displays the parent and transformed absolute value
+functions.'''
+    
+    
     return render_template(\
-    'absolute_value_transform_graph_results.html',\
-    title='MassiveDiscipline')
+        'absolute_value_transform_graph_results.html',\
+        title='MassiveDiscipline')
 
 
 @app.route('/reciprocal_degree_0_by_degree_1_transform',\
 methods=['GET', 'POST'])
 def reciprocal_degree_0_by_degree_1_transform():
+    '''This function constructs the graph of the parent reciprocal
+function, with polynomial degree 0 in the numerator and polynomial degree 1
+in the denominator, overlaid by a transformed reciprocal function, with
+polynomial degree 0 in the numerator and polynomial degree 1 in the denominator,
+based on transformations input by the user.'''
+    
+    
     form = ReciprocalDegree0ByDegree1TransformForm()
     
+    
     if form.validate_on_submit():
+        
         
         if form.x_scalar.data == 0:
             flash('Parent Function Only')
             
+            
         elif form.y_scalar.data == 0:
             flash('Parent Function Only')
+            
             
         elif form.x_reflection.data == 0:
             flash('Parent Function Only')
         
+        
         else:
             flash('h = {} ____ b = {} ____ c = {} ____ a = {} ____ '\
-            'k = {} ____ '\
-            'domain = {{x : x < {} and {} < x}} ____ '\
-            'range = {{g(x) : g(x) < {} and {} < g(x)}} ____ VA: x = {} ____ '\
-            'HA: y = {}'\
-            .format(form.horizontal_shift.data, form.x_scalar.data,\
-            form.x_reflection.data, form.y_scalar.data,\
-            form.vertical_shift.data,\
-            form.horizontal_shift.data, form.horizontal_shift.data,\
-            form.vertical_shift.data, form.vertical_shift.data,\
-            form.horizontal_shift.data, form.vertical_shift.data))
+                'k = {} ____ '\
+                'domain = {{x : x < {} and {} < x}} ____ '\
+                'range = {{g(x) : g(x) < {} and {} < g(x)}} ____ '\
+                'VA: x = {} ____ '\
+                'HA: y = {}'\
+                .format(form.horizontal_shift.data, form.x_scalar.data,\
+                form.x_reflection.data, form.y_scalar.data,\
+                form.vertical_shift.data,\
+                form.horizontal_shift.data, form.horizontal_shift.data,\
+                form.vertical_shift.data, form.vertical_shift.data,\
+                form.horizontal_shift.data, form.vertical_shift.data))
+    
     
         reciprocal_transform = ReciprocalDegree0ByDegree1Transform()
         reciprocal_transform.graph(\
-        form.horizontal_shift.data, form.x_scalar.data, form.x_reflection.data,\
-        form.y_scalar.data, form.vertical_shift.data)
+            form.horizontal_shift.data, form.x_scalar.data,\
+            form.x_reflection.data,\
+            form.y_scalar.data, form.vertical_shift.data)
+        
         
         return redirect(url_for(\
-        'reciprocal_degree_0_by_degree_1_transform_graph_results'))
+            'reciprocal_degree_0_by_degree_1_transform_graph_results'))
+    
     
     return render_template(\
-    'reciprocal_degree_0_by_degree_1_transform.html',\
-    title='MassiveDiscipline',\
-    form=form)
+        'reciprocal_degree_0_by_degree_1_transform.html',\
+        title='MassiveDiscipline',\
+        form=form)
 
 
 @app.route('/reciprocal_degree_0_by_degree_1_transform_graph_results')
 def reciprocal_degree_0_by_degree_1_transform_graph_results():
+    '''This function displays the parent and transformed reciprocal
+functions, with numerators having polynomials degree 0 and denominators
+have polynomials degree 1.'''
+    
+    
     return render_template(\
-    'reciprocal_degree_0_by_degree_1_transform_graph_results.html',\
-    title='MassiveDiscipline')
+        'reciprocal_degree_0_by_degree_1_transform_graph_results.html',\
+        title='MassiveDiscipline')
 
 
 @app.route('/square_root_transform',\
