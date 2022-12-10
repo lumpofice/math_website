@@ -504,185 +504,252 @@ have polynomials degree 1.'''
 @app.route('/square_root_transform',\
 methods=['GET', 'POST'])
 def square_root_transform():
+    '''This function constructs the graph of the parent square root
+function, overlaid by a transformed square root function, based on
+transformations input by the user.'''
+    
+    
     form = SquareRootTransformForm()
+    
     
     if form.validate_on_submit():
         
+        
         if form.y_scalar.data >= 0:
+            
             
             if form.x_reflection.data >= 0:
             
+            
                 flash('h = {} ____ b = {} ____ c = {} ____ a = {} ____ '\
-                'k = {} ____ '\
-                'domain = ({}, {}) ____ '\
-                'range = ({}, {})'\
-                .format(form.horizontal_shift.data, form.x_scalar.data,\
-                form.x_reflection.data, form.y_scalar.data,\
-                form.vertical_shift.data, form.horizontal_shift.data, np.inf,\
-                form.vertical_shift.data, np.inf))
+                    'k = {} ____ '\
+                    'domain = ({}, {}) ____ '\
+                    'range = ({}, {})'\
+                    .format(form.horizontal_shift.data, form.x_scalar.data,\
+                    form.x_reflection.data, form.y_scalar.data,\
+                    form.vertical_shift.data, form.horizontal_shift.data,\
+                    np.inf,\
+                    form.vertical_shift.data, np.inf))
+                
                 
             if form.x_reflection.data < 0:
                 
+                
                 flash('h = {} ____ b = {} ____ c = {} ____ a = {} ____ '\
-                'k = {} ____ '\
-                'domain = ({}, {}) ____ '\
-                'range = ({}, {})'\
-                .format(form.horizontal_shift.data, form.x_scalar.data,\
-                form.x_reflection.data, form.y_scalar.data,\
-                form.vertical_shift.data, -np.inf, -form.horizontal_shift.data,\
-                form.vertical_shift.data, np.inf))
+                    'k = {} ____ '\
+                    'domain = ({}, {}) ____ '\
+                    'range = ({}, {})'\
+                    .format(form.horizontal_shift.data, form.x_scalar.data,\
+                    form.x_reflection.data, form.y_scalar.data,\
+                    form.vertical_shift.data, -np.inf,\
+                    -form.horizontal_shift.data,\
+                    form.vertical_shift.data, np.inf))
+        
         
         if form.y_scalar.data < 0:
             
+            
             if form.x_reflection.data >= 0:
             
+            
                 flash('h = {} ____ b = {} ____ c = {} ____ a = {} ____ '\
-                'k = {} ____ '\
-                'domain = ({}, {}) ____ '\
-                'range = ({}, {})'\
-                .format(form.horizontal_shift.data, form.x_scalar.data,\
-                form.x_reflection.data, form.y_scalar.data,\
-                form.vertical_shift.data, form.horizontal_shift.data, np.inf,\
-                -np.inf, form.vertical_shift.data))
+                    'k = {} ____ '\
+                    'domain = ({}, {}) ____ '\
+                    'range = ({}, {})'\
+                    .format(form.horizontal_shift.data, form.x_scalar.data,\
+                    form.x_reflection.data, form.y_scalar.data,\
+                    form.vertical_shift.data, form.horizontal_shift.data,\
+                    np.inf,\
+                    -np.inf, form.vertical_shift.data))
+                
                 
             if form.x_reflection.data < 0:
                 
+                
                 flash('h = {} ____ b = {} ____ c = {} ____ a = {} ____ '\
-                'k = {} ____ '\
-                'domain = ({}, {}) ____ '\
-                'range = ({}, {})'\
-                .format(form.horizontal_shift.data, form.x_scalar.data,\
-                form.x_reflection.data, form.y_scalar.data,\
-                form.vertical_shift.data, -np.inf, -form.horizontal_shift.data,\
-                np.inf, form.vertical_shift.data))
+                    'k = {} ____ '\
+                    'domain = ({}, {}) ____ '\
+                    'range = ({}, {})'\
+                    .format(form.horizontal_shift.data, form.x_scalar.data,\
+                    form.x_reflection.data, form.y_scalar.data,\
+                    form.vertical_shift.data, -np.inf,
+                    -form.horizontal_shift.data,\
+                    np.inf, form.vertical_shift.data))
+    
     
         square_root_transform = SquareRootTransform()
         square_root_transform.graph(\
-        form.horizontal_shift.data, form.x_scalar.data,\
-        form.x_reflection.data, form.y_scalar.data, form.vertical_shift.data)
+            form.horizontal_shift.data, form.x_scalar.data,\
+            form.x_reflection.data, form.y_scalar.data,\
+            form.vertical_shift.data)
+        
         
         return redirect(url_for(\
-        'square_root_transform_graph_results'))
+            'square_root_transform_graph_results'))
+    
     
     return render_template(\
-    'square_root_transform.html',\
-    title='MassiveDiscipline',\
-    form=form)
+        'square_root_transform.html',\
+        title='MassiveDiscipline',\
+        form=form)
 
 
 @app.route('/square_root_transform_graph_results')
 def square_root_transform_graph_results():
+    '''This function displays the parent and transformed square root
+functions.'''
+    
+    
     return render_template(\
-    'square_root_transform_graph_results.html',\
-    title='MassiveDiscipline')
+        'square_root_transform_graph_results.html',\
+        title='MassiveDiscipline')
 
 
 @app.route('/cube_root_transform',\
 methods=['GET', 'POST'])
 def cube_root_transform():
+    '''This function constructs the graph of the parent cube root
+function, overlaid by a transformed cube root function, based on
+transformations input by the user.'''
+    
+    
     form = CubeRootTransformForm()
     
+    
     if form.validate_on_submit():
+        
         
         if form.x_scalar.data == 0:
             flash('Parent Function Only')
             
+            
         elif form.y_scalar.data == 0:
             flash('Parent Function Only')
+            
             
         elif form.x_reflection.data == 0:
             flash('Parent Function Only')
         
+        
         else:
             flash('h = {} ____ b = {} ____ c = {} ____ a = {} ____ '\
-            'k = {} ____ '\
-            'domain = ({}, {}) ____ '\
-            'range = ({}, {})'\
-            .format(form.horizontal_shift.data, form.x_scalar.data,\
-            form.x_reflection.data, form.y_scalar.data,\
-            form.vertical_shift.data, -np.inf, np.inf,\
-            -np.inf, np.inf))
+                'k = {} ____ '\
+                'domain = ({}, {}) ____ '\
+                'range = ({}, {})'\
+                .format(form.horizontal_shift.data, form.x_scalar.data,\
+                form.x_reflection.data, form.y_scalar.data,\
+                form.vertical_shift.data, -np.inf, np.inf,\
+                -np.inf, np.inf))
+    
     
         cube_root_transform = CubeRootTransform()
         cube_root_transform.graph(\
-        form.horizontal_shift.data, form.x_scalar.data, form.x_reflection.data,\
-        form.y_scalar.data, form.vertical_shift.data)
+            form.horizontal_shift.data, form.x_scalar.data,\
+            form.x_reflection.data,\
+            form.y_scalar.data, form.vertical_shift.data)
+        
         
         return redirect(url_for(\
-        'cube_root_transform_graph_results'))
+            'cube_root_transform_graph_results'))
+    
     
     return render_template(\
-    'cube_root_transform.html',\
-    title='MassiveDiscipline',\
-    form=form)
+        'cube_root_transform.html',\
+        title='MassiveDiscipline',\
+        form=form)
 
 
 @app.route('/cube_root_transform_graph_results')
 def cube_root_transform_graph_results():
+    '''This function displays the parent and transformed cube root
+functions.'''
+    
+    
     return render_template(\
-    'cube_root_transform_graph_results.html',\
-    title='MassiveDiscipline')
+        'cube_root_transform_graph_results.html',\
+        title='MassiveDiscipline')
 
 
 @app.route('/general_exponential_transform',\
 methods=['GET', 'POST'])
 def general_exponential_transform():
+    '''This function constructs the graph of the parent general exponential
+function, overlaid by a transformed general exponential function, based on
+transformations input by the user.'''
+    
+    
     form = GeneralExponentialTransformForm()
     
+    
     if form.validate_on_submit():
+        
         
         if form.x_scalar.data == 0:
             flash('Parent Function Only')
             
+            
         elif form.y_scalar.data == 0:
             flash('Parent Function Only')
+            
             
         elif form.x_reflection.data == 0:
             flash('Parent Function Only')
         
+        
         else:
+            
             
             if form.y_scalar.data > 0:
                 flash('B = {} ____ h = {} ____ b = {} ____ c = {} ____ '\
-                'a = {} ____ '\
-                'k = {} ____ '\
-                'domain = ({}, {}) ____ '\
-                'range = ({}, {}) ____ HA: y = {}'\
-                .format(form.base.data, form.horizontal_shift.data,\
-                form.x_scalar.data,\
-                form.x_reflection.data, form.y_scalar.data,\
-                form.vertical_shift.data, -np.inf, np.inf,\
-                form.vertical_shift.data, np.inf, form.vertical_shift.data))
+                    'a = {} ____ '\
+                    'k = {} ____ '\
+                    'domain = ({}, {}) ____ '\
+                    'range = ({}, {}) ____ HA: y = {}'\
+                    .format(form.base.data, form.horizontal_shift.data,\
+                    form.x_scalar.data,\
+                    form.x_reflection.data, form.y_scalar.data,\
+                    form.vertical_shift.data, -np.inf, np.inf,\
+                    form.vertical_shift.data, np.inf, form.vertical_shift.data))
+                
                 
             elif form.y_scalar.data < 0:
                 flash('B = {} ____ h = {} ____ b = {} ____ c = {} ____ '\
-                'a = {} ____ '\
-                'k = {} ____ '\
-                'domain = ({}, {}) ____ '\
-                'range = ({}, {}) ____ HA: y = {}'\
-                .format(form.base.data, form.horizontal_shift.data,\
-                form.x_scalar.data,\
-                form.x_reflection.data, form.y_scalar.data,\
-                form.vertical_shift.data, -np.inf, np.inf,\
-                -np.inf, form.vertical_shift.data, form.vertical_shift.data))
+                    'a = {} ____ '\
+                    'k = {} ____ '\
+                    'domain = ({}, {}) ____ '\
+                    'range = ({}, {}) ____ HA: y = {}'\
+                    .format(form.base.data, form.horizontal_shift.data,\
+                    form.x_scalar.data,\
+                    form.x_reflection.data, form.y_scalar.data,\
+                    form.vertical_shift.data, -np.inf, np.inf,\
+                    -np.inf, form.vertical_shift.data,\
+                    form.vertical_shift.data))
+    
     
         general_exponential_transform = GeneralExponentialTransform()
         general_exponential_transform.graph(\
-        form.base.data,\
-        form.horizontal_shift.data, form.x_scalar.data, form.x_reflection.data,\
-        form.y_scalar.data, form.vertical_shift.data)
+            form.base.data,\
+            form.horizontal_shift.data, form.x_scalar.data,\
+            form.x_reflection.data,\
+            form.y_scalar.data, form.vertical_shift.data)
+        
         
         return redirect(url_for(\
-        'general_exponential_transform_graph_results'))
+            'general_exponential_transform_graph_results'))
+    
     
     return render_template(\
-    'general_exponential_transform.html',\
-    title='MassiveDiscipline',\
-    form=form)
+        'general_exponential_transform.html',\
+        title='MassiveDiscipline',\
+        form=form)
 
 
 @app.route('/general_exponential_transform_graph_results')
 def general_exponential_transform_graph_results():
+    '''This function displays the parent and transformed general exponential
+functions.'''
+    
+    
     return render_template(\
     'general_exponential_transform_graph_results.html',\
     title='MassiveDiscipline')
@@ -691,126 +758,168 @@ def general_exponential_transform_graph_results():
 @app.route('/general_logarithmic_transform',\
 methods=['GET', 'POST'])
 def general_logarithmic_transform():
+    '''This function constructs the graph of the parent general logarithmic
+function, overlaid by a transformed general logarithmic function, based on
+transformations input by the user.'''
+    
+    
     form = GeneralLogarithmicTransformForm()
     
+    
     if form.validate_on_submit():
+        
         
         if form.x_scalar.data == 0:
             flash('Parent Function Only')
             
+            
         elif form.y_scalar.data == 0:
             flash('Parent Function Only')
+            
             
         elif form.x_reflection.data == 0:
             flash('Parent Function Only')
         
+        
         else:
+            
             
             if form.x_reflection.data > 0:
                 flash('B = {} ____ h = {} ____ b = {} ____ c = {} ____ '\
-                'a = {} ____ '\
-                'k = {} ____ '\
-                'domain = ({}, {}) ____ '\
-                'range = ({}, {}) ____ VA: x = {}'\
-                .format(form.base.data, form.horizontal_shift.data,\
-                form.x_scalar.data,\
-                form.x_reflection.data, form.y_scalar.data,\
-                form.vertical_shift.data, form.horizontal_shift.data, np.inf,\
-                -np.inf, np.inf, form.horizontal_shift.data))
+                    'a = {} ____ '\
+                    'k = {} ____ '\
+                    'domain = ({}, {}) ____ '\
+                    'range = ({}, {}) ____ VA: x = {}'\
+                    .format(form.base.data, form.horizontal_shift.data,\
+                    form.x_scalar.data,\
+                    form.x_reflection.data, form.y_scalar.data,\
+                    form.vertical_shift.data, form.horizontal_shift.data,\
+                    np.inf,\
+                    -np.inf, np.inf, form.horizontal_shift.data))
+                
                 
             elif form.x_reflection.data < 0:
                 flash('B = {} ____ h = {} ____ b = {} ____ c = {} ____ '\
-                'a = {} ____ '\
-                'k = {} ____ '\
-                'domain = ({}, {}) ____ '\
-                'range = ({}, {}) ____ VA: x = {}'\
-                .format(form.base.data, form.horizontal_shift.data,\
-                form.x_scalar.data,\
-                form.x_reflection.data, form.y_scalar.data,\
-                form.vertical_shift.data, -np.inf,\
-                (-1)*form.horizontal_shift.data,\
-                -np.inf, np.inf, (-1)*form.horizontal_shift.data))
+                    'a = {} ____ '\
+                    'k = {} ____ '\
+                    'domain = ({}, {}) ____ '\
+                    'range = ({}, {}) ____ VA: x = {}'\
+                    .format(form.base.data, form.horizontal_shift.data,\
+                    form.x_scalar.data,\
+                    form.x_reflection.data, form.y_scalar.data,\
+                    form.vertical_shift.data, -np.inf,\
+                    (-1)*form.horizontal_shift.data,\
+                    -np.inf, np.inf, (-1)*form.horizontal_shift.data))
+    
     
         general_logarithmic_transform = GeneralLogarithmicTransform()
         general_logarithmic_transform.graph(\
-        form.base.data,\
-        form.horizontal_shift.data, form.x_scalar.data, form.x_reflection.data,\
-        form.y_scalar.data, form.vertical_shift.data)
+            form.base.data,\
+            form.horizontal_shift.data, form.x_scalar.data,\
+            form.x_reflection.data,\
+            form.y_scalar.data, form.vertical_shift.data)
+        
         
         return redirect(url_for(\
-        'general_logarithmic_transform_graph_results'))
+            'general_logarithmic_transform_graph_results'))
+    
     
     return render_template(\
-    'general_logarithmic_transform.html',\
-    title='MassiveDiscipline',\
-    form=form)
+        'general_logarithmic_transform.html',\
+        title='MassiveDiscipline',\
+        form=form)
 
 
 @app.route('/general_logarithmic_transform_graph_results')
 def general_logarithmic_transform_graph_results():
+    '''This function displays the parent and transformed general logarithmic
+functions.'''
+    
+    
     return render_template(\
-    'general_logarithmic_transform_graph_results.html',\
-    title='MassiveDiscipline')
+        'general_logarithmic_transform_graph_results.html',\
+        title='MassiveDiscipline')
 
 
 @app.route('/base_e_exponential_transform',\
 methods=['GET', 'POST'])
 def base_e_exponential_transform():
+    '''This function constructs the graph of the parent base e exponential
+function, overlaid by a transformed base e exponential function, based on
+transformations input by the user.'''
+    
+    
     form = BaseEExponentialTransformForm()
     
+    
     if form.validate_on_submit():
+        
         
         if form.x_scalar.data == 0:
             flash('Parent Function Only')
             
+            
         elif form.y_scalar.data == 0:
             flash('Parent Function Only')
+            
             
         elif form.x_reflection.data == 0:
             flash('Parent Function Only')
         
+        
         else:
+            
             
             if form.y_scalar.data > 0:
                 flash('h = {} ____ b = {} ____ c = {} ____ '\
-                'a = {} ____ '\
-                'k = {} ____ '\
-                'domain = ({}, {}) ____ '\
-                'range = ({}, {}) ____ HA: y = {}'\
-                .format(form.horizontal_shift.data,\
-                form.x_scalar.data,\
-                form.x_reflection.data, form.y_scalar.data,\
-                form.vertical_shift.data, -np.inf, np.inf,\
-                form.vertical_shift.data, np.inf, form.vertical_shift.data))
+                    'a = {} ____ '\
+                    'k = {} ____ '\
+                    'domain = ({}, {}) ____ '\
+                    'range = ({}, {}) ____ HA: y = {}'\
+                    .format(form.horizontal_shift.data,\
+                    form.x_scalar.data,\
+                    form.x_reflection.data, form.y_scalar.data,\
+                    form.vertical_shift.data, -np.inf, np.inf,\
+                    form.vertical_shift.data, np.inf, form.vertical_shift.data))
+                
                 
             elif form.y_scalar.data < 0:
                 flash('h = {} ____ b = {} ____ c = {} ____ '\
-                'a = {} ____ '\
-                'k = {} ____ '\
-                'domain = ({}, {}) ____ '\
-                'range = ({}, {}) ____ HA: y = {}'\
-                .format(form.horizontal_shift.data,\
-                form.x_scalar.data,\
-                form.x_reflection.data, form.y_scalar.data,\
-                form.vertical_shift.data, -np.inf, np.inf,\
-                -np.inf, form.vertical_shift.data, form.vertical_shift.data))
+                    'a = {} ____ '\
+                    'k = {} ____ '\
+                    'domain = ({}, {}) ____ '\
+                    'range = ({}, {}) ____ HA: y = {}'\
+                    .format(form.horizontal_shift.data,\
+                    form.x_scalar.data,\
+                    form.x_reflection.data, form.y_scalar.data,\
+                    form.vertical_shift.data, -np.inf, np.inf,\
+                    -np.inf, form.vertical_shift.data,\
+                    form.vertical_shift.data))
+    
     
         base_e_exponential_transform = BaseEExponentialTransform()
         base_e_exponential_transform.graph(\
-        form.horizontal_shift.data, form.x_scalar.data, form.x_reflection.data,\
-        form.y_scalar.data, form.vertical_shift.data)
+            form.horizontal_shift.data, form.x_scalar.data,\
+            form.x_reflection.data,\
+            form.y_scalar.data, form.vertical_shift.data)
+        
         
         return redirect(url_for(\
-        'base_e_exponential_transform_graph_results'))
+            'base_e_exponential_transform_graph_results'))
+    
     
     return render_template(\
-    'base_e_exponential_transform.html',\
-    title='MassiveDiscipline',\
-    form=form)
+        'base_e_exponential_transform.html',\
+        title='MassiveDiscipline',\
+        form=form)
 
 
 @app.route('/base_e_exponential_transform_graph_results')
 def base_e_exponential_transform_graph_results():
+    '''This function displays the parent and transformed base e exponential
+functions.'''
+    
+    
     return render_template(\
     'base_e_exponential_transform_graph_results.html',\
     title='MassiveDiscipline')
@@ -819,62 +928,83 @@ def base_e_exponential_transform_graph_results():
 @app.route('/base_e_logarithmic_transform',\
 methods=['GET', 'POST'])
 def base_e_logarithmic_transform():
+    '''This function constructs the graph of the parent base e logarithmic
+function, overlaid by a transformed base e logarithmic function, based on
+transformations input by the user.'''
+    
+    
     form = BaseELogarithmicTransformForm()
     
+    
     if form.validate_on_submit():
+        
         
         if form.x_scalar.data == 0:
             flash('Parent Function Only')
             
+            
         elif form.y_scalar.data == 0:
             flash('Parent Function Only')
+            
             
         elif form.x_reflection.data == 0:
             flash('Parent Function Only')
         
+        
         else:
+            
             
             if form.x_reflection.data > 0:
                 flash('h = {} ____ b = {} ____ c = {} ____ '\
-                'a = {} ____ '\
-                'k = {} ____ '\
-                'domain = ({}, {}) ____ '\
-                'range = ({}, {}) ____ VA: x = {}'\
-                .format(form.horizontal_shift.data,\
-                form.x_scalar.data,\
-                form.x_reflection.data, form.y_scalar.data,\
-                form.vertical_shift.data, form.horizontal_shift.data, np.inf,\
-                -np.inf, np.inf, form.horizontal_shift.data))
+                    'a = {} ____ '\
+                    'k = {} ____ '\
+                    'domain = ({}, {}) ____ '\
+                    'range = ({}, {}) ____ VA: x = {}'\
+                    .format(form.horizontal_shift.data,\
+                    form.x_scalar.data,\
+                    form.x_reflection.data, form.y_scalar.data,\
+                    form.vertical_shift.data, form.horizontal_shift.data,\
+                    np.inf,\
+                    -np.inf, np.inf, form.horizontal_shift.data))
+                
                 
             elif form.x_reflection.data < 0:
                 flash('h = {} ____ b = {} ____ c = {} ____ '\
-                'a = {} ____ '\
-                'k = {} ____ '\
-                'domain = ({}, {}) ____ '\
-                'range = ({}, {}) ____ VA: x = {}'\
-                .format(form.horizontal_shift.data,\
-                form.x_scalar.data,\
-                form.x_reflection.data, form.y_scalar.data,\
-                form.vertical_shift.data, -np.inf,\
-                (-1)*form.horizontal_shift.data,\
-                -np.inf, np.inf, (-1)*form.horizontal_shift.data))
+                    'a = {} ____ '\
+                    'k = {} ____ '\
+                    'domain = ({}, {}) ____ '\
+                    'range = ({}, {}) ____ VA: x = {}'\
+                    .format(form.horizontal_shift.data,\
+                    form.x_scalar.data,\
+                    form.x_reflection.data, form.y_scalar.data,\
+                    form.vertical_shift.data, -np.inf,\
+                    (-1)*form.horizontal_shift.data,\
+                    -np.inf, np.inf, (-1)*form.horizontal_shift.data))
+    
     
         base_e_logarithmic_transform = BaseELogarithmicTransform()
         base_e_logarithmic_transform.graph(\
-        form.horizontal_shift.data, form.x_scalar.data, form.x_reflection.data,\
-        form.y_scalar.data, form.vertical_shift.data)
+            form.horizontal_shift.data, form.x_scalar.data,\
+            form.x_reflection.data,\
+            form.y_scalar.data, form.vertical_shift.data)
+        
         
         return redirect(url_for(\
-        'base_e_logarithmic_transform_graph_results'))
+            'base_e_logarithmic_transform_graph_results'))
+    
     
     return render_template(\
-    'base_e_logarithmic_transform.html',\
-    title='MassiveDiscipline',\
-    form=form)
+        'base_e_logarithmic_transform.html',\
+        title='MassiveDiscipline',\
+        form=form)
 
 
 @app.route('/base_e_logarithmic_transform_graph_results')
 def base_e_logarithmic_transform_graph_results():
+    '''This function displays the parent and transformed base e logarithmic
+functions.'''
+    
+    
     return render_template(\
-    'base_e_logarithmic_transform_graph_results.html',\
-    title='MassiveDiscipline')
+        'base_e_logarithmic_transform_graph_results.html',\
+        title='MassiveDiscipline')
