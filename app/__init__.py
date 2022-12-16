@@ -1,8 +1,10 @@
-'''importing flask methods and libraries'''
+'''importing flask methods, extensions, and libraries'''
 from flask import Flask
 from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+
+'''flask-login extension, which keeps track of the user's logged-in state.'''
 from flask_login import LoginManager
 
 
