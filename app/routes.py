@@ -69,6 +69,10 @@ email and password credentials to the login page of the site.'''
     
     
     if current_user.is_authenticated:
+        '''The "current_user" variable can take on the "id" provided by the
+    "load_user" function written into the "models.py" script. If the variable's
+    value indicates that the user is non-anonymous (is logged in), then this
+    if statement returns True and redirects the user to the index page.'''
         return redirect(url_for('index'))
     
     
@@ -76,6 +80,9 @@ email and password credentials to the login page of the site.'''
     
     
     if form.validate_on_submit():
+        '''Upon submitting the form, the browser's POST request submits
+    the form data to the server, and when the data meets validator expectations,
+    this if statement returns True, redirecting the user ro the "login" page.'''
         user = User(username=form.username.data, email=form.email.data)
         user.set_password(form.password.data)
         db.session.add(user)
@@ -84,6 +91,11 @@ email and password credentials to the login page of the site.'''
         return redirect(url_for('login'))
     
     
+    '''Upon initially opening this page, given that there is yet no input,
+the browser's GET method will process the empty form, yielding a value of
+False for the "if form.validate_on_submit()" line, bringing the function
+to the return statement below, which populates the page anew for the user
+to provide input.'''
     return render_template('register.html', title='MassiveDiscipline',\
         form=form)
 
