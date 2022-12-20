@@ -33,6 +33,15 @@ a link in the header allowing them to "logout" of the site.'''
     
     
     if current_user.is_authenticated:
+        '''The "current_user" variable can take on the "id" provided by the
+    "load_user" function written into the "models.py" script, if such an "id"
+    already exists. This "id" comes from the database and is the value for
+    the variable, current_user, which is the user object
+    representing the client of the request. If such "id" does exist, the
+    variable's value indicates that the user is non-anonymous (is logged in),
+    and then this if statement returns True to redirect the user to the index
+    page. However, in the event that this if statement returns False, this
+    python script proceeds to load the login form webpage.'''
         return redirect(url_for('index'))
     
     
@@ -71,7 +80,8 @@ email and password credentials to the login page of the site.'''
     if current_user.is_authenticated:
         '''The "current_user" variable can take on the "id" provided by the
     "load_user" function written into the "models.py" script, if such an "id"
-    already exists. This "id" comes from the database and is the user object
+    already exists. This "id" comes from the database and is the value for
+    the variable, current_user, which is the user object
     representing the client of the request. If such "id" does exist, the
     variable's value indicates that the user is non-anonymous (is logged in),
     and then this if statement returns True to redirect the user to the index
