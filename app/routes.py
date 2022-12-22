@@ -42,6 +42,8 @@ a link in the header allowing them to "logout" of the site.'''
     and then this if statement returns True to redirect the user to the index
     page. However, in the event that this if statement returns False, this
     python script proceeds to load the login form webpage.'''
+        
+        
         return redirect(url_for('index'))
     
     
@@ -49,16 +51,41 @@ a link in the header allowing them to "logout" of the site.'''
     
     
     if form.validate_on_submit():
+        '''This if statement queries the database for the username, grabbing
+    the first entry with that username. The User model sets a unique
+    qualification for this field. Thus, there is no chance of us drawing the
+    wrong account through this query.'''
+        
+        
         user = User.query.filter_by(username=form.username.data).first()
         
         
         if user is None or not user.check_password(form.password.data):
+            '''If the user is anonymous, meaning the user has not already
+        logged in, or if the password input to the login form does not return
+        the password hash that has been stored to the database for the specific
+        username input into the same login form, then this if statement will
+        reload the login form page, with all data entry positions blank,
+        flashing a notice to the user that the credentials that were input are
+        incorrect.'''
+            
+            
             flash('Invalid username or password')
             return redirect(url_for('login'))
         
         
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
+        '''This request.args.get() call takes in the parsed contents of a URL
+    query string, which is the part of the URL after the question mark. The
+    parsed contents of the query string are keys in a Python dictionary. The
+    value of this "next" key is the webpage the user wishes to access yet cannot
+    due to the fact that they have yet to log in. Given they have not yet logged
+    in, the anonymous user is redirected to the login form page upon clicking
+    a link within the application that requires users be logged in before
+    being able to access. The link that the user has clicked is stored as the
+    value for this "next" key, and it is accessed once the user has
+    successfully logged in.'''
         
         
         if not next_page or url_parse(next_page).netloc != '':
