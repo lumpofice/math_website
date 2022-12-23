@@ -67,7 +67,8 @@ a link in the header allowing them to "logout" of the site.'''
         username input into the same login form, then this if statement will
         reload the login form page, with all data entry positions blank,
         flashing a notice to the user that the credentials that were input are
-        incorrect.'''
+        incorrect. However, if the user is authenticated, then this if
+        statement evaluates to False; the script moves on to log in the user.'''
             
             
             flash('Invalid username or password')
@@ -75,15 +76,21 @@ a link in the header allowing them to "logout" of the site.'''
         
         
         login_user(user, remember=form.remember_me.data)
+        '''Once the user is authenticated, this function will log the user into
+    the application. If the user wishes to be remembered, they simply check
+    the "Remember Me" box, and the login_user function passes a value of "True"
+    to the "remember" parameter.'''
+        
+        
         next_page = request.args.get('next')
         '''This request.args.get() call takes in the parsed contents of a URL
     query string, which is the part of the URL after the question mark. The
     parsed contents of the query string are keys in a Python dictionary. The
     value of this "next" key is the webpage the user wishes to access yet cannot
-    due to the fact that they have yet to log in. Given they have not yet logged
-    in, the anonymous user is redirected to the login form page upon clicking
+    due to the fact that they have not yet logged in. Thus,
+    the anonymous user is redirected to the login form page upon clicking
     a link within the application that requires users be logged in before
-    being able to access. The link that the user has clicked is stored as the
+    accessing. The link that the user has clicked is stored as the
     value for this "next" key, and it is accessed once the user has
     successfully logged in.'''
         
