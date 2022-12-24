@@ -84,10 +84,14 @@ a link in the header allowing them to "logout" of the site.'''
         
         next_page = request.args.get('next')
         '''This request.args.get() call takes in the parsed contents of a URL
-    query string, which is the part of the URL after the question mark. The
-    parsed contents of the query string are keys in a Python dictionary. The
-    value of this "next" key is the webpage the user wishes to access yet cannot
-    due to the fact that they have not yet logged in. Thus,
+    query string, which is the part of the URL after the question mark in the
+    following formated URL
+    
+    <scheme>://<netloc>/<path>;<params>?<query>#<fragment>
+    
+    The parsed contents of the query string are keys in a Python dictionary.
+    The value of this "next" key is the webpage the user wishes to access yet
+    cannot due to the fact that they have not yet logged in. Thus,
     the anonymous user is redirected to the login form page upon clicking
     a link within the application that requires users be logged in before
     accessing. The link that the user has clicked is stored as the
@@ -96,6 +100,13 @@ a link in the header allowing them to "logout" of the site.'''
         
         
         if not next_page or url_parse(next_page).netloc != '':
+            '''This if statement checks whether the variable next_page has a
+        value of True or if the url_parse(next_page) is a relative URL using
+        the .netloc method. If url_parse(next_page) is a relative path, then
+        it has no hostname. With no hostname, we return to the index page of
+        the application.'''
+            
+            
             next_page = url_for('index')
             
             
