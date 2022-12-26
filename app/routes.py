@@ -163,8 +163,9 @@ to provide input.'''
 @app.route('/index')
 @login_required
 def index():
-    '''This is the homepage of the site. Currently, posts are displayed on
-this page.'''
+    '''This is the homepage of the site. The @login_required decorator from
+Flask-Login sets accessibility restrictions to only those users who are logged
+in. Currently, posts are displayed on this page.'''
     
     
     posts = [
@@ -179,9 +180,12 @@ this page.'''
 
 
 @app.route('/score')
+@login_required
 def score():
     '''This is the page on which I am keeping score of the success students
-are meeting in my course.'''
+are meeting in my course. The @login_required decorator from
+Flask-Login sets accessibility restrictions to only those users who are logged
+in.'''
     
     
     return render_template('score.html', title='MassiveDiscipline')
