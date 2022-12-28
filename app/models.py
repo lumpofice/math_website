@@ -1,5 +1,6 @@
-'''importing python libraries'''
+'''importing python libraries and modules'''
 from datetime import datetime
+from hashlib import md5
 
 '''importing objects, methods, and scripts from the application'''
 from app import db, login
@@ -70,6 +71,12 @@ access the author of the post.'''
         
         
         return check_password_hash(self.password_hash, password)
+    
+    
+    def avatar(self, size):
+        digest = md5(self.email.lower().encode('utf-8')).hexdigest()
+        return 'https://www.gravatar.com/avatar/{}?d=identicon&s={}'.format(
+            digest, size)
     
     
 class Post(db.Model):
