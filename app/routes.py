@@ -182,6 +182,12 @@ in. Currently, posts are displayed on this page.'''
 @app.route('/user/<username>')
 @login_required
 def user(username):
+    '''This is the profile page of the logged in user. The <username> dynamic
+component in the @app.route function accepts the username from this user
+function, which takes the username corresponding to the value of the relevant
+form variable input by the user at the login view function as an argument.'''
+    
+    
     user = User.query.filter_by(username=username).first_or_404()
     posts = [
         {'author': user, 'body': 'Test post #1'},
