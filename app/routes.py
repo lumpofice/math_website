@@ -1,3 +1,6 @@
+'''importing python libraries and modules'''
+from datetime import datetime
+
 '''importing flask methods and libraries'''
 from flask import render_template, flash, redirect, url_for, request
 from flask_login import current_user, login_user, logout_user, login_required
@@ -23,6 +26,19 @@ from app.models import User, Post
 
 '''importing computational libraries'''
 import numpy as np
+
+
+@app.before_request
+def before_request():
+    '''The current_user variable has as it's value the value from the "id"
+field of the User model. That "id" value corresponds to the user object for
+the given session, which contains the other User fields; namely, the last_seen
+field.'''
+    
+    
+    if current_user.is_authenticated:
+        current_user.last_seen = datetime.utcnow()
+        db.session.commit()
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -58,6 +74,9 @@ a link in the header allowing them to "logout" of the site.'''
         
         
         user = User.query.filter_by(username=form.username.data).first()
+        '''This variable takes on the username input to the login form by
+    the user. Given that username is a unique field in the User model, we
+    conclude our query at the first encountered match.'''
         
         
         if user is None or not user.check_password(form.password.data):
@@ -132,6 +151,8 @@ email and password credentials to the login page of the site.'''
     and then this if statement returns True to redirect the user to the index
     page. However, in the event that this if statement returns False, this
     python script proceeds to load the registration form webpage.'''
+        
+        
         return redirect(url_for('index'))
     
     
@@ -142,6 +163,8 @@ email and password credentials to the login page of the site.'''
         '''Upon submitting the form, the browser's POST request submits
     the form data to the server, and when the data meets validator expectations,
     this if statement returns True, redirecting the user ro the "login" page.'''
+        
+        
         user = User(username=form.username.data, email=form.email.data)
         user.set_password(form.password.data)
         db.session.add(user)
@@ -155,6 +178,8 @@ the browser's GET method will process the empty form, yielding a value of
 False for the "if form.validate_on_submit()" line, bringing the function
 to the return statement below, which populates the page anew for the user
 to provide input.'''
+    
+    
     return render_template('register.html', title='MassiveDiscipline',\
         form=form)
 
@@ -184,11 +209,16 @@ in. Currently, posts are displayed on this page.'''
 def user(username):
     '''This is the profile page of the logged in user. The <username> dynamic
 component in the @app.route function accepts the username from this user
-function, which takes the username corresponding to the value of the relevant
-form variable input by the user at the login view function as an argument.'''
+function, which takes as an argument the username corresponding to the value of
+the relevant form variable input by the user at the login view function.'''
     
     
     user = User.query.filter_by(username=username).first_or_404()
+    '''If the username exists, it will be unique and thus, the first to be
+encountered in a query to the database. If the username does not exist, then
+an 404 exception is raised.'''
+    
+    
     posts = [
         {'author': user, 'body': 'Test post #1'},
         {'author': user, 'body': 'Test post #2'}
