@@ -1,12 +1,23 @@
 <!doctype html>
+
+<!-- This template will serve as the basic code present in every page
+of the application. -->
+
 <html>
+
 	<head>
+		<!-- This section of the code picks up either the title passed 
+	to the render_template function in the routes.py file or (else)
+	the title passed in the else clause of this section of the code.-->
+
 		{% if title %}
 		<title>{{ title }} - MATH</title>
 		{% else %}
 		<title>MassiveDiscipline - MATH</title>
 		{% endif %}
+
 	</head>
+
 	<body>
 		<div>
 			<a href='{{ url_for("index") }}'>Home</a>
