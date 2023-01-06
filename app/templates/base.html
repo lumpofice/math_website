@@ -38,8 +38,15 @@ of the application. -->
 			<a href='{{ url_for("logout") }}'>Logout</a>
 			{% endif %}
 		</div>
-		<hr>
+
+		<hr> <!-- This is a horizontal rule -->
+
+		<!-- The following code takes the argument of a flash() 
+	function call within function definitions of the routes.py file
+	and stores it in the messages variable stated below. -->
+
 		{% with messages = get_flashed_messages() %}
+
 		{% if messages %}
 		<u1>
 			{% for message in messages %}
@@ -49,8 +56,12 @@ of the application. -->
 			{% endfor %}
 		</u1>
 		{% endif %}
+
 		{% endwith %}
+
 		{% block content %}{% endblock %}
+
 	</body>
+
 </html>
 
