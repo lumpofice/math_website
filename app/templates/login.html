@@ -4,6 +4,13 @@
 
 	<h1>Sign In</h1>
 
+	<!-- With the novalidate attribute, he form tag below does not 
+validate the form data, and instead, allows flask to handle all form 
+validation matters. The action="" will resolve to the webpage's 
+address. The method="post" attribute will send data entered into the 
+form to the server to be stored. This particular method is secure
+storing no data into a browser URL, which does happen, in the format
+of name/value pairs, with method="get" -->
 	<form action="" method="post" novalidate>
 		{{ form.hidden_tag() }}
 		<p>
