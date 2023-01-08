@@ -4,14 +4,21 @@
 
 	<h1>Sign In</h1>
 
-	<!-- With the novalidate attribute, he form tag below does not 
+	<!-- With the novalidate attribute, the form tag below does not 
 validate the form data, and instead, allows flask to handle all form 
-validation matters. The action="" will resolve to the webpage's 
+validation matters. The action="" will resolve to the current webpage's 
 address. The method="post" attribute will send data entered into the 
 form to the server to be stored. This particular method is secure
-storing no data into a browser URL, which does happen, in the format
+storing no data into a browser URL, which does happen in the format
 of name/value pairs, with method="get" -->
+
 	<form action="" method="post" novalidate>
+
+		<!-- Any hidden fields are rendered with the form.hidden_tag()
+	call. The CSRF token field, which takes the security key generated
+	by the server side using the secret key written
+	into the config.py file, is one such hidden field. -->
+
 		{{ form.hidden_tag() }}
 		<p>
 			{{ form.username.label }}
