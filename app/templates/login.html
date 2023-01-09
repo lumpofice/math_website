@@ -26,24 +26,37 @@ of name/value pairs, with method="get" -->
 			{{ form.username(size=32) }}
 			<br>
 			{% for error in form.username.errors %}
+
+			<!-- Here, the value of the error variable is the string
+		"This field is required." -->
+
 			<span style="color: red;">[{{ error }}]</span>
 			{% endfor %}
 		</p>
+
 		<p>
 			{{ form.password.label }}
 			<br>
 			{{ form.password(size=32) }}
 			<br>
 			{% for error in form.password.errors %}
+
+			<!-- Here, the value of the error variable is the string
+		"This field is required." -->
+
 			<span style="color: red;">[{{ error }}]</span>
 			{% endfor %}
 		</p>
+
 		<p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+
 		<p>{{ form.submit() }}</p>
+
 	</form>
 	<p>New User? 
 		<a href='{{ url_for("register") }}'>Click to Register</a>
 	</p>
+
 {% endblock %}
 
 
