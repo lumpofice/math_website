@@ -2,6 +2,14 @@
 	<table>
 		<tr valign='top'>
 			<td><img src='{{ post.author.avatar(36) }}'></td>
+
+			<!-- The username attribute, "author," not only relates 
+		each post made by the user back to the user's username, it also 
+		fashions to each user post that user's corresponding avatar; 
+		the same avatar that is coded within the User model for that 
+		user. The variable post.author.avatar(36) is precisely the code
+		within this template that accomplishes this task for us. -->
+
 			<td>
 				{{ post.author.username }} says:<br>{{ post.body }}
 			</td>
