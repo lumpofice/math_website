@@ -216,7 +216,10 @@ the relevant form variable input by the user at the login view function.'''
     user = User.query.filter_by(username=username).first_or_404()
     '''If the username exists, it will be unique and thus, the first to be
 encountered in a query to the database. If the username does not exist, then
-an 404 exception is raised.'''
+an 404 exception is raised. The user variable now points to the User model and
+all of its field values for the user holding this specific username. We use
+this to coordinate post entries through our _post.html file so that they may
+render on the webpage.'''
     
     
     posts = [

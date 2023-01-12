@@ -3,7 +3,7 @@
 		<tr valign='top'>
 			<td><img src='{{ post.author.avatar(36) }}'></td>
 
-			<!-- The username attribute, "author," not only relates 
+			<!-- The User model attribute, "author," not only relates 
 		each post made by the user back to the user's username, it also 
 		fashions to each user post that user's corresponding avatar; 
 		the same avatar that is coded within the User model for that 
@@ -12,6 +12,14 @@
 
 			<td>
 				{{ post.author.username }} says:<br>{{ post.body }}
+
+				<!-- Using the User model attribute, "author," the 
+			post.author.username variable points a post back to the 
+			username field of the User model for the user who wrote 
+			the post. The post.body variable displays the
+			body key's value in the dictionary of posts within the user
+			route of the routes.py file. -->
+
 			</td>
 		</tr>
 	</table>

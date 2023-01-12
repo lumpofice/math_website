@@ -30,7 +30,7 @@ as well as any posts corresponding to a registered user. The one-to-many
 relationship is between this class (from which we refer to the one) and the
 Post class (to which we refer to the many). The name of the class through which
 we refer to the many is passed to relationship(), and the backref parameter
-to the relationship method serves as a username attribute, allowing us to
+to the relationship method serves as a User model attribute, allowing us to
 access the author of the post.'''
     
     
