@@ -1,9 +1,20 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} <!-- This line loads the base.html code -->
 
 {% block content %}
+
+<!-- This is the user's profile page. It will display the user's
+username, when they were last seen within the app, anything they
+may have written in the "about me" section, and any posts they have
+created. -->
+
 	<table>
 		<tr valign='top'>
 			<td><img src='{{ user.avatar(128) }}'></td>
+
+			<!-- The user variable in the user viewfunction of the 
+		routes.py file corresponds to and allows us to access the User 
+		model field data for the specific logged-in user. -->
+
 			<td>
 				<h1>User: {{ user.username }}</h1>
 				{% if user.about_me %}
@@ -24,8 +35,14 @@
 	</table>
 	<hr>
 	{% for post in posts %}
-		{% include '_post.html' %}
+
+	<!-- We are referencing the "posts" dictionary located within
+the user viewfunction of the routes.py file. -->
+
+		{% include '_post.html' %} <!-- Excutes _post.html code-->
+
 	{% endfor %}
+
 {% endblock %}
 
 
