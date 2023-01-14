@@ -8,7 +8,9 @@ may have written in the "about me" section, and any posts they have
 created. -->
 
 	<table>
+
 		<tr valign='top'>
+
 			<td><img src='{{ user.avatar(128) }}'></td>
 
 			<!-- The user variable in the user viewfunction of the 
@@ -16,28 +18,40 @@ created. -->
 		model field data for the specific logged-in user. -->
 
 			<td>
+
 				<h1>User: {{ user.username }}</h1>
+
 				{% if user.about_me %}
 					<p>{{ user.about_me }}</p>
 				{% endif %}
+
 				{% if user.last_seen %}
 					<p>Last seen on: {{ user.last_seen }}</p>
 				{% endif %}
+
 				{% if user == current_user %}
+
+				<!-- If the user variable and current_variable coincide
+			-->
+
 					<p>
 						<a href='{{ url_for("edit_profile") }}'>
 							Edit your profile
 						</a>
 					</p>
 				{% endif %}
+
 			</td>
+
 		</tr>
+
 	</table>
-	<hr>
+
+	<hr> <!-- Horizontal Rule -->
 	{% for post in posts %}
 
-	<!-- We are referencing the "posts" dictionary located within
-the user viewfunction of the routes.py file. -->
+	<!-- We are referencing the "posts" list of dictionaries located 
+within the user viewfunction of the routes.py file. -->
 
 		{% include '_post.html' %} <!-- Excutes _post.html code-->
 

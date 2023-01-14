@@ -1,75 +1,135 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} <!-- This line loads the base.html code -->
 
 {% block content %}
+
+<!-- This is the homepage of the application -->
+
 	<h1>Welcome, {{ current_user.username }}</h1>
+
 	{% for post in posts %}
+
+	<!-- This for statement references the "posts" list of dictionaries 
+present within the index viewfunction of the routes.py file. -->
+
 	<div>
 		<p>{{ post.author.username }} says: <b>{{ post.body }}</b></p>
+
+		<!-- Using the User model attribute, "author," the 
+			post.author.username variable points a post back to the 
+			username field of the User model for the user who wrote 
+			the post. This username field is accessed via the user
+			variable in the user function within the routes.py 
+			file. The user variable serves as a value for the "author" 
+			key for members of the "posts" list of dictionaries 
+			located within the user function of the routes.py file. 
+			The post.body variable within this template displays each 
+			"body" key's value in the respective (key, value) ordered 
+			pair of the "posts" list of dictionaries within the user 
+			function of the routes.py file. -->
+
 	</div>
 	{% endfor %}
+
 	<h3>Choose which object you wish to work with</h3>
+
 	<div> 
+
 		<h2>Series of Numbers</h2>
+
 		<a href='{{ url_for("geometric_series") }}'>
 			Geometric Series
 		</a>
+
 	</div>
+
 	<br>
+
 	<div> 
+
 		<h2>Transforms</h2>
+
 		<h4>Polynomials</h4>
+
 		<a href='{{ url_for("polynomial_degree_1_transform") }}'>
 			Polynomial Degree 1
-		</a><br>
+		</a>
+
+		<br>
+
 		<a href='{{ url_for("polynomial_degree_2_transform") }}'>
 			Polynomial Degree 2
-		</a><br>
+		</a>
+
+		<br>
+
 		<a href='{{ url_for("polynomial_degree_3_transform") }}'>
 			Polynomial Degree 3
-		</a><br>
+		</a>
+
+		<br>
+
 		<h4>Absolute Value</h4>
+
 		<a href='{{ url_for("absolute_value_transform" )}}'>
 			Absolute Value
 		</a>
+
 		<h4>Reciprocals</h4>
+
 		<a href='{{ 
 			url_for("reciprocal_degree_0_by_degree_1_transform") 
 			}}'>
 			Reciprocal Degree 0 by Degree 1
 		</a>
+
 		<h4>Radicals</h4>
+
 		<a href='{{ 
 			url_for("square_root_transform") 
 			}}'>
 			Square Root
-		</a><br>
+		</a>
+
+		<br>
+
 		<a href='{{ 
 			url_for("cube_root_transform") 
 			}}'>
 			Cube Root
 		</a>
+
 		<h4>Exponentials</h4>
+
 		<a href='{{ 
 			url_for("general_exponential_transform") 
 			}}'>
 			General Exponential
-		</a><br>
+		</a>
+
+		<br>
+
 		<a href='{{ 
 			url_for("base_e_exponential_transform") 
 			}}'>
 			Base e Exponential
 		</a>
+
 		<h4>Logarithmics</h4>
+
 		<a href='{{ 
 			url_for("general_logarithmic_transform") 
 			}}'>
 			General Logarithmic
-		</a><br>
+		</a>
+
+		<br>
+
 		<a href='{{ 
 			url_for("base_e_logarithmic_transform") 
 			}}'>
 			Base e Logarithmic
 		</a>
+
 	</div>
 {% endblock %}
 
