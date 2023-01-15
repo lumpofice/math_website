@@ -16,5 +16,6 @@ login = LoginManager(app)
 login.login_view = 'login'
 
 
-'''importing objects, methods, and scripts from the application'''
-from app import routes, models
+'''After the application instance is created:
+importing objects, methods, and scripts from the application'''
+from app import routes, models, errors
