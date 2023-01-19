@@ -66,3 +66,25 @@ sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed
 [SQL: UPDATE user SET username=?, about_me=? WHERE user.id = ?]
 [parameters: ('elise', 'I am the teacher this term.', 2)]
 (Background on this error at: https://sqlalche.me/e/14/gkpj)
+2023-01-19 07:14:53,780 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]
+2023-01-19 07:16:25,183 ERROR: Exception on /edit_profile [GET] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
+Traceback (most recent call last):
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/home/pi/Desktop/math_website/app/routes.py", line 245, in edit_profile
+    form = EditProfileForm(current_user.username)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/wtforms/form.py", line 208, in __call__
+    return type.__call__(cls, *args, **kwargs)
+  File "/home/pi/Desktop/math_website/app/forms.py", line 63, in __init__
+    super(EditProfile, self).__init__(*args, **kwargs)
+NameError: name 'EditProfile' is not defined
+2023-01-19 07:17:55,281 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]
+2023-01-19 07:25:39,222 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]
