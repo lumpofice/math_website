@@ -22,6 +22,8 @@ within the master directory of the application, stored in the "basedir"
 variable. None of "MAIL_SERVER", "MAIL_PORT", "MAIL_USE_TLS", "MAIL_USERNAME",
 nor "MAIL_PASSWORD" exist as keys in dict(os.environ).
 
+As of 01/21/23, we have error messages sent to a terminal on the local machine.
+
 Finally, Flask-SQLAlchemy comes with an event notification system that uses
 more resources when not explicitly set to "False". Given that we do not need
 this event notification system, we have set this variable to "False".'''
