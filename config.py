@@ -20,7 +20,10 @@ Also, there is no "DATABASE_URL":<"DATABASE_URL" value> key:value ordered pair
 within dict(os.environ). Thus, we have a configured database, "app.db", located
 within the master directory of the application, stored in the "basedir"
 variable. None of "MAIL_SERVER", "MAIL_PORT", "MAIL_USE_TLS", "MAIL_USERNAME",
-nor "MAIL_PASSWORD" exist as keys in dict(os.environ).
+nor "MAIL_PASSWORD" exist as keys in dict(os.environ). The "MAIL_USE_TLS"
+variable, on wich we stipulate a value other than None, encrypts data that we
+transmit from the app to the destination with which we wish the app to make a
+connection.
 
 As of 01/21/23, we have error messages sent to a terminal on the local machine.
 
