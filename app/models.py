@@ -31,7 +31,11 @@ relationship is between this class (from which we refer to the one) and the
 Post class (to which we refer to the many). The name of the class through which
 we refer to the many is passed to relationship(), and the backref parameter
 to the relationship method serves as a User model attribute, allowing us to
-access the author of the post.'''
+access the author of the post.
+
+In the followed table, the "c" in ".c." is an attribute of SQLAlchemy tables
+not defined as models. There are sub-attributes of this "c" attribute, and it
+is to these sub-attributes that the table columns are exposed.'''
     
     
     id = db.Column(db.Integer, primary_key=True)
@@ -91,6 +95,20 @@ access the author of the post.'''
         return 'https://www.gravatar.com/avatar/{}?d=identicon&s={}'.format(
             digest, size)
     
+    
+    def follow(self, user):
+        if not self.is_following(user):
+            self.followed.append(user)
+            
+            
+    def unfollow(self, user):
+        if self.is_following(user):
+            self.followed.remove(user)
+            
+            
+    def is_following(self, user):
+        return self.followed.filter(
+            followers.c.followed_id == user.id).count() > 0
     
 class Post(db.Model):
     '''This class stores id, body, timestamp, and foreign key user_id
