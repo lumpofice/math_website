@@ -35,7 +35,13 @@ access the author of the post.
 
 In the followed table, the "c" in ".c." is an attribute of SQLAlchemy tables
 not defined as models. There are sub-attributes of this "c" attribute, and it
-is to these sub-attributes that the table columns are exposed.'''
+is to these sub-attributes that the table columns are exposed. As this is a
+many-to-many relationship we are setting up, the association (or helper) table
+will be the value for the "secondary" parameter in the argument of the
+db.relationship call of the followed table. The follower_id column of the
+association table (followers) stores the "id" of the user from the User model,
+same as the User model "id" stored in the followed_id column of this
+association table.'''
     
     
     id = db.Column(db.Integer, primary_key=True)
