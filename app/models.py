@@ -33,15 +33,19 @@ we refer to the many is passed to relationship(), and the backref parameter
 to the relationship method serves as a User model attribute, allowing us to
 access the author of the post.
 
-In the followed table, the "c" in ".c." is an attribute of SQLAlchemy tables
-not defined as models. There are sub-attributes of this "c" attribute, and it
-is to these sub-attributes that the table columns are exposed. As this is a
-many-to-many relationship we are setting up, the association (or helper) table
-will be the value for the "secondary" parameter in the argument of the
-db.relationship call of the followed table. The follower_id column of the
+The follower_id column of the
 association table (followers) stores the "id" of the user from the User model,
 same as the User model "id" stored in the followed_id column of this
-association table.'''
+association table.
+
+As this is a
+many-to-many relationship we are setting up, the association (or helper) table
+will be the value for the "secondary" parameter in the argument of the
+db.relationship call of the followed table.
+In the followed table, the "c" in ".c." is an attribute of SQLAlchemy tables
+not defined as models. There are sub-attributes of this "c" attribute, and it
+is to these sub-attributes that the table columns are exposed. 
+'''
     
     
     id = db.Column(db.Integer, primary_key=True)
@@ -100,6 +104,21 @@ association table.'''
         digest = md5(self.email.lower().encode('utf-8')).hexdigest()
         return 'https://www.gravatar.com/avatar/{}?d=identicon&s={}'.format(
             digest, size)
+    
+    
+    '''The is_following function queries the database to check if the self user,
+contained in the "self" variable, is following the user contained in the "user"
+variable.
+The self user on the left-hand side follows the value of the
+"user" variable---the user whom our self user wishes to follow---in the append,
+remove, and is_following method arguments on the right-hand side, as in the
+following example:
+
+user1.followed.append(user2)
+
+where user1 is the self user and user2 is the value of the "user" variable
+serving as the append argument.
+'''
     
     
     def follow(self, user):
