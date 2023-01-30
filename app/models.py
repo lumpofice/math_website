@@ -44,7 +44,13 @@ will be the value for the "secondary" parameter in the argument of the
 db.relationship call of the followed table.
 In the followed table, the "c" in ".c." is an attribute of SQLAlchemy tables
 not defined as models. There are sub-attributes of this "c" attribute, and it
-is to these sub-attributes that the table columns are exposed. 
+is to these sub-attributes that the table columns are exposed.
+The "dynamic" value for the lazy parameter in the db.backref call executes
+the right-hand side of this connection (followers), while the "dynamic" value
+for the lazy parameter of the db.relationship call executes the left-hand side
+of this connection (followed). Both of these "dynamic" values on their
+respective lazy parameters ensures the respective queries are not run until
+requested.
 '''
     
     
