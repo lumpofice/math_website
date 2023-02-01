@@ -41,7 +41,10 @@ association table.
 As this is a
 many-to-many relationship we are setting up, the association (or helper) table
 will be the value for the "secondary" parameter in the argument of the
-db.relationship call of the followed table.
+db.relationship call of the followed table. This association table is
+populated with the relationships between user id field values as users follow
+and are being followed.
+
 In the followed table, the "c" in ".c." is an attribute of SQLAlchemy tables
 not defined as models. There are sub-attributes of this "c" attribute, and it
 is to these sub-attributes that the table columns are exposed.
@@ -140,6 +143,13 @@ serving as the append argument.
     def is_following(self, user):
         return self.followed.filter(
             followers.c.followed_id == user.id).count() > 0
+    
+    
+    def followed_posts(self):
+        return Post.query.join(
+            followers, (followers.c.followed_id == Post.user_id)).filter(
+                followers.c.follower_id == self.id).order_by(
+                    Post.timestamp.desc())
     
 class Post(db.Model):
     '''This class stores id, body, timestamp, and foreign key user_id
