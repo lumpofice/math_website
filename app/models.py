@@ -115,10 +115,7 @@ requested.
             digest, size)
     
     
-    '''The is_following function queries the database to check if the self user,
-contained in the "self" variable, is following the user contained in the "user"
-variable.
-The self user on the left-hand side follows the value of the
+    '''The self user on the left-hand side follows the value of the
 "user" variable---the user whom our self user wishes to follow---in the append,
 remove, and is_following method arguments on the right-hand side, as in the
 following example:
@@ -141,11 +138,19 @@ serving as the append argument.
             
             
     def is_following(self, user):
+    '''The is_following function queries the database to check if the self user,
+contained in the "self" variable, is following the user contained in the "user"
+variable.'''
         return self.followed.filter(
             followers.c.followed_id == user.id).count() > 0
     
     
     def followed_posts(self):
+        '''We join the "user_id" variable of the Post model to the (matching)
+"followed_id" of the followers table. Then we filter those "followed_id"
+values to those corresponding with the self user's id (follower_id). Finally,
+we take those filtered-and-joined id values and order them by the "timestamp"
+value they hold in the Post model.'''
         return Post.query.join(
             followers, (followers.c.followed_id == Post.user_id)).filter(
                 followers.c.follower_id == self.id).order_by(
