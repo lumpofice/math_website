@@ -138,9 +138,11 @@ serving as the append argument.
             
             
     def is_following(self, user):
-    '''The is_following function queries the database to check if the self user,
+        '''The is_following function queries the database to check if the self user,
 contained in the "self" variable, is following the user contained in the "user"
 variable.'''
+    
+    
         return self.followed.filter(
             followers.c.followed_id == user.id).count() > 0
     
@@ -151,10 +153,14 @@ variable.'''
 values to those corresponding with the self user's id (follower_id). Finally,
 we take those filtered-and-joined id values and order them by the "timestamp"
 value they hold in the Post model.'''
-        return Post.query.join(
+        
+        
+        followed = Post.query.join(
             followers, (followers.c.followed_id == Post.user_id)).filter(
-                followers.c.follower_id == self.id).order_by(
-                    Post.timestamp.desc())
+                followers.c.follower_id == self.id)
+        own = Post.query.filter_by(user_id=self.id)
+        return followed.union(own).order_by(Post.timestamp.desc())
+    
     
 class Post(db.Model):
     '''This class stores id, body, timestamp, and foreign key user_id
