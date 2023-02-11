@@ -24,6 +24,12 @@ session in the variable "current_user", the value of which is the "id".'''
     return User.query.get(int(id))
 
 
+followers = db.Table('followers',
+        db.Column('follower_id', db.Integer, db.ForeignKey('user.id')),
+        db.Column('followed_id', db.Integer, db.ForeignKey('user.id'))
+        )
+
+
 class User(UserMixin, db.Model):
     '''This class stores the id, username, email, and password hash fields,
 as well as any posts corresponding to a registered user. The one-to-many
@@ -65,10 +71,6 @@ requested.
     about_me = db.Column(db.String(140))
     last_seen = db.Column(db.DateTime, default=datetime.utcnow)
     
-    followers = db.Table('followers',
-        db.Column('follower_id', db.Integer, db.ForeignKey('user.id')),
-        db.Column('followed_id', db.Integer, db.ForeignKey('user.id'))
-        )
     
     followed = db.relationship(
         'User', secondary=followers,
@@ -139,8 +141,8 @@ serving as the append argument.
             
     def is_following(self, user):
         '''The is_following function queries the database to check if the self user,
-contained in the "self" variable, is following the user contained in the "user"
-variable.'''
+    contained in the "self" variable, is following the user contained in the "user"
+    variable.'''
     
     
         return self.followed.filter(
@@ -149,10 +151,10 @@ variable.'''
     
     def followed_posts(self):
         '''We join the "user_id" variable of the Post model to the (matching)
-"followed_id" of the followers table. Then we filter those "followed_id"
-values to those corresponding with the self user's id (follower_id). Finally,
-we take those filtered-and-joined id values and order them by the "timestamp"
-value they hold in the Post model.'''
+    "followed_id" of the followers table. Then we filter those "followed_id"
+    values to those corresponding with the self user's id (follower_id). Finally,
+    we take those filtered-and-joined id values and order them by the "timestamp"
+    value they hold in the Post model.'''
         
         
         followed = Post.query.join(
