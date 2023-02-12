@@ -103,3 +103,4 @@ NameError: name 'EditProfile' is not defined
 2023-02-05 15:50:39,130 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]
 2023-02-06 15:09:39,347 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]
 2023-02-11 14:21:03,659 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]
+2023-02-12 11:10:37,135 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]
