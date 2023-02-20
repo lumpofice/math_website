@@ -73,6 +73,10 @@ class EditProfileForm(FlaskForm):
             if user is not None:
                 raise ValidationError('Please use a different username.')
 
+class EmptyForm(FlaskForm):
+    submit = SubmitField('submit')
+    
+    
     
 class GeometricSeriesForm(FlaskForm):
     '''The form users encounter when they venture to see a graph of the
