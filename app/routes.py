@@ -229,6 +229,10 @@ render on the webpage.'''
     
     
     form = EmptyForm()
+    '''Hitting the sumbit button for this EmptyForm form will signal this
+viewfunction to render the form in POST, which will process the information
+according to the "follow" viewfunction being accessed by the
+"user.html" template.'''
     
     
     return render_template('user.html', user=user, posts=posts, form=form)
@@ -268,6 +272,11 @@ evaluating True in this scenario.)'''
 @app.route('/follow/<username>', methods=['POST'])
 @login_required
 def follow(username):
+    '''We call the EmptyForm by pressing the submit button, which reads as
+"Follow" when the user-to-user relationship warrants such a readout. If the
+validation fails, it is because the CSRF token is invalid.'''
+    
+    
     form = EmptyForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=username).first()
@@ -288,6 +297,11 @@ def follow(username):
 @app.route('/unfollow/<username>', methods=['POST'])
 @login_required
 def unfollow(username):
+    '''We call the EmptyForm by pressing the submit button, which reads as
+"Unfollow" when the user-to-user relationship warrants such a readout. If the
+validation fails, it is because the CSRF token is invalid.'''
+    
+    
     form = EmptyForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=username).first()
