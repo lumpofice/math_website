@@ -5,29 +5,38 @@
 <!-- This is the homepage of the application -->
 
 	<h1>Welcome, {{ current_user.username }}</h1>
+	<form action='' method='post'>
+		{{ form.hidden_tag() }}
+		<p>
+			{{ form.post.label }}<br>
+			{{ form.post(cols=32, rows=4) }}<br>
+			{% for error in form.post.errors %}
+			<span style='color: red;'>[{{ error }}]</span>
+			{% endfor %}
+		</p>
+		<p>{{ form.submit() }}</p>
+	</form>
 
 	{% for post in posts %}
+		<!-- This for statement references the "posts" list of 
+	dictionaries present within the index viewfunction of the routes.py 
+	file. -->
 
-	<!-- This for statement references the "posts" list of dictionaries 
-present within the index viewfunction of the routes.py file. -->
-
-	<div>
 		<p>{{ post.author.username }} says: <b>{{ post.body }}</b></p>
+			<!-- Using the User model attribute, "author," the 
+		post.author.username variable points a post back to the 
+		username field of the User model for the user who wrote 
+		the post. This username field is accessed via the user
+		variable in the user function within the routes.py 
+		file. The user variable serves as a value for the 
+		"author" key for members of the "posts" list of 
+		dictionaries located within the user function of the 
+		routes.py file. The post.body variable within this 
+		template displays each "body" key's value in the 
+		respective (key, value) ordered pair of the "posts" 
+		list of dictionaries within the user function of the 
+		routes.py file. -->
 
-		<!-- Using the User model attribute, "author," the 
-			post.author.username variable points a post back to the 
-			username field of the User model for the user who wrote 
-			the post. This username field is accessed via the user
-			variable in the user function within the routes.py 
-			file. The user variable serves as a value for the "author" 
-			key for members of the "posts" list of dictionaries 
-			located within the user function of the routes.py file. 
-			The post.body variable within this template displays each 
-			"body" key's value in the respective (key, value) ordered 
-			pair of the "posts" list of dictionaries within the user 
-			function of the routes.py file. -->
-
-	</div>
 	{% endfor %}
 
 	<h3>Choose which object you wish to work with</h3>

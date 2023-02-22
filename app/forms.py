@@ -73,6 +73,7 @@ class EditProfileForm(FlaskForm):
             if user is not None:
                 raise ValidationError('Please use a different username.')
 
+
 class EmptyForm(FlaskForm):
     '''This is the button that will appear accordingly as "Follow" and
 "Unfollow" as current_user browses the profile pages of other users'''
@@ -80,7 +81,12 @@ class EmptyForm(FlaskForm):
     
     submit = SubmitField('submit')
     
-    
+
+class PostForm(FlaskForm):
+    post = TextAreaField('Say it!', validators=[
+        DataRequired(), Length(min=1, max=140)])
+    submit = SubmitField('Submit')
+
     
 class GeometricSeriesForm(FlaskForm):
     '''The form users encounter when they venture to see a graph of the

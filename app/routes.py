@@ -138,7 +138,13 @@ a link in the header allowing them to "logout" of the site.'''
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     '''First-time visitors to this page may register by submitting a pair of
-email and password credentials to the login page of the site.'''
+email and password credentials to the login page of the site.
+
+Upon initially opening this page, given that there is yet no input,
+the browser's GET method will process the empty form, yielding a value of
+False for the "if form.validate_on_submit()" line, bringing the function
+to the return statement below, which populates the page anew for the user
+to provide input.'''
     
     
     if current_user.is_authenticated:
@@ -173,19 +179,12 @@ email and password credentials to the login page of the site.'''
         return redirect(url_for('login'))
     
     
-    '''Upon initially opening this page, given that there is yet no input,
-the browser's GET method will process the empty form, yielding a value of
-False for the "if form.validate_on_submit()" line, bringing the function
-to the return statement below, which populates the page anew for the user
-to provide input.'''
-    
-    
     return render_template('register.html', title='MassiveDiscipline',\
         form=form)
 
 
-@app.route('/')
-@app.route('/index')
+@app.route('/', methods=['GET', 'POST'])
+@app.route('/index', methods=['GET', 'POST'])
 @login_required
 def index():
     '''This is the homepage of the site. The @login_required decorator from
@@ -193,15 +192,20 @@ Flask-Login sets accessibility restrictions to only those users who are logged
 in. Currently, posts are displayed on this page.'''
     
     
-    posts = [
-        {
-            'author': {'username': 'suzanne'},
-            'body': 'Beautiful!'
-        }
-    ]
+    form = PostForm()
+    if form.validate_on_submit():
+        post = Post(body=form.post.data, author=current_user)
+        db.session.add(post)
+        db.session.commit()
+        flash('Your post is now live!')
+        return redirect(url_for('index'))
     
     
-    return render_template('index.html', title='MassiveDiscipline', posts=posts)
+    posts = current_user.followed_posts().all()
+    
+    
+    return render_template('index.html', title='MassiveDiscipline',
+        form = form, posts=posts)
 
 
 @app.route('/user/<username>')
@@ -274,7 +278,10 @@ evaluating True in this scenario.)'''
 def follow(username):
     '''We call the EmptyForm by pressing the submit button, which reads as
 "Follow" when the user-to-user relationship warrants such a readout. If the
-validation fails, it is because the CSRF token is invalid.'''
+validation fails, it is because the CSRF token is invalid.
+
+The "user" variable here corresponds to the user whom the "current_user" wishes
+to follow.'''
     
     
     form = EmptyForm()
@@ -299,7 +306,10 @@ validation fails, it is because the CSRF token is invalid.'''
 def unfollow(username):
     '''We call the EmptyForm by pressing the submit button, which reads as
 "Unfollow" when the user-to-user relationship warrants such a readout. If the
-validation fails, it is because the CSRF token is invalid.'''
+validation fails, it is because the CSRF token is invalid.
+
+The "user" variable here corresponds to the user whom the "current_user" wishes
+to unfollow.'''
     
     
     form = EmptyForm()
