@@ -13,7 +13,7 @@ our dict(os.envirion) dictionary'''
     
     def setUp(self):
         '''We create an app_context attribute to allow us to access our
-    current_app proxy'''
+    current_app proxy. The db.create_all() call creates all of our tables.'''
         
         
         self.app_context = app.app_context()
@@ -52,6 +52,10 @@ our dict(os.envirion) dictionary'''
         
         
     def test_follow(self):
+        '''The first two assertEqual() calls will confirm that u1 is neither
+    following ("followed") nor is being followed ("followers") by anyone.'''
+        
+        
         u1 = User(username='john', email='john@example.com')
         u2 = User(username='susan', email='susan@example.com')
         db.session.add(u1)
@@ -78,6 +82,14 @@ our dict(os.envirion) dictionary'''
         
         
     def test_follow_posts(self):
+        '''Here, we set up 4 users. For each user, we create a post. We add
+    all users and posts to the database. We set up a user-to-user follow
+    relationship, then we grab all of the posts from the users, followed by a
+    specific user, and the user have posted. We assert that what our test
+    database contains is precisely the user-to-user follow relationship we have
+    constructed, testing the list of followed posts for each user.'''
+        
+        
         u1 = User(username='john', email='john@example.com')
         u2 = User(username='susan', email='susan@example.com')
         u3 = User(username='mary', email='mary@example.com')
