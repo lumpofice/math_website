@@ -63,6 +63,8 @@ class EditProfileForm(FlaskForm):
         '''The original_username variable here corresponds to the
     current_user.username argument passed to the EditProfileForm in the
     routes.py file.'''
+        
+        
         super(EditProfileForm, self).__init__(*args, **kwargs)
         self.original_username = original_username
         
@@ -83,6 +85,10 @@ class EmptyForm(FlaskForm):
     
 
 class PostForm(FlaskForm):
+    '''With this form, we can post from our destination of choice, which will
+be the index page.'''
+    
+    
     post = TextAreaField('Say it!', validators=[
         DataRequired(), Length(min=1, max=140)])
     submit = SubmitField('Submit')

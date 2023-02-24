@@ -189,7 +189,7 @@ to provide input.'''
 def index():
     '''This is the homepage of the site. The @login_required decorator from
 Flask-Login sets accessibility restrictions to only those users who are logged
-in. Currently, posts are displayed on this page.'''
+in.'''
     
     
     form = PostForm()
@@ -327,6 +327,13 @@ to unfollow.'''
         return redirect(url_for('user', username=username))
     else:
         return redirect(url_for('index'))
+
+
+@app.route('/explore')
+@login_required
+def explore():
+    posts = Post.query.order_by(Post.timestamp.desc()).all()
+    return render_template('index.html', title='MassiveDiscipline', posts=posts)
 
 
 @app.route('/score')

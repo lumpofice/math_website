@@ -130,19 +130,27 @@ serving as the append argument.
     
     
     def follow(self, user):
+        '''The self parameter references the self user, while the "user"
+    variable references the user self user wishes to follow.'''
+        
+        
         if not self.is_following(user):
             self.followed.append(user)
             
             
     def unfollow(self, user):
+        '''The self parameter references the self user, while the "user"
+    variable references the user self user wishes to unfollow.'''
+        
+        
         if self.is_following(user):
             self.followed.remove(user)
             
             
     def is_following(self, user):
-        '''The is_following function queries the database to check if the self user,
-    contained in the "self" variable, is following the user contained in the "user"
-    variable.'''
+        '''The is_following function queries the database to check if the self
+    user, contained in the "self" parameter, is following the user contained
+    in the "user" variable.'''
     
     
         return self.followed.filter(

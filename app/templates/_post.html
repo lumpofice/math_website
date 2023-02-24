@@ -11,7 +11,10 @@
 		within this template that accomplishes this task for us. -->
 
 			<td>
-				{{ post.author.username }} says:<br>{{ post.body }}
+				<a href='{{ 
+					url_for("user", username=post.author.username) 
+					}}'>
+					{{ post.author.username }} says:<br>{{ post.body }}
 
 				<!-- Using the User model attribute, "author," the 
 			post.author.username variable points a post back to the 
@@ -25,7 +28,8 @@
 			"body" key's value in the respective (key, value) ordered 
 			pair of the "posts" list of dictionaries within the user 
 			function of the routes.py file. -->
-
+				
+				</a>
 			</td>
 		</tr>
 	</table>
