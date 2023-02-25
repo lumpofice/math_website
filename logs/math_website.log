@@ -3,3 +3,39 @@
 2023-02-24 14:55:53,968 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]
 2023-02-24 14:59:38,197 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]
 2023-02-24 15:00:57,724 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]
+2023-02-25 13:39:16,183 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]
+2023-02-25 14:22:31,877 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]
+2023-02-25 14:22:57,521 ERROR: Exception on / [GET] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
+Traceback (most recent call last):
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/home/pi/Desktop/math_website/app/routes.py", line 206, in index
+    page, app.config['POSTS_PER_PAGE'], False)
+TypeError: paginate() takes 1 positional argument but 4 were given
+2023-02-25 14:28:10,398 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]
+2023-02-25 14:30:10,294 ERROR: Exception on /user/jon [GET] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
+Traceback (most recent call last):
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/home/pi/Desktop/math_website/app/routes.py", line 238, in user
+    return render_template('user.html', user=user, posts=posts, form=form)
+NameError: name 'posts' is not defined
+2023-02-25 14:31:10,216 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]
+2023-02-25 14:33:20,225 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]
+2023-02-25 14:39:32,242 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]

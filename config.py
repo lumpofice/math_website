@@ -42,3 +42,4 @@ this event notification system, we have set this variable to "False".'''
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     ADMINS = ['jparker@sasphs.net']
+    POSTS_PER_PAGE = 3

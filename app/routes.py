@@ -201,11 +201,13 @@ in.'''
         return redirect(url_for('index'))
     
     
-    posts = current_user.followed_posts().all()
+    page = request.args.get('page', 1, type=int)
+    posts = current_user.followed_posts().paginate(
+        page=page, per_page=app.config['POSTS_PER_PAGE'], error_out=False)
     
     
     return render_template('index.html', title='MassiveDiscipline',
-        form = form, posts=posts)
+        form = form, posts=posts.items)
 
 
 @app.route('/user/<username>')
@@ -226,12 +228,6 @@ this to coordinate post entries through our _post.html file so that they may
 render on the webpage.'''
     
     
-    posts = [
-        {'author': user, 'body': 'Test post #1'},
-        {'author': user, 'body': 'Test post #2'}
-    ]
-    
-    
     form = EmptyForm()
     '''Hitting the sumbit button for this EmptyForm form will signal this
 viewfunction to render the form in POST, which will process the information
@@ -239,7 +235,7 @@ according to the "follow" viewfunction being accessed by the
 "user.html" template.'''
     
     
-    return render_template('user.html', user=user, posts=posts, form=form)
+    return render_template('user.html', user=user, form=form)
 
 
 @app.route('/edit_profile', methods=['GET', 'POST'])
@@ -332,8 +328,11 @@ to unfollow.'''
 @app.route('/explore')
 @login_required
 def explore():
-    posts = Post.query.order_by(Post.timestamp.desc()).all()
-    return render_template('index.html', title='MassiveDiscipline', posts=posts)
+    page = request.args.get('page', 1, type=int)
+    posts = Post.query.order_by(Post.timestamp.desc()).paginate(
+        page=page, per_page=app.config['POSTS_PER_PAGE'], error_out=False)
+    return render_template('index.html', title='MassiveDiscipline',
+        posts=posts.items)
 
 
 @app.route('/score')
