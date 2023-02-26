@@ -29,6 +29,14 @@
 		
 		{% include '_post.html' %}
 	{% endfor %}
+	
+	{% if prev_url %}
+	<a href='{{ prev_url }}'>Newer</a>
+	{% endif %}
+	
+	{% if next_url %}
+	<a href='{{ next_url }}'>Older</a>
+	{% endif %}
 
 	<h3>Choose which object you wish to work with</h3>
 

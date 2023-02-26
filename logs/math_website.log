@@ -39,3 +39,5 @@ NameError: name 'posts' is not defined
 2023-02-25 14:31:10,216 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]
 2023-02-25 14:33:20,225 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]
 2023-02-25 14:39:32,242 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]
+2023-02-26 08:35:29,444 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]
+2023-02-26 08:36:13,175 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]
