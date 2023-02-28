@@ -59,3 +59,4 @@ Traceback (most recent call last):
     page, app.config['POSTS_PER_PAGE'], False)
 TypeError: paginate() takes 1 positional argument but 4 were given
 2023-02-27 13:08:28,168 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]
+2023-02-28 08:48:24,248 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]
