@@ -60,3 +60,5 @@ Traceback (most recent call last):
 TypeError: paginate() takes 1 positional argument but 4 were given
 2023-02-27 13:08:28,168 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]
 2023-02-28 08:48:24,248 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]
+2023-03-02 08:22:02,888 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]
+2023-03-02 08:22:31,151 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]

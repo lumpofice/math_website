@@ -254,6 +254,21 @@ render on the webpage.'''
     
     
     page = request.args.get('page', 1, type=int)
+    '''This request.args.get() call takes in the parsed contents of a URL
+query string, which is the part of the URL after the question mark in the
+following formated URL
+    
+<scheme>://<netloc>/<path>;<params>?<query>#<fragment>
+    
+The parsed contents of the query string are keys in a Python dictionary. The
+value of this "page" key corresponds to the same object on which a limit of
+posts per view has been set in our config.py file under the "POSTS_PER_PAGE"
+key. We paginate with respect to posts from the self user,
+which correspond to the "posts" variable of our User model in the models.py
+file, starting from page 1, where the pages are ordered by descending
+timestamp.'''
+    
+    
     posts = user.posts.order_by(Post.timestamp.desc()).paginate(
         page=page, per_page=app.config['POSTS_PER_PAGE'], error_out=False)
     next_url = url_for('user', username=user.username, page=posts.next_num)\
@@ -375,6 +390,20 @@ out-of-range pages will be returned.'''
     
     
     page = request.args.get('page', 1, type=int)
+    '''This request.args.get() call takes in the parsed contents of a URL
+query string, which is the part of the URL after the question mark in the
+following formated URL
+    
+<scheme>://<netloc>/<path>;<params>?<query>#<fragment>
+    
+The parsed contents of the query string are keys in a Python dictionary. The
+value of this "page" key corresponds to the same object on which a limit of
+posts per view has been set in our config.py file under the "POSTS_PER_PAGE"
+key. We paginate with respect to all posts from the database,
+starting from page 1, where the pages are ordered by descending
+timestamp.'''
+    
+    
     posts = Post.query.order_by(Post.timestamp.desc()).paginate(
         page=page, per_page=app.config['POSTS_PER_PAGE'], error_out=False)
     next_url = url_for('explore', page=posts.next_num)\

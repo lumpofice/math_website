@@ -77,8 +77,8 @@ created. -->
 
 	<hr> <!-- Horizontal Rule -->
 	{% for post in posts %}
-		<!-- We are referencing the "posts" list of dictionaries located 
-	within the user viewfunction of the routes.py file. -->
+		<!-- This for statement references the post entries 
+	corresponding to the self user within the database. -->
 
 		{% include '_post.html' %} <!-- Executes _post.html code-->
 
