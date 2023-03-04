@@ -25,6 +25,28 @@ variable, on wich we stipulate a value other than None, encrypts data that we
 transmit from the app to the destination with which we wish the app to make a
 connection.
 
+As of 03/04/23, we have setup a mailtrap.io account that captures emails sent
+from the terminal. We can set up environment variables per terminal session
+and run code in that populated terminal to achieve this capture, with the
+following:
+
+
+export MAIL_SERVER=sandbox.smtp.mailtrap.io
+export MAIL_PORT=2525
+export MAIL_USERNAME=
+export MAIL_PASSWORD=
+export MAIL_USE_TLS=True
+export MAIL_USE_SSL=False
+. venv/bin/activate
+flask shell
+from flask_mail import Message
+from app import mail
+msg = Message('test subject', sender='jparker@sasphs.net',
+    recipients=['jparker@sasphs.net'])
+msg.body = 'does it work?'
+mail.send(msg)
+
+
 As of 01/21/23, we have error messages sent to a terminal on the local machine.
 
 Finally, Flask-SQLAlchemy comes with an event notification system that uses

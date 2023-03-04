@@ -64,3 +64,8 @@ TypeError: paginate() takes 1 positional argument but 4 were given
 2023-03-02 08:22:31,151 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]
 2023-03-03 13:28:39,666 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
 2023-03-03 13:28:59,564 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
+2023-03-04 16:16:47,071 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
+2023-03-04 16:20:35,690 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
+2023-03-04 17:35:54,518 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
+2023-03-04 17:59:07,243 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
+2023-03-04 18:00:53,937 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
