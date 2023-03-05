@@ -23,6 +23,7 @@ from app.general_logarithmic_transform import GeneralLogarithmicTransform
 from app.base_e_exponential_transform import BaseEExponentialTransform
 from app.base_e_logarithmic_transform import BaseELogarithmicTransform
 from app.models import User, Post
+from app.email import send_password_reset_email
 
 '''importing computational libraries'''
 import numpy as np
@@ -414,6 +415,21 @@ timestamp.'''
     
     return render_template('index.html', title='MassiveDiscipline',
         posts=posts.items, next_url=next_url, prev_url=prev_url)
+
+
+@app.route('/reset_password_request', methods=['GET', 'POST'])
+def reset_password_request():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    form = ResetPasswordRequestForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+        if user:
+            send_password_reset_email(user)
+        flash('An instructional email has been sent.')
+        return redirect(url_for('login'))
+    return render_template('reset_password_request.html',
+        title='Massive Discipline', form=form)
 
 
 @app.route('/score')
