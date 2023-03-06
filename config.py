@@ -9,7 +9,8 @@ environment, while the string value on the other side of the "or" statement is
 used in the absence of the "SECRET_KEY": <"SECRET_KEY" value> key:value ordered
 pair within the dictionary resulting from a call to os.environment.
 
-As of 01/20/23, there is no key:value pair set by the maintainer.
+As of 01/20/23, there is no key:value pair set by the maintainer for
+"SECRET_KEY".
 
 import os
 import pprint
