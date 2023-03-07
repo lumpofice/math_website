@@ -1,11 +1,6 @@
-2023-02-24 14:53:02,927 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]
-2023-02-24 14:55:44,164 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]
-2023-02-24 14:55:53,968 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]
-2023-02-24 14:59:38,197 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]
-2023-02-24 15:00:57,724 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]
-2023-02-25 13:39:16,183 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]
-2023-02-25 14:22:31,877 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]
-2023-02-25 14:22:57,521 ERROR: Exception on / [GET] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
+2023-03-07 07:55:47,806 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
+2023-03-07 08:02:00,907 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
+2023-03-07 08:02:29,418 ERROR: Exception on /reset_password/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNldF9wYXNzd29yZCI6MTEsImV4cCI6MTY3ODE5NDc0NC4wNDAyNzR9.p-pFTVvXb42obZpz7O09KEUqNlK7Qrv3qGSzp7J-Na0 [GET] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
 Traceback (most recent call last):
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2525, in wsgi_app
     response = self.full_dispatch_request()
@@ -15,78 +10,15 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1796, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_login/utils.py", line 290, in decorated_view
-    return current_app.ensure_sync(func)(*args, **kwargs)
-  File "/home/pi/Desktop/math_website/app/routes.py", line 206, in index
-    page, app.config['POSTS_PER_PAGE'], False)
-TypeError: paginate() takes 1 positional argument but 4 were given
-2023-02-25 14:28:10,398 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]
-2023-02-25 14:30:10,294 ERROR: Exception on /user/jon [GET] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
-Traceback (most recent call last):
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2525, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1822, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1820, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1796, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_login/utils.py", line 290, in decorated_view
-    return current_app.ensure_sync(func)(*args, **kwargs)
-  File "/home/pi/Desktop/math_website/app/routes.py", line 238, in user
-    return render_template('user.html', user=user, posts=posts, form=form)
-NameError: name 'posts' is not defined
-2023-02-25 14:31:10,216 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]
-2023-02-25 14:33:20,225 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]
-2023-02-25 14:39:32,242 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]
-2023-02-26 08:35:29,444 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]
-2023-02-26 08:36:13,175 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]
-2023-02-27 13:03:50,629 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]
-2023-02-27 13:04:42,120 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]
-2023-02-27 13:06:25,285 ERROR: Exception on /user/maryp [GET] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
-Traceback (most recent call last):
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2525, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1822, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1820, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1796, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_login/utils.py", line 290, in decorated_view
-    return current_app.ensure_sync(func)(*args, **kwargs)
-  File "/home/pi/Desktop/math_website/app/routes.py", line 237, in user
-    page, app.config['POSTS_PER_PAGE'], False)
-TypeError: paginate() takes 1 positional argument but 4 were given
-2023-02-27 13:08:28,168 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]
-2023-02-28 08:48:24,248 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]
-2023-03-02 08:22:02,888 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]
-2023-03-02 08:22:31,151 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:58]
-2023-03-03 13:28:39,666 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
-2023-03-03 13:28:59,564 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
-2023-03-04 16:16:47,071 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
-2023-03-04 16:20:35,690 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
-2023-03-04 17:35:54,518 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
-2023-03-04 17:59:07,243 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
-2023-03-04 18:00:53,937 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
-2023-03-05 08:16:04,602 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
-2023-03-05 08:16:24,854 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
-2023-03-05 08:16:42,391 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
-2023-03-05 08:17:15,595 ERROR: Exception on /reset_password_request [POST] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
-Traceback (most recent call last):
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2525, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1822, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1820, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1796, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-  File "/home/pi/Desktop/math_website/app/routes.py", line 428, in reset_password_request
-    send_password_reset_email(user)
-TypeError: send_password_reset_email() missing 4 required positional arguments: 'sender', 'recipients', 'text_body', and 'html_body'
-2023-03-06 15:38:56,745 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
-2023-03-06 15:39:25,338 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
-2023-03-06 15:43:11,877 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
-2023-03-06 16:05:22,391 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
-2023-03-06 16:05:37,098 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
+  File "/home/pi/Desktop/math_website/app/routes.py", line 441, in reset_password
+    return redirect(url_for('reset_password'))
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/helpers.py", line 262, in url_for
+    **values,
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2031, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2025, in url_for
+    force_external=_external,
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/werkzeug/routing/map.py", line 917, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'reset_password'. Did you forget to specify values ['token']?
+2023-03-07 08:13:39,516 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
