@@ -22,3 +22,30 @@ Traceback (most recent call last):
     raise BuildError(endpoint, values, method, self)
 werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'reset_password'. Did you forget to specify values ['token']?
 2023-03-07 08:13:39,516 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
+2023-03-08 15:07:53,515 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
+2023-03-08 15:12:22,278 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
+2023-03-08 15:19:12,103 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
+2023-03-08 15:19:30,442 ERROR: Exception on /reset_password/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNldF9wYXNzd29yZCI6MTEsImV4cCI6MTY3ODMwNzM2MC4yNTI5NDk1fQ.HIgXLHuiVv01GfNSHpQkFv-ZHnsuSIwHlcTZjXklJTA [GET] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
+Traceback (most recent call last):
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/pi/Desktop/math_website/app/routes.py", line 441, in reset_password
+    return redirect(url_for('reset_password'))
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/helpers.py", line 262, in url_for
+    **values,
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2031, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2025, in url_for
+    force_external=_external,
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/werkzeug/routing/map.py", line 917, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'reset_password'. Did you forget to specify values ['token']?
+2023-03-08 15:21:44,235 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
+2023-03-08 15:44:13,440 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
+2023-03-08 16:01:34,595 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
