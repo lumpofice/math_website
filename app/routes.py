@@ -419,15 +419,34 @@ timestamp.'''
 
 @app.route('/reset_password_request', methods=['GET', 'POST'])
 def reset_password_request():
+    '''This function sends out the email used to prompt the user towards a
+password reset.'''
+    
+    
     if current_user.is_authenticated:
         return redirect(url_for('index'))
+    
+    
     form = ResetPasswordRequestForm()
+    
+    
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
+        
+        
         if user:
+            '''Once the form is validated, we use the send_password_reset_email
+        method, bearing the user's email as an argument, from the email.py file
+        to generate a token and send it to the user via email.'''
+            
+            
             send_password_reset_email(user)
+            
+            
         flash('An instructional email has been sent.')
         return redirect(url_for('login'))
+    
+    
     return render_template('reset_password_request.html',
         title='Massive Discipline', form=form)
 

@@ -48,6 +48,18 @@ msg.body = 'does it work?'
 mail.send(msg)
 
 
+As of 03/08/23, we have full use of the password reset feature that uses email
+to prompt users towards accomplishing a password reset successfully. We are
+using the gmail server for this, with the following environment variables:
+
+
+export MAIL_SERVER=smtp.googlemail.com
+export MAIL_PORT=587
+export MAIL_USERNAME=
+export MAIL_PASSWORD=
+export MAIL_USE_TLS=1
+
+
 As of 01/21/23, we have error messages sent to a terminal on the local machine.
 
 Finally, Flask-SQLAlchemy comes with an event notification system that uses
@@ -55,7 +67,7 @@ more resources when not explicitly set to "False". Given that we do not need
 this event notification system, we have set this variable to "False".'''
     
     
-    SECRET_KEY = os.environ.get('SECRET_KEY') or 'Eyop7n*n._;>"&6L'
+    SECRET_KEY = os.environ.get('SECRET_KEY') or 'tryguessing'
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
         'sqlite:///' + os.path.join(basedir, 'app.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
