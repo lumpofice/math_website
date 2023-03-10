@@ -114,6 +114,11 @@ requested.
     
     
     def get_reset_password_token(self, expires_in=600):
+        '''This method uses the JSON Web Tokens module to generate a web token
+    to be embedded within the password reset link provided within the
+    password reset email sent at the request of the user.'''
+        
+        
         return jwt.encode(
             {'reset_password': self.id, 'exp': time() + expires_in},
             app.config['SECRET_KEY'], algorithm='HS256'
@@ -122,6 +127,14 @@ requested.
     
     @staticmethod
     def verify_reset_password_token(token):
+        '''This method attempts to decode the JSON Web Token, before passing
+    the result/value of that attempt to the User object,
+    via the User.verify_reset_password_token function call within the
+    reset_password method of the routes.py file, with which the reset_password
+    method determines, via a Boolean value, whether to keep you in the
+    reset_password view or to redirect you to the index view.'''
+        
+        
         try:
             id = jwt.decode(token, app.config['SECRET_KEY'],
                 algorithms=['HS256'])['reset_password']

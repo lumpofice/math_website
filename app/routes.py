@@ -453,6 +453,13 @@ password reset.'''
 
 @app.route('/reset_password/<token>', methods=['GET', 'POST'])
 def reset_password(token):
+    '''Upon clicking the link within the password reset request email, we are
+redirected to the "reset_password" template, with the url_for call carrying
+the link-embedded token with us, assuming the
+"User.verify_reset_password_token(token)" value is True. If the value is
+instead False, then we are redirected to the "index" template.'''
+    
+    
     if current_user.is_authenticated:
         return redirect(url_for('index'))
     user = User.verify_reset_password_token(token)
