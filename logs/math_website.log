@@ -119,3 +119,5 @@ socket.gaierror: [Errno -2] Name or service not known
 2023-03-09 07:17:20,588 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
 2023-03-09 07:57:36,498 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
 2023-03-09 07:57:53,455 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
+2023-03-11 14:09:41,975 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
+2023-03-11 14:11:58,971 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
