@@ -1,1 +1,49 @@
 2023-03-12 09:44:35,921 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
+2023-03-13 17:42:38,270 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
+2023-03-13 17:42:56,715 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
+2023-03-13 17:48:18,334 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
+2023-03-13 17:48:29,051 ERROR: Exception on /login [GET] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
+Traceback (most recent call last):
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/pi/Desktop/math_website/app/routes.py", line 136, in login
+    return render_template('login.html', title='MassiveDiscipline', form=form)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/templating.py", line 147, in render_template
+    return _render(app, template, context)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/templating.py", line 130, in _render
+    rv = template.render(context)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/pi/Desktop/math_website/app/templates/login.html", line 1, in top-level template code
+    {% extends 'base.html' %} <!-- This line loads the base.html code -->
+  File "/home/pi/Desktop/math_website/app/templates/base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block 'doc'
+    {%- block html %}
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block 'html'
+    {% block body -%}
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 21, in block 'body'
+    {% block navbar %}
+  File "/home/pi/Desktop/math_website/app/templates/base.html", line 21, in block 'navbar'
+    <li><a href="{{ url_for('index') }}">{{ _('Home') }}</a></li>
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/utils.py", line 83, in from_obj
+    if hasattr(obj, "jinja_pass_arg"):
+jinja2.exceptions.UndefinedError: '_' is undefined
+2023-03-13 17:50:17,326 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
+2023-03-13 17:52:10,095 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
+2023-03-13 17:55:26,762 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
+2023-03-13 17:58:45,833 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
+2023-03-13 18:05:18,364 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
+2023-03-13 18:10:37,104 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
+2023-03-13 18:17:25,676 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
+2023-03-13 18:19:55,848 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
