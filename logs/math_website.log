@@ -1,8 +1,4 @@
-2023-03-12 09:44:35,921 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-13 17:42:38,270 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-13 17:42:56,715 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-13 17:48:18,334 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-13 17:48:29,051 ERROR: Exception on /login [GET] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
+2023-03-14 07:31:05,812 ERROR: Exception on /login [GET] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
 Traceback (most recent call last):
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2525, in wsgi_app
     response = self.full_dispatch_request()
@@ -22,8 +18,8 @@ Traceback (most recent call last):
     self.environment.handle_exception()
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 936, in handle_exception
     raise rewrite_traceback_stack(source=source)
-  File "/home/pi/Desktop/math_website/app/templates/login.html", line 1, in top-level template code
-    {% extends 'base.html' %} <!-- This line loads the base.html code -->
+  File "/home/pi/Desktop/math_website/app/templates/login.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
   File "/home/pi/Desktop/math_website/app/templates/base.html", line 1, in top-level template code
     {% extends 'bootstrap/base.html' %}
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
@@ -32,18 +28,22 @@ Traceback (most recent call last):
     {%- block html %}
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block 'html'
     {% block body -%}
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 21, in block 'body'
-    {% block navbar %}
-  File "/home/pi/Desktop/math_website/app/templates/base.html", line 21, in block 'navbar'
-    <li><a href="{{ url_for('index') }}">{{ _('Home') }}</a></li>
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/utils.py", line 83, in from_obj
-    if hasattr(obj, "jinja_pass_arg"):
-jinja2.exceptions.UndefinedError: '_' is undefined
-2023-03-13 17:50:17,326 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-13 17:52:10,095 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-13 17:55:26,762 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-13 17:58:45,833 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-13 18:05:18,364 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-13 18:10:37,104 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-13 18:17:25,676 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-13 18:19:55,848 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block 'body'
+    {% block content -%}
+  File "/home/pi/Desktop/math_website/app/templates/base.html", line 49, in block 'content'
+    {% block app_content %}{% endblock %}
+  File "/home/pi/Desktop/math_website/app/templates/login.html", line 12, in block 'app_content'
+    <p>{{ ('New User?') }} <a href="{{ url_for('auth.register') }}">{{ ('Click to Register!') }}</a></p>
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2031, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2025, in url_for
+    force_external=_external,
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/werkzeug/routing/map.py", line 917, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'auth.register'. Did you mean 'register' instead?
+2023-03-14 07:32:00,369 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
+2023-03-14 07:36:59,796 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
+2023-03-14 07:54:44,238 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
+2023-03-14 07:56:23,258 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
+2023-03-14 07:57:18,084 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
+2023-03-14 07:59:35,003 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]

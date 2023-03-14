@@ -1,82 +1,14 @@
 {% extends 'base.html' %} <!-- This line loads the base.html code-->
+{% import 'bootstrap/wtf.html' as wtf %}
 
 {% block app_content %}
 
 	<h1>Register</h1>
-
-	<!-- The action="" will resolve to the current webpage's 
-address. The method="post" attribute will send data entered into the 
-form to the server to be stored. This particular method is secure,
-storing no data into a browser URL, which does happen in the format
-of name/value pairs, with method="get" -->
-
-	<form action="" method="post">
-
-	<!-- Any hidden fields are rendered with the form.hidden_tag()
-	call. The CSRF token field, which takes the security key generated
-	by the server side using the secret key written
-	into the config.py file, is one such hidden field. -->
-
-		{{ form.hidden_tag() }}
-		<p>
-			{{ form.username.label }}
-			<br>
-			{{ form.username(size=32) }}
-			<br>
-			{% for error in form.username.errors %}
-
-			<!-- Here, the value of the error variable is the string
-		"This field is required." -->
-
-			<span style="color: red;">[{{ error }}]</span>
-			{% endfor %}
-		</p>
-
-		<p>
-			{{ form.email.label }}
-			<br>
-			{{ form.email(size=64) }}
-			<br>
-			{% for error in form.email.errors %}
-
-			<!-- Here, the value of the error variable is the string
-		"This field is required." -->
-
-			<span style="color: red;">[{{ error }}]</span>
-			{% endfor %}
-		</p>
-
-		<p>
-			{{ form.password.label }}
-			<br>
-			{{ form.password(size=32) }}
-			<br>
-			{% for error in form.password.errors %}
-
-			<!-- Here, the value of the error variable is the string
-		"This field is required." -->
-
-			<span style="color: red;">[{{ error }}]</span>
-			{% endfor %}
-		</p>
-
-		<p>
-			{{ form.password_again.label }}
-			<br>
-			{{ form.password_again(size=32) }}
-			<br>
-			{% for error in form.password_again.errors %}
-
-			<!-- Here, the value of the error variable is the string
-		"This field is required." -->
-
-			<span style="color: red;">[{{ error }}]</span>
-			{% endfor %}
-		</p>
-
-		<p>{{ form.submit() }}</p>
-
-	</form>
+	<div class='row'>
+		<div class='col-md-4'>
+			{{ wtf.quick_form(form) }}
+		</div>
+	</div>
 
 {% endblock %}
 
