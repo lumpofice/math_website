@@ -1,48 +1,35 @@
 {% extends 'base.html' %} <!-- This line loads the base.html code -->
 
+{% import 'bootstrap/wtf.html' as wtf %}
+
 {% block app_content %}
-
-<!-- This is the homepage of the application -->
-
-	<h1>Welcome, {{ current_user.username }}</h1>
-	{% if form %}
-	<form action='' method='post'>
-		<!-- In the event that the if form statement is True, we access 
-	the index page, in which we display our self user post form, so that
-	the self user can write what they wish. -->
-
-		{{ form.hidden_tag() }}
-		<p>
-			{{ form.post.label }}<br>
-			{{ form.post(cols=32, rows=4) }}<br>
-			{% for error in form.post.errors %}
-			<span style='color: red;'>[{{ error }}]</span>
-			{% endfor %}
-		</p>
-		<p>{{ form.submit() }}</p>
-	</form>
-	{% endif %}
-
-	{% for post in posts %}
-		<!-- This for statement references the post entries 
-	corresponding to the relevant users within the database. Users are
-	relevant according to the query conditions of the "posts" variable 
-	within the "index" and "explore" viewfunctions of the routes.py 
-	file. The conditions for the "index" posts limit the database query
-	to only those users the self user is following, while the "explore"
-	viewfunction extends the list of available posts to all users of
-	the app. -->
-		
-		{% include '_post.html' %}
-	{% endfor %}
-	
-	{% if prev_url %}
-	<a href='{{ prev_url }}'>Newer</a>
-	{% endif %}
-	
-	{% if next_url %}
-	<a href='{{ next_url }}'>Older</a>
-	{% endif %}
+    <h1>Welcome {{ current_user.username }}</h1>
+    {% if form %}
+    {{ wtf.quick_form(form) }}
+    <br>
+    {% endif %}
+    {% for post in posts %}
+        {% include '_post.html' %}
+    {% endfor %}
+    <nav aria-label='...'>
+        <ul class='pager'>
+            <li 
+				class=
+					'previous{% if not prev_url %} disabled{% endif %}'
+			>
+                <a href='{{ prev_url or "#" }}'>
+                    <span aria-hidden='true'>&larr;</span> 
+					{{ ('Newer posts') }}
+                </a>
+            </li>
+            <li class='next{% if not next_url %} disabled{% endif %}'>
+                <a href='{{ next_url or "#" }}'>
+                    {{ ('Older posts') }} 
+					<span aria-hidden='true'>&rarr;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
 
 	<h3>Choose which object you wish to work with</h3>
 
