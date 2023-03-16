@@ -1,24 +1,15 @@
 {% extends 'base.html' %} <!-- This line loads the base.html code -->
 
 {% block app_content %}
+    <table class="table table-hover">
+        <tr>
+            <td width="256px"><img src="{{ user.avatar(256) }}"></td>
+				<!-- The user variable in the user viewfunction of the 
+			routes.py file corresponds to and allows us to access the User 
+			model field data for the specific logged-in user. -->
 
-<!-- This is the user's profile page. It will display the user's
-username, when they were last seen within the app, anything they
-may have written in the "about me" section, and any posts they have
-created. -->
-
-	<table>
-
-		<tr valign='top'>
-
-			<td><img src='{{ user.avatar(128) }}'></td>
-			<!-- The user variable in the user viewfunction of the 
-		routes.py file corresponds to and allows us to access the User 
-		model field data for the specific logged-in user. -->
-
-			<td>
-
-				<h1>User: {{ user.username }}</h1>
+            <td>
+                <h1>User: {{ user.username }}</h1>
 
 				{% if user.about_me %}
 					<p>{{ user.about_me }}</p>
@@ -31,67 +22,58 @@ created. -->
 				<p>{{ user.followers.count() }} followers, 
 					{{ user.followed.count() }} following.
 				</p>
-
 				{% if user == current_user %}
 					<!-- If the user variable and current_user variable 
 				coincide -->
-
-					<p>
-						<a href='{{ url_for("edit_profile") }}'>
-							Edit your profile
-						</a>
-					</p>
-				{% elif not current_user.is_following(user) %}
+                <p><a href="{{ url_for('edit_profile') }}">{{ ('Edit your profile') }}</a></p>
+                {% elif not current_user.is_following(user) %}
 					<!-- If the current user is not following the
 				user profile being viewed by the current user. This 
 				form tag will be accessed by the "user" viewfunction 
 				before rendering, displaying the submit button as the 
 				"Follow" button. Once the submit button is pressed, the 
 				"follow" viewfunction will be accessed and called. -->
-					<p>
-						<form action='{{ 
-							url_for("follow", username=user.username) 
-							}}' method='post'>
-							{{ form.hidden_tag() }}
-							{{ form.submit(value='Follow') }}
-						</form>
-					</p>
-				{% else %}
+                <p>
+                    <form action="{{ url_for('follow', username=user.username) }}" method="post">
+                        {{ form.hidden_tag() }}
+                        {{ form.submit(value=('Follow'), class_='btn btn-default') }}
+                    </form>
+                </p>
+                {% else %}
 					<!-- If the user profile is being followed by the
 				current user -->
-					<p>
-						<form action='{{ 
-							url_for("unfollow", username=user.username)
-							}}' method='post'>
-							{{ form.hidden_tag() }}
-							{{ form.submit(value='Unfollow') }}
-						</form>
-					</p>
-				{% endif %}
-
-			</td>
-
-		</tr>
-
-	</table>
+                <p>
+                    <form action="{{ url_for('unfollow', username=user.username) }}" method="post">
+                        {{ form.hidden_tag() }}
+                        {{ form.submit(value=('Unfollow'), class_='btn btn-default') }}
+                    </form>
+                </p>
+                {% endif %}
+            </td>
+        </tr>
+    </table>
 
 	<hr> <!-- Horizontal Rule -->
-	{% for post in posts %}
+    {% for post in posts %}
 		<!-- This for statement references the post entries 
 	corresponding to the self user within the database. -->
 
-		{% include '_post.html' %} <!-- Executes _post.html code-->
-
-	{% endfor %}
-	
-	{% if prev_url %}
-	<a href='{{ prev_url }}'>Newer</a>
-	{% endif %}
-
-	{% if next_url %}
-	<a href='{{ next_url }}'>Older</a>
-	{% endif %}
-
+        {% include '_post.html' %}
+    {% endfor %}
+    <nav aria-label="...">
+        <ul class="pager">
+            <li class="previous{% if not prev_url %} disabled{% endif %}">
+                <a href="{{ prev_url or '#' }}">
+                    <span aria-hidden="true">&larr;</span> {{ ('Newer posts') }}
+                </a>
+            </li>
+            <li class="next{% if not next_url %} disabled{% endif %}">
+                <a href="{{ next_url or '#' }}">
+                    {{ ('Older posts') }} <span aria-hidden="true">&rarr;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
 {% endblock %}
 
 
