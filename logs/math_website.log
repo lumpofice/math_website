@@ -92,3 +92,6 @@ FROM user
 WHERE user.id = ?]
 [parameters: (11,)]
 (Background on this error at: https://sqlalche.me/e/14/e3q8)
+2023-03-17 11:31:23,555 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
+2023-03-17 11:35:46,395 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
+2023-03-17 11:37:16,789 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
