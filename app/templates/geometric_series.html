@@ -1,40 +1,12 @@
 {% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
 
 {% block app_content %}
 	<h1>Plot A Graph of the Geometric Series</h1>
-	<form action='' method='post' novalidate>
-		{{ form.hidden_tag() }}
-		<p>
-			{{ form.base.label }}<br>
-			{{ form.base(size=32) }}<br>
-			{% for error in form.base.errors %}
-			<span style='color: red;'>[{{ error }}]</span>
-			{% endfor %}
-		</p>
-		<p>
-			{{ form.scalar.label }}<br>
-			{{ form.scalar(size=32) }}<br>
-			{% for error in form.scalar.errors %}
-			<span style='color: red;'>[{{ error }}]</span>
-			{% endfor %}
-		</p>
-		<p>
-			{{ form.epsilon.label }}<br>
-			{{ form.epsilon(size=32) }}<br>
-			{% for error in form.epsilon.errors %}
-			<span style='color: red;'>[{{ error }}]</span>
-			{% endfor %}
-		</p>
-		<p>
-			{{ form.large_m.label }}<br>
-			{{ form.large_m(size=32) }}<br>
-			{% for error in form.large_m.errors %}
-			<span style='color: red;'>[{{ error }}]</span>
-			{% endfor %}
-		</p>
-		<p>
-			{{ form.submit() }}
-		</p>
-	</form>
+	<div class='row'>
+		<div class='col-md-4'>
+			{{ wtf.quick_form(form) }}
+		</div>
+	</div>
 {% endblock %}
 

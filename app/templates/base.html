@@ -126,3 +126,69 @@
 
     </div>
 {% endblock %}
+
+
+
+<!-- Comment Block Below this line -->
+{# 
+Notes for later: from commit cb633f7
+
+<head>
+		This section of the code picks up either the title passed 
+	to the render_template function in the routes.py file or (else)
+	the title passed in the else clause of this section of the code.
+
+		{% if title %}
+		<title>{{ title }} - MATH</title>
+		{% else %}
+		<title>MassiveDiscipline - MATH</title>
+		{% endif %}
+
+	</head>
+
+	<body>
+		The div tag section of the code provides the user with 
+	links to the various pages of the website. The url_for() function 
+	takes as argument the name of the view function, in the routes.py 
+	file, that corresponds to the argument, and the value of
+	this function call is the argument for the decorator of the view
+	function. 
+
+		<div>
+			<a href='{{ url_for("index") }}'>Home</a>
+			<a href='{{ url_for("explore") }}'>Explore</a>
+			<a href='{{ url_for("score") }}'>Score</a>
+			{% if current_user.is_anonymous %}
+			<a href='{{ url_for("login") }}'>Login</a>
+			{% else %}
+			<a href='{{ 
+				url_for("user",username=current_user.username)
+				}}'>Profile</a>
+			<a href='{{ url_for("logout") }}'>Logout</a>
+			{% endif %}
+		</div>
+
+		<hr> This is a horizontal rule 
+
+		The following code takes the argument of a flash() 
+	function call within function definitions of the routes.py file
+	and stores it in the messages variable stated below. 
+
+		{% with messages = get_flashed_messages() %}
+
+		{% if messages %}
+		<u1>
+			{% for message in messages %}
+			<li>
+				{{ message }}
+			</li>
+			{% endfor %}
+		</u1>
+		{% endif %}
+
+		{% endwith %}
+
+		{% block content %}{% endblock %}
+			Here, we export a content block 
+	</body>
+#}

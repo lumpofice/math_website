@@ -1,32 +1,11 @@
 {% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
 
 {% block app_content %}
 	<h1>Plot A Graph of a Transformed Degree 1 Polynomial</h1>
-	<form action='' method='post' novalidate>
-		{{ form.hidden_tag() }}
-		<p>
-			{{ form.horizontal_shift.label }}<br>
-			{{ form.horizontal_shift(size=32) }}<br>
-			{% for error in form.horizontal_shift.errors %}
-			<span style='color: red;'>[{{ error }}]</span>
-			{% endfor %}
-		</p>
-		<p>
-			{{ form.y_scalar.label }}<br>
-			{{ form.y_scalar(size=32) }}<br>
-			{% for error in form.y_scalar.errors %}
-			<span style='color: red;'>[{{ error }}]</span>
-			{% endfor %}
-		</p>
-		<p>
-			{{ form.vertical_shift.label }}<br>
-			{{ form.vertical_shift(size=32) }}<br>
-			{% for error in form.vertical_shift.errors %}
-			<span style='color: red;'>[{{ error }}]</span>
-			{% endfor %}
-		</p>
-		<p>
-			{{ form.submit() }}
-		</p>
-	</form>
+	<div class='row'>
+		<div class='col-md-4'>
+			{{ wtf.quick_form(form) }}
+		</div>
+	</div>
 {% endblock %}

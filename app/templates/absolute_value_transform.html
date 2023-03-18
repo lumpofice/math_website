@@ -1,4 +1,5 @@
 {% extends 'base.html' %} <!-- This line loads the base.html code -->
+{% import 'bootstrap/wtf.html' as wtf %}
 
 {% block app_content %}
 
@@ -7,7 +8,11 @@ value function form. -->
 
 	<h1>Plot A Graph of a Transformed Absolute Value Function</h1>
 
-	<form action='' method='post' novalidate>
+	<div class='row'>
+		<div class='col-md-4'>
+			{{ wtf.quick_form(form) }}
+		</div>
+	</div>
 
 	<!-- With the novalidate attribute, the form tag informs 
 the browser that form data will be validated elsewhere. This prevents
@@ -19,57 +24,9 @@ stored. This particular method is secure, storing no data into a
 browser URL, which does happen in the format of name/value pairs, 
 with method="get" -->
 
-		{{ form.hidden_tag() }}
-
 		<!-- Any hidden fields are rendered with the form.hidden_tag()
 	call. The CSRF token field, which takes the security key generated
 	by the server side using the secret key written
 	into the config.py file, is one such hidden field. -->
-
-		<p>
-			{{ form.horizontal_shift.label }}<br>
-			{{ form.horizontal_shift(size=32) }}<br>
-			{% for error in form.horizontal_shift.errors %}
-			<span style='color: red;'>[{{ error }}]</span>
-			{% endfor %}
-		</p>
-
-		<p>
-			{{ form.x_scalar.label }}<br>
-			{{ form.x_scalar(size=32) }}<br>
-			{% for error in form.x_scalar.errors %}
-			<span style='color: red;'>[{{ error }}]</span>
-			{% endfor %}
-		</p>
-
-		<p>
-			{{ form.x_reflection.label }}<br>
-			{{ form.x_reflection(size=32) }}<br>
-			{% for error in form.x_reflection.errors %}
-			<span style='color: red;'>[{{ error }}]</span>
-			{% endfor %}
-		</p>
-
-		<p>
-			{{ form.y_scalar.label }}<br>
-			{{ form.y_scalar(size=32) }}<br>
-			{% for error in form.y_scalar.errors %}
-			<span style='color: red;'>[{{ error }}]</span>
-			{% endfor %}
-		</p>
-
-		<p>
-			{{ form.vertical_shift.label }}<br>
-			{{ form.vertical_shift(size=32) }}<br>
-			{% for error in form.vertical_shift.errors %}
-			<span style='color: red;'>[{{ error }}]</span>
-			{% endfor %}
-		</p>
-
-		<p>
-			{{ form.submit() }}
-		</p>
-
-	</form>
 
 {% endblock %}

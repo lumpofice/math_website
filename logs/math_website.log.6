@@ -1,6 +1,8 @@
-2023-03-07 07:55:47,806 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
-2023-03-07 08:02:00,907 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
-2023-03-07 08:02:29,418 ERROR: Exception on /reset_password/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNldF9wYXNzd29yZCI6MTEsImV4cCI6MTY3ODE5NDc0NC4wNDAyNzR9.p-pFTVvXb42obZpz7O09KEUqNlK7Qrv3qGSzp7J-Na0 [GET] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
+2023-03-12 09:44:35,921 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
+2023-03-13 17:42:38,270 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
+2023-03-13 17:42:56,715 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
+2023-03-13 17:48:18,334 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
+2023-03-13 17:48:29,051 ERROR: Exception on /login [GET] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
 Traceback (most recent call last):
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2525, in wsgi_app
     response = self.full_dispatch_request()
@@ -10,22 +12,45 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1796, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-  File "/home/pi/Desktop/math_website/app/routes.py", line 441, in reset_password
-    return redirect(url_for('reset_password'))
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/helpers.py", line 262, in url_for
-    **values,
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2031, in url_for
-    return self.handle_url_build_error(error, endpoint, values)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2025, in url_for
-    force_external=_external,
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/werkzeug/routing/map.py", line 917, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'reset_password'. Did you forget to specify values ['token']?
-2023-03-07 08:13:39,516 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
-2023-03-08 15:07:53,515 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
-2023-03-08 15:12:22,278 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
-2023-03-08 15:19:12,103 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
-2023-03-08 15:19:30,442 ERROR: Exception on /reset_password/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNldF9wYXNzd29yZCI6MTEsImV4cCI6MTY3ODMwNzM2MC4yNTI5NDk1fQ.HIgXLHuiVv01GfNSHpQkFv-ZHnsuSIwHlcTZjXklJTA [GET] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
+  File "/home/pi/Desktop/math_website/app/routes.py", line 136, in login
+    return render_template('login.html', title='MassiveDiscipline', form=form)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/templating.py", line 147, in render_template
+    return _render(app, template, context)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/templating.py", line 130, in _render
+    rv = template.render(context)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/pi/Desktop/math_website/app/templates/login.html", line 1, in top-level template code
+    {% extends 'base.html' %} <!-- This line loads the base.html code -->
+  File "/home/pi/Desktop/math_website/app/templates/base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block 'doc'
+    {%- block html %}
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block 'html'
+    {% block body -%}
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 21, in block 'body'
+    {% block navbar %}
+  File "/home/pi/Desktop/math_website/app/templates/base.html", line 21, in block 'navbar'
+    <li><a href="{{ url_for('index') }}">{{ _('Home') }}</a></li>
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/utils.py", line 83, in from_obj
+    if hasattr(obj, "jinja_pass_arg"):
+jinja2.exceptions.UndefinedError: '_' is undefined
+2023-03-13 17:50:17,326 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
+2023-03-13 17:52:10,095 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
+2023-03-13 17:55:26,762 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
+2023-03-13 17:58:45,833 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
+2023-03-13 18:05:18,364 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
+2023-03-13 18:10:37,104 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
+2023-03-13 18:17:25,676 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
+2023-03-13 18:19:55,848 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
+2023-03-14 07:21:35,413 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
+2023-03-14 07:25:28,103 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
+2023-03-14 07:29:19,223 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
+2023-03-14 07:29:30,163 ERROR: Exception on /login [GET] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
 Traceback (most recent call last):
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2525, in wsgi_app
     response = self.full_dispatch_request()
@@ -35,92 +60,33 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1796, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-  File "/home/pi/Desktop/math_website/app/routes.py", line 441, in reset_password
-    return redirect(url_for('reset_password'))
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/helpers.py", line 262, in url_for
-    **values,
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2031, in url_for
-    return self.handle_url_build_error(error, endpoint, values)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2025, in url_for
-    force_external=_external,
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/werkzeug/routing/map.py", line 917, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'reset_password'. Did you forget to specify values ['token']?
-2023-03-08 15:21:44,235 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
-2023-03-08 15:44:13,440 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
-2023-03-08 16:01:34,595 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
-2023-03-09 07:10:34,892 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
-2023-03-09 07:11:40,934 ERROR: Exception on /reset_password_request [POST] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
-Traceback (most recent call last):
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2525, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1822, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1820, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1796, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-  File "/home/pi/Desktop/math_website/app/routes.py", line 428, in reset_password_request
-    send_password_reset_email(user)
-  File "/home/pi/Desktop/math_website/app/email.py", line 22, in send_password_reset_email
-    user=user, token=token)
-  File "/home/pi/Desktop/math_website/app/email.py", line 11, in send_email
-    mail.send(msg)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_mail.py", line 491, in send
-    with self.connect() as connection:
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_mail.py", line 144, in __enter__
-    self.host = self.configure_host()
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_mail.py", line 158, in configure_host
-    host = smtplib.SMTP(self.mail.server, self.mail.port)
-  File "/usr/lib/python3.7/smtplib.py", line 251, in __init__
-    (code, msg) = self.connect(host, port)
-  File "/usr/lib/python3.7/smtplib.py", line 336, in connect
-    self.sock = self._get_socket(host, port, self.timeout)
-  File "/usr/lib/python3.7/smtplib.py", line 307, in _get_socket
-    self.source_address)
-  File "/usr/lib/python3.7/socket.py", line 707, in create_connection
-    for res in getaddrinfo(host, port, 0, SOCK_STREAM):
-  File "/usr/lib/python3.7/socket.py", line 748, in getaddrinfo
-    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
-socket.gaierror: [Errno -2] Name or service not known
-2023-03-09 07:15:45,799 ERROR: Exception on /reset_password_request [POST] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
-Traceback (most recent call last):
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2525, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1822, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1820, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1796, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-  File "/home/pi/Desktop/math_website/app/routes.py", line 428, in reset_password_request
-    send_password_reset_email(user)
-  File "/home/pi/Desktop/math_website/app/email.py", line 22, in send_password_reset_email
-    user=user, token=token)
-  File "/home/pi/Desktop/math_website/app/email.py", line 11, in send_email
-    mail.send(msg)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_mail.py", line 491, in send
-    with self.connect() as connection:
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_mail.py", line 144, in __enter__
-    self.host = self.configure_host()
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_mail.py", line 158, in configure_host
-    host = smtplib.SMTP(self.mail.server, self.mail.port)
-  File "/usr/lib/python3.7/smtplib.py", line 251, in __init__
-    (code, msg) = self.connect(host, port)
-  File "/usr/lib/python3.7/smtplib.py", line 336, in connect
-    self.sock = self._get_socket(host, port, self.timeout)
-  File "/usr/lib/python3.7/smtplib.py", line 307, in _get_socket
-    self.source_address)
-  File "/usr/lib/python3.7/socket.py", line 707, in create_connection
-    for res in getaddrinfo(host, port, 0, SOCK_STREAM):
-  File "/usr/lib/python3.7/socket.py", line 748, in getaddrinfo
-    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
-socket.gaierror: [Errno -2] Name or service not known
-2023-03-09 07:17:20,588 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
-2023-03-09 07:57:36,498 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
-2023-03-09 07:57:53,455 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
-2023-03-11 14:09:41,975 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
-2023-03-11 14:11:58,971 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:60]
-2023-03-12 09:27:05,742 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-12 09:28:28,690 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-12 09:42:28,388 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
+  File "/home/pi/Desktop/math_website/app/routes.py", line 136, in login
+    return render_template('login.html', title='MassiveDiscipline', form=form)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/templating.py", line 147, in render_template
+    return _render(app, template, context)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/templating.py", line 130, in _render
+    rv = template.render(context)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/pi/Desktop/math_website/app/templates/login.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "/home/pi/Desktop/math_website/app/templates/base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block 'doc'
+    {%- block html %}
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block 'html'
+    {% block body -%}
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block 'body'
+    {% block content -%}
+  File "/home/pi/Desktop/math_website/app/templates/base.html", line 49, in block 'content'
+    {% block app_content %}{% endblock %}
+  File "/home/pi/Desktop/math_website/app/templates/login.html", line 5, in block 'app_content'
+    <h1>{{ _('Sign In') }}</h1>
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/utils.py", line 83, in from_obj
+    if hasattr(obj, "jinja_pass_arg"):
+jinja2.exceptions.UndefinedError: '_' is undefined
+2023-03-14 07:30:55,533 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
