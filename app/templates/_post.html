@@ -14,7 +14,11 @@
 				<a href='{{ 
 					url_for("user", username=post.author.username) 
 					}}'>
-					{{ post.author.username }} says:<br>{{ post.body }}
+					{{ post.author.username }} 
+				</a>
+				said {{ moment(post.timestamp).fromNow() }}:
+				<br>
+				{{ post.body }}
 
 				<!-- Using the User model attribute, "author," the 
 			post.author.username variable points a post back to the 
@@ -29,7 +33,6 @@
 			pair of the "posts" list of dictionaries within the user 
 			function of the routes.py file. -->
 				
-				</a>
 			</td>
 		</tr>
 	</table>

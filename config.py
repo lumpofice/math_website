@@ -78,3 +78,4 @@ this event notification system, we have set this variable to "False".'''
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     ADMINS = ['jparker@sasphs.net']
     POSTS_PER_PAGE = 10
+    LANGUAGES = {'en', 'es'}
