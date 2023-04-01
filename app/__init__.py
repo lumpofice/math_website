@@ -7,7 +7,7 @@ from logging.handlers import SMTPHandler, RotatingFileHandler
 import os
 
 '''importing flask methods, extensions, and libraries'''
-from flask import Flask
+from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_mail import Mail
@@ -64,3 +64,10 @@ if not app.debug:
     
     app.logger.setLevel(logging.INFO)
     app.logger.info('Math Website startup')
+    
+    
+def get_locale():
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
+
+
+babel.init_app(app, locale_selector=get_locale)

@@ -89,3 +89,6 @@ jinja2.exceptions.TemplateAssertionError: block 'content' defined twice
 2023-03-25 15:54:32,413 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:64]
 2023-03-25 16:10:32,822 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:66]
 2023-03-25 16:11:36,795 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:66]
+2023-04-01 17:47:45,604 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:66]
+2023-04-01 17:49:20,714 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:66]
+2023-04-01 18:01:44,964 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:66]
