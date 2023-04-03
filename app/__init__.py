@@ -13,7 +13,7 @@ from flask_migrate import Migrate
 from flask_mail import Mail
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
-from flask_babel import Babel
+from flask_babel import Babel, lazy_gettext as _1
 
 '''flask-login extension, which keeps track of the user's logged-in state.'''
 from flask_login import LoginManager
@@ -25,6 +25,7 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login = LoginManager(app)
 login.login_view = 'login'
+login.login_message = _1('Log in to access this page.')
 mail = Mail(app)
 bootstrap = Bootstrap(app)
 moment = Moment(app)
@@ -67,7 +68,8 @@ if not app.debug:
     
     
 def get_locale():
-    return request.accept_languages.best_match(app.config['LANGUAGES'])
+    # return request.accept_languages.best_match(app.config['LANGUAGES'])
+    return 'es'
 
 
 babel.init_app(app, locale_selector=get_locale)
