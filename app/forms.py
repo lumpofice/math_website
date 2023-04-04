@@ -4,6 +4,7 @@ from wtforms import StringField, FloatField, SubmitField, IntegerField,\
      PasswordField, BooleanField, TextAreaField
 from wtforms.validators import DataRequired, NumberRange, InputRequired,\
      ValidationError, Email, EqualTo, Length
+from flask_babel import lazy_gettext as _1
 
 '''importing objects, methods, and scripts from the application'''
 from app.models import User
@@ -13,7 +14,7 @@ class LoginForm(FlaskForm):
     '''The login form encountered upon opening the website.'''
     
     
-    username = StringField('Username', validators=[DataRequired()])
+    username = StringField(_1('Username'), validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
     remember_me = BooleanField('Remember Me')
     submit = SubmitField('Sign In')
