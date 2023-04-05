@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-04-04 14:07-0400\n"
+"POT-Creation-Date: 2023-04-05 15:57-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,8 +21,40 @@ msgstr ""
 msgid "Log in to access this page."
 msgstr ""
 
-#: app/forms.py:16
+#: app/forms.py:17 app/forms.py:28
 msgid "Username"
+msgstr ""
+
+#: app/forms.py:18 app/forms.py:30
+msgid "Password"
+msgstr ""
+
+#: app/forms.py:19
+msgid "Remember Me"
+msgstr ""
+
+#: app/forms.py:20
+msgid "Sign In"
+msgstr ""
+
+#: app/forms.py:29
+msgid "Email"
+msgstr ""
+
+#: app/forms.py:31
+msgid "Repeat Password"
+msgstr ""
+
+#: app/forms.py:33
+msgid "Register"
+msgstr ""
+
+#: app/forms.py:43
+msgid "Please use a different username."
+msgstr ""
+
+#: app/forms.py:53
+msgid "Please use a different email address."
 msgstr ""
 
 #: app/templates/base.html:50
