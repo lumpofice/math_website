@@ -1,5 +1,6 @@
 '''importing python libraries and modules'''
 from datetime import datetime
+from langdetect import detect, LangDetectException
 
 '''importing flask methods and libraries'''
 from flask import render_template, flash, redirect, url_for, request
@@ -205,7 +206,14 @@ in.'''
     models.py file.'''
         
         
-        post = Post(body=form.post.data, author=current_user)
+        try:
+            language = detect(form.post.data)
+            
+        except LangDetectException:
+            language = ''
+            
+            
+        post = Post(body=form.post.data, author=current_user, language=language)
         db.session.add(post)
         db.session.commit()
         flash('Your post is now live!')

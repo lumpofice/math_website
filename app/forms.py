@@ -54,9 +54,10 @@ credentials'''
 
 
 class EditProfileForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired()])
-    about_me = TextAreaField('About me', validators=[Length(min=0, max=140)])
-    submit = SubmitField('Submit')
+    username = StringField(_1('Username'), validators=[DataRequired()])
+    about_me = TextAreaField(_1('About me'),
+        validators=[Length(min=0, max=140)])
+    submit = SubmitField(_1('Submit'))
     
     
     def __init__(self, original_username, *args, **kwargs):
