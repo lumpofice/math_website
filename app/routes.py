@@ -316,6 +316,10 @@ evaluating True in this scenario.)'''
     
     
     form = EditProfileForm(current_user.username)
+    '''The curren_user.username argument will need to be removed when testing
+the app with the goal of displaying the 500 error message template.'''
+    
+    
     if form.validate_on_submit():
         current_user.username = form.username.data
         current_user.about_me = form.about_me.data

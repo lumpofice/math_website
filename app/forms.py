@@ -60,10 +60,17 @@ class EditProfileForm(FlaskForm):
     submit = SubmitField(_1('Submit'))
     
     
+    '''Below is the code that obviates the 500 error handler template and
+instead flashes an error message below the form line. Testing changes to the
+structure of the app, say during Blueprint implementation, will require us to
+comment out the below code so that the 500 error message template will
+display.'''
+    
+    
     def __init__(self, original_username, *args, **kwargs):
         '''The original_username variable here corresponds to the
     current_user.username argument passed to the EditProfileForm in the
-    routes.py file.'''
+    outes.py file.'''
         
         
         super(EditProfileForm, self).__init__(*args, **kwargs)

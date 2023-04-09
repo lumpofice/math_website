@@ -1,75 +1,4 @@
-2023-03-15 16:02:32,126 ERROR: Exception on / [GET] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
-Traceback (most recent call last):
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2525, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1822, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1820, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1796, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_login/utils.py", line 290, in decorated_view
-    return current_app.ensure_sync(func)(*args, **kwargs)
-  File "/home/pi/Desktop/math_website/app/routes.py", line 236, in index
-    form = form, posts=posts.items, next_url=next_url, prev_url=prev_url)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/templating.py", line 146, in render_template
-    template = app.jinja_env.get_or_select_template(template_name_or_list)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 1081, in get_or_select_template
-    return self.get_template(template_name_or_list, parent, globals)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 1010, in get_template
-    return self._load_template(name, globals)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 969, in _load_template
-    template = self.loader.load(self, name, self.make_globals(globals))
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/loaders.py", line 138, in load
-    code = environment.compile(source, name, filename)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 768, in compile
-    self.handle_exception(source=source_hint)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/home/pi/Desktop/math_website/app/templates/index.html", line 6, in template
-    <h1>{{ Hi current_user.username }}</h1>
-jinja2.exceptions.TemplateSyntaxError: expected token 'end of print statement', got 'current_user'
-2023-03-15 16:03:48,604 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-15 16:03:58,939 ERROR: Exception on / [GET] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
-Traceback (most recent call last):
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2525, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1822, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1820, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1796, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_login/utils.py", line 290, in decorated_view
-    return current_app.ensure_sync(func)(*args, **kwargs)
-  File "/home/pi/Desktop/math_website/app/routes.py", line 236, in index
-    form = form, posts=posts.items, next_url=next_url, prev_url=prev_url)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/templating.py", line 146, in render_template
-    template = app.jinja_env.get_or_select_template(template_name_or_list)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 1081, in get_or_select_template
-    return self.get_template(template_name_or_list, parent, globals)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 1010, in get_template
-    return self._load_template(name, globals)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 969, in _load_template
-    template = self.loader.load(self, name, self.make_globals(globals))
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/loaders.py", line 138, in load
-    code = environment.compile(source, name, filename)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 768, in compile
-    self.handle_exception(source=source_hint)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/home/pi/Desktop/math_website/app/templates/index.html", line 6, in template
-    <h1>{{ ('Hi, %(username)s!', username=current_user.username) }}</h1>
-jinja2.exceptions.TemplateSyntaxError: expected token ')', got '='
-2023-03-15 16:04:19,553 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-15 16:06:05,548 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-15 16:07:34,567 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-15 16:18:53,856 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-15 16:19:03,092 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-15 16:24:46,978 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-16 15:06:49,768 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-16 15:15:43,887 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-16 15:16:08,425 ERROR: Exception on /user/jon [GET] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
+2023-03-16 15:17:23,018 ERROR: Exception on /user/jon [GET] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
 Traceback (most recent call last):
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2525, in wsgi_app
     response = self.full_dispatch_request()
@@ -98,5 +27,81 @@ Traceback (most recent call last):
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 936, in handle_exception
     raise rewrite_traceback_stack(source=source)
   File "/home/pi/Desktop/math_website/app/templates/user.html", line 13, in template
-    <p>Count Followers {{ count=user.followers.count()) }}, Count Following {{ count=user.followed.count()) }}</p>
-jinja2.exceptions.TemplateSyntaxError: expected token 'end of print statement', got '='
+    <p>Count Followers {{ user.followers.count()) }}, Count Following {{ user.followed.count()) }}</p>
+jinja2.exceptions.TemplateSyntaxError: unexpected ')'
+2023-03-16 15:17:33,430 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
+2023-03-16 15:18:01,092 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
+2023-03-16 15:18:12,328 ERROR: Exception on /user/jon [GET] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
+Traceback (most recent call last):
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/home/pi/Desktop/math_website/app/routes.py", line 289, in user
+    next_url=next_url, prev_url=prev_url, form=form)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/templating.py", line 146, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 1081, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/loaders.py", line 138, in load
+    code = environment.compile(source, name, filename)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 768, in compile
+    self.handle_exception(source=source_hint)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/pi/Desktop/math_website/app/templates/user.html", line 13, in template
+    <p>Count Followers {{ user.followers.count() }}, Count Following {{ user.followed.count()) }}</p>
+jinja2.exceptions.TemplateSyntaxError: unexpected ')'
+2023-03-16 15:18:33,569 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
+2023-03-16 15:18:40,526 ERROR: Exception on /user/jon [GET] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
+Traceback (most recent call last):
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/home/pi/Desktop/math_website/app/routes.py", line 289, in user
+    next_url=next_url, prev_url=prev_url, form=form)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/templating.py", line 147, in render_template
+    return _render(app, template, context)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/templating.py", line 130, in _render
+    rv = template.render(context)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/pi/Desktop/math_website/app/templates/user.html", line 1, in top-level template code
+    {% extends 'base.html' %} <!-- This line loads the base.html code -->
+  File "/home/pi/Desktop/math_website/app/templates/base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block 'doc'
+    {%- block html %}
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block 'html'
+    {% block body -%}
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block 'body'
+    {% block content -%}
+  File "/home/pi/Desktop/math_website/app/templates/base.html", line 125, in block 'content'
+    {% block app_content %}{% endblock %}
+  File "/home/pi/Desktop/math_website/app/templates/user.html", line 11, in block 'app_content'
+    <p>{{ ('Last seen on') }}: {{ moment(user.last_seen).format('LLL') }}</p>
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/utils.py", line 83, in from_obj
+    if hasattr(obj, "jinja_pass_arg"):
+jinja2.exceptions.UndefinedError: 'moment' is undefined
+2023-03-16 15:27:00,009 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]

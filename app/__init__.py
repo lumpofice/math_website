@@ -32,9 +32,17 @@ moment = Moment(app)
 babel = Babel(app)
 
 
+'''From the errors folder in the app directory, we import bp, which is located
+in the __init__.py file of error directory'''
+from app.errors import bp as errors_bp
+
+
+app.register_blueprint(errors_bp)
+
+
 '''After the application instance is created:
 importing objects, methods, and scripts from the application'''
-from app import routes, models, errors
+from app import routes, models
 
 
 if not app.debug:

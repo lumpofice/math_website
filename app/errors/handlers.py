@@ -1,11 +1,9 @@
-'''importing flask methods and libraries'''
 from flask import render_template
+from app import db
+from app.errors import bp
 
-'''importing objects, methods, and scripts from the application'''
-from app import app, db
 
-
-@app.errorhandler(404)
+@bp.app_errorhandler(404)
 def not_found_error(error):
     '''We have a second return value of "404," which is the error code number.
 A default second return value error code of "200," indicating a successful
@@ -13,10 +11,10 @@ response, is replaced in this instance with the specific, unsuccessful error
 code response, "404".'''
     
     
-    return render_template('404.html'), 404
+    return render_template('errors/404.html'), 404
 
 
-@app.errorhandler(500)
+@bp.app_errorhandler(500)
 def internal_error(error):
     '''We have a second return value of "500," which is the error code number.
 A default second return value error code of "200," indicating a successful
@@ -28,4 +26,4 @@ database session.'''
     
     
     db.session.rollback()
-    return render_template('500.html'), 500
+    return render_template('errors/500.html'), 500
