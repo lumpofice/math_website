@@ -68,3 +68,4 @@ sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed
 (Background on this error at: https://sqlalche.me/e/14/gkpj)
 2023-04-09 11:45:01,190 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:71]
 2023-04-09 11:53:20,401 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:75]
+2023-04-10 09:59:59,593 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:75]
