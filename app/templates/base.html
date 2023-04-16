@@ -32,7 +32,7 @@
 
                 <a 
 					class='navbar-brand' 
-					href='{{ url_for("index") }}'
+					href='{{ url_for("main.index") }}'
 				>
 					Massive Discipline
 				</a>
@@ -46,13 +46,13 @@
 
                 <ul class='nav navbar-nav'>
                     <li>
-						<a href='{{ url_for("index") }}'>
+						<a href='{{ url_for("main.index") }}'>
 							{{ _('Home') }}
 						</a>
 					</li>
 
                     <li>
-						<a href='{{ url_for("explore") }}'>
+						<a href='{{ url_for("main.explore") }}'>
 							{{ ('Explore') }}
 						</a>
 					</li>
@@ -63,7 +63,7 @@
 
                     {% if current_user.is_anonymous %}
                     <li>
-						<a href='{{ url_for("login") }}'>
+						<a href='{{ url_for("auth.login") }}'>
 							{{ ('Login') }}
 						</a>
 					</li>
@@ -73,7 +73,7 @@
 						<a 
 							href='{{ 
 								url_for(
-									"user", 
+									"main.user", 
 									username=current_user.username
 								) 
 							}}'
@@ -83,7 +83,7 @@
 					</li>
 
                     <li>
-						<a href='{{ url_for("logout") }}'>
+						<a href='{{ url_for("auth.logout") }}'>
 							{{ ('Logout') }}
 						</a>
 					</li>

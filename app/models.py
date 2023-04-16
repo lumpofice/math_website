@@ -5,7 +5,8 @@ from time import time
 import jwt
 
 '''importing objects, methods, and scripts from the application'''
-from app import db, login, app
+from app import db, app
+from app import login
 
 '''importing flask methods and libraries'''
 from werkzeug.security import generate_password_hash, check_password_hash

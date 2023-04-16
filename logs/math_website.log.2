@@ -1,4 +1,4 @@
-2023-03-18 14:53:19,749 ERROR: Exception on /polynomial_degree_1_transform [GET] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
+2023-04-16 10:16:05,458 ERROR: Exception on /index [GET] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
 Traceback (most recent call last):
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2525, in wsgi_app
     response = self.full_dispatch_request()
@@ -8,41 +8,25 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1796, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-  File "/home/pi/Desktop/math_website/app/routes.py", line 584, in polynomial_degree_1_transform
-    form=form)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/templating.py", line 147, in render_template
-    return _render(app, template, context)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/templating.py", line 130, in _render
-    rv = template.render(context)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/home/pi/Desktop/math_website/app/templates/polynomial_degree_1_transform.html", line 1, in top-level template code
-    {% extends 'base.html' %}
-  File "/home/pi/Desktop/math_website/app/templates/base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block 'doc'
-    {%- block html %}
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block 'html'
-    {% block body -%}
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block 'body'
-    {% block content -%}
-  File "/home/pi/Desktop/math_website/app/templates/base.html", line 125, in block 'content'
-    {% block app_content %}{% endblock %}
-  File "/home/pi/Desktop/math_website/app/templates/polynomial_degree_1_transform.html", line 7, in block 'app_content'
-    {{ wtf.quick_form(form) }}
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 485, in getattr
-    return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'wtf' is undefined
-2023-03-18 14:53:54,389 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-18 14:55:33,811 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-18 14:58:24,456 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-18 15:02:02,668 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-18 15:41:43,172 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-18 15:43:56,153 ERROR: Exception on /login [GET] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_login/utils.py", line 285, in decorated_view
+    return current_app.login_manager.unauthorized()
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_login/login_manager.py", line 196, in unauthorized
+    redirect_url = make_login_url(login_view, next_url=request.url)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_login/utils.py", line 120, in login_url
+    base = expand_login_view(login_view)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_login/utils.py", line 97, in expand_login_view
+    return url_for(login_view)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/helpers.py", line 262, in url_for
+    **values,
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2031, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2025, in url_for
+    force_external=_external,
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/werkzeug/routing/map.py", line 917, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'login'. Did you mean 'auth.login' instead?
+2023-04-16 10:41:03,179 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:85]
+2023-04-16 10:41:13,493 ERROR: Exception on / [GET] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
 Traceback (most recent call last):
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2525, in wsgi_app
     response = self.full_dispatch_request()
@@ -52,62 +36,47 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1796, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-  File "/home/pi/Desktop/math_website/app/routes.py", line 136, in login
-    return render_template('login.html', title='MassiveDiscipline', form=form)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/templating.py", line 147, in render_template
-    return _render(app, template, context)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/templating.py", line 130, in _render
-    rv = template.render(context)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/home/pi/Desktop/math_website/app/templates/login.html", line 1, in top-level template code
-    {% extends 'base.html' %} <!-- This line loads the base.html code-->
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/home/pi/Desktop/math_website/app/templates/base.html", line 191, in template
-    {% block content %}{% endblock %}
-jinja2.exceptions.TemplateAssertionError: block 'content' defined twice
-2023-03-18 15:49:29,505 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-18 16:02:28,836 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-18 16:03:17,267 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-18 16:03:40,475 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-18 16:04:50,772 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-18 16:06:17,681 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-18 16:11:54,578 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-19 10:17:18,271 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-19 10:19:38,896 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-19 10:21:57,555 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-19 10:24:00,922 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-19 10:26:39,099 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-19 10:28:49,500 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-19 10:32:20,693 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-19 10:34:43,255 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-19 10:35:47,393 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-20 16:52:16,423 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:64]
-2023-03-25 15:54:32,413 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:64]
-2023-03-25 16:10:32,822 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:66]
-2023-03-25 16:11:36,795 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:66]
-2023-04-01 17:47:45,604 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:66]
-2023-04-01 17:49:20,714 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:66]
-2023-04-01 18:01:44,964 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:66]
-2023-04-03 08:27:46,490 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
-2023-04-03 08:28:09,924 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
-2023-04-03 08:28:58,285 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
-2023-04-03 08:33:03,529 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
-2023-04-03 08:37:07,526 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
-2023-04-03 08:51:10,783 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
-2023-04-04 14:15:26,160 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
-2023-04-04 14:15:39,533 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
-2023-04-04 14:19:45,124 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
-2023-04-05 15:36:11,614 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
-2023-04-05 15:42:05,447 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
-2023-04-05 15:43:32,643 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
-2023-04-05 15:45:00,098 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
-2023-04-05 15:46:29,040 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
-2023-04-05 15:49:35,824 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
-2023-04-05 15:55:19,550 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
-2023-04-05 15:59:13,731 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
-2023-04-05 16:00:38,963 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
-2023-04-07 13:12:21,650 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_login/utils.py", line 285, in decorated_view
+    return current_app.login_manager.unauthorized()
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_login/login_manager.py", line 196, in unauthorized
+    redirect_url = make_login_url(login_view, next_url=request.url)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_login/utils.py", line 120, in login_url
+    base = expand_login_view(login_view)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_login/utils.py", line 97, in expand_login_view
+    return url_for(login_view)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/helpers.py", line 262, in url_for
+    **values,
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2031, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2025, in url_for
+    force_external=_external,
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/werkzeug/routing/map.py", line 917, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'login'. Did you mean 'auth.login' instead?
+2023-04-16 10:41:16,521 ERROR: Exception on /explore [GET] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
+Traceback (most recent call last):
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_login/utils.py", line 285, in decorated_view
+    return current_app.login_manager.unauthorized()
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_login/login_manager.py", line 196, in unauthorized
+    redirect_url = make_login_url(login_view, next_url=request.url)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_login/utils.py", line 120, in login_url
+    base = expand_login_view(login_view)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_login/utils.py", line 97, in expand_login_view
+    return url_for(login_view)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/helpers.py", line 262, in url_for
+    **values,
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2031, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2025, in url_for
+    force_external=_external,
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/werkzeug/routing/map.py", line 917, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'login'. Did you mean 'auth.login' instead?

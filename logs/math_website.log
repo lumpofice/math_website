@@ -1,13 +1,4 @@
-2023-04-09 11:39:04,511 ERROR: Exception on /edit_profile [POST] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
-Traceback (most recent call last):
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1901, in _execute_context
-    cursor, statement, parameters, context
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
-    cursor.execute(statement, parameters)
-sqlite3.IntegrityError: UNIQUE constraint failed: user.username
-
-The above exception was the direct cause of the following exception:
-
+2023-04-16 11:01:32,608 ERROR: Exception on /auth/reset_password_request [POST] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
 Traceback (most recent call last):
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2525, in wsgi_app
     response = self.full_dispatch_request()
@@ -17,55 +8,57 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1796, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_login/utils.py", line 290, in decorated_view
-    return current_app.ensure_sync(func)(*args, **kwargs)
-  File "/home/pi/Desktop/math_website/app/routes.py", line 322, in edit_profile
-    db.session.commit()
-  File "<string>", line 2, in commit
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 1451, in commit
-    self._transaction.commit(_to_root=self.future)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 829, in commit
-    self._prepare_impl()
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 808, in _prepare_impl
-    self.session.flush()
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3444, in flush
-    self._flush(objects)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3584, in _flush
-    transaction.rollback(_capture_exception=True)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 72, in __exit__
-    with_traceback=exc_tb,
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 210, in raise_
-    raise exception
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3544, in _flush
-    flush_context.execute()
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 456, in execute
-    rec.execute(self)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 633, in execute
-    uow,
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 242, in save_obj
-    update,
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 1002, in _emit_update_statements
-    statement, multiparams, execution_options=execution_options
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1705, in _execute_20
-    return meth(self, args_10style, kwargs_10style, execution_options)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 335, in _execute_on_connection
-    self, multiparams, params, execution_options
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1582, in _execute_clauseelement
-    cache_hit=cache_hit,
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1944, in _execute_context
-    e, statement, parameters, cursor, context
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 2125, in _handle_dbapi_exception
-    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 210, in raise_
-    raise exception
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1901, in _execute_context
-    cursor, statement, parameters, context
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
-    cursor.execute(statement, parameters)
-sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed: user.username
-[SQL: UPDATE user SET username=?, about_me=? WHERE user.id = ?]
-[parameters: ('elise', 'Do let me be the teacher this quarter. Please?', 2)]
-(Background on this error at: https://sqlalche.me/e/14/gkpj)
-2023-04-09 11:45:01,190 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:71]
-2023-04-09 11:53:20,401 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:75]
-2023-04-10 09:59:59,593 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:75]
+  File "/home/pi/Desktop/math_website/app/auth/routes.py", line 190, in reset_password_request
+    send_password_reset_email(user)
+  File "/home/pi/Desktop/math_website/app/auth/email.py", line 19, in send_password_reset_email
+    user=user, token=token),
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/templating.py", line 147, in render_template
+    return _render(app, template, context)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/templating.py", line 130, in _render
+    rv = template.render(context)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/pi/Desktop/math_website/app/templates/email/reset_password.txt", line 5, in top-level template code
+    {{ url_for('reset_password', token=token, _external=True) }}
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2031, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2025, in url_for
+    force_external=_external,
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/werkzeug/routing/map.py", line 917, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'reset_password' with values ['token']. Did you mean 'auth.reset_password' instead?
+2023-04-16 11:11:26,276 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:85]
+2023-04-16 11:11:40,776 ERROR: Exception on /auth/reset_password_request [POST] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
+Traceback (most recent call last):
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/pi/Desktop/math_website/app/auth/routes.py", line 190, in reset_password_request
+    send_password_reset_email(user)
+  File "/home/pi/Desktop/math_website/app/auth/email.py", line 21, in send_password_reset_email
+    user=user, token=token)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/templating.py", line 147, in render_template
+    return _render(app, template, context)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/templating.py", line 130, in _render
+    rv = template.render(context)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/pi/Desktop/math_website/app/templates/email/reset_password.html", line 15, in top-level template code
+    {{ url_for('reset_password', token=token, _external=True) }}
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2031, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2025, in url_for
+    force_external=_external,
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/werkzeug/routing/map.py", line 917, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'reset_password' with values ['token']. Did you mean 'auth.reset_password' instead?
+2023-04-16 11:15:29,724 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:85]

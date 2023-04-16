@@ -24,7 +24,7 @@ app.config.from_object(Config)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login = LoginManager(app)
-login.login_view = 'login'
+login.login_view = 'auth.login'
 login.login_message = _1('Log in to access this page.')
 mail = Mail(app)
 bootstrap = Bootstrap(app)
@@ -35,14 +35,24 @@ babel = Babel(app)
 '''From the errors folder in the app directory, we import bp, which is located
 in the __init__.py file of error directory'''
 from app.errors import bp as errors_bp
-
-
 app.register_blueprint(errors_bp)
+
+
+'''From the auth folder in the app directory, we import bp, which is located
+in the __init__.py file of auth directory'''
+from app.auth import bp as auth_bp
+app.register_blueprint(auth_bp, url_prefix='/auth')
+
+
+'''From the main folder in the app directory, we import bp, which is located
+in the __init__.py file of main directory'''
+from app.main import bp as main_bp
+app.register_blueprint(main_bp)
 
 
 '''After the application instance is created:
 importing objects, methods, and scripts from the application'''
-from app import routes, models
+from app import models, routes
 
 
 if not app.debug:

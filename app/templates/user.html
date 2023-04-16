@@ -28,7 +28,7 @@
 				{% if user == current_user %}
 					<!-- If the user variable and current_user variable 
 				coincide -->
-                <p><a href='{{ url_for("edit_profile") }}'>
+                <p><a href='{{ url_for("main.edit_profile") }}'>
 					{{ ('Edit your profile') }}</a></p>
                 {% elif not current_user.is_following(user) %}
 					<!-- If the current user is not following the
@@ -39,7 +39,7 @@
 				"follow" viewfunction will be accessed and called. -->
                 <p>
                     <form action='{{ 
-						url_for("follow", username=user.username) 
+						url_for("main.follow", username=user.username) 
 						}}' method='post'>
                         {{ form.hidden_tag() }}
                         {{ form.submit(value=('Follow'), 
@@ -50,7 +50,7 @@
 					<!-- If the user profile is being followed by the
 				current user -->
                 <p>
-                    <form action='{{ url_for("unfollow", 
+                    <form action='{{ url_for("main.unfollow", 
 						username=user.username) }}' method='post'>
                         {{ form.hidden_tag() }}
                         {{ form.submit(value=('Unfollow'), 
