@@ -63,3 +63,5 @@ Traceback (most recent call last):
 werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'reset_password' with values ['token']. Did you mean 'auth.reset_password' instead?
 2023-04-16 11:15:29,724 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:85]
 2023-04-17 08:34:23,471 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:85]
+2023-04-20 07:20:07,456 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:85]
+2023-04-20 07:36:02,645 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:78]

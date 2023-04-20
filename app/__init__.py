@@ -1,7 +1,7 @@
 '''importing the configuration file for the application'''
 from config import Config
 
-'''importing Pythong libraries and packages'''
+'''importing Python libraries and packages'''
 import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler
 import os
@@ -14,9 +14,7 @@ from flask_mail import Mail
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
 from flask_babel import Babel, lazy_gettext as _1
-
-'''flask-login extension, which keeps track of the user's logged-in state.'''
-from flask_login import LoginManager
+from flask_login import LoginManager # keeps track of the user's logged-in state
 
 
 app = Flask(__name__)
@@ -48,11 +46,6 @@ app.register_blueprint(auth_bp, url_prefix='/auth')
 in the __init__.py file of main directory'''
 from app.main import bp as main_bp
 app.register_blueprint(main_bp)
-
-
-'''After the application instance is created:
-importing objects, methods, and scripts from the application'''
-from app import models, routes
 
 
 if not app.debug:
@@ -91,3 +84,8 @@ def get_locale():
 
 
 babel.init_app(app, locale_selector=get_locale)
+
+
+'''After the application instance is created:
+importing objects, methods, and scripts from the application'''
+from app import models, routes
