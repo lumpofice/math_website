@@ -1,12 +1,6 @@
-'''importing python libraries and modules'''
-from datetime import datetime
-from langdetect import detect, LangDetectException
-
 '''importing flask methods and libraries'''
-from flask import render_template, flash, redirect, url_for, request
-from flask_login import current_user, login_user, logout_user, login_required
-from werkzeug.urls import url_parse
-from flask import g
+from flask import render_template, flash, redirect, url_for, g
+from flask_login import login_required
 from flask_babel import get_locale
 
 '''importing objects, methods, and scripts from the application'''
@@ -25,7 +19,6 @@ from app.general_exponential_transform import GeneralExponentialTransform
 from app.general_logarithmic_transform import GeneralLogarithmicTransform
 from app.base_e_exponential_transform import BaseEExponentialTransform
 from app.base_e_logarithmic_transform import BaseELogarithmicTransform
-from app.models import User, Post
 
 '''importing computational libraries'''
 import numpy as np

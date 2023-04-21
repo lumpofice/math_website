@@ -65,3 +65,5 @@ werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'reset_
 2023-04-17 08:34:23,471 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:85]
 2023-04-20 07:20:07,456 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:85]
 2023-04-20 07:36:02,645 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:78]
+2023-04-21 14:51:36,521 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:78]
+2023-04-21 14:51:48,694 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:78]

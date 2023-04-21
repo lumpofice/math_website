@@ -3,9 +3,8 @@ from datetime import datetime
 from langdetect import detect, LangDetectException
 
 '''importing flask methods and libraries'''
-from flask import render_template, flash, redirect, url_for, request
-from flask_login import current_user, login_user, logout_user, login_required
-from flask import g
+from flask import render_template, flash, redirect, url_for, request, g
+from flask_login import current_user, login_required
 from flask_babel import get_locale
 
 '''importing objects, methods, and scripts from the application'''
