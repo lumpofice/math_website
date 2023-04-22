@@ -53,7 +53,7 @@
 
                     <li>
 						<a href='{{ url_for("main.explore") }}'>
-							{{ ('Explore') }}
+							{{ _('Explore') }}
 						</a>
 					</li>
 
@@ -64,7 +64,7 @@
                     {% if current_user.is_anonymous %}
                     <li>
 						<a href='{{ url_for("auth.login") }}'>
-							{{ ('Login') }}
+							{{ _('Login') }}
 						</a>
 					</li>
 
@@ -78,19 +78,19 @@
 								) 
 							}}'
 						>
-							{{ ('Profile') }}
+							{{ _('Profile') }}
 						</a>
 					</li>
 
                     <li>
 						<a href='{{ url_for("auth.logout") }}'>
-							{{ ('Logout') }}
+							{{ _('Logout') }}
 						</a>
 					</li>
 
 					<li>
 						<a href='{{ url_for("score") }}'>
-							{{ ('Score') }}
+							{{ _('Score') }}
 						</a>
 					</li>
                     {% endif %}

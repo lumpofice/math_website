@@ -1,10 +1,8 @@
 '''importing flask methods and libraries'''
 from flask_wtf import FlaskForm
 from flask import request
-from wtforms import StringField, FloatField, SubmitField, IntegerField,\
-     PasswordField, BooleanField, TextAreaField
-from wtforms.validators import DataRequired, NumberRange, InputRequired,\
-     ValidationError, Email, EqualTo, Length
+from wtforms import StringField, SubmitField, TextAreaField
+from wtforms.validators import DataRequired, ValidationError, Length
 from flask_babel import lazy_gettext as _1
 
 '''importing objects, methods, and scripts from the application'''
