@@ -83,6 +83,8 @@ def get_locale():
     return 'es'
 
 
+'''The first time the locale_selector function is called for a particular user,
+the return value of the get_locale() function is cached for that user.'''
 babel.init_app(app, locale_selector=get_locale)
 
 

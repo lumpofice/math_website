@@ -93,3 +93,7 @@ NameError: name 'app' is not defined
 2023-04-22 11:10:10,362 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:78]
 2023-04-22 11:14:36,506 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:78]
 2023-04-22 11:14:51,387 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:78]
+2023-04-23 08:52:21,706 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:78]
+2023-04-23 09:22:34,954 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:78]
+2023-04-23 09:22:46,254 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:78]
+2023-04-23 09:24:58,093 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:78]
