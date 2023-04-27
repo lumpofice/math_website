@@ -90,4 +90,4 @@ babel.init_app(app, locale_selector=get_locale)
 
 '''After the application instance is created:
 importing objects, methods, and scripts from the application'''
-from app import models, routes
+from app import models

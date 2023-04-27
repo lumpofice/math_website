@@ -1,46 +1,26 @@
-2023-03-16 15:27:17,178 ERROR: Exception on /user/jon [GET] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
-Traceback (most recent call last):
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2525, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1822, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1820, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1796, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_login/utils.py", line 290, in decorated_view
-    return current_app.ensure_sync(func)(*args, **kwargs)
-  File "/home/pi/Desktop/math_website/app/routes.py", line 289, in user
-    next_url=next_url, prev_url=prev_url, form=form)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/templating.py", line 146, in render_template
-    template = app.jinja_env.get_or_select_template(template_name_or_list)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 1081, in get_or_select_template
-    return self.get_template(template_name_or_list, parent, globals)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 1010, in get_template
-    return self._load_template(name, globals)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 969, in _load_template
-    template = self.loader.load(self, name, self.make_globals(globals))
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/loaders.py", line 138, in load
-    code = environment.compile(source, name, filename)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 768, in compile
-    self.handle_exception(source=source_hint)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/home/pi/Desktop/math_website/app/templates/user.html", line 22, in template
-    {% elif not current_user.is_following(user) %}
-jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'elif'. Jinja was looking for the following tags: 'endblock'. The innermost block that needs to be closed is 'block'.
-2023-03-16 15:36:43,086 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-16 15:43:38,874 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-16 15:54:31,297 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-16 15:57:47,436 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-16 15:59:44,843 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-16 16:05:23,750 ERROR: Exception on /reset_password/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNldF9wYXNzd29yZCI6MTEsImV4cCI6MTY3ODk5NzYxMS4zNjE3NDA4fQ.jg79pDqOJZ-mNPH9Z8A13MjJjCsHyhOEXilKWrjiSpE [POST] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
+2023-04-07 13:12:40,129 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
+2023-04-07 13:17:03,684 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
+2023-04-07 13:17:13,385 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
+2023-04-07 13:24:06,533 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
+2023-04-08 10:11:30,275 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
+2023-04-08 10:25:21,086 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
+2023-04-08 10:26:34,082 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
+2023-04-08 10:42:16,308 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
+2023-04-08 10:45:33,397 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
+2023-04-08 10:51:31,905 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
+2023-04-08 10:59:40,096 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
+2023-04-09 10:11:15,651 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:71]
+2023-04-09 10:11:24,570 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:71]
+2023-04-09 10:39:02,228 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:71]
+2023-04-09 10:46:00,241 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:71]
+2023-04-09 11:22:15,086 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:71]
+2023-04-09 11:23:04,886 ERROR: Exception on /edit_profile [POST] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
 Traceback (most recent call last):
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1901, in _execute_context
     cursor, statement, parameters, context
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
     cursor.execute(statement, parameters)
-sqlite3.OperationalError: database is locked
+sqlite3.IntegrityError: UNIQUE constraint failed: user.username
 
 The above exception was the direct cause of the following exception:
 
@@ -53,23 +33,35 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1796, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-  File "/home/pi/Desktop/math_website/app/routes.py", line 467, in reset_password
-    user = User.verify_reset_password_token(token)
-  File "/home/pi/Desktop/math_website/app/models.py", line 143, in verify_reset_password_token
-    return User.query.get(id)
-  File "<string>", line 2, in get
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/util/deprecations.py", line 402, in warned
-    return fn(*args, **kwargs)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 947, in get
-    return self._get_impl(ident, loading.load_on_pk_identity)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 959, in _get_impl
-    execution_options=self._execution_options,
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 2974, in _get_impl
-    load_options=load_options,
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/orm/loading.py", line 534, in load_on_pk_identity
-    bind_arguments=bind_arguments,
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 1714, in execute
-    result = conn._execute_20(statement, params or {}, execution_options)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/home/pi/Desktop/math_website/app/routes.py", line 322, in edit_profile
+    db.session.commit()
+  File "<string>", line 2, in commit
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 1451, in commit
+    self._transaction.commit(_to_root=self.future)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 829, in commit
+    self._prepare_impl()
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 808, in _prepare_impl
+    self.session.flush()
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3444, in flush
+    self._flush(objects)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3584, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 210, in raise_
+    raise exception
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3544, in _flush
+    flush_context.execute()
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 456, in execute
+    rec.execute(self)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 633, in execute
+    uow,
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 242, in save_obj
+    update,
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 1002, in _emit_update_statements
+    statement, multiparams, execution_options=execution_options
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1705, in _execute_20
     return meth(self, args_10style, kwargs_10style, execution_options)
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 335, in _execute_on_connection
@@ -86,15 +78,8 @@ Traceback (most recent call last):
     cursor, statement, parameters, context
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
     cursor.execute(statement, parameters)
-sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) database is locked
-[SQL: SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password_hash AS user_password_hash, user.about_me AS user_about_me, user.last_seen AS user_last_seen 
-FROM user 
-WHERE user.id = ?]
-[parameters: (11,)]
-(Background on this error at: https://sqlalche.me/e/14/e3q8)
-2023-03-17 11:31:23,555 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-17 11:35:46,395 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-17 11:37:16,789 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-18 14:45:57,679 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-18 14:48:47,917 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-18 14:52:45,669 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed: user.username
+[SQL: UPDATE user SET username=?, about_me=? WHERE user.id = ?]
+[parameters: ('elise', 'Do let me be the teacher this quarter. Please?', 2)]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+2023-04-09 11:38:43,372 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:71]

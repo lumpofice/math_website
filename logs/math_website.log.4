@@ -1,4 +1,4 @@
-2023-04-16 09:18:18,617 ERROR: Exception on /login [GET] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
+2023-04-16 10:16:05,458 ERROR: Exception on /index [GET] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
 Traceback (most recent call last):
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2525, in wsgi_app
     response = self.full_dispatch_request()
@@ -8,69 +8,25 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1796, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-  File "/home/pi/Desktop/math_website/app/auth/routes.py", line 105, in login
-    return render_template('login.html', title='MassiveDiscipline', form=form)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/templating.py", line 146, in render_template
-    template = app.jinja_env.get_or_select_template(template_name_or_list)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 1081, in get_or_select_template
-    return self.get_template(template_name_or_list, parent, globals)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 1010, in get_template
-    return self._load_template(name, globals)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 969, in _load_template
-    template = self.loader.load(self, name, self.make_globals(globals))
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/loaders.py", line 126, in load
-    source, filename, uptodate = self.get_source(environment, name)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/templating.py", line 62, in get_source
-    return self._get_source_fast(environment, template)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/templating.py", line 98, in _get_source_fast
-    raise TemplateNotFound(template)
-jinja2.exceptions.TemplateNotFound: login.html
-2023-04-16 09:39:43,585 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:85]
-2023-04-16 09:39:53,187 ERROR: Exception on /login [GET] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
-Traceback (most recent call last):
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2525, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1822, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1820, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1796, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-  File "/home/pi/Desktop/math_website/app/auth/routes.py", line 106, in login
-    form=form)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/templating.py", line 147, in render_template
-    return _render(app, template, context)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/templating.py", line 130, in _render
-    rv = template.render(context)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/home/pi/Desktop/math_website/app/templates/auth/login.html", line 2, in top-level template code
-    {% import 'bootstrap/wtf.html' as wtf %}
-  File "/home/pi/Desktop/math_website/app/templates/base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block 'doc'
-    {%- block html %}
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block 'html'
-    {% block body -%}
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block 'body'
-    {% block content -%}
-  File "/home/pi/Desktop/math_website/app/templates/base.html", line 125, in block 'content'
-    {% block app_content %}{% endblock %}
-  File "/home/pi/Desktop/math_website/app/templates/auth/login.html", line 18, in block 'app_content'
-    <a href='{{ url_for("auth.register") }}'>
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_login/utils.py", line 285, in decorated_view
+    return current_app.login_manager.unauthorized()
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_login/login_manager.py", line 196, in unauthorized
+    redirect_url = make_login_url(login_view, next_url=request.url)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_login/utils.py", line 120, in login_url
+    base = expand_login_view(login_view)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_login/utils.py", line 97, in expand_login_view
+    return url_for(login_view)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/helpers.py", line 262, in url_for
+    **values,
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2031, in url_for
     return self.handle_url_build_error(error, endpoint, values)
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2025, in url_for
     force_external=_external,
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/werkzeug/routing/map.py", line 917, in build
     raise BuildError(endpoint, values, method, self)
-werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'auth.register'. Did you mean 'register' instead?
-2023-04-16 09:48:07,205 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:85]
-2023-04-16 09:48:16,563 ERROR: Exception on /login [GET] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'login'. Did you mean 'auth.login' instead?
+2023-04-16 10:41:03,179 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:85]
+2023-04-16 10:41:13,493 ERROR: Exception on / [GET] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
 Traceback (most recent call last):
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2525, in wsgi_app
     response = self.full_dispatch_request()
@@ -80,37 +36,47 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1796, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-  File "/home/pi/Desktop/math_website/app/auth/routes.py", line 106, in login
-    form=form)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/templating.py", line 147, in render_template
-    return _render(app, template, context)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/templating.py", line 130, in _render
-    rv = template.render(context)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/home/pi/Desktop/math_website/app/templates/auth/login.html", line 2, in top-level template code
-    {% import 'bootstrap/wtf.html' as wtf %}
-  File "/home/pi/Desktop/math_website/app/templates/base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block 'doc'
-    {%- block html %}
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block 'html'
-    {% block body -%}
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block 'body'
-    {% block content -%}
-  File "/home/pi/Desktop/math_website/app/templates/base.html", line 125, in block 'content'
-    {% block app_content %}{% endblock %}
-  File "/home/pi/Desktop/math_website/app/templates/auth/login.html", line 18, in block 'app_content'
-    <a href='{{ url_for("auth.register") }}'>
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_login/utils.py", line 285, in decorated_view
+    return current_app.login_manager.unauthorized()
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_login/login_manager.py", line 196, in unauthorized
+    redirect_url = make_login_url(login_view, next_url=request.url)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_login/utils.py", line 120, in login_url
+    base = expand_login_view(login_view)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_login/utils.py", line 97, in expand_login_view
+    return url_for(login_view)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/helpers.py", line 262, in url_for
+    **values,
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2031, in url_for
     return self.handle_url_build_error(error, endpoint, values)
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2025, in url_for
     force_external=_external,
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/werkzeug/routing/map.py", line 917, in build
     raise BuildError(endpoint, values, method, self)
-werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'auth.register'. Did you mean 'register' instead?
-2023-04-16 09:54:18,671 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:85]
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'login'. Did you mean 'auth.login' instead?
+2023-04-16 10:41:16,521 ERROR: Exception on /explore [GET] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
+Traceback (most recent call last):
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_login/utils.py", line 285, in decorated_view
+    return current_app.login_manager.unauthorized()
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_login/login_manager.py", line 196, in unauthorized
+    redirect_url = make_login_url(login_view, next_url=request.url)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_login/utils.py", line 120, in login_url
+    base = expand_login_view(login_view)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_login/utils.py", line 97, in expand_login_view
+    return url_for(login_view)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/helpers.py", line 262, in url_for
+    **values,
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2031, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2025, in url_for
+    force_external=_external,
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/werkzeug/routing/map.py", line 917, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'login'. Did you mean 'auth.login' instead?
