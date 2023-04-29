@@ -3,12 +3,12 @@ from datetime import datetime
 from langdetect import detect, LangDetectException
 
 '''importing flask methods and libraries'''
-from flask import render_template, flash, redirect, url_for, request, g
+from flask import render_template, flash, redirect, url_for, request, g, current_app
 from flask_login import current_user, login_required
 from flask_babel import get_locale
 
 '''importing objects, methods, and scripts from the application'''
-from app import app, db
+from app import db
 from app.main.forms import *
 from app.models import User, Post
 from app.main import bp
@@ -94,7 +94,7 @@ of our models.py file.'''
     
     
     posts = current_user.followed_posts().paginate(
-        page=page, per_page=app.config['POSTS_PER_PAGE'], error_out=False)
+        page=page, per_page=current_app.config['POSTS_PER_PAGE'], error_out=False)
     next_url = url_for('main.index', page=posts.next_num)\
         if posts.has_next else None
     prev_url = url_for('main.index', page=posts.prev_num)\
@@ -131,7 +131,7 @@ timestamp.'''
     
     
     posts = Post.query.order_by(Post.timestamp.desc()).paginate(
-        page=page, per_page=app.config['POSTS_PER_PAGE'], error_out=False)
+        page=page, per_page=current_app.config['POSTS_PER_PAGE'], error_out=False)
     next_url = url_for('main.explore', page=posts.next_num)\
         if posts.has_next else None
     prev_url = url_for('main.explore', page=posts.prev_num)\
@@ -177,7 +177,7 @@ timestamp.'''
     
     
     posts = user.posts.order_by(Post.timestamp.desc()).paginate(
-        page=page, per_page=app.config['POSTS_PER_PAGE'], error_out=False)
+        page=page, per_page=current_app.config['POSTS_PER_PAGE'], error_out=False)
     next_url = url_for('main.user', username=user.username, \
         page=posts.next_num)\
         if posts.has_next else None

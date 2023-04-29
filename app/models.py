@@ -5,25 +5,12 @@ from time import time
 import jwt
 
 '''importing objects, methods, and scripts from the application'''
-from app import db, app, login
+from app import db, login
+from flask import current_app
 
 '''importing flask methods and libraries'''
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-
-
-@login.user_loader
-def load_user(id):
-    '''This function takes the string representation of the unique user
-identifier, stored in a user session storage space alotted by Flask, converts
-that representation to an integer representation, then passes that integer
-to the database for querying. The "id" argument comes from the primary key
-column in the User model. This "id" is created through the User model in this
-script; stored in the database to be retrieved as the user object for a given
-session in the variable "current_user", the value of which is the "id".'''
-    
-    
-    return User.query.get(int(id))
 
 
 followers = db.Table('followers',
@@ -121,7 +108,7 @@ requested.
         
         return jwt.encode(
             {'reset_password': self.id, 'exp': time() + expires_in},
-            app.config['SECRET_KEY'], algorithm='HS256'
+            current_app.config['SECRET_KEY'], algorithm='HS256'
             )
     
     
@@ -136,7 +123,7 @@ requested.
         
         
         try:
-            id = jwt.decode(token, app.config['SECRET_KEY'],
+            id = jwt.decode(token, current_app.config['SECRET_KEY'],
                 algorithms=['HS256'])['reset_password']
         except:
             return
@@ -202,6 +189,20 @@ serving as the append argument.
                 followers.c.follower_id == self.id)
         own = Post.query.filter_by(user_id=self.id)
         return followed.union(own).order_by(Post.timestamp.desc())
+    
+    
+@login.user_loader
+def load_user(id):
+    '''This function takes the string representation of the unique user
+identifier, stored in a user session storage space alotted by Flask, converts
+that representation to an integer representation, then passes that integer
+to the database for querying. The "id" argument comes from the primary key
+column in the User model. This "id" is created through the User model in this
+script; stored in the database to be retrieved as the user object for a given
+session in the variable "current_user", the value of which is the "id".'''
+    
+    
+    return User.query.get(int(id))
     
     
 class Post(db.Model):

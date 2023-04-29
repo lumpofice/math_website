@@ -1,10 +1,15 @@
-import os
-os.environ['DATABASE_URL'] = 'sqlite://'
-
+#!/usr/bin/env python
+from config import Config
 from datetime import datetime, timedelta
 import unittest
-from app import app, db
+from app import create_app, db
 from app.models import User, Post
+
+
+class TestConfig(Config):
+    TESTING = True
+    SQLALCHEMY_DATABASE_URI = 'sqlite://'
+
 
 class UserModelCase(unittest.TestCase):
     '''We have placed a new key "DATABASE_URL" and value "sqlite://" pair into
@@ -16,7 +21,8 @@ our dict(os.envirion) dictionary'''
     current_app proxy. The db.create_all() call creates all of our tables.'''
         
         
-        self.app_context = app.app_context()
+        self.app = create_app(TestConfig)
+        self.app_context = self.app.app_context()
         self.app_context.push()
         db.create_all()
         
