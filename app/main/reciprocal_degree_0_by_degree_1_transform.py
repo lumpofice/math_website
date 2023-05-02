@@ -122,7 +122,7 @@ class ReciprocalDegree0ByDegree1Transform():
                             
                             # Plotting labeled ordered pairs
                             if h < 0:
-                                a_1 = h-1
+                                a_1 = (h-1)/x_reflection
                                 b_1 = y_scalar*\
                                 (1/(x_scalar*(x_reflection*a_1-h))) + k
                                 ax.scatter(\
@@ -131,7 +131,7 @@ class ReciprocalDegree0ByDegree1Transform():
                                 c='orange',\
                                 s=100, marker='s')
         
-                                a_2 = h-2
+                                a_2 = (h-2)/x_reflection
                                 b_2 = y_scalar*\
                                 (1/(x_scalar*(x_reflection*a_2-h))) + k
                                 ax.scatter(\
@@ -140,7 +140,7 @@ class ReciprocalDegree0ByDegree1Transform():
                                 c='cyan',\
                                 s=100, marker='s')
                 
-                                a_3 = h-3
+                                a_3 = (h-3)/x_reflection
                                 b_3 = y_scalar*\
                                 (1/(x_scalar*(x_reflection*a_3-h))) + k
                                 ax.scatter(\
@@ -153,7 +153,7 @@ class ReciprocalDegree0ByDegree1Transform():
                                 break
                             
                             elif h > 0:
-                                a_1 = h+1
+                                a_1 = (h+1)/x_reflection
                                 b_1 = y_scalar*\
                                 (1/(x_scalar*(x_reflection*a_1-h))) + k
                                 ax.scatter(\
@@ -162,7 +162,7 @@ class ReciprocalDegree0ByDegree1Transform():
                                 c='orange',\
                                 s=100, marker='s')
         
-                                a_2 = h+2
+                                a_2 = (h+2)/x_reflection
                                 b_2 = y_scalar*\
                                 (1/(x_scalar*(x_reflection*a_2-h))) + k
                                 ax.scatter(\
@@ -171,7 +171,7 @@ class ReciprocalDegree0ByDegree1Transform():
                                 c='cyan',\
                                 s=100, marker='s')
                 
-                                a_3 = h+3
+                                a_3 = (h+3)/x_reflection
                                 b_3 = y_scalar*\
                                 (1/(x_scalar*(x_reflection*a_3-h))) + k
                                 ax.scatter(\
@@ -202,7 +202,7 @@ class ReciprocalDegree0ByDegree1Transform():
                             r'$\dfrac{1}{b(cx-h)} + k$')
                             
                             # Plotting labeled ordered pairs
-                            a_1 = h-1
+                            a_1 = (h-1)/x_reflection
                             b_1 = y_scalar*\
                             (1/(x_scalar*(x_reflection*a_1-h))) + k
                             ax.scatter(\
@@ -211,7 +211,7 @@ class ReciprocalDegree0ByDegree1Transform():
                             c='orange',\
                             s=100, marker='s')
         
-                            a_2 = h+1
+                            a_2 = (h+1)/x_reflection
                             b_2 = y_scalar*\
                             (1/(x_scalar*(x_reflection*a_2-h))) + k
                             ax.scatter(\
@@ -220,7 +220,7 @@ class ReciprocalDegree0ByDegree1Transform():
                             c='cyan',\
                             s=100, marker='s')
                 
-                            a_3 = h+2
+                            a_3 = (h+2)/x_reflection
                             b_3 = y_scalar*\
                             (1/(x_scalar*(x_reflection*a_3-h))) + k
                             ax.scatter(\
@@ -296,7 +296,7 @@ class ReciprocalDegree0ByDegree1Transform():
                     r'$\dfrac{1}{cx-h} + k$')
                     
                     # Plotting labeled ordered pairs
-                    a_1 = h-1
+                    a_1 = (h-1)/x_reflection
                     b_1 = y_scalar*(1/(x_reflection*a_1-h)) + k
                     ax.scatter(\
                     a_1, b_1,\
@@ -304,7 +304,7 @@ class ReciprocalDegree0ByDegree1Transform():
                     c='orange',\
                     s=100, marker='s')
         
-                    a_2 = h+1
+                    a_2 = (h+1)/x_reflection
                     b_2 = y_scalar*(1/(x_reflection*a_2-h)) + k
                     ax.scatter(\
                     a_2, b_2,\
@@ -312,7 +312,7 @@ class ReciprocalDegree0ByDegree1Transform():
                     c='cyan',\
                     s=100, marker='s')
                 
-                    a_3 = h+2
+                    a_3 = (h+2)/x_reflection
                     b_3 = y_scalar*(1/(x_reflection*a_3-h)) + k
                     ax.scatter(\
                     a_3, b_3,\

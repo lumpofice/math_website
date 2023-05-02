@@ -104,3 +104,6 @@ Traceback (most recent call last):
     msg.body = text_body
 NameError: name 'msg' is not defined
 2023-04-29 09:13:32,493 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:94]
+2023-05-02 08:07:43,297 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:94]
+2023-05-02 08:08:04,011 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:94]
+2023-05-02 08:10:09,226 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:94]
