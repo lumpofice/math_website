@@ -1,0 +1,24 @@
+This document serves to cover the basics of creating a functioning Flask application.
+
+1) We use app = Flask(__name__) in the __init__.py file to create the application instance, with the __name__ variable being used to determine the root path of the application for Flask's reference.
+
+2) The client communicates with the web server via the "request", and Flask uses the route mapping, which has been generated as a set of links between a request-specific URL and a view functions's decorator, which registers that function as the event-specific handler, to run the code corresponding with the request.
+
+3) To run the application through Flask's launched integrated development web server
+if __name__ == '__main__':
+    app.run(debug=True)
+
+Here is an example of a complete application:
+--------------------------------------------------------------------
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return <h1>Hello</h1>
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+    
