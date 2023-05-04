@@ -9,6 +9,7 @@ if __name__ == '__main__':
     app.run(debug=True)
 
 Here is an example of a complete application:
+
 --------------------------------------------------------------------
 from flask import Flask
 
@@ -16,9 +17,30 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return <h1>Hello</h1>
+    return '<h1>Hello</h1>'
 
 if __name__ == '__main__':
     app.run(debug=True)
+-------------------------------------------------------------------
 
+The argument in the @app.route() decorator is the URL path---after the IP address---to the view function containing the code we wish to display. The path can be changed, as the following, different view function, which contains a dynamic variable that we will pass as an argument to the view function, demonstrates. 
+
+--------------------------------------------------------------------
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return '<h1>hello</h1>'
+
+@app.route('/<name>') # Could pass '/user/<name>', for example
+def user(name):
+    return '<h1>Hello %s </h1>' % name
+
+if __name__ == '__main__':
+    app.run(debug=True)
+--------------------------------------------------------------------
+
+Note that the @app.route('/') decorator is present and attached to a view function. If either is absent, the application throws an error.
     
