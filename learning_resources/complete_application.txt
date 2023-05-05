@@ -10,7 +10,7 @@ if __name__ == '__main__':
 
 Here is an example of a complete application:
 
---------------------------------------------------------------------
+(1)-----------------------------------------------------------------
 from flask import Flask
 
 app = Flask(__name__)
@@ -25,7 +25,7 @@ if __name__ == '__main__':
 
 The argument in the @app.route() decorator is the URL path---after the IP address---to the view function containing the code we wish to display. The path can be changed, as the following, different view function, which contains a dynamic variable that we will pass as an argument to the view function, demonstrates. 
 
---------------------------------------------------------------------
+(2)-----------------------------------------------------------------
 from flask import Flask
 
 app = Flask(__name__)

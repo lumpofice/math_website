@@ -1,0 +1,39 @@
+There are two types of context:
+1) APPLICATION CONTEXT
+2) REQUEST CONTEXT
+
+Flask will push an application context upon run. For instance, note that I am neither asking Flask to import the current_app variable nor am I asking Flask to push a context in the following code that I will be running through my local server:
+
+
+(1)-----------------------------------------------------------------
+from flask import Flask
+
+app = Flask(__name__)
+
+app.route('/')
+def index():
+    return '<h1>Hello</h1>'
+
+if __name__ == '__main__':
+    app.run(debug=True)
+--------------------------------------------------------------------
+
+I can ask for the code to be run through a python interpreter, asking for the current_app variable and pushing an application context. I have a complete application in a file named 'hello.py', which is located in a directory encpsulated in an environment (venv). In fact, it is exactly like the above code (1). I will use this in application, within its environment, in the following:
+
+(2)-----------------------------------------------------------------
+>>>from hello import app
+>>>from flask import current_app
+>>>app_ctxt = app.app_context()
+>>>app_ctxt.push()
+>>>current_app.name
+'Hello'
+>>>app_ctxt.pop()
+--------------------------------------------------------------------
+
+I can ask for the code to be run through a python interpreter, asking for neither the current_app variable nor for an application context push.
+
+(3)-----------------------------------------------------------------
+>>>from hello import app
+>>>app.name
+'hello'
+--------------------------------------------------------------------
