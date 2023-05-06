@@ -1,0 +1,22 @@
+With the Jinja2 template engine, we can handle the presentation logic (the response sent by the view function to the browser). For instance, the user() view function, (1), that takes a dynamic variable as an argument can communicate the value of that variable to a template. Once the HTML string is removed from the return value of the view function and replaced with code apporpriate for kicking such a task to a template, the code seen in (2) will be the equivalent presentation logic.
+
+(1)-----------------------------------------------------------------
+from flask import Flask
+
+app = Flask(__name__)
+
+app.route('/')
+def index():
+    return '<h1>Hello</h1>'
+
+app.route('/<name>')
+def user(name):
+    return '<h1> Hello %s </h1>' % name
+
+if __name__ == '__main__':
+    app.run(debug=True)
+--------------------------------------------------------------------
+
+(2)-----------------------------------------------------------------
+<h1>Hello {{ name }}</h1>
+--------------------------------------------------------------------

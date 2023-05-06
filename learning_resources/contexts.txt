@@ -18,7 +18,7 @@ if __name__ == '__main__':
     app.run(debug=True)
 --------------------------------------------------------------------
 
-I can ask for the code to be run through a python interpreter, asking for the current_app variable and pushing an application context. I have a complete application in a file named 'hello.py', which is located in a directory encpsulated in an environment (venv). In fact, it is exactly like the above code (1). I will use this in application, within its environment, in the following:
+I can ask for the code to be run through a python interpreter, importing the current_app variable and pushing an application context. I have a complete application in a file named 'hello.py', which is located in a directory encpsulated in an environment (venv). In fact, the application is exactly like the above code (1). I will use this application, within its environment, in the following:
 
 (2)-----------------------------------------------------------------
 >>>from hello import app
@@ -26,13 +26,34 @@ I can ask for the code to be run through a python interpreter, asking for the cu
 >>>app_ctxt = app.app_context()
 >>>app_ctxt.push()
 >>>current_app.name
-'Hello'
+'hello'
 >>>app_ctxt.pop()
 --------------------------------------------------------------------
 
-I can ask for the code to be run through a python interpreter, asking for neither the current_app variable nor for an application context push.
+The name of the application is 'hello', as in the name of the hello.py file. Thus, 'hello' is the output seen in the above calls. I can ask for the code to be run through a python interpreter, neither importing the current_app variable nor  asking for an application context push.
 
 (3)-----------------------------------------------------------------
+>>>from hello import app
+>>>app.name
+'hello'
+--------------------------------------------------------------------
+
+Note that we may change the name argument in the Flask() call within the .py file to something different, but the output will be precisely the Flask() argument and not the name of the application. As well, the attribute that is name will need to be run with the app call in the python shell. Here, in (4), we change the name of the application to 'hrllo' and change the Flask() argument from __name__ to 'hello', while calling for app.name in the python shell seen in (5):
+
+(4)-----------------------------------------------------------------
+from flask import Flask
+
+app = Flask('hello')
+
+app.route('/')
+def index():
+    return '<h1>Hello</h1>'
+
+if __name__ == '__main__':
+    app.run(debug=True)
+--------------------------------------------------------------------
+
+(5)-----------------------------------------------------------------
 >>>from hello import app
 >>>app.name
 'hello'
