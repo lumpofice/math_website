@@ -1,4 +1,4 @@
-With the Jinja2 template engine and the Bootstrap framework, we can handle the presentation logic (the response sent by the view function to the browser). We extend the Bootstrap framework's base into our own base.html file, which we extend to our other .html files within the templates folder. In the base.html file, there are title, navbar, and content block tags that derived templates (templates we create) may override. Not all block tags from Bootstrap may be overriden. In the event that we are adding our own code within such a block tag, the super() function from Jinja must be used. Following, you will see some of the Jinja code syntax that is used throughout the application. The {% %} tags are control structures that conditional statements and directives use within the HTML templates. Here is the rough of how we may set up our base.html template:
+With the Jinja2 template engine and the Bootstrap framework, we can handle the presentation logic (the response sent by the view function to the browser) outside of the Python view functions. We extend the Bootstrap framework's base into our own base.html file, which we extend to our other .html files within the templates folder. In the base.html file, there are title, navbar, and content block tags that derived templates (templates we create) may override. Not all block tags from Bootstrap may be overriden. In the event that we are adding our own code within such a block tag, the super() function from Jinja must be used. Following, you will see some of the Jinja code syntax that is used throughout the application. The {% %} tags are control structures that conditional statements and directives use within the HTML templates. Here is the rough of how we may set up our base.html template:
 
 (1)-----------------------------------------------------------------
 {% extends 'bootstrap/base.html' %}
@@ -11,6 +11,7 @@ With the Jinja2 template engine and the Bootstrap framework, we can handle the p
 
 {% block content %}
 # ...
+    {% block page_content %}{% endblock %}
 {% endblock %}
 --------------------------------------------------------------------
 
@@ -26,7 +27,7 @@ And here is the rough of how we may set up subsequent .html templates:
 {% endblock %}
 --------------------------------------------------------------------
 
-We need to take a moment to build one of the bridges between Python view functions and Jinja2 templates that accomplish what presentation logic could be accomplished by Python view functions alone---the scaled version of an application is easier on the eyes if Python view functions and Jinja2 templates are used in tandem. Flask's render_template() function can be called in a view function, pointing to the template we wish the browser to display. In (3), we will see the version of the user() view function with the HTML written within the return statement. In (4), we will see the .html template, with the directive to extend from the base.html template, that shoulders the presentation logic charged to it through the render_template() call in the version of the user() view function that no longer includes HTML within the return statement, (5). Additionally, the user() view function in (3) that takes a dynamic variable as an argument can communicate the value of that variable to the template, (4). The result in the browser is the same when the HTML string is removed from the return value of the view function in (3) and replaced with a render_template() call in (5), kicking the presentation logic to the Jinja template in (4).
+Let's to take a moment to gaze upon one of the bridges between Python view functions and Jinja2 templates that accomplish what presentation logic could be accomplished by Python view functions alone---the scaled version of an application is easier on the eyes if Python view functions and Jinja2 templates are used in tandem---Flask's render_template() function. render_template() can be called in a view function, pointing to the template we wish the browser to display. In (3), we will see the version of the user() view function with the HTML written within the return statement. In (4), we will see the .html template, with the directive to extend from the base.html template, that shoulders the presentation logic charged to it through the render_template() call in the version of the user() view function that no longer includes HTML within the return statement, (5). Additionally, the user() view function in (3) that takes a dynamic variable as an argument can communicate the value of that variable to the template, (4). The result in the browser is the same when the HTML string is removed from the return value of the view function in (3) and replaced with a render_template() call in (5), kicking the presentation logic to the Jinja template in (4).
 
 (3)-----------------------------------------------------------------
 from flask import Flask
@@ -61,7 +62,7 @@ if __name__ == '__main__':
 
 (5)-----------------------------------------------------------------
 from flask import Flask, render_template
-from flask.ext.bootstrap import Bootstrap
+from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
@@ -73,6 +74,94 @@ def index():
 app.route('/<name>')
 def user(name):
     return render_template('user.html', name=name)
+
+if __name__ == '__main__':
+    app.run(debug=True)
+--------------------------------------------------------------------
+
+It would be a good idea to be more specific about where the presentation logic for the user view function should render. Given that <name> could be anything, we have that anything appearing after the '/' in the URL will serve as the name variable for the user view function in (5). To fix this, we could change the argument in the decorator of the user view function from '/<name>' to something such as '/user/<name>'. This allows us to build separate branches coming off of the root branch '/'. The application in (6) will work well enough towards this purpose for the moment.
+
+(6)-----------------------------------------------------------------
+from flask import Flask, render_template
+from flask_bootstrap import Bootstrap
+
+app = Flask(__name__)
+bootstrap = Bootstrap(app)
+
+app.route('/')
+def index():
+    return render_template('index.html')
+
+app.route('/user/<name>')
+def user(name):
+    return render_template('user.html', name=name)
+
+if __name__ == '__main__':
+    app.run(debug=True)
+--------------------------------------------------------------------
+
+The URLs are quite specific here. If I run the application and then type in the browser search bar '/user/', I am greeted with one of those Not Found browser windows---a scary-looking error message. I must provide the value for the dynamic variable, as well. To gentle the effect of the scary, Not Found error message, I can add a 404 error handler to my application, as seen in (7). Of course, we need a template, (8), for this view function. 
+
+(7)-----------------------------------------------------------------
+from flask import Flask, render_template
+from flask_bootstrap import Bootstrap
+
+app = Flask(__name__)
+bootstrap = Bootstrap(app)
+
+app.route('/')
+def index():
+    return render_template('index.html')
+
+app.route('/user/<name>')
+def user(name):
+    return render_template('user.html', name=name)
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
+if __name__ == '__main__':
+    app.run(debug=True)
+--------------------------------------------------------------------
+
+(8)-----------------------------------------------------------------
+{% extends 'base.html' %}
+
+{% block title %}{% endblock %}
+
+{% block page_content %}
+<div class='page-header'>
+    <h1>Hello {{ name }}</h1>
+</div>
+{% endblock %}
+--------------------------------------------------------------------
+
+Finally, if we want a view function to display within the browser for more than one URL, all we need do is append an 
+'@app.route("/<remaining_url>")'
+to that view function. As seen in (9), we include 
+'@app.route("/index")' 
+to the index view function. Now, the index.html template will render to the brower when either '/' or '/index' is the URL.
+
+(9)-----------------------------------------------------------------
+from flask import Flask, render_template
+from flask_bootstrap import Bootstrap
+
+app = Flask(__name__)
+bootstrap = Bootstrap(app)
+
+app.route('/')
+app.route('/index')
+def index():
+    return render_template('index.html')
+
+app.route('/user/<name>')
+def user(name):
+    return render_template('user.html', name=name)
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
 
 if __name__ == '__main__':
     app.run(debug=True)
