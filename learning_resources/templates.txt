@@ -79,9 +79,44 @@ if __name__ == '__main__':
     app.run(debug=True)
 --------------------------------------------------------------------
 
-It would be a good idea to be more specific about where the presentation logic for the user view function should render. Given that <name> could be anything, we have that anything appearing after the '/' in the URL will serve as the name variable for the user view function in (5). To fix this, we could change the argument in the decorator of the user view function from '/<name>' to something such as '/user/<name>'. This allows us to build separate branches coming off of the root branch '/'. The application in (6) will work well enough towards this purpose for the moment.
+Though in (5) it is not easy to understand which of the 'name' labels corresponds to Flask and which corresponds to Jinja. Thus, it is not obvious how the template in (4) communicates with the view function in (5) on this point. In (6) and (7) below we gain a bit of clarity.
 
 (6)-----------------------------------------------------------------
+{% extends 'base.html' %}
+
+{% block title %}{% endblock %}
+
+{% block page_content %}
+<div class='container'>
+    <div class='page-header'>
+        <h1>Hello {{ jinja_name }}</h1>
+    </div>
+</div>
+{% endblock %}
+--------------------------------------------------------------------
+
+(7)-----------------------------------------------------------------
+from flask import Flask, render_template
+from flask_bootstrap import Bootstrap
+
+app = Flask(__name__)
+bootstrap = Bootstrap(app)
+
+app.route('/')
+def index():
+    return render_template('index.html')
+
+app.route('/<flask_name>')
+def user(flask_name):
+    return render_template('user.html', jinja_name=flask_name)
+
+if __name__ == '__main__':
+    app.run(debug=True)
+--------------------------------------------------------------------
+
+It would be a good idea to be more specific about where the presentation logic for the user view function should render. Given that <name> could be anything, we have that anything appearing after the '/' in the URL will serve as the name variable for the user view function in (5). To fix this, we could change the argument in the decorator of the user view function from '/<name>' to something such as '/user/<name>'. This allows us to build separate branches coming off of the root branch '/'. The application in (6) will work well enough towards this purpose for the moment.
+
+(8)-----------------------------------------------------------------
 from flask import Flask, render_template
 from flask_bootstrap import Bootstrap
 
@@ -102,7 +137,7 @@ if __name__ == '__main__':
 
 The URLs are quite specific here. If I run the application and then type in the browser search bar '/user/', I am greeted with one of those Not Found browser windows---a scary-looking error message. I must provide the value for the dynamic variable, as well. To gentle the effect of the scary, Not Found error message, I can add a 404 error handler to my application, as seen in (7). Of course, we need a template, (8), for this view function. 
 
-(7)-----------------------------------------------------------------
+(9)-----------------------------------------------------------------
 from flask import Flask, render_template
 from flask_bootstrap import Bootstrap
 
@@ -125,7 +160,7 @@ if __name__ == '__main__':
     app.run(debug=True)
 --------------------------------------------------------------------
 
-(8)-----------------------------------------------------------------
+(10)-----------------------------------------------------------------
 {% extends 'base.html' %}
 
 {% block title %}{% endblock %}
@@ -137,13 +172,13 @@ if __name__ == '__main__':
 {% endblock %}
 --------------------------------------------------------------------
 
-Finally, if we want a view function to display within the browser for more than one URL, all we need do is append an 
+If we want a view function to display within the browser for more than one URL, all we need do is append an 
 '@app.route("/<remaining_url>")'
 to that view function. As seen in (9), we include 
 '@app.route("/index")' 
 to the index view function. Now, the index.html template will render to the brower when either '/' or '/index' is the URL.
 
-(9)-----------------------------------------------------------------
+(11)-----------------------------------------------------------------
 from flask import Flask, render_template
 from flask_bootstrap import Bootstrap
 
