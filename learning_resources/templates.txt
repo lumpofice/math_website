@@ -1,4 +1,4 @@
-With the Jinja2 template engine and the Bootstrap framework, we can handle the presentation logic (the response sent by the view function to the browser) outside of the Python view functions. We extend the Bootstrap framework's base into our own base.html file, which we extend to our other .html files within the templates folder. In the base.html file, there are title, navbar, and content block tags that derived templates (templates we create) may override. Not all block tags from Bootstrap may be overriden. In the event that we are adding our own code within such a block tag, the super() function from Jinja must be used. Following, you will see some of the Jinja code syntax that is used throughout the application. The {% %} tags are control structures that conditional statements and directives use within the HTML templates. Here is the rough of how we may set up our base.html template:
+With the Jinja2 template engine and the Bootstrap framework, we can handle the presentation logic (the response sent by the view function to the browser) outside of the Python view functions. We extend the Bootstrap framework's base into our own base.html file, which we extend to our other .html files within the templates folder. In the base.html file, there are title, navbar, and content block tags that derived templates (templates we create) may override. Not all block tags from Bootstrap may be overriden. In the event that we are adding our own code within such a block tag, the super() function from Jinja must be used. (See (12), (13), and (14) below.) Following, you will see some of the Jinja code syntax that is used throughout the application. The {% %} tags are control structures that conditional statements and directives use within the HTML templates. Here is the rough of how we may set up our base.html template:
 
 (1)-----------------------------------------------------------------
 {% extends 'bootstrap/base.html' %}
@@ -160,8 +160,7 @@ if __name__ == '__main__':
     app.run(debug=True)
 --------------------------------------------------------------------
 
-(10)-----------------------------------------------------------------
-{% extends 'base.html' %}
+(10)----------------------------------------------------------------{% extends 'base.html' %}
 
 {% block title %}{% endblock %}
 
@@ -201,3 +200,73 @@ def page_not_found(e):
 if __name__ == '__main__':
     app.run(debug=True)
 --------------------------------------------------------------------
+
+We have an example of block tags that inherit their own contents:
+
+(12)----------------------------------------------------------------{% extends 'bootstrap/base.html' %}
+
+{% block title %}{% endblock %}
+
+{% block navbar %}
+# ...
+{% endblock %}
+
+{% block content %}
+# ...
+    {% block page_content %}{% endblock %}
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{{ moment.include_moment() }}
+{% endblock %}
+--------------------------------------------------------------------
+
+(13)-----------------------------------------------------------------
+from flask import Flask, render_template
+from flask_bootstrap import Bootstrap
+from flask_moment import Moment
+from datetime import datetime
+
+app = Flask(__name__)
+bootstrap = Bootstrap(app)
+moment = Moment(app)
+
+app.route('/')
+app.route('/index')
+def index():
+    return render_template('index.html', 
+                          current_time=datetime.utcnow())
+
+app.route('/user/<name>')
+def user(name):
+    return render_template('user.html', name=name)
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
+if __name__ == '__main__':
+    app.run(debug=True)
+--------------------------------------------------------------------
+
+(14)----------------------------------------------------------------
+{% extends 'base.html' %}
+
+{% block title %}{% endblock %}
+
+{% block page_content %}
+<div class='page-header'>
+    <h1>Hello</h1>
+    <p>The local data and time is 
+        {{ moment(current_time).format('LLL') }}</p>
+    <p>That was {{ moment(current_time).fromNow(refresh=True) }}</p>
+</dir>
+{% endblock %}
+--------------------------------------------------------------------
+
+
+
+
+
+
