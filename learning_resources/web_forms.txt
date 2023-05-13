@@ -1,0 +1,63 @@
+Flask-WTF protects against CSRF attacks by configuring an encryption key. So, we use this Flask extension, with our encryption key being provided through the SECRET_KEY environment variable stored in the app.config dictionary. With this extension we will build, in our application file, (1), the form class and the view function. In the corresponding template (2), we will import bootstrap's wtf.html file, adding within our page_content block a control structure (if conditional) and the wtf.quick_form() function, which renders the NameForm object. In our application file, we will need to import some classes: a FlaskForm class from flask_wtf, as well as fields and field validators from wtforms to help validate user input form data. As well, in the view function decorator, we will need to include the GET and POST methods to be sure that the user data is protected. 
+
+(1)-----------------------------------------------------------------
+from flask import Flask
+from flask_wtf import FlaskForm
+from flask_moment import Moment
+from flask_bootstrap import Bootstrp
+from wtforms import StringField, SubmitField
+from wtforms.validators import DataRequired
+from datetime import datetime
+
+app = Flask(__name__)
+app.config['SECRET_KEY'] = 'give it a go'
+bootstrap = Bootstrap(app)
+moment = Moment(app)
+
+@app.route('/', methods=['GET', 'POST'])
+@app.route('/index', methods=['GET', 'POST'])
+def index():
+    flask_name = None
+    form = NameForm()
+    if form.validate_on_submit():
+        flask_name = form.flask_name.data
+        form.flask_name.data = ''
+    return render_template('index.html',
+                           current_time=datetime.utcnow(),
+                           form=form, 
+                           jinja_name=flask_name)
+
+@app.route('/user/<flask_name>')
+def user(flask_name):
+    return render_template('user.html', jinja_name=flask_name)
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
+class NameForm(FlaskForm):
+    flask_name = StringField('Name, please?', 
+                       validators=[DataRequired()]))
+    submit = SubmitField('Aplogize')
+
+if __name__ == '__main__':
+    app.run(debug=True)
+--------------------------------------------------------------------
+
+(2)-----------------------------------------------------------------
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block title %}{% endblock %}
+
+{% block page_content %}
+<div class='page-header'>
+    <h1>Hello {% if jinja_name %}{{ jinja_name }}{% else %}
+        Stanger{% endif %}
+    <p>The local data and time is 
+        {{ moment(current_time).format('LLL') }}</p>
+    <p>That was {{ moment(current_time).fromNow(refresh=True) }}</p>
+</dir>
+{{ wtf.quick_form(form) }}
+{% endblock %}
+--------------------------------------------------------------------
