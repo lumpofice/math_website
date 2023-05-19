@@ -110,3 +110,4 @@ NameError: name 'msg' is not defined
 2023-05-08 18:09:39,286 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:94]
 2023-05-09 17:05:23,803 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:94]
 2023-05-09 17:13:23,406 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:94]
+2023-05-19 14:08:09,642 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:94]
