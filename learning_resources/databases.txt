@@ -9,7 +9,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] =\
-    'sqlite://' + os.path.join(basedir, 'data.sqlite')
+    'sqlite:///' + os.path.join(basedir, 'data.sqlite')
 app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
 app.config['SECRET_KEY'] = 'give it a try'
 bootstrap = Bootstrap(app)
@@ -41,13 +41,19 @@ class User(db.Model):
 
 The Role model contains a users attribute, which defines a one-to-many relationship with the User model via the role attribute. The role attribute, which is the value of the backref configuration option in the relationship definition, users, contained within the Role model, serves in place of the foreign key, roles_id, contained within the User model. This backref configuration option exists as a precaution against any ambiguity the relationship definition might face while attempting to locate the relationship's foreign key in the User model.
 
-When endeavoring to create a database through the model classes, the following context should be pushed in the terminal python shell or in the terminal flask shell via the flask shell subcommand:
+When endeavoring to create a database through the model classes, an application context should be pushed in the terminal python shell, if the terminal flask shell, via the flask shell subcommand, is not used. In either case, the FLASK_APP environment variable may need to be set first. In (2), we push an application context in the python shell. In (3), we use the flask shell subcommand.
 
 (2)-----------------------------------------------------------------
 >>>from hrllo import app
 >>>from hrllo import db
 >>>app_ctx = app.app_context()
 >>>app_ctx.push()
+>>>db.create_all()
+--------------------------------------------------------------------
+
+(3)-----------------------------------------------------------------
+>>>from hrllo import app
+>>>from hrllo import db
 >>>db.create_all()
 --------------------------------------------------------------------
 
