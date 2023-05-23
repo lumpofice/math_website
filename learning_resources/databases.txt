@@ -57,7 +57,7 @@ When endeavoring to create a database, one must call db.create_all() in a termin
 >>>db.create_all()
 --------------------------------------------------------------------
 
-When considering the subcommands. within the terminal, available through the flask command, flask db is unavailable so long as the migrate object is not present within the application.
+When considering the subcommands. within the terminal, available through the flask command, flask db is unavailable so long as the migrate object is not present within the application. We discuss how to set up and migrate changes to the alembic framework towards the end of this document.
 
 In (4) and (5), as well as (6) and (7) below, we observe the difference between having a relationship variable and a query object retrieve row values for our queries. The relationship variable has an implicit query object internally calling the all() method. There is no way to manipulate this query object, so we set a value of 'dynamic' to the lazy attribute in our Role model's relationship. In (4) and (5), we see what happens when the lazy attribute is set to dynamic. In (6) and (7), we see what happens when the lazy attribute is missing. When the lazy attribute is missing, the default value is set to True, which signals SQLAlchemy to load the data. When the attribute is set to 'dynamic', SQLAlchemy returns a query object on which we may apply filters before the data is loaded.
 
@@ -230,3 +230,37 @@ After using the view function to enter new data into our users table, we can go 
 >>>from hrllo import User
 >>>User.query.all()
 --------------------------------------------------------------------
+
+Though the above is not uneccesarily written, the following is what we will use to create and maintain a database. We need to import the flask-migrate extension, which serves as a wrapper for the alembic. After this, we need to import the Migrate class to our python file, (11):
+
+(11)----------------------------------------------------------------
+# ...
+from flask_sqlalchemy import SQLAlchemy
+import os
+from flask_migrate import Migrate
+
+basedir = os.path.abspath(os.path.dirname(__file__))
+
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] =\
+    'sqlite:///' + os.path.join(basedir, 'data.sqlite')
+app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
+app.config['SECRET_KEY'] = 'give it a try'
+bootstrap = Bootstrap(app)
+moment = Moment(app)
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
+
+# ...
+--------------------------------------------------------------------
+
+Finally, we need to initialize, migrate, and upgrade our database. In (13), we see just how to accomplish this:
+
+(13)----------------------------------------------------------------
+>>>export FLASK_APP=hrllo.py
+>>>flask db init
+>>>flask db migrate -m 'initial migration'
+>>>flask db upgrade
+--------------------------------------------------------------------
+
+The flask db init line generates our migrations folder, which serves as a repository---we have upgrade and downgrade functions that we can use to (obviously) upgrade or downgrade our database through the Migrate class, and the files within the migration repository are upgraded/downgraded with these changes. The flask db migrate line initializes our database, generating the data.sqlite file that we ask it to generate in (12).  
