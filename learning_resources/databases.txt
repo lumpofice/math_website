@@ -254,9 +254,9 @@ migrate = Migrate(app, db)
 # ...
 --------------------------------------------------------------------
 
-Finally, we need to initialize, migrate, and upgrade our database. In (13), we see just how to accomplish this:
+Finally, we need to initialize, migrate, and upgrade our database. In (12), we see just how to accomplish this:
 
-(13)----------------------------------------------------------------
+(12)----------------------------------------------------------------
 >>>export FLASK_APP=hrllo.py
 >>>flask db init
 >>>flask db migrate -m 'initial migration'
