@@ -36,3 +36,92 @@ mail = Mail(app)
 --------------------------------------------------------------------
 
 First, msg.body does not appear in the email successfully sent. In fact, leaving it out altogether changes nothing about the successful sending of the email. Second, the send method uses the current_app object, requiring us to activate an application context.
+
+We can allocate the email structure to a separate definition, (3):
+
+(3)-----------------------------------------------------------------
+# ...
+from flask_mail import Mail
+from flask_mail import Message
+
+# ...
+app.config['HRLLO_MAIL_SUBJECT_PREFIX'] = '[Hrllo]'
+app.config['HRLLO_MAIL_SENDER'] = 'DummyStringNeeded'
+# ...
+
+# ...
+
+def send_email(to, subject, template, **kwargs):
+    msg = Message(app.config['HRLLO_MAIL_SUBJECT_PREFIX'] + subject,
+                  sender=app.config['HRLLO_MAIL_SENDER'], 
+                  recipients=[to])
+    msg.body = render_template(template + '.txt', **kwargs)
+    msg.html = render_template(template + '.html', **kwargs)
+    mail.send(msg)
+
+# ...
+--------------------------------------------------------------------
+
+The sender kwarg in the Message class of both (2) and (3) can be whatever we want it to be for the moment. The send_email function will take arguments for the email's destination, as well as the template that serves as the body of the email, whether that be plain- or rich-text. The Message class takes arguments for the subject line, the sender, and the recipient of the email. In our index view function, we can specify the arguments for these functions, as can be seen in (4):
+
+(4)-----------------------------------------------------------------
+# ...
+
+# ...
+app.config['HRLLO_ADMIN'] = os.environ.get('HRLLO_ADMIN')
+# ...
+
+@app.route('/', methods=['GET', 'POST'])
+@app.route('/index', methods=['GET', 'POST'])
+def index():
+    form = NameForm()
+    if form.validate_on_submit():
+        flask_user = User.query.\
+            filter_by(
+                      username=form.flask_name.data).\
+                      first()
+        if flask_user is None:
+            flask_user = User(username = form.flask_name.data)
+            db.session.add(flask_user)
+            session['known'] = False
+            if app.config['HRLLO_ADMIN']:
+                send_email(app.config['HRLLO_ADMIN'],
+                           ' New User ',
+                           'mail/new_user', jinja_user=flask_user)
+        else:
+            session['known'] = True
+        session['flask_name'] = form.flask_name.data
+        form.flask_name.data = ''
+        return redirect(url_for('index'))
+    return render_template('index.html', 
+                           current_time=datetime.utcnow(),
+                           form=form, 
+                           jinja_name=session.get('flask_name'),
+                           known = session.get('known', False))
+--------------------------------------------------------------------
+
+We set our HRLLO_ADMIN environment variable to the email address at which we wish to receive the email, (5):
+
+(5)-----------------------------------------------------------------
+>>>HRLLO_ADMIN=emailhandle@gmail.com
+>>>MAIL_USERNAME=emailhandle@gmail.com
+>>>MAIL_PASSWORD=emailhandle@gmail.compassword
+--------------------------------------------------------------------
+
+And of course, we have our templates---(6) being html; (7) being text---that are located in a subdirectory, email, of the templates directory, (8):
+
+(6)-----------------------------------------------------------------
+<p>{{ jinja_user }} just joined!</p>
+--------------------------------------------------------------------
+
+(7)-----------------------------------------------------------------
+{{ jinja_user }} just joined!
+--------------------------------------------------------------------
+
+(8)-----------------------------------------------------------------
+|-hrllo
+  |-templates
+    |-mail
+      |-new_user.html
+      |-new_user.txt
+--------------------------------------------------------------------
