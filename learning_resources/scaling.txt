@@ -1,0 +1,31 @@
+The goal is to scale the application. Keeping all of the code in a single script could lead to problems. So, we restructure everything to accomodate our scaling attempts. In (1) below, our root folder will be labeled cl_flask:
+
+(1)-----------------------------------------------------------------
+|-cl_flask/
+  |-app/
+    |-templates/
+    |-static/
+    |-main/
+      |-__init__.py
+      |-routes.py
+      |-forms.py
+      |-email.py
+    |-errors/
+      |-__init__.py
+      |-handlers.py
+    |-auth/
+      |-__init__.py
+      |-routes.py
+      |-forms.py
+      |-email.py
+    |-migrations/
+    |-tests/
+      |-__init__.py
+      |-tests.py
+    |-venv/
+    |-__init__.py
+    |-config.py
+    |-models.py
+    |-email.py
+    |-requirements.txt
+--------------------------------------------------------------------
