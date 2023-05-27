@@ -29,3 +29,5 @@ The goal is to scale the application. Keeping all of the code in a single script
     |-email.py
     |-requirements.txt
 --------------------------------------------------------------------
+
+Our first move is to separate the configuration from the single-script application, as such a setup does not allow us to make changes, dynamically, to our configuration, since the application is defined globally. So, we create a factory function, create_app, that can be imported into a script, say for testing, in which changes to the configuration, say the database, can be made.
