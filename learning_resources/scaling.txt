@@ -2,7 +2,12 @@ The goal is to scale the application. Keeping all of the code in a single script
 
 (1)-----------------------------------------------------------------
 |-cl_flask/
+  |-config.py
   |-app/
+    |-__init__.py
+    |-requirements.txt
+    |-models.py
+    |-email.py
     |-templates/
     |-static/
     |-main/
@@ -18,16 +23,62 @@ The goal is to scale the application. Keeping all of the code in a single script
       |-routes.py
       |-forms.py
       |-email.py
-    |-migrations/
-    |-tests/
-      |-__init__.py
-      |-tests.py
-    |-venv/
+  |-migrations/
+  |-tests/
     |-__init__.py
-    |-config.py
-    |-models.py
-    |-email.py
-    |-requirements.txt
+    |-tests.py
+  |-venv/
 --------------------------------------------------------------------
 
-Our first move is to separate the configuration from the single-script application, as such a setup does not allow us to make changes, dynamically, to our configuration, since the application is defined globally. So, we create a factory function, create_app, that can be imported into a script, say for testing, in which changes to the configuration, say the database, can be made.
+Our first move is to separate the configuration from the single-script application, as such a setup does not allow us to make changes, dynamically, to our configuration, since the application is defined globally. So, we create a factory function, create_app, that can be imported into a script, say for testing, in which changes to the configuration, say the database, can be made. In (2), the change in configuration settings accomodates the different modes of operation we may find ourselves within during the construction of the website. (2) is a file unto itself:
+
+(2)-----------------------------------------------------------------
+import os
+basedir = os.path.abspath(os.path.dirname(__file__))
+
+class Config:
+    SECRET_KEY = os.environ.get('SECRET_KEY') or 'just guess'
+    SQLALCHEMY_COMMIT_ON_TEARDOWN = True
+    HRLLO_MAIL_SUBJECT_PREFIX = '[Hrllo]'
+    HRLLO_MAIL_SENDER = 'Hrllo Admin <emailhandle@gmail.com>'
+    HRLLO_ADMIN = os.environ.get('HRLLO_ADMIN')
+    
+    @staticmethod
+    def init_app(app):
+        pass
+    
+class DevelopmentConfig(Config):
+    DEBUG = True
+    MAIL_SERVER = 'smtp.googlemail.com'
+    MAIL_PORT = 587
+    MAIL_USE_TLS = True
+    MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
+    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL')\
+                              or 'sqlite:///' + os.path.join(
+                                  basedir,
+                                  'data-dev.sqlite')
+
+class TestingConfig(Config):
+    TESTING = True
+    SQLALCHEMY_DATABASE_URI = os.environ.get('TEST_DATABASE_URL')\ 
+                              or 'sqlite:///' + os.path.join(
+                                  basedir,
+                                  'data-test.sqlite')
+
+class ProductionConfig(Config):
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
+                              'sqlite:///' + os.path.join(
+                                  basedir,
+                                  'data.sqlite')
+    
+config = {
+    'development': DevelopmentConfig,
+    'testing': TestingConfig,
+    'production': ProductionConfig,
+    
+    'default': DevelopmentConfig
+}
+--------------------------------------------------------------------
+
+Our Config class is passed to each of the other configuration classes, as it contains all the information each of the modes our application will need during its construction. We have a Testing, Development, and Production configuration for our application, each of which holding its own database.
