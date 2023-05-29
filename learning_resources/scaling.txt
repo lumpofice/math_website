@@ -30,7 +30,7 @@ The goal is to scale the application. Keeping all of the code in a single script
   |-venv/
 --------------------------------------------------------------------
 
-Our first move is to separate the configuration from the single-script application, as such a setup does not allow us to make changes, dynamically, to our configuration, since the application is defined globally. So, we create a factory function, create_app, that can be imported into a script, say for testing, in which changes to the configuration, say the database, can be made. In (2), the change in configuration settings accomodates the different modes of operation we may find ourselves within during the construction of the website. (2) is a file unto itself:
+Our first move is to separate the configuration from the single-script application, as such a setup does not allow us to make changes, dynamically, to our configuration, since the application is defined globally. So, we create a factory function, create_app, that can be imported into a script, say for testing, in which changes to the configuration, say the database we wish to use, can be made. In (2), the change in configuration settings accomodates the different modes of operation we may find ourselves within during the construction of the website. (2) is our config.py file:
 
 (2)-----------------------------------------------------------------
 import os
@@ -82,3 +82,31 @@ config = {
 --------------------------------------------------------------------
 
 Our Config class is passed to each of the other configuration classes, as it contains all the information each of the modes our application will need during its construction. We have a Testing, Development, and Production configuration for our application, each of which holding its own database.
+
+We need a file that can initiate our application and its extensions. In (3), we construct the application's __init__.py file. Note that, for now, we are using 'config_name' where our desired configuration class will be located.
+
+(3)----------------------------------------------------------------- 
+from flask import Flask, render_template
+from flask-bootstrap import Bootstrap
+from flask-mail import Mail
+from flask-moment import Moment
+from flask-sqlalchemy import SQLAlchemy
+from config import Config
+
+bootstrap = Bootstrap()
+mail = Mail()
+moment = Moment()
+db = SQLAlchemy()
+
+def create_app(config_name):
+    app = Flask(__name__)
+    app.config.from_object(config[config_name])
+    config[config_name].init_app(app)
+
+    bootstrap.init_app(app)
+    mail.init_app(app)
+    moment.init_app(app)
+    db.init_app(app)
+
+    return app
+--------------------------------------------------------------------
