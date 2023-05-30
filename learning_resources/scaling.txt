@@ -9,6 +9,11 @@ The goal is to scale the application. Keeping all of the code in a single script
     |-models.py
     |-email.py
     |-templates/
+      |-base.html
+      |-main/
+        |-index.html
+      |-errors/
+        |-404.html
     |-static/
     |-main/
       |-__init__.py
@@ -83,30 +88,4 @@ config = {
 
 Our Config class is passed to each of the other configuration classes, as it contains all the information each of the modes our application will need during its construction. We have a Testing, Development, and Production configuration for our application, each of which holding its own database.
 
-We need a file that can initiate our application and its extensions. In (3), we construct the application's __init__.py file. Note that, for now, we are using 'config_name' where our desired configuration class will be located.
-
-(3)----------------------------------------------------------------- 
-from flask import Flask, render_template
-from flask-bootstrap import Bootstrap
-from flask-mail import Mail
-from flask-moment import Moment
-from flask-sqlalchemy import SQLAlchemy
-from config import Config
-
-bootstrap = Bootstrap()
-mail = Mail()
-moment = Moment()
-db = SQLAlchemy()
-
-def create_app(config_name):
-    app = Flask(__name__)
-    app.config.from_object(config[config_name])
-    config[config_name].init_app(app)
-
-    bootstrap.init_app(app)
-    mail.init_app(app)
-    moment.init_app(app)
-    db.init_app(app)
-
-    return app
---------------------------------------------------------------------
+For multiple reasons, there are Blueprints that need to be set up, as well, at this point. For the moment, the adventure of learning by construction of this dummy application has come to a close. We understand how to make a single-script application and at least one of the needs for restructuring.
