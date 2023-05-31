@@ -1,0 +1,15 @@
+To get started with math_website on your local machine, clone the repository, create the virtual environment, install the requirements---(1), (2), and (3), respectively:
+
+(1)----------------------------------------------------------------
+user: ~$ git clone https://github.com/lumpofice/math_website.git
+-------------------------------------------------------------------
+
+(2)----------------------------------------------------------------
+user: ~$ python3 -m venv venv
+-------------------------------------------------------------------
+
+(3)----------------------------------------------------------------
+user: ~$ . venv/bin/activate
+(venv)user: ~$ pip3 install -r requirements.txt
+-------------------------------------------------------------------
+
