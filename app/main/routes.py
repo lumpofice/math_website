@@ -101,7 +101,7 @@ of our models.py file.'''
         if posts.has_prev else None
     
     
-    return render_template('index.html', title='MassiveDiscipline',
+    return render_template('index.html', title='Math Website',
         form = form, posts=posts.items, next_url=next_url, prev_url=prev_url)
 
 
@@ -138,7 +138,7 @@ timestamp.'''
         if posts.has_prev else None
     
     
-    return render_template('index.html', title='MassiveDiscipline',
+    return render_template('index.html', title='Math Website',
         posts=posts.items, next_url=next_url, prev_url=prev_url)
 
 
@@ -228,7 +228,7 @@ the app with the goal of displaying the 500 error message template.'''
         form.about_me.data = current_user.about_me
         
         
-    return render_template('edit_profile.html', title='MassiveDiscipline',\
+    return render_template('edit_profile.html', title='Math Website',\
         form=form)
 
 
@@ -298,16 +298,16 @@ to unfollow.'''
 # FUNCTIONS---------------------------------------------------------------------
 
 
-@bp.route('/score')
+@bp.route('/precalculus')
 @login_required
-def score():
+def precalculus():
     '''This is the page on which I am keeping score of the success students
 are meeting in my course. The @login_required decorator from
 Flask-Login sets accessibility restrictions to only those users who are logged
 in.'''
     
     
-    return render_template('score.html', title='MassiveDiscipline')
+    return render_template('precalculus.html', title='Math Website')
 
 
 @bp.route('/geometric_series', methods=['GET', 'POST'])
@@ -329,7 +329,7 @@ input by the user.'''
         return redirect(url_for('main.geometric_series_graph_results'))
     
     
-    return render_template('geometric_series.html', title='MassiveDiscipline',\
+    return render_template('geometric_series.html', title='Math Website',\
         form=form)
 
 
@@ -340,7 +340,7 @@ from parameters input by the user.'''
     
     
     return render_template(\
-        'geometric_series_graph_results.html', title='MassiveDiscipline')
+        'geometric_series_graph_results.html', title='Math Website')
 
 
 @bp.route('/polynomial_degree_1_transform', methods=['GET', 'POST'])
@@ -380,7 +380,7 @@ transformations input by the user.'''
     
     return render_template(\
         'polynomial_degree_1_transform.html',\
-        title='MassiveDiscipline',\
+        title='Math Website',\
         form=form)
 
 
@@ -392,7 +392,7 @@ functions.'''
     
     return render_template(\
         'polynomial_degree_1_transform_graph_results.html',\
-        title='MassiveDiscipline')
+        title='Math Website')
 
 
 @bp.route('/polynomial_degree_2_transform', methods=['GET', 'POST'])
@@ -457,7 +457,7 @@ transformations input by the user.'''
     
     return render_template(\
         'polynomial_degree_2_transform.html',\
-        title='MassiveDiscipline',\
+        title='Math Website',\
         form=form)
 
 
@@ -469,7 +469,7 @@ functions.'''
     
     return render_template(\
         'polynomial_degree_2_transform_graph_results.html',\
-        title='MassiveDiscipline')
+        title='Math Website')
 
 
 @bp.route('/polynomial_degree_3_transform', methods=['GET', 'POST'])
@@ -520,7 +520,7 @@ transformations input by the user.'''
     
     return render_template(\
         'polynomial_degree_3_transform.html',\
-        title='MassiveDiscipline',\
+        title='Math Website',\
         form=form)
 
 
@@ -532,7 +532,7 @@ functions.'''
     
     return render_template(\
         'polynomial_degree_3_transform_graph_results.html',\
-        title='MassiveDiscipline')
+        title='Math Website')
 
 
 @bp.route('/absolute_value_transform', methods=['GET', 'POST'])
@@ -598,7 +598,7 @@ transformations input by the user.'''
     
     return render_template(\
         'absolute_value_transform.html',\
-        title='MassiveDiscipline',\
+        title='Math Website',\
         form=form)
 
 
@@ -610,7 +610,7 @@ functions.'''
     
     return render_template(\
         'absolute_value_transform_graph_results.html',\
-        title='MassiveDiscipline')
+        title='Math Website')
 
 
 @bp.route('/reciprocal_degree_0_by_degree_1_transform',\
@@ -669,7 +669,7 @@ based on transformations input by the user.'''
     
     return render_template(\
         'reciprocal_degree_0_by_degree_1_transform.html',\
-        title='MassiveDiscipline',\
+        title='Math Website',\
         form=form)
 
 
@@ -682,7 +682,7 @@ have polynomials degree 1.'''
     
     return render_template(\
         'reciprocal_degree_0_by_degree_1_transform_graph_results.html',\
-        title='MassiveDiscipline')
+        title='Math Website')
 
 
 @bp.route('/square_root_transform',\
@@ -774,7 +774,7 @@ transformations input by the user.'''
     
     return render_template(\
         'square_root_transform.html',\
-        title='MassiveDiscipline',\
+        title='Math Website',\
         form=form)
 
 
@@ -786,7 +786,7 @@ functions.'''
     
     return render_template(\
         'square_root_transform_graph_results.html',\
-        title='MassiveDiscipline')
+        title='Math Website')
 
 
 @bp.route('/cube_root_transform',\
@@ -839,7 +839,7 @@ transformations input by the user.'''
     
     return render_template(\
         'cube_root_transform.html',\
-        title='MassiveDiscipline',\
+        title='Math Website',\
         form=form)
 
 
@@ -851,7 +851,7 @@ functions.'''
     
     return render_template(\
         'cube_root_transform_graph_results.html',\
-        title='MassiveDiscipline')
+        title='Math Website')
 
 
 @bp.route('/general_exponential_transform',\
@@ -924,7 +924,7 @@ transformations input by the user.'''
     
     return render_template(\
         'general_exponential_transform.html',\
-        title='MassiveDiscipline',\
+        title='Math Website',\
         form=form)
 
 
@@ -936,7 +936,7 @@ functions.'''
     
     return render_template(\
     'general_exponential_transform_graph_results.html',\
-    title='MassiveDiscipline')
+    title='Math Website')
 
 
 @bp.route('/general_logarithmic_transform',\
@@ -1010,7 +1010,7 @@ transformations input by the user.'''
     
     return render_template(\
         'general_logarithmic_transform.html',\
-        title='MassiveDiscipline',\
+        title='Math Website',\
         form=form)
 
 
@@ -1022,7 +1022,7 @@ functions.'''
     
     return render_template(\
         'general_logarithmic_transform_graph_results.html',\
-        title='MassiveDiscipline')
+        title='Math Website')
 
 
 @bp.route('/base_e_exponential_transform',\
@@ -1094,7 +1094,7 @@ transformations input by the user.'''
     
     return render_template(\
         'base_e_exponential_transform.html',\
-        title='MassiveDiscipline',\
+        title='Math Website',\
         form=form)
 
 
@@ -1106,7 +1106,7 @@ functions.'''
     
     return render_template(\
     'base_e_exponential_transform_graph_results.html',\
-    title='MassiveDiscipline')
+    title='Math Website')
 
 
 @bp.route('/base_e_logarithmic_transform',\
@@ -1179,7 +1179,7 @@ transformations input by the user.'''
     
     return render_template(\
         'base_e_logarithmic_transform.html',\
-        title='MassiveDiscipline',\
+        title='Math Website',\
         form=form)
 
 
@@ -1191,4 +1191,4 @@ functions.'''
     
     return render_template(\
         'base_e_logarithmic_transform_graph_results.html',\
-        title='MassiveDiscipline')
+        title='Math Website')

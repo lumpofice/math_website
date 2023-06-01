@@ -11,7 +11,7 @@ method above to email the user with the desired contents of our message.'''
     token = user.get_reset_password_token()
     
     
-    send_email('[Massive Discipline] Reset Your Password',
+    send_email('[Math Website] Reset Your Password',
         sender=current_app.config['ADMINS'][0],
         recipients=[user.email],
         text_body=render_template('email/reset_password.txt',

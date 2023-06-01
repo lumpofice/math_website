@@ -1,0 +1,24 @@
+If we wish to clear the database during development, we use the python shell as follows in (1):
+
+(1)----------------------------------------------------------------
+>>>from math_website import app, db
+>>>app.app_context().push()
+>>>from app.models import User, Post
+>>>users = User.query.all()
+>>>posts = Post.query.all()
+>>>for p in posts:
+...    db.session.delete(p)
+...    db.session.commit()
+...
+>>>for u in users:
+...    db.session.delete(u)
+...    db.session.commit()
+...
+>>>updated_users = User.query.all()
+>>>updated_users
+[]
+>>>updated_posts = Post.query.all()
+>>>updated_posts
+[]
+>>>
+-------------------------------------------------------------------

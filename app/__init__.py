@@ -98,8 +98,7 @@ in the __init__.py file of main directory'''
     
     
 def get_locale():
-    # return request.accept_languages.best_match(current_app.config['LANGUAGES'])
-    return 'es'
+    return request.accept_languages.best_match(current_app.config['LANGUAGES'])
 
 
 '''After the application instance is created:

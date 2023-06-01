@@ -102,7 +102,7 @@ a link in the header allowing them to "logout" of the site.'''
         return redirect(next_page)
     
     
-    return render_template('auth/login.html', title='MassiveDiscipline',\
+    return render_template('auth/login.html', title='Math Website',\
         form=form)
 
 
@@ -160,7 +160,7 @@ to provide input.'''
         return redirect(url_for('auth.login'))
     
     
-    return render_template('auth/register.html', title='MassiveDiscipline',\
+    return render_template('auth/register.html', title='Math Website',\
         form=form)
 
 
@@ -195,7 +195,7 @@ password reset.'''
     
     
     return render_template('auth/reset_password_request.html',
-        title='Massive Discipline', form=form)
+        title='Math Website', form=form)
 
 
 @bp.route('/reset_password/<token>', methods=['GET', 'POST'])

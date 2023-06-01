@@ -2,9 +2,9 @@
 
 {% block title %}
     {% if title %}
-		{{ title }} - Massive Discipline
+		{{ title }} - Math Website
 	{% else %}
-		Welcome to Massive Discipline
+		Welcome to Math Website
 	{% endif %}
 {% endblock %}
 
@@ -24,7 +24,7 @@
 
                 </button>
 
-                <a class='navbar-brand' href='{{ url_for("main.index") }}'>Massive Discipline</a>
+                <a class='navbar-brand' href='{{ url_for("main.index") }}'>Math Website</a>
 
             </div>
 
@@ -36,6 +36,7 @@
                 </ul>
 
 				 <ul class='nav navbar-nav navbar-right'>
+					<li><a href='{{ url_for("main.precalculus") }}'>{{ _('Precalculus') }}</a></li>
 
                     {% if current_user.is_anonymous %}
                     <li><a href='{{ url_for("auth.login") }}'>{{ _('Login') }}</a></li>
@@ -43,7 +44,6 @@
 					{% else %}
 					<li><a href='{{ url_for("main.user", username=current_user.username) }}'>{{ _('Profile') }}</a></li>
                     <li><a href='{{ url_for("auth.logout") }}'>{{ _('Logout') }}</a></li>
-					<li><a href='{{ url_for("main.score") }}'>{{ _('Score') }}</a></li>
 
                     {% endif %}
 
