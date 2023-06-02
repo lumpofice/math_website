@@ -90,8 +90,8 @@ our dict(os.envirion) dictionary'''
     def test_follow_posts(self):
         '''Here, we set up 4 users. For each user, we create a post. We add
     all users and posts to the database. We set up a user-to-user follow
-    relationship, then we grab all of the posts from the users, followed by a
-    specific user, and the user have posted. We assert that what our test
+    relationship, then we grab all of the posts from the users who are followed
+    by a specific user. We assert that what our test
     database contains is precisely the user-to-user follow relationship we have
     constructed, testing the list of followed posts for each user.'''
         

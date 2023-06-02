@@ -12,60 +12,15 @@ CSRF. The "SECRET_KEY" dictionary key serving as argument within the
 os.environ.get() call is set by the application maintainer in the
 environment, while the string value on the other side of the "or" statement is
 used in the absence of the "SECRET_KEY": <"SECRET_KEY" value> key:value ordered
-pair within the dictionary resulting from a call to os.environment.
+pair within the dictionary that results from a call to os.environment.
 
-As of 01/20/23, there is no key:value pair set by the maintainer for
-"SECRET_KEY".
-
-import os
-import pprint
-env_var = os.environ
-pprint.pprint(dict(env_var), width = 1)
-
-Also, there is no "DATABASE_URL":<"DATABASE_URL" value> key:value ordered pair
+There is no "DATABASE_URL":<"DATABASE_URL" value> key:value ordered pair
 within dict(os.environ). Thus, we have a configured database, "app.db", located
 within the master directory of the application, stored in the "basedir"
-variable. None of "MAIL_SERVER", "MAIL_PORT", "MAIL_USE_TLS", "MAIL_USERNAME",
-nor "MAIL_PASSWORD" exist as keys in dict(os.environ). The "MAIL_USE_TLS"
+variable. The "MAIL_USE_TLS"
 variable, on wich we stipulate a value other than None, encrypts data that we
 transmit from the app to the destination with which we wish the app to make a
 connection.
-
-As of 03/04/23, we have setup a mailtrap.io account that captures emails sent
-from the terminal. We can set up environment variables per terminal session
-and run code in that populated terminal to achieve this capture, with the
-following:
-
-
-export MAIL_SERVER=sandbox.smtp.mailtrap.io
-export MAIL_PORT=2525
-export MAIL_USERNAME=
-export MAIL_PASSWORD=
-export MAIL_USE_TLS=True
-export MAIL_USE_SSL=False
-. venv/bin/activate
-flask shell
-from flask_mail import Message
-from app import mail
-msg = Message('test subject', sender='jparker@sasphs.net',
-    recipients=['jparker@sasphs.net'])
-msg.body = 'does it work?'
-mail.send(msg)
-
-
-As of 03/08/23, we have full use of the password reset feature that uses email
-to prompt users towards accomplishing a password reset successfully. We are
-using the gmail server for this, with the following environment variables:
-
-
-export MAIL_SERVER=smtp.googlemail.com
-export MAIL_PORT=587
-export MAIL_USERNAME=
-export MAIL_PASSWORD=
-export MAIL_USE_TLS=1
-
-
-As of 01/21/23, we have error messages sent to a terminal on the local machine.
 
 Finally, Flask-SQLAlchemy comes with an event notification system that uses
 more resources when not explicitly set to "False". Given that we do not need

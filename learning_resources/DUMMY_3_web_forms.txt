@@ -1,6 +1,6 @@
 Flask-WTF protects against CSRF attacks by configuring an encryption key. So, we use this Flask extension, with our encryption key being provided through the SECRET_KEY environment variable stored in the app.config dictionary. With this extension we will build, in our application file, (1), the form class and the view function. In the corresponding template (2), we will import bootstrap's wtf.html file, adding within our page_content block a control structure (if conditional) and the wtf.quick_form() function, which renders the NameForm object. In our application file, we will need to import some classes: a FlaskForm class from flask_wtf, as well as fields and field validators from wtforms to help validate user input form data. As well, in the view function decorator, we will need to include the GET and POST methods to be sure that the user data is protected. 
 
-(1)-----------------------------------------------------------------
+(1)----------------------------------------------------------------
 from flask import Flask
 from flask_wtf import FlaskForm
 from flask_moment import Moment
@@ -42,9 +42,9 @@ class NameForm(FlaskForm):
 
 if __name__ == '__main__':
     app.run(debug=True)
---------------------------------------------------------------------
+-------------------------------------------------------------------
 
-(2)-----------------------------------------------------------------
+(2)----------------------------------------------------------------
 {% extends 'base.html' %}
 {% import 'bootstrap/wtf.html' as wtf %}
 
@@ -60,4 +60,13 @@ if __name__ == '__main__':
 </dir>
 {{ wtf.quick_form(form) }}
 {% endblock %}
---------------------------------------------------------------------
+-------------------------------------------------------------------
+
+The ['SECRET_KEY'] dictionary key, in (1) above, is one of several keys for which the application maintainer will need to assign a value. To generate a list of these values within a shell, one method can be seen below in (3):
+
+(3)----------------------------------------------------------------
+>>>import os
+>>>import pprint
+>>>env_var = os.environ
+>>>pprint.pprint(dict(env_var), width = 1)
+-------------------------------------------------------------------
