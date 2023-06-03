@@ -182,11 +182,6 @@ password reset.'''
         
         
         if user:
-            '''Once the form is validated, we use the send_password_reset_email
-        method, bearing the user's email as an argument, from the email.py file
-        to generate a token and send it to the user via email.'''
-            
-            
             send_password_reset_email(user)
             
             

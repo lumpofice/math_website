@@ -36,6 +36,6 @@ this event notification system, we have set this variable to "False".'''
     MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS') is not None
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
-    ADMINS = ['jparker@sasphs.net']
+    ADMINS = ['math_website.com']
     POSTS_PER_PAGE = 10
     LANGUAGES = {'en', 'es'}

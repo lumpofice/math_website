@@ -1,4 +1,29 @@
-2023-03-18 14:53:19,749 ERROR: Exception on /polynomial_degree_1_transform [GET] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
+2023-04-07 13:12:40,129 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
+2023-04-07 13:17:03,684 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
+2023-04-07 13:17:13,385 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
+2023-04-07 13:24:06,533 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
+2023-04-08 10:11:30,275 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
+2023-04-08 10:25:21,086 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
+2023-04-08 10:26:34,082 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
+2023-04-08 10:42:16,308 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
+2023-04-08 10:45:33,397 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
+2023-04-08 10:51:31,905 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
+2023-04-08 10:59:40,096 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
+2023-04-09 10:11:15,651 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:71]
+2023-04-09 10:11:24,570 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:71]
+2023-04-09 10:39:02,228 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:71]
+2023-04-09 10:46:00,241 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:71]
+2023-04-09 11:22:15,086 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:71]
+2023-04-09 11:23:04,886 ERROR: Exception on /edit_profile [POST] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
+Traceback (most recent call last):
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1901, in _execute_context
+    cursor, statement, parameters, context
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.IntegrityError: UNIQUE constraint failed: user.username
+
+The above exception was the direct cause of the following exception:
+
 Traceback (most recent call last):
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2525, in wsgi_app
     response = self.full_dispatch_request()
@@ -8,106 +33,53 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1796, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-  File "/home/pi/Desktop/math_website/app/routes.py", line 584, in polynomial_degree_1_transform
-    form=form)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/templating.py", line 147, in render_template
-    return _render(app, template, context)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/templating.py", line 130, in _render
-    rv = template.render(context)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/home/pi/Desktop/math_website/app/templates/polynomial_degree_1_transform.html", line 1, in top-level template code
-    {% extends 'base.html' %}
-  File "/home/pi/Desktop/math_website/app/templates/base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block 'doc'
-    {%- block html %}
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block 'html'
-    {% block body -%}
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block 'body'
-    {% block content -%}
-  File "/home/pi/Desktop/math_website/app/templates/base.html", line 125, in block 'content'
-    {% block app_content %}{% endblock %}
-  File "/home/pi/Desktop/math_website/app/templates/polynomial_degree_1_transform.html", line 7, in block 'app_content'
-    {{ wtf.quick_form(form) }}
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 485, in getattr
-    return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'wtf' is undefined
-2023-03-18 14:53:54,389 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-18 14:55:33,811 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-18 14:58:24,456 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-18 15:02:02,668 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-18 15:41:43,172 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-18 15:43:56,153 ERROR: Exception on /login [GET] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
-Traceback (most recent call last):
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2525, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1822, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1820, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1796, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-  File "/home/pi/Desktop/math_website/app/routes.py", line 136, in login
-    return render_template('login.html', title='MassiveDiscipline', form=form)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/templating.py", line 147, in render_template
-    return _render(app, template, context)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/templating.py", line 130, in _render
-    rv = template.render(context)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/home/pi/Desktop/math_website/app/templates/login.html", line 1, in top-level template code
-    {% extends 'base.html' %} <!-- This line loads the base.html code-->
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/home/pi/Desktop/math_website/app/templates/base.html", line 191, in template
-    {% block content %}{% endblock %}
-jinja2.exceptions.TemplateAssertionError: block 'content' defined twice
-2023-03-18 15:49:29,505 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-18 16:02:28,836 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-18 16:03:17,267 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-18 16:03:40,475 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-18 16:04:50,772 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-18 16:06:17,681 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-18 16:11:54,578 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-19 10:17:18,271 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-19 10:19:38,896 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-19 10:21:57,555 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-19 10:24:00,922 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-19 10:26:39,099 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-19 10:28:49,500 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-19 10:32:20,693 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-19 10:34:43,255 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-19 10:35:47,393 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:62]
-2023-03-20 16:52:16,423 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:64]
-2023-03-25 15:54:32,413 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:64]
-2023-03-25 16:10:32,822 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:66]
-2023-03-25 16:11:36,795 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:66]
-2023-04-01 17:47:45,604 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:66]
-2023-04-01 17:49:20,714 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:66]
-2023-04-01 18:01:44,964 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:66]
-2023-04-03 08:27:46,490 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
-2023-04-03 08:28:09,924 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
-2023-04-03 08:28:58,285 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
-2023-04-03 08:33:03,529 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
-2023-04-03 08:37:07,526 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
-2023-04-03 08:51:10,783 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
-2023-04-04 14:15:26,160 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
-2023-04-04 14:15:39,533 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
-2023-04-04 14:19:45,124 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
-2023-04-05 15:36:11,614 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
-2023-04-05 15:42:05,447 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
-2023-04-05 15:43:32,643 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
-2023-04-05 15:45:00,098 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
-2023-04-05 15:46:29,040 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
-2023-04-05 15:49:35,824 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
-2023-04-05 15:55:19,550 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
-2023-04-05 15:59:13,731 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
-2023-04-05 16:00:38,963 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
-2023-04-07 13:12:21,650 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:67]
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/home/pi/Desktop/math_website/app/routes.py", line 322, in edit_profile
+    db.session.commit()
+  File "<string>", line 2, in commit
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 1451, in commit
+    self._transaction.commit(_to_root=self.future)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 829, in commit
+    self._prepare_impl()
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 808, in _prepare_impl
+    self.session.flush()
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3444, in flush
+    self._flush(objects)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3584, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 210, in raise_
+    raise exception
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3544, in _flush
+    flush_context.execute()
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 456, in execute
+    rec.execute(self)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 633, in execute
+    uow,
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 242, in save_obj
+    update,
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 1002, in _emit_update_statements
+    statement, multiparams, execution_options=execution_options
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1705, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 335, in _execute_on_connection
+    self, multiparams, params, execution_options
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1582, in _execute_clauseelement
+    cache_hit=cache_hit,
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1944, in _execute_context
+    e, statement, parameters, cursor, context
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 2125, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 210, in raise_
+    raise exception
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1901, in _execute_context
+    cursor, statement, parameters, context
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed: user.username
+[SQL: UPDATE user SET username=?, about_me=? WHERE user.id = ?]
+[parameters: ('elise', 'Do let me be the teacher this quarter. Please?', 2)]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+2023-04-09 11:38:43,372 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:71]

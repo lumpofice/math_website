@@ -1,4 +1,4 @@
-2023-04-16 11:01:32,608 ERROR: Exception on /auth/reset_password_request [POST] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
+2023-04-27 08:00:32,860 ERROR: Exception on /index [GET] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
 Traceback (most recent call last):
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2525, in wsgi_app
     response = self.full_dispatch_request()
@@ -8,10 +8,10 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1796, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-  File "/home/pi/Desktop/math_website/app/auth/routes.py", line 190, in reset_password_request
-    send_password_reset_email(user)
-  File "/home/pi/Desktop/math_website/app/auth/email.py", line 19, in send_password_reset_email
-    user=user, token=token),
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/home/pi/Desktop/math_website/app/main/routes.py", line 105, in index
+    form = form, posts=posts.items, next_url=next_url, prev_url=prev_url)
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/templating.py", line 147, in render_template
     return _render(app, template, context)
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/templating.py", line 130, in _render
@@ -20,17 +20,29 @@ Traceback (most recent call last):
     self.environment.handle_exception()
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 936, in handle_exception
     raise rewrite_traceback_stack(source=source)
-  File "/home/pi/Desktop/math_website/app/templates/email/reset_password.txt", line 5, in top-level template code
-    {{ url_for('reset_password', token=token, _external=True) }}
+  File "/home/pi/Desktop/math_website/app/templates/index.html", line 3, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "/home/pi/Desktop/math_website/app/templates/base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block 'doc'
+    {%- block html %}
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block 'html'
+    {% block body -%}
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 21, in block 'body'
+    {% block navbar %}
+  File "/home/pi/Desktop/math_website/app/templates/base.html", line 46, in block 'navbar'
+    <li><a href='{{ url_for("score") }}'>{{ _('Score') }}</a></li>
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2031, in url_for
     return self.handle_url_build_error(error, endpoint, values)
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2025, in url_for
     force_external=_external,
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/werkzeug/routing/map.py", line 917, in build
     raise BuildError(endpoint, values, method, self)
-werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'reset_password' with values ['token']. Did you mean 'auth.reset_password' instead?
-2023-04-16 11:11:26,276 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:85]
-2023-04-16 11:11:40,776 ERROR: Exception on /auth/reset_password_request [POST] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'score'. Did you mean 'main.score' instead?
+2023-04-27 08:03:36,121 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:78]
+2023-04-27 08:03:45,326 ERROR: Exception on / [GET] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
 Traceback (most recent call last):
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2525, in wsgi_app
     response = self.full_dispatch_request()
@@ -40,10 +52,10 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1796, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-  File "/home/pi/Desktop/math_website/app/auth/routes.py", line 190, in reset_password_request
-    send_password_reset_email(user)
-  File "/home/pi/Desktop/math_website/app/auth/email.py", line 21, in send_password_reset_email
-    user=user, token=token)
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/home/pi/Desktop/math_website/app/main/routes.py", line 105, in index
+    form = form, posts=posts.items, next_url=next_url, prev_url=prev_url)
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/templating.py", line 147, in render_template
     return _render(app, template, context)
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/templating.py", line 130, in _render
@@ -52,51 +64,27 @@ Traceback (most recent call last):
     self.environment.handle_exception()
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/jinja2/environment.py", line 936, in handle_exception
     raise rewrite_traceback_stack(source=source)
-  File "/home/pi/Desktop/math_website/app/templates/email/reset_password.html", line 15, in top-level template code
-    {{ url_for('reset_password', token=token, _external=True) }}
+  File "/home/pi/Desktop/math_website/app/templates/index.html", line 3, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "/home/pi/Desktop/math_website/app/templates/base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block 'doc'
+    {%- block html %}
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block 'html'
+    {% block body -%}
+  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block 'body'
+    {% block content -%}
+  File "/home/pi/Desktop/math_website/app/templates/base.html", line 74, in block 'content'
+    {% block app_content %}{% endblock %}
+  File "/home/pi/Desktop/math_website/app/templates/index.html", line 40, in block 'app_content'
+    <a href='{{ url_for("geometric_series") }}'>
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2031, in url_for
     return self.handle_url_build_error(error, endpoint, values)
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2025, in url_for
     force_external=_external,
   File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/werkzeug/routing/map.py", line 917, in build
     raise BuildError(endpoint, values, method, self)
-werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'reset_password' with values ['token']. Did you mean 'auth.reset_password' instead?
-2023-04-16 11:15:29,724 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:85]
-2023-04-17 08:34:23,471 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:85]
-2023-04-20 07:20:07,456 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:85]
-2023-04-20 07:36:02,645 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:78]
-2023-04-21 14:51:36,521 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:78]
-2023-04-21 14:51:48,694 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:78]
-2023-04-22 09:54:49,112 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:78]
-2023-04-22 09:55:28,416 ERROR: Exception on /auth/reset_password_request [POST] [in /home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py:1742]
-Traceback (most recent call last):
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 2525, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1822, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1820, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/pi/Desktop/math_website/venv/lib/python3.7/site-packages/flask/app.py", line 1796, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-  File "/home/pi/Desktop/math_website/app/auth/routes.py", line 190, in reset_password_request
-    send_password_reset_email(user)
-  File "/home/pi/Desktop/math_website/app/auth/email.py", line 15, in send_password_reset_email
-    sender=app.config['ADMINS'][0],
-NameError: name 'app' is not defined
-2023-04-22 09:56:18,236 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:78]
-2023-04-22 10:01:24,911 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:78]
-2023-04-22 10:13:18,684 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:78]
-2023-04-22 11:03:13,198 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:78]
-2023-04-22 11:03:46,901 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:78]
-2023-04-22 11:09:30,380 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:78]
-2023-04-22 11:09:51,643 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:78]
-2023-04-22 11:10:10,362 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:78]
-2023-04-22 11:14:36,506 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:78]
-2023-04-22 11:14:51,387 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:78]
-2023-04-23 08:52:21,706 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:78]
-2023-04-23 09:22:34,954 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:78]
-2023-04-23 09:22:46,254 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:78]
-2023-04-23 09:24:58,093 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:78]
-2023-04-27 07:20:55,955 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:78]
-2023-04-27 07:21:11,917 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:78]
-2023-04-27 07:58:50,883 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:78]
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'geometric_series'. Did you mean 'main.geometric_series' instead?
+2023-04-27 08:06:17,059 INFO: Math Website startup [in /home/pi/Desktop/math_website/app/__init__.py:78]

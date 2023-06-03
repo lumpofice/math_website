@@ -4,8 +4,7 @@ from app.email import send_email
 
 def send_password_reset_email(user):
     '''This function generates a token that will be sent to the user via email,
-once the ResetPasswordRequestForm has been validated. We use the send_email
-method above to email the user with the desired contents of our message.'''
+once the ResetPasswordRequestForm has been validated.'''
     
     
     token = user.get_reset_password_token()

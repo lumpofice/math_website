@@ -1,25 +1,44 @@
-The goal is to scale the application. Keeping all of the code in a single script could lead to problems. So, we restructure everything to accomodate our scaling attempts. In (1) below, our root folder will be labeled cl_flask:
+The goal is to scale the application. Keeping all of the code in a single script could lead to problems. So, we restructure everything to accomodate our scaling attempts. In (1) below, our root folder will be labeled math_website, and the structure will follow what is set up for the math_website application:
 
 (1)-----------------------------------------------------------------
-|-cl_flask/
+|-math_website/
   |-config.py
+  |-requirements.txt
+  |-.flaskenv
+  |-app.db
+  |-babel.cfg
+  |-math_website.py
+  |-tests.py
   |-app/
     |-__init__.py
-    |-requirements.txt
     |-models.py
     |-email.py
+    |-cli.py
     |-templates/
       |-base.html
-      |-main/
-        |-index.html
+      |-index.html
+      |-user.html
+      |-precalculus.html
+      |-edit_profile.html
+      |-# ...
       |-errors/
         |-404.html
-    |-static/
+        |-500.html
+      |-email/
+        |-reset_password.html
+        |-reset_password.txt
+      |-auth/
+        |-login.html
+        |-register.html
+        |-reset_password.html
+        |-reset_password_request.html
+    |-static/images
+    |-translations/
     |-main/
       |-__init__.py
       |-routes.py
       |-forms.py
-      |-email.py
+      |-# ...
     |-errors/
       |-__init__.py
       |-handlers.py
@@ -28,14 +47,14 @@ The goal is to scale the application. Keeping all of the code in a single script
       |-routes.py
       |-forms.py
       |-email.py
+    |-logs
+  |-learning_resources
+  |-logs
   |-migrations/
-  |-tests/
-    |-__init__.py
-    |-tests.py
   |-venv/
 --------------------------------------------------------------------
 
-Our first move is to separate the configuration from the single-script application, as such a setup does not allow us to make changes, dynamically, to our configuration, since the application is defined globally. So, we create a factory function, create_app, that can be imported into a script, say for testing, in which changes to the configuration, say the database we wish to use, can be made. In (2), the change in configuration settings accomodates the different modes of operation we may find ourselves within during the construction of the website. (2) is our config.py file:
+Our first move is to separate the configuration from the single-script application, as such a setup does not allow us to make changes, dynamically, to our configuration, since the application is defined globally. So, we create a factory function, create_app, that can be imported into a script, say for testing, in which changes to the configuration, say the database we wish to use, can be made. In (2)---a configuration setup not present within the math_website application, though it does serve to communicate the import of separate databases for different modalities---the change in configuration settings accomodates the different modes of operation we may find ourselves within during the construction of the website.
 
 (2)-----------------------------------------------------------------
 import os
@@ -86,6 +105,6 @@ config = {
 }
 --------------------------------------------------------------------
 
-Our Config class is passed to each of the other configuration classes, as it contains all the information each of the modes our application will need during its construction. We have a Testing, Development, and Production configuration for our application, each of which holding its own database.
+The Config class is passed to each of the other configuration classes, as it contains all the information each of the modes our application will need during its construction. There is a Testing, Development, and Production configuration for the application, each of which holding its own database.
 
-For multiple reasons, there are Blueprints that need to be set up, as well, at this point. For the moment, the adventure of learning by construction of this dummy application has come to a close. We understand how to make a single-script application and at least one of the needs for restructuring.
+For multiple reasons, there are Blueprints that need to be set up at this point.
