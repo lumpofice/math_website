@@ -257,10 +257,10 @@ migrate = Migrate(app, db)
 Finally, we need to initialize, migrate, and upgrade our database. In (12), we see just how to accomplish this:
 
 (12)----------------------------------------------------------------
->>>export FLASK_APP=hrllo.py
->>>flask db init
->>>flask db migrate -m 'initial migration'
->>>flask db upgrade
+(venv)user: ~$ export FLASK_APP=hrllo.py
+(venv)user: ~$ flask db init
+(venv)user: ~$ flask db migrate -m 'initial migration'
+(venv)user: ~$ flask db upgrade
 --------------------------------------------------------------------
 
 The flask db init line generates our migrations folder, which serves as a repository---we have upgrade and downgrade functions that we can use to (obviously) upgrade or downgrade our database through the Migrate class, and the files within the migration repository are upgraded/downgraded with these changes. The flask db migrate line initializes our database, generating the data.sqlite file that we ask it to generate in (12).  

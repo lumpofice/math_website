@@ -1,4 +1,4 @@
-To get started with math_website on your local machine, clone the repository, create the virtual environment, install the requirements---(1), (2), and (3), respectively:
+To get started with math_website on your local machine, clone the repository, create the virtual environment, install the requirements---(1), (2), and (3), respectively. Then we initialize the database in (4), if it is missing, followed by an initiation of the .mo file in (5) and defining the environment variables in (6):
 
 (1)----------------------------------------------------------------
 user: ~$ git clone https://github.com/lumpofice/math_website.git
@@ -13,3 +13,21 @@ user: ~$ . venv/bin/activate
 (venv)user: ~$ pip3 install -r requirements.txt
 -------------------------------------------------------------------
 
+(4 (if db is absent))----------------------------------------------
+(venv)user: ~$ export FLASK_APP=math_website.py
+(venv)user: ~$ flask db init
+(venv)user: ~$ flask db migrate -m 'initial migration'
+(venv)user: ~$ flask db upgrade
+-------------------------------------------------------------------
+
+(5)----------------------------------------------------------------
+(venv)user: ~$ pybabel compile -d app/translations/
+-------------------------------------------------------------------
+
+(6)----------------------------------------------------------------
+(venv)user: ~$ export MAIL_SERVER=<your_preferred_mail_server>
+(venv)user: ~$ export MAIL_PORT=<port>
+(venv)user: ~$ export MAIL_USE_TLS=1
+(venv)user: ~$ export MAIL_USERNAME=<your_email_address>
+(venv)user: ~$ export MAIL_PASSWORD=<your_email_address_password>
+-------------------------------------------------------------------
