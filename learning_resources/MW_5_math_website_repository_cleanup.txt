@@ -1,4 +1,4 @@
-In development mode, I remove logs/ directories and __pycache__ directories. There exists a .gitignore file to handle the suppression of these directories and more, in case I forget to remove them myself. Any files that are to be suppressed must first be absent from the repository before they are generated through the local server or application.
+In development mode, I remove logs/ directories and __pycache__ directories. There exists a .gitignore file to handle the suppression of these directories and more, in case I forget to remove them myself. Any files that are to be suppressed must first be absent (untracked) from the repository. Below, (2) demonstrates how to untrack them from the repository.
 
 (1)----------------------------------------------------------------
 (venv)user: ~$ py3clean .
@@ -6,4 +6,15 @@ In development mode, I remove logs/ directories and __pycache__ directories. The
 (venv)user: ~$ rm -r venv
 (venv)user: ~$ deactivate
 user: ~$ 
+-------------------------------------------------------------------
+
+(2)----------------------------------------------------------------
+user: ~$ git rm -r --cached .
+-------------------------------------------------------------------
+
+We must now add everything back to the repository, as done in (3) below. Those items we wish to ignore via the .gitignore file will now populate in delete mode.
+
+(3)----------------------------------------------------------------
+user: ~$ git add .
+user: ~$ git commit -m 'untrack files in .gitignore'
 -------------------------------------------------------------------
