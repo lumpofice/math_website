@@ -1,0 +1,108 @@
+User registration is straight forward. In (1), we see the view function that handles the RegistrationForm, which can be seen in (2). The set_password call within this view function initiates the User class's set_password method within the models script, which can be seen in (3). The RegistrationForm class launches the validate_username and validate_email methods to ensure neither that have been input by the user already exist in the database under some user.
+
+(1)----------------------------------------------------------------
+# ...
+
+@bp.route('/register', methods=['GET', 'POST'])
+def register():
+    '''First-time visitors to this page may register by submitting a pair of
+email and password credentials to the login page of the site.
+
+Upon initially opening this page, given that there is yet no input,
+the browser's GET method will process the empty form, yielding a value of
+False for the "if form.validate_on_submit()" line, bringing the function
+to the return statement below, which populates the page anew for the user
+to provide input.'''
+    
+    
+    if current_user.is_authenticated:
+        '''The "current_user" variable can take on the "id" provided by the
+    "load_user" function written into the "models.py" script, which the
+    "current_user" variable would have access to should the user already be
+    logged in, accessing this route in the logged-in status.'''
+        
+        
+        return redirect(url_for('main.index'))
+    
+    
+    form = RegistrationForm()
+    
+    
+    if form.validate_on_submit():
+        '''Upon submitting the form, the browser's POST request submits
+    the form data to the server, and when the data meets validator expectations,
+    this if statement returns True, commits the data to the database, and then
+    redirects the user to the "login" page.'''
+        
+        
+        user = User(username=form.username.data, email=form.email.data)
+        user.set_password(form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        flash('You are now a registered user!')
+        return redirect(url_for('auth.login'))
+    
+    
+    return render_template('auth/register.html', title='Math Website',\
+        form=form)
+
+# ...
+-------------------------------------------------------------------
+
+(2)----------------------------------------------------------------
+# ...
+
+class RegistrationForm(FlaskForm):
+    '''The registration form users will need to create their login
+credentials'''
+    
+    
+    username = StringField(_1('Username'), validators=[DataRequired()])
+    email = StringField(_1('Email'), validators=[DataRequired(), Email()])
+    password = PasswordField(_1('Password'), validators=[DataRequired()])
+    password_again = PasswordField(_1('Repeat Password'),\
+        validators=[DataRequired(), EqualTo('password')])
+    submit = SubmitField(_1('Register'))
+    
+    
+    def validate_username(self, username):
+        '''This function ensures the username does not already exist
+    within the data base.'''
+        
+        
+        user = User.query.filter_by(username=username.data).first()
+        if user is not None:
+            raise ValidationError(_1('Please use a different username.'))
+        
+        
+    def validate_email(self, email):
+        '''This function ensures the email does not already exist
+    within the data base.'''
+        
+        
+        user = User.query.filter_by(email=email.data).first()
+        if user is not None:
+            raise ValidationError(_1('Please use a different email address.'))
+
+# ...
+-------------------------------------------------------------------
+
+(3)----------------------------------------------------------------
+# ...
+
+class User(UserMixin, db.Model):
+# ...
+    def set_password(self, password):
+        '''This function generates the password hash, using the password input
+    to the appropriate position in the RegistrationForm.
+    The password itself is not stored; only the password
+    hash. '''
+        
+        
+        self.password_hash = generate_password_hash(password)
+
+
+# ...
+-------------------------------------------------------------------  
+
+The password argument for the set_password function in (3) is precisely the form.password.data argument passed to the set_password call in (1).

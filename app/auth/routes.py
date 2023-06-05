@@ -130,14 +130,9 @@ to provide input.'''
     
     if current_user.is_authenticated:
         '''The "current_user" variable can take on the "id" provided by the
-    "load_user" function written into the "models.py" script, if such an "id"
-    already exists. This "id" comes from the database and is the value for
-    the variable, current_user, which is the user object
-    representing the client of the request. If such "id" does exist, the
-    variable's value indicates that the user is non-anonymous (is logged in),
-    and then this if statement returns True to redirect the user to the index
-    page. However, in the event that this if statement returns False, this
-    python script proceeds to load the registration form webpage.'''
+    "load_user" function written into the "models.py" script, which the
+    "current_user" variable would have access to should the user already be
+    logged in, accessing this route in the logged-in status.'''
         
         
         return redirect(url_for('main.index'))
@@ -149,7 +144,8 @@ to provide input.'''
     if form.validate_on_submit():
         '''Upon submitting the form, the browser's POST request submits
     the form data to the server, and when the data meets validator expectations,
-    this if statement returns True, redirecting the user ro the "login" page.'''
+    this if statement returns True, commits the data to the database, and then
+    redirects the user to the "login" page.'''
         
         
         user = User(username=form.username.data, email=form.email.data)

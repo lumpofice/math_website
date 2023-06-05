@@ -79,9 +79,8 @@ requested.
     
     def set_password(self, password):
         '''This function generates the password hash, using the password input
-    to the appropriate position in the registration form. That password is
-    accessed via the user object representing the client of the request at the
-    time of registration. The password itself is not stored; only the password
+    to the appropriate position in the RegistrationForm.
+    The password itself is not stored; only the password
     hash. '''
         
         
