@@ -1,4 +1,4 @@
-To get started with math_website on your local machine, clone the repository, create the virtual environment, install the requirements---(1), (2), and (3), respectively. Then we initialize the database in (4), if it is missing, followed by an initiation of the .mo file in (5) and defining the environment variables in (6):
+To get started with math_website, clone the repository, create the virtual environment, install the requirements---(1), (2), and (3), respectively. Then we initialize the database and create the migration folder in (4), if they are missing, followed by an initiation of the .mo file in (5) and defining the environment variables in (6). In (8), we create the database within the MySQL server before updating the database in (9).
 
 (1)----------------------------------------------------------------
 user: ~$ git clone https://github.com/lumpofice/math_website.git
@@ -11,23 +11,49 @@ user: ~$ python3 -m venv venv
 (3)----------------------------------------------------------------
 user: ~$ . venv/bin/activate
 (venv)user: ~$ pip3 install -r requirements.txt
+(venv)user: ~$ pip3 install pymysql cryptography
 -------------------------------------------------------------------
 
-(4 (if db is absent))----------------------------------------------
+(4 (if db and migration folder are absent))------------------------
 (venv)user: ~$ export FLASK_APP=math_website.py
 (venv)user: ~$ flask db init
 (venv)user: ~$ flask db migrate -m 'initial migration'
 (venv)user: ~$ flask db upgrade
 -------------------------------------------------------------------
 
+In (4) above, the SQLite database and the migration directory are initiated. If the database is present, then the data should be located within the MySQL database, which is defined below in (6) and (7).
+
 (5)----------------------------------------------------------------
 (venv)user: ~$ pybabel compile -d app/translations/
 -------------------------------------------------------------------
 
 (6)----------------------------------------------------------------
+(venv)user: ~$ export SECRET_KEY=<your_secret_key>
 (venv)user: ~$ export MAIL_SERVER=<your_preferred_mail_server>
 (venv)user: ~$ export MAIL_PORT=<port>
 (venv)user: ~$ export MAIL_USE_TLS=1
 (venv)user: ~$ export MAIL_USERNAME=<your_email_address>
 (venv)user: ~$ export MAIL_PASSWORD=<your_email_address_password>
+(venv)user: ~$ export DATABASE_URL=mysql+pymysql://<app_name>:<db_password>@localhost:3306/<app_name>
+-------------------------------------------------------------------
+
+In MySQL, which is accessed via (7), we set up the database with the code in (8):
+
+(7)----------------------------------------------------------------
+user: ~$ sudo mysql -u root -p
+Enter password: 
+-------------------------------------------------------------------
+
+(8)----------------------------------------------------------------
+mysql> create database <app_name> character set utf8 collate utf8_bin;
+mysql> create user '<app_name>'@'localhost' identified by '<db_password>';
+mysql> grant all privileges on <app_name>.* to '<app_name>'@'localhost';
+mysql> flush privileges;
+-------------------------------------------------------------------
+
+Finally, we update the database and run the application with the code in (9):
+
+(9)----------------------------------------------------------------
+(venv)user: ~$ flask db upgrade
+(venv)user: ~$ flask run
 -------------------------------------------------------------------
