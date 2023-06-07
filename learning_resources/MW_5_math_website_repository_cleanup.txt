@@ -1,4 +1,4 @@
-In development mode, I remove logs/ directories and __pycache__ directories. There exists a .gitignore file to handle the suppression of these directories and more, in case I forget to remove them myself. Any files that are to be suppressed must first be absent (untracked) from the repository. Below, (2) demonstrates how to untrack them from the repository.
+In development mode, I remove venv, logs, and __pycache__ directories after testing and before the github commit. The code in (1) shows how I handle this task. There exists a .gitignore file to handle the suppression of these directories and more, in case I forget to remove them myself. Any files that are to be suppressed must first be absent (untracked) from the repository. Below, (2) and (3) demonstrate how to untrack the unwanted files and add back the desired files, respectively, from the repository.
 
 (1)----------------------------------------------------------------
 (venv)user: ~$ py3clean .
