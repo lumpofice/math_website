@@ -1,0 +1,135 @@
+The follow feature is someone intricate. I want to approach this from the user's perspective. First, we deal with the user posting feature. In (1), the user posts via the PostForm:
+
+(1)----------------------------------------------------------------
+# ...
+
+@bp.route('/', methods=['GET', 'POST'])
+@bp.route('/index', methods=['GET', 'POST'])
+@login_required
+def index():
+    '''This is the homepage of the site. The @login_required decorator from
+Flask-Login sets accessibility restrictions to only those users who are logged
+in.'''
+    
+    
+    form = PostForm()
+    if form.validate_on_submit():
+        '''We access the PostForm form from the forms.py file and transfer
+    the data from the TextAreaField to the body of the Post model in the
+    models.py file.'''
+        
+        
+        try:
+            language = detect(form.post.data)
+            
+        except LangDetectException:
+            language = ''
+            
+            
+        post = Post(body=form.post.data, author=current_user, language=language)
+        db.session.add(post)
+        db.session.commit()
+        flash('Your post is now live!')
+        return redirect(url_for('main.index'))
+    
+    
+    page = request.args.get('page', 1, type=int)
+    '''This request.args.get() call takes in the parsed contents of a URL
+query string, which is the part of the URL after the question mark in the
+following formated URL
+    
+<scheme>://<netloc>/<path>;<params>?<query>#<fragment>
+    
+The parsed contents of the query string are keys in a Python dictionary. The
+value of this "page" key corresponds to the same object on which a limit of
+posts per view has been set in our config.py file under the "POSTS_PER_PAGE"
+key. We paginate with respect to posts from those we follow and our own posts,
+which is clear from the variable definitions and "return" statement of the
+"followed_posts" function of our models.py file, starting from page 1, where
+the pages are ordered by descending timestamp in the "followed_posts" function
+of our models.py file.'''
+    
+    
+    posts = current_user.followed_posts().paginate(
+        page=page, per_page=current_app.config['POSTS_PER_PAGE'], error_out=False)
+    next_url = url_for('main.index', page=posts.next_num)\
+        if posts.has_next else None
+    prev_url = url_for('main.index', page=posts.prev_num)\
+        if posts.has_prev else None
+    
+    
+    return render_template('index.html', title='Math Website',
+        form = form, posts=posts.items, next_url=next_url, prev_url=prev_url)
+
+# ...
+------------------------------------------------------------------- 
+
+In the PostForm, the current user types in what they wish. The post variable calls the Post model to store the post within the database. The posts variable grabs all of the posts followed by the current user, the mechanism for which we will see in (2); the render_template pushes all of those posts to the index template, which we will see in (3). 
+
+(2)----------------------------------------------------------------
+# ...
+
+# ...
+    def followed_posts(self):
+        '''We join the "user_id" variable of the Post model to the (matching)
+    "followed_id" of the followers table. Then we filter those "followed_id"
+    values to those corresponding with the self user's id (follower_id). Finally,
+    we take those filtered-and-joined id values and order them by the "timestamp"
+    value they hold in the Post model.'''
+        
+        
+        followed = Post.query.join(
+            followers, (followers.c.followed_id == Post.user_id)).filter(
+                followers.c.follower_id == self.id)
+        own = Post.query.filter_by(user_id=self.id)
+        return followed.union(own).order_by(Post.timestamp.desc())
+
+# ...
+-------------------------------------------------------------------
+
+In the followed variable, the join command matches the <user_the_current_user_is_following> id from both the followers table and the post table, before the filter method removes all of the followers---the current user being one such follower---who are not the current user. The own variable grabs all of the current user's posts. The return call unions the followed posts with the own posts.
+
+(3)----------------------------------------------------------------
+# ...
+
+{% block app_content %}
+    <h1>Welcome {{ current_user.username }}</h1>
+    {% if form %}
+    {{ wtf.quick_form(form) }}
+    <br>
+    {% endif %}
+    {% for post in posts %}
+        {% include '_post.html' %}
+    {% endfor %}
+# ...
+
+# ...
+-------------------------------------------------------------------
+
+The posts.items value in the render_template call from (2) generates a list of items that match those conditions set in the posts variable from (2), through which the for loop in (3) runs. For each of those posts, the way in which they render back to the user is defined in (4).
+
+(4)----------------------------------------------------------------
+	<table>
+		<tr valign='top'>
+			<td><img src='{{ post.author.avatar(36) }}'></td>
+
+			<!-- The User model attribute, "author," not only relates 
+		each post made by the user back to the user's username, it also 
+		fashions to each user post that user's corresponding avatar; 
+		the same avatar that is coded within the User model for that 
+		user. The variable post.author.avatar(36) is precisely the code
+		within this template that accomplishes this task for us. -->
+
+			<td>
+				<a href='{{ 
+					url_for("main.user", username=post.author.username) 
+					}}'>
+					{{ post.author.username }} 
+				</a>
+				said {{ moment(post.timestamp).fromNow() }}:
+				<br>
+				{{ post.body }}
+# ...
+-------------------------------------------------------------------  
+
+The avator of the author of the post is grabbed; the username of the author of the post is grabbed; the timestamp of the post is grabbed; and the body of the post is grabbed. The url_for call renders all of the information in these grabs to the index page of the application.
