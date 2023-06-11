@@ -69,6 +69,7 @@ In the PostForm, the current user types in what they wish. The post variable cal
 (2)----------------------------------------------------------------
 # ...
 
+class User(UserMixin, db.Model):
 # ...
     def followed_posts(self):
         '''We join the "user_id" variable of the Post model to the (matching)
@@ -133,3 +134,276 @@ The posts.items value in the render_template call from (2) generates a list of i
 -------------------------------------------------------------------  
 
 The avator of the author of the post is grabbed; the username of the author of the post is grabbed; the timestamp of the post is grabbed; and the body of the post is grabbed. The url_for call renders all of the information in these grabs to the index page of the application.
+
+When following a registered user of the application, the current user is taken to the user's user profile page via the url_for line in (4), the rendering of which will generate three possible views:
+--1) The current user's profile page, in which the current user will have the option to edit their profile.
+--2) The user's profile page, in which the current user will have the option to follow them.
+--3) The user's profile page, in which the current user will have the option to unfollow them.
+
+In (5), we see the user view function.
+
+(5)----------------------------------------------------------------
+# ...
+
+@bp.route('/user/<username>')
+@login_required
+def user(username):
+    
+    
+    user = User.query.filter_by(username=username).first_or_404()
+    
+    
+    page = request.args.get('page', 1, type=int)
+    
+    
+    posts = user.posts.order_by(Post.timestamp.desc()).paginate(
+        page=page, per_page=current_app.config['POSTS_PER_PAGE'], error_out=False)
+    next_url = url_for('main.user', username=user.username, \
+        page=posts.next_num)\
+        if posts.has_next else None
+    prev_url = url_for('main.user', username=user.username, \
+        page=posts.prev_num)\
+        if posts.has_prev else None
+    
+    
+    form = EmptyForm()
+    '''A submit button calling relevant functionality in the user template.'''
+    
+    
+    return render_template('user.html', user=user, posts=posts.items,
+        next_url=next_url, prev_url=prev_url, form=form)
+
+# ...
+-------------------------------------------------------------------  
+
+The user view function presents the current user with the EmptyForm submit button. In the case that the current user is viewing their own profile page, that button will be absent and replaced by an edit profile link. In the case the the current user is viewing the profile page of a user whom they are not following, the submit button will read "Follow", which the current user may wish to click. In the case that the current user is viewing the profile page of a user whom they are following, the submit button will read "Unfollow", which the current user may wish to click. In (6), we will see the user template that runs through the conditionals rendering these different views.
+
+(6)----------------------------------------------------------------
+{% extends 'base.html' %} <!-- This line loads the base.html code -->
+
+{% block app_content %}
+    <table class='table table-hover'>
+        <tr>
+            <td width='256px'><img src='{{ user.avatar(256) }}'></td>
+				<!-- The user variable in the user viewfunction of the 
+			routes.py file corresponds to and allows us to access the 
+			User model field data for the specific logged-in user. -->
+
+            <td>
+                <h1>User: {{ user.username }}</h1>
+
+				{% if user.about_me %}
+					<p>{{ user.about_me }}</p>
+				{% endif %}
+
+				{% if user.last_seen %}
+					<p>Last seen on: {{ 
+						moment(user.last_seen).format('LLL') 
+						}}
+					</p>
+				{% endif %}
+				
+				<p>{{ user.followers.count() }} followers, 
+					{{ user.followed.count() }} following.
+				</p>
+				{% if user == current_user %}
+					<!-- If the user variable and current_user variable 
+				coincide -->
+    		                <p><a href='{{ url_for("main.edit_profile") }}'>
+					{{ ('Edit your profile') }}</a></p>
+		                {% elif not current_user.is_following(user) %}
+					<!-- If the current user is not following the
+				user profile being viewed, this 
+				form tag will be accessed by the "user" viewfunction 
+				before rendering, displaying the submit button as the 
+				"Follow" button. Once the submit button is pressed, the 
+				"follow" viewfunction will be accessed and called. -->
+                		<p><form action='{{ 
+						url_for("main.follow", username=user.username) 
+						}}' method='post'>
+                        	{{ form.hidden_tag() }}
+                        	{{ form.submit(value=('Follow'), class_='btn btn-default') }}
+                    		</form></p>
+                		{% else %}
+					<!-- If the user profile is being followed by the
+				current user -->
+                		<p><form action='{{ 
+						url_for("main.unfollow", username=user.username) 
+						}}' method='post'>
+                        	{{ form.hidden_tag() }}
+                        	{{ form.submit(value=('Unfollow'), class_='btn btn-default') }}
+                    		</form></p>
+                		{% endif %}
+            </td>
+        </tr>
+    </table>
+
+# ...
+------------------------------------------------------------------- 
+
+The if user == current_user conditional will render the edit profile view, where the current user may chose to edit their profile. The not current_user.is_following(user) conditional will render the view funcion bearing the "Follow" button, which the current user may wish to click. The else conditional will render the view function bearing the "Unfollow" button, which the current user may wish to click. 
+
+In the first conditional, the current user is viewing the edit_profile view function, which we see in (7), and if the edit profile link is clicked, the current user will be presented with the EditProfileForm, which we see in (8).  
+
+(7)----------------------------------------------------------------
+# ...
+
+@bp.route('/edit_profile', methods=['GET', 'POST'])
+@login_required
+def edit_profile():
+    '''Upon intializing this view function for the first time, the user object
+will reference the current_user variable for username and about_me field
+values to store in the respective EditProfileForm form positions. (The elif
+statement is evaluating True in this scenario.) Upon
+subsequent initializations, the form, prepopulated with field values obtained
+in the first initialization, will supply the current_user variable with those
+relevant field values chosen, in-edit, by the user. (The if statement is
+evaluating True in this scenario.)'''
+    
+    
+    form = EditProfileForm(current_user.username)
+    '''The curren_user.username argument will need to be removed when testing
+the app with the goal of displaying the 500 error message template.'''
+    
+    
+    if form.validate_on_submit():
+        current_user.username = form.username.data
+        current_user.about_me = form.about_me.data
+        db.session.commit()
+        flash('Your changes have been saved.')
+        return redirect(url_for('main.edit_profile'))
+    
+    
+    elif request.method == 'GET':
+        form.username.data = current_user.username
+        form.about_me.data = current_user.about_me
+        
+        
+    return render_template('edit_profile.html', title='Math Website',\
+        form=form)
+
+# ...
+-------------------------------------------------------------------
+
+(8)----------------------------------------------------------------
+# ...
+
+class EditProfileForm(FlaskForm):
+    username = StringField(_1('Username'), validators=[DataRequired()])
+    about_me = TextAreaField(_1('About me'),
+        validators=[Length(min=0, max=140)])
+    submit = SubmitField(_1('Submit'))
+    
+    
+    '''Below is the code that obviates the 500 error handler template and
+instead flashes an error message below the form line. Testing changes to the
+structure of the app, say during Blueprint implementation, will require us to
+comment out the below code so that the 500 error message template will
+display.'''
+    
+    
+    def __init__(self, original_username, *args, **kwargs):
+        '''The original_username variable here corresponds to the
+    current_user.username argument passed to the EditProfileForm call
+    from the edit_profile view function.'''
+        
+        
+        super(EditProfileForm, self).__init__(*args, **kwargs)
+        self.original_username = original_username
+        
+        
+    def validate_username(self, username):
+        if username.data != self.original_username:
+            user = User.query.filter_by(username=self.username.data).first()
+            if user is not None:
+                raise ValidationError(_1('Please use a different username.'))
+
+# ...
+-------------------------------------------------------------------
+
+The current_user.username argument passed to the EditProfileForm call of the edit_profile view function in (7) becomes the original_username variable in (8). The self object of the EditProfileForm is assigned to this variable and conditionals are run against it to test whether the username data input into the form by the current user is different. Finally, the username data is queried against the database to ensure the database does not already contain the username data input into the form by the current user. 
+
+In the second conditional, the current user is viewing the user profile of a user they are not yet following, and the "Follow" button contained within this view will be available for clicking. In (9), we see the follow view function containing the "Follow" submit button, and in (10), we see the code within the models file that establishes the follow between the current user and the user.
+
+(9)----------------------------------------------------------------
+# ...
+
+@bp.route('/follow/<username>', methods=['POST'])
+@login_required
+def follow(username):
+    '''We call the EmptyForm by pressing the submit button, which reads as
+"Follow" when the user-to-user relationship warrants such a readout. If the
+validation fails, it is because the CSRF token is invalid.
+
+The "user" variable here corresponds to the user whom the "current_user" wishes
+to follow.'''
+    
+    
+    form = EmptyForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(username=username).first()
+        if user is None:
+            flash('User {} not found.'.format(username))
+            return redirect(url_for('main.index'))
+        if user == current_user:
+            flash('You cannot follow yourself!')
+            return redirect(url_for('main.user', username=username))
+        current_user.follow(user)
+        db.session.commit()
+        flash('You are following {}!'.format(username))
+        return redirect(url_for('main.user', username=username))
+    
+    
+    else:
+        return redirect(url_for('main.index'))
+
+# ...
+-------------------------------------------------------------------
+
+Unless something is wrong with the application, the two conditions should evaluate to False, since the immediate predecessor view contained the "Follow" button. Thus, the current_user.follow(user) call will be made, and the follow functionality in the models file will be implemented.
+
+(10)---------------------------------------------------------------
+# ...
+
+followers = db.Table('followers',
+        db.Column('follower_id', db.Integer, db.ForeignKey('user.id')),
+        db.Column('followed_id', db.Integer, db.ForeignKey('user.id'))
+        )
+
+# ...
+
+class User(UserMixin, db.Model):
+# ...
+    followed = db.relationship(
+        'User', secondary=followers,
+        primaryjoin=(followers.c.follower_id == id),
+        secondaryjoin=(followers.c.followed_id == id),
+        backref=db.backref('followers', lazy='dynamic'), lazy='dynamic')
+# ...
+    def follow(self, user):
+        '''The self parameter references the self user, while the "user"
+    variable references the user self user wishes to follow.'''
+        
+        
+        if not self.is_following(user):
+            self.followed.append(user)
+            
+            
+    def unfollow(self, user):
+        '''The self parameter references the self user, while the "user"
+    variable references the user self user wishes to unfollow.'''
+        
+        
+        if self.is_following(user):
+            self.followed.remove(user)
+            
+            
+    def is_following(self, user):
+        '''The is_following function queries the database to check if the self
+    user, contained in the "self" parameter, is following the user contained
+    in the "user" variable.'''
+    
+    
+        return self.followed.filter(
+            followers.c.followed_id == user.id).count() > 0
+------------------------------------------------------------------- 
