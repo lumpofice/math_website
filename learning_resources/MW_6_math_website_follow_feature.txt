@@ -1,4 +1,4 @@
-The follow feature is someone intricate. I want to approach this from the user's perspective. First, we deal with the user posting feature. In (1), the user posts via the PostForm:
+The follow feature is somewhat intricate. I want to approach this from the user's perspective. First, we deal with the user posting feature. In (1), the user posts via the PostForm:
 
 (1)----------------------------------------------------------------
 # ...
@@ -64,7 +64,7 @@ of our models.py file.'''
 # ...
 ------------------------------------------------------------------- 
 
-In the PostForm, the current user types in what they wish. The post variable calls the Post model to store the post within the database. The posts variable grabs all of the posts followed by the current user, the mechanism for which we will see in (2); the render_template pushes all of those posts to the index template, which we will see in (3). 
+In the PostForm, the current user types in what they wish. The post variable calls the Post model to store the post within the database. The posts variable grabs all of the posts written by users who are followed by the current user, the mechanism for which we will see in (2); the render_template pushes all of those posts to the index template, which we will see in (3). 
 
 (2)----------------------------------------------------------------
 # ...
@@ -88,7 +88,7 @@ class User(UserMixin, db.Model):
 # ...
 -------------------------------------------------------------------
 
-In the followed variable, the join command matches the <user_the_current_user_is_following> id from both the followers table and the post table, before the filter method removes all of the followers---the current user being one such follower---who are not the current user. The own variable grabs all of the current user's posts. The return call unions the followed posts with the own posts.
+For each post, the followed variable employs the join command, matching the <user_the_current_user_is_following>'s id from both the followers table and the post table, before employing the filter method to remove all of the followers of the post who are not the current user. The <user_the_current_user_is_following>'s id is wrapped up in the followers.c.followed_id variable, which we are matching with the user_id within the Post model corresponding to the specific post. The followers.c.follower_id is the id of any follower of the specific post; we make sure that the current user's id is the only follower id that is returned through the filter. The own variable grabs all of the current user's posts. The return call unions the followed posts with the own posts.
 
 (3)----------------------------------------------------------------
 # ...
@@ -107,7 +107,7 @@ In the followed variable, the join command matches the <user_the_current_user_is
 # ...
 -------------------------------------------------------------------
 
-The posts.items value in the render_template call from (2) generates a list of items that match those conditions set in the posts variable from (2), through which the for loop in (3) runs. For each of those posts, the way in which they render back to the user is defined in (4).
+The posts.items value in the render_template call from (1) and (5) generates a list of items that match those conditions set in the posts variable from (1) and (5), through which the for loop in (3) runs. For each of those posts, the way in which they render back to the current user view is defined in (4).
 
 (4)----------------------------------------------------------------
 	<table>
@@ -133,9 +133,9 @@ The posts.items value in the render_template call from (2) generates a list of i
 # ...
 -------------------------------------------------------------------  
 
-The avator of the author of the post is grabbed; the username of the author of the post is grabbed; the timestamp of the post is grabbed; and the body of the post is grabbed. The url_for call renders all of the information in these grabs to the index page of the application.
+The avator of the author of the post is grabbed; the username of the author of the post is grabbed; the timestamp of the post is grabbed; and the body of the post is grabbed. If the current user is redirected to the index page, the information from all of these grabs will render in the index view. If the current user is redirected to the explore page, the information will render in the explore view. Subsequently, the url_for call in (4) renders all of the information in these grabs to the user page of the application when the current user clicks the link embedded within a user's username in whichever view the current user happens to be. 
 
-When following a registered user of the application, the current user is taken to the user's user profile page via the url_for line in (4), the rendering of which will generate three possible views:
+When clicking the embedded link of a registered user's username within a view of the application, the current user is taken to the user's user profile page via the url_for line in (4), and the rendering of that user view function will generate three possible views:
 --1) The current user's profile page, in which the current user will have the option to edit their profile.
 --2) The user's profile page, in which the current user will have the option to follow them.
 --3) The user's profile page, in which the current user will have the option to unfollow them.
@@ -176,7 +176,7 @@ def user(username):
 # ...
 -------------------------------------------------------------------  
 
-The user view function presents the current user with the EmptyForm submit button. In the case that the current user is viewing their own profile page, that button will be absent and replaced by an edit profile link. In the case the the current user is viewing the profile page of a user whom they are not following, the submit button will read "Follow", which the current user may wish to click. In the case that the current user is viewing the profile page of a user whom they are following, the submit button will read "Unfollow", which the current user may wish to click. In (6), we will see the user template that runs through the conditionals rendering these different views.
+The user view function presents the current user with the EmptyForm submit button. In the case that the current user is viewing their own profile page, that button will be absent and replaced by an edit profile link. In the case that the current user is viewing the profile page of a user whom they are not following, the submit button will read "Follow", which the current user may wish to click. In the case that the current user is viewing the profile page of a user whom they are following, the submit button will read "Unfollow", which the current user may wish to click. In (6), we will see the user template that runs through the conditionals rendering these different views.
 
 (6)----------------------------------------------------------------
 {% extends 'base.html' %} <!-- This line loads the base.html code -->
@@ -243,7 +243,7 @@ The user view function presents the current user with the EmptyForm submit butto
 
 The if user == current_user conditional will render the edit profile view, where the current user may chose to edit their profile. The not current_user.is_following(user) conditional will render the view funcion bearing the "Follow" button, which the current user may wish to click. The else conditional will render the view function bearing the "Unfollow" button, which the current user may wish to click. 
 
-In the first conditional, the current user is viewing the edit_profile view function, which we see in (7), and if the edit profile link is clicked, the current user will be presented with the EditProfileForm, which we see in (8).  
+In the first conditional, the current user is viewing the edit_profile view function, which we see in (7). In this scenario, the edit profile link has been clicked, redering to the current user the EditProfileForm, which we see in (8).  
 
 (7)----------------------------------------------------------------
 # ...
@@ -360,7 +360,7 @@ to follow.'''
 # ...
 -------------------------------------------------------------------
 
-Unless something is wrong with the application, the two conditions should evaluate to False, since the immediate predecessor view contained the "Follow" button. Thus, the current_user.follow(user) call will be made, and the follow functionality in the models file will be implemented.
+Unless something is wrong with the application, the first two conditions should evaluate to False, since the immediate predecessor view contained the "Follow" button. Thus, the current_user.follow(user) call will be made, and the follow functionality in the models file will be implemented.
 
 (10)---------------------------------------------------------------
 # ...
@@ -406,4 +406,8 @@ class User(UserMixin, db.Model):
     
         return self.followed.filter(
             followers.c.followed_id == user.id).count() > 0
-------------------------------------------------------------------- 
+-------------------------------------------------------------------
+
+The followers association table is the bridge between i) the current user's request to follow and their user id; ii) a user whom the current user wishes to follow and their user id. Specifically, the current user is the follower, while the user whom the current user wishes to follow is the followed.So, the return call self.followed.filter(...) in the is_following method of (10) signals, via the count() method, to the follow method of (10) whether or not the current user (self) is following the user whom the current user wishes to follow (user). The code is set up such that in this view, by dint of pressing the "Follow" button, such a count would necessarily be 0. 
+
+Likewise, in the unfollow method of (10), the code is set up such that a count from the self.followed.filter(...) return call would necessarily be 1. 
