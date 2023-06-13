@@ -11,9 +11,7 @@
             <td>
                 <h1>User: {{ user.username }}</h1>
 
-				{% if user.about_me %}
-					<p>{{ user.about_me }}</p>
-				{% endif %}
+				
 
 				{% if user.last_seen %}
 					<p>Last seen on: {{ 
@@ -22,70 +20,17 @@
 					</p>
 				{% endif %}
 				
-				<p>{{ user.followers.count() }} followers, 
-					{{ user.followed.count() }} following.
-				</p>
+				
 				{% if user == current_user %}
 					<!-- If the user variable and current_user variable 
 				coincide -->
                 <p><a href='{{ url_for("main.edit_profile") }}'>
 					{{ ('Edit your profile') }}</a></p>
-                {% elif not current_user.is_following(user) %}
-					<!-- If the current user is not following the
-				user profile being viewed by the current user. This 
-				form tag will be accessed by the "user" viewfunction 
-				before rendering, displaying the submit button as the 
-				"Follow" button. Once the submit button is pressed, the 
-				"follow" viewfunction will be accessed and called. -->
-                <p>
-                    <form action='{{ 
-						url_for("main.follow", username=user.username) 
-						}}' method='post'>
-                        {{ form.hidden_tag() }}
-                        {{ form.submit(value=('Follow'), 
-						class_='btn btn-default') }}
-                    </form>
-                </p>
-                {% else %}
-					<!-- If the user profile is being followed by the
-				current user -->
-                <p>
-                    <form action='{{ url_for("main.unfollow", 
-						username=user.username) }}' method='post'>
-                        {{ form.hidden_tag() }}
-                        {{ form.submit(value=('Unfollow'), 
-						class_='btn btn-default') }}
-                    </form>
-                </p>
-                {% endif %}
+                                {% endif %}
             </td>
         </tr>
     </table>
 
-	<hr> <!-- Horizontal Rule -->
-    {% for post in posts %}
-		<!-- This for statement references the post entries 
-	corresponding to the self user within the database. -->
-
-        {% include '_post.html' %}
-    {% endfor %}
-    <nav aria-label='...'>
-        <ul class='pager'>
-            <li class='previous{% if not prev_url %} 
-			disabled{% endif %}'>
-                <a href='{{ prev_url or "#" }}'>
-                    <span aria-hidden='true'>&larr;</span> 
-					{{ ('Newer posts') }}
-                </a>
-            </li>
-            <li class='next{% if not next_url %} disabled{% endif %}'>
-                <a href='{{ next_url or "#" }}'>
-                    {{ ('Older posts') }} 
-					<span aria-hidden='true'>&rarr;</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
 {% endblock %}
 
 

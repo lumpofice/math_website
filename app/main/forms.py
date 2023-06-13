@@ -13,8 +13,6 @@ from app.models import User
 
 class EditProfileForm(FlaskForm):
     username = StringField(_1('Username'), validators=[DataRequired()])
-    about_me = TextAreaField(_1('About me'),
-        validators=[Length(min=0, max=140)])
     submit = SubmitField(_1('Submit'))
     
     
@@ -42,22 +40,6 @@ display.'''
                 raise ValidationError(_1('Please use a different username.'))
             
 
-class EmptyForm(FlaskForm):
-    '''This is the button that will appear accordingly as "Follow" and
-"Unfollow" as current_user browses the profile pages of other users'''
-    
-    
-    submit = SubmitField('submit')
-    
-    
-class PostForm(FlaskForm):
-    '''With this form, we can post from our destination of choice, which will
-be the index page.'''
-    
-    
-    post = TextAreaField('Say it!', validators=[
-        DataRequired(), Length(min=1, max=140)])
-    submit = SubmitField('Submit')
     
     
 # FUNCTIONS---------------------------------------------------------------------
