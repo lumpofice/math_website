@@ -1,0 +1,81 @@
+Download the source code from git.
+
+Initiate a WSGI file for Flask, Python 3.7. 
+
+Make sure the math_website.py file contains the correct code.
+
+Copy the following, (1), from config.py and paste it at the top of the WSGI file:
+
+(1)----------------------------------------------------------------
+import os
+from dotenv import load_dotenv
+
+
+basedir = os.path.abspath(os.path.dirname(__file__))
+load_dotenv(os.path.join(basedir, '.env'))
+-------------------------------------------------------------------
+
+Remove pkg-resources==0.0.0 from the requirements.txt file.
+
+Change python-dotenv==0.21.1 to python-dotenv==0.8.0 in the requirements.txt file.
+
+Input the following, (2), into a bash console:
+
+(2)----------------------------------------------------------------
+user: ~/math_website$ rm -rf migrations/
+user: ~/math_website$ py3clean .
+user: ~/math_website$ python3.7 -m venv venv
+-------------------------------------------------------------------
+
+Then input the following, (3), into the bash console:
+
+(3)----------------------------------------------------------------
+user: ~/math_website$ . venv/bin/activate
+(venv)user: ~/math_website$ pip3 install -r requirements.txt
+(venv)user: ~/math_website$ pip3 install pymysql cryptography
+-------------------------------------------------------------------
+
+Place the following, (4), into a .env file sitting in the top level directory:
+
+(4)----------------------------------------------------------------
+export SECRET_KEY='<your_secret_key>'
+export MAIL_SERVER='<your_preferred_mail_server>'
+export MAIL_PORT='<port>'
+export MAIL_USE_TLS='1'
+export MAIL_USERNAME='<your_email_address>'
+export MAIL_PASSWORD='<your_email_address_password>'
+export DATABASE_URL='mysql+pymysql://<username>:<db_password>@<hostname>/<username$db>
+-------------------------------------------------------------------
+
+Input the following, (5), into the bash console:
+
+(5)----------------------------------------------------------------
+(venv)user: ~/math_website$ pybabel compile -d app/translations/
+-------------------------------------------------------------------
+
+Go into the ~/math_website/venv/lib/python3.7/site-packages/flask/cli.py file and alter line 709, in (6), to what is shown in (7):
+
+(6)----------------------------------------------------------------
+        dotenv.load_dotenv(path, encoding="utf-8")
+-------------------------------------------------------------------
+
+(7)----------------------------------------------------------------
+        dotenv.load_dotenv(path)
+-------------------------------------------------------------------
+
+Initiate the database, as seen in (8).
+
+(8-----------------------------------------------------------------
+(venv)user: ~/math_website$ export FLASK_APP=math_website.py
+(venv)user: ~/math_website$ flask db init
+(venv)user: ~/math_website$ flask db migrate -m 'initial migration'
+(venv)user: ~/math_website$ flask db upgrade
+-------------------------------------------------------------------
+
+Finally, set the .env in the bash console, as see in (9).
+
+(9)----------------------------------------------------------------
+set -a; source ~/math_website/.env; set +a
+-------------------------------------------------------------------
+
+Refresh the site.
