@@ -14,27 +14,41 @@ user: ~$ . venv/bin/activate
 (venv)user: ~$ pip3 install pymysql cryptography
 -------------------------------------------------------------------
 
-(4 (if db and migration folder are absent))------------------------
+
+*******************************************************************
+*******************************************************************
+*******************************************************************
+*******************************************************************
+
+If the migration directory does not exist, follow (4), below. Otherwise, proceed with (5) and on.
+
+(4)----------------------------------------------------------------
 (venv)user: ~$ export FLASK_APP=math_website.py
 (venv)user: ~$ flask db init
 (venv)user: ~$ flask db migrate -m 'initial migration'
 (venv)user: ~$ flask db upgrade
 -------------------------------------------------------------------
 
-In (4) above, the SQLite database and the migration directory are initiated. If the database is present, then the data should be located within the MySQL database, which is defined below in (6) and (7).
+*******************************************************************
+*******************************************************************
+*******************************************************************
+*******************************************************************
+
+
+In (4) above, the SQLite database and the migration directory are initiated. If the migration directory is present, then the data will be located within the MySQL database created in (7) and (8) below.
 
 (5)----------------------------------------------------------------
 (venv)user: ~$ pybabel compile -d app/translations/
 -------------------------------------------------------------------
 
 (6)----------------------------------------------------------------
-(venv)user: ~$ export SECRET_KEY=<your_secret_key>
-(venv)user: ~$ export MAIL_SERVER=<your_preferred_mail_server>
-(venv)user: ~$ export MAIL_PORT=<port>
-(venv)user: ~$ export MAIL_USE_TLS=1
-(venv)user: ~$ export MAIL_USERNAME=<your_email_address>
-(venv)user: ~$ export MAIL_PASSWORD=<your_email_address_password>
-(venv)user: ~$ export DATABASE_URL=mysql+pymysql://<app_name>:<db_password>@localhost:3306/<app_name>
+(venv)user: ~$ export SECRET_KEY='<your_secret_key>'
+(venv)user: ~$ export MAIL_SERVER='<your_preferred_mail_server>'
+(venv)user: ~$ export MAIL_PORT='<port>'
+(venv)user: ~$ export MAIL_USE_TLS='1'
+(venv)user: ~$ export MAIL_USERNAME='<your_email_address>'
+(venv)user: ~$ export MAIL_PASSWORD='<your_email_address_password>'
+(venv)user: ~$ export DATABASE_URL='mysql+pymysql://<user>:<db_password>@localhost:3306/<db>'
 -------------------------------------------------------------------
 
 In MySQL, which is accessed via (7), we set up the database with the code in (8):
@@ -45,9 +59,9 @@ Enter password:
 -------------------------------------------------------------------
 
 (8)----------------------------------------------------------------
-mysql> create database <app_name> character set utf8 collate utf8_bin;
-mysql> create user '<app_name>'@'localhost' identified by '<db_password>';
-mysql> grant all privileges on <app_name>.* to '<app_name>'@'localhost';
+mysql> create database <db> character set utf8 collate utf8_bin;
+mysql> create user '<user>'@'localhost' identified by '<db_password>';
+mysql> grant all privileges on <db>.* to '<user>'@'localhost';
 mysql> flush privileges;
 -------------------------------------------------------------------
 

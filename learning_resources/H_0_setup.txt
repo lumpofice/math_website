@@ -15,10 +15,6 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 load_dotenv(os.path.join(basedir, '.env'))
 -------------------------------------------------------------------
 
-Remove pkg-resources==0.0.0 from the requirements.txt file.
-
-Change python-dotenv==0.21.1 to python-dotenv==0.8.0 in the requirements.txt file.
-
 Input the following, (2), into a bash console:
 
 (2)----------------------------------------------------------------
@@ -66,7 +62,6 @@ Go into the ~/math_website/venv/lib/python3.7/site-packages/flask/cli.py file an
 Initiate the database, as seen in (8).
 
 (8-----------------------------------------------------------------
-(venv)user: ~/math_website$ export FLASK_APP=math_website.py
 (venv)user: ~/math_website$ flask db init
 (venv)user: ~/math_website$ flask db migrate -m 'initial migration'
 (venv)user: ~/math_website$ flask db upgrade
