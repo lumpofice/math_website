@@ -18,7 +18,6 @@ load_dotenv(os.path.join(basedir, '.env'))
 Input the following, (2), into a bash console:
 
 (2)----------------------------------------------------------------
-user: ~/math_website$ rm -rf migrations/
 user: ~/math_website$ py3clean .
 user: ~/math_website$ python3.7 -m venv venv
 -------------------------------------------------------------------
@@ -59,11 +58,9 @@ Go into the ~/math_website/venv/lib/python3.7/site-packages/flask/cli.py file an
         dotenv.load_dotenv(path)
 -------------------------------------------------------------------
 
-Initiate the database, as seen in (8).
+Upgrade the database, as seen in (8).
 
 (8-----------------------------------------------------------------
-(venv)user: ~/math_website$ flask db init
-(venv)user: ~/math_website$ flask db migrate -m 'initial migration'
 (venv)user: ~/math_website$ flask db upgrade
 -------------------------------------------------------------------
 
