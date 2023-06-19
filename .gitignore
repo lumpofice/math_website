@@ -39,3 +39,4 @@ venv
 app.db
 math_website.log*
 *.env
+.png
