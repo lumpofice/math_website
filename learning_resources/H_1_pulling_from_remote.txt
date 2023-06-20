@@ -1,0 +1,6 @@
+When pulling changes from the remote to the host, i) alter the paths to match those in the remote---absolute to relative, for example---ii) run the following, (1), in the math_website console within the host site:
+
+(1)----------------------------------------------------------------
+(venv)user: ~/math_website$: git fetch
+(venv)user: ~/math_website$: git pull
+-------------------------------------------------------------------
