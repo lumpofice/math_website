@@ -30,7 +30,7 @@ user: ~/math_website$ . venv/bin/activate
 (venv)user: ~/math_website$ pip3 install pymysql cryptography
 -------------------------------------------------------------------
 
-Place the following, (4), into a .env file sitting in the top level directory:
+Update any paths within the repository. Place the following, (4), into a .env file sitting in the top level directory:
 
 (4)----------------------------------------------------------------
 export SECRET_KEY='<your_secret_key>'
