@@ -65,9 +65,19 @@ mysql> grant all privileges on <db>.* to '<user>'@'localhost';
 mysql> flush privileges;
 -------------------------------------------------------------------
 
-Finally, we update the database and run the application with the code in (9):
+We need to change the code in (9) to that seen in (10):
 
 (9)----------------------------------------------------------------
+        dotenv.load_dotenv(path, encoding="utf-8")
+-------------------------------------------------------------------
+
+(10)---------------------------------------------------------------
+        dotenv.load_dotenv(path)
+-------------------------------------------------------------------
+
+Finally, we update the database and run the application with the code in (11):
+
+(11)----------------------------------------------------------------
 (venv)user: ~$ flask db upgrade
 (venv)user: ~$ flask run
 -------------------------------------------------------------------

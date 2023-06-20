@@ -54,10 +54,11 @@ def index():
 Flask-Login sets accessibility restrictions to only those users who are logged
 in.'''
     
+    form = PrecalculusForm()
+    if form.validate_on_submit():
+        return redirect(url_for('main.precalculus'))
     
-    
-    
-    return render_template('index.html', title='Math Website')
+    return render_template('index.html', title='Math Website', form=form)
 
 
 
@@ -126,7 +127,7 @@ the app with the goal of displaying the 500 error message template.'''
 # FUNCTIONS---------------------------------------------------------------------
 
 
-@bp.route('/precalculus')
+@bp.route('/precalculus') 
 @login_required
 def precalculus():
     '''This is the page on which I am keeping score of the success students

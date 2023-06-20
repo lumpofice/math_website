@@ -32,7 +32,6 @@
 
 
 				 <ul class='nav navbar-nav navbar-right'>
-					<li><a href='{{ url_for("main.precalculus") }}'>{{ _('Precalculus') }}</a></li>
 
                     {% if current_user.is_anonymous %}
                     <li><a href='{{ url_for("auth.login") }}'>{{ _('Login') }}</a></li>
