@@ -136,7 +136,7 @@ Flask-Login sets accessibility restrictions to only those users who are logged
 in.'''
     
     
-    return render_template('precalculus.html', title='Math Website')
+    return render_template('precalculus/precalculus.html', title='Math Website')
 
 
 @bp.route('/geometric_series', methods=['GET', 'POST'])
@@ -158,8 +158,9 @@ input by the user.'''
         return redirect(url_for('main.geometric_series_graph_results'))
     
     
-    return render_template('geometric_series.html', title='Math Website',\
-        form=form)
+    return render_template(
+        'precalculus/series_of_numbers/geometric_series.html', \
+        title='Math Website',form=form)
 
 
 @bp.route('/geometric_series_graph_results')
@@ -169,7 +170,8 @@ from parameters input by the user.'''
     
     
     return render_template(\
-        'geometric_series_graph_results.html', title='Math Website')
+        'precalculus/series_of_numbers/geometric_series_graph_results.html', \
+        title='Math Website')
 
 
 @bp.route('/polynomial_degree_1_transform', methods=['GET', 'POST'])
@@ -208,7 +210,7 @@ transformations input by the user.'''
     
     
     return render_template(\
-        'polynomial_degree_1_transform.html',\
+        'precalculus/transforms/polynomial_degree_1_transform.html',\
         title='Math Website',\
         form=form)
 
@@ -220,6 +222,7 @@ functions.'''
     
     
     return render_template(\
+        'precalculus/transforms/'\
         'polynomial_degree_1_transform_graph_results.html',\
         title='Math Website')
 
@@ -285,7 +288,7 @@ transformations input by the user.'''
     
     
     return render_template(\
-        'polynomial_degree_2_transform.html',\
+        'precalculus/transforms/polynomial_degree_2_transform.html',\
         title='Math Website',\
         form=form)
 
@@ -297,6 +300,7 @@ functions.'''
     
     
     return render_template(\
+        'precalculus/transforms/'\
         'polynomial_degree_2_transform_graph_results.html',\
         title='Math Website')
 
@@ -348,7 +352,7 @@ transformations input by the user.'''
     
     
     return render_template(\
-        'polynomial_degree_3_transform.html',\
+        'precalculus/transforms/polynomial_degree_3_transform.html',\
         title='Math Website',\
         form=form)
 
@@ -360,6 +364,7 @@ functions.'''
     
     
     return render_template(\
+        'precalculus/transforms/'\
         'polynomial_degree_3_transform_graph_results.html',\
         title='Math Website')
 
@@ -426,7 +431,7 @@ transformations input by the user.'''
     
     
     return render_template(\
-        'absolute_value_transform.html',\
+        'precalculus/transforms/absolute_value_transform.html',\
         title='Math Website',\
         form=form)
 
@@ -438,7 +443,7 @@ functions.'''
     
     
     return render_template(\
-        'absolute_value_transform_graph_results.html',\
+        'precalculus/transforms/absolute_value_transform_graph_results.html',\
         title='Math Website')
 
 
@@ -497,6 +502,7 @@ based on transformations input by the user.'''
     
     
     return render_template(\
+        'precalculus/transforms/'\
         'reciprocal_degree_0_by_degree_1_transform.html',\
         title='Math Website',\
         form=form)
@@ -510,6 +516,7 @@ have polynomials degree 1.'''
     
     
     return render_template(\
+        'precalculus/transforms/'\
         'reciprocal_degree_0_by_degree_1_transform_graph_results.html',\
         title='Math Website')
 
@@ -602,7 +609,7 @@ transformations input by the user.'''
     
     
     return render_template(\
-        'square_root_transform.html',\
+        'precalculus/transforms/square_root_transform.html',\
         title='Math Website',\
         form=form)
 
@@ -614,7 +621,7 @@ functions.'''
     
     
     return render_template(\
-        'square_root_transform_graph_results.html',\
+        'precalculus/transforms/square_root_transform_graph_results.html',\
         title='Math Website')
 
 
@@ -667,7 +674,7 @@ transformations input by the user.'''
     
     
     return render_template(\
-        'cube_root_transform.html',\
+        'precalculus/transforms/cube_root_transform.html',\
         title='Math Website',\
         form=form)
 
@@ -679,7 +686,7 @@ functions.'''
     
     
     return render_template(\
-        'cube_root_transform_graph_results.html',\
+        'precalculus/transforms/cube_root_transform_graph_results.html',\
         title='Math Website')
 
 
@@ -752,7 +759,7 @@ transformations input by the user.'''
     
     
     return render_template(\
-        'general_exponential_transform.html',\
+        'precalculus/transforms/general_exponential_transform.html',\
         title='Math Website',\
         form=form)
 
@@ -764,7 +771,7 @@ functions.'''
     
     
     return render_template(\
-    'general_exponential_transform_graph_results.html',\
+    'precalculus/transforms/general_exponential_transform_graph_results.html',\
     title='Math Website')
 
 
@@ -838,7 +845,7 @@ transformations input by the user.'''
     
     
     return render_template(\
-        'general_logarithmic_transform.html',\
+        'precalculus/transforms/general_logarithmic_transform.html',\
         title='Math Website',\
         form=form)
 
@@ -850,6 +857,7 @@ functions.'''
     
     
     return render_template(\
+        'precalculus/transforms/'\
         'general_logarithmic_transform_graph_results.html',\
         title='Math Website')
 
@@ -922,7 +930,7 @@ transformations input by the user.'''
     
     
     return render_template(\
-        'base_e_exponential_transform.html',\
+        'precalculus/transforms/base_e_exponential_transform.html',\
         title='Math Website',\
         form=form)
 
@@ -934,7 +942,7 @@ functions.'''
     
     
     return render_template(\
-    'base_e_exponential_transform_graph_results.html',\
+    'precalculus/transforms/base_e_exponential_transform_graph_results.html',\
     title='Math Website')
 
 
@@ -1007,7 +1015,7 @@ transformations input by the user.'''
     
     
     return render_template(\
-        'base_e_logarithmic_transform.html',\
+        'precalculus/transforms/base_e_logarithmic_transform.html',\
         title='Math Website',\
         form=form)
 
@@ -1019,5 +1027,6 @@ functions.'''
     
     
     return render_template(\
+        'precalculus/transforms/'\
         'base_e_logarithmic_transform_graph_results.html',\
         title='Math Website')
