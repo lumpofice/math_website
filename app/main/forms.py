@@ -47,13 +47,6 @@ display.'''
 # FUNCTIONS---------------------------------------------------------------------
 # FUNCTIONS--------------------------------------------------------------------- 
     
-class PrecalculusForm(FlaskForm):
-    submit = SubmitField('Precalculus')
-
-
-
-
-    
 
 class GeometricSeriesForm(FlaskForm):
     '''The form users encounter when they venture to see a graph of the

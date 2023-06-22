@@ -54,12 +54,11 @@ def index():
 Flask-Login sets accessibility restrictions to only those users who are logged
 in.'''
  
-    form = PrecalculusForm()
-    if form.validate_on_submit():
-        return redirect(url_for('main.precalculus'))
+    if request.method == 'POST':
+        if request.form['submit_button'] == 'Precalculus':
+            return redirect(url_for('main.precalculus'))
     
-    return render_template('index.html', title='Math Website', form=form)
-
+    return render_template('index.html', title='Math Website') 
 
 
 
@@ -79,8 +78,6 @@ an 404 exception is raised. The user variable now points to the User model and
 all of its field values for the user holding this specific username. We use
 this to coordinate post entries through our _post.html file so that they may
 render on the webpage.'''
-    
-    
     
     
     return render_template('user.html', user=user)
@@ -119,8 +116,6 @@ the app with the goal of displaying the 500 error message template.'''
         form=form)
 
 
-    
-    
 # FUNCTIONS---------------------------------------------------------------------
 # FUNCTIONS---------------------------------------------------------------------
 # FUNCTIONS---------------------------------------------------------------------

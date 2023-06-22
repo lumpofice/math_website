@@ -5,9 +5,11 @@
 {% block app_content %}
     <h1>Welcome {{ current_user.username }}</h1>
     <h4>Choose a Study</h4>
-	{% if form %} 
-	{{ wtf.quick_form(form) }} 
-        {% endif %}
+    	<form action='' method='post'>
+	    <div>
+		<input type='submit' name='submit_button' value='Precalculus'>
+	    </div>
+	</form>
 {% endblock %}
 
 
