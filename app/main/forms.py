@@ -49,7 +49,10 @@ display.'''
     
 class PrecalculusForm(FlaskForm):
     submit = SubmitField('Precalculus')
-    
+
+
+
+
     
 
 class GeometricSeriesForm(FlaskForm):

@@ -53,7 +53,7 @@ def index():
     '''This is the homepage of the site. The @login_required decorator from
 Flask-Login sets accessibility restrictions to only those users who are logged
 in.'''
-    
+ 
     form = PrecalculusForm()
     if form.validate_on_submit():
         return redirect(url_for('main.precalculus'))
@@ -127,7 +127,7 @@ the app with the goal of displaying the 500 error message template.'''
 # FUNCTIONS---------------------------------------------------------------------
 
 
-@bp.route('/precalculus') 
+@bp.route('/precalculus', methods=['GET', 'POST']) 
 @login_required
 def precalculus():
     '''This is the page on which I am keeping score of the success students
@@ -135,8 +135,29 @@ are meeting in my course. The @login_required decorator from
 Flask-Login sets accessibility restrictions to only those users who are logged
 in.'''
     
+    if request.method == 'POST':
+        if request.form['submit_button'] == 'Transforms':
+            return redirect(url_for('main.transforms'))
+        elif request.form['submit_button'] == 'Series of Numbers':
+            return redirect(url_for('main.series_of_numbers'))
     
-    return render_template('precalculus/precalculus.html', title='Math Website')
+    
+    return render_template('precalculus/precalculus.html',\
+            title='Math Website')
+
+@bp.route('/transforms')
+@login_required
+def transforms():
+    return render_template('precalculus/transforms/transforms.html',\
+            title='Math Website')
+
+
+@bp.route('/series_of_numbers')
+@login_required
+def series_of_numbers():
+    return render_template(\
+            'precalculus/series_of_numbers/series_of_numbers.html',\
+            title='Math Website')
 
 
 @bp.route('/geometric_series', methods=['GET', 'POST'])

@@ -1,0 +1,15 @@
+{% extends 'base.html' %} <!-- This line loads the base.html code -->
+
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+
+<div> 
+
+    <h2>Series of Numbers</h2>
+
+    <a href='{{ url_for("main.geometric_series") }}'>Geometric Series</a>
+
+</div>
+
+{% endblock %}

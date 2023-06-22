@@ -1,68 +1,11 @@
 {% extends 'base.html' %} <!-- This line loads the base.html code -->
 
+{% import 'bootstrap/wtf.html' as wtf %}
+
 {% block app_content %}
-<h3>Choose which object you wish to work with</h3>
-
-<div> 
-
-    <h2>Series of Numbers</h2>
-
-    <a href='{{ url_for("main.geometric_series") }}'>Geometric Series</a>
-
-</div>
-
-<br>
-
-<div> 
-
-    <h2>Transforms</h2>
-
-        <h4>Polynomials</h4>
-
-	<a href='{{ url_for("main.polynomial_degree_1_transform") }}'>Polynomial Degree 1</a>
-
-	<br>
-
-	<a href='{{ url_for("main.polynomial_degree_2_transform") }}'>Polynomial Degree 2</a>
-
-	<br>
-
-	<a href='{{ url_for("main.polynomial_degree_3_transform") }}'>Polynomial Degree 3</a>
-
-	<br>
-
-	<h4>Absolute Value</h4>
-
-	<a href='{{ url_for("main.absolute_value_transform" )}}'>Absolute Value</a>
-
-	<h4>Reciprocals</h4>
-
-	<a href='{{ url_for("main.reciprocal_degree_0_by_degree_1_transform") }}'>Reciprocal Degree 0 by Degree 1</a>
-
-	<h4>Radicals</h4>
-
-	<a href='{{ url_for("main.square_root_transform") }}'>Square Root</a>
-
-	<br>
-
-	<a href='{{ url_for("main.cube_root_transform") }}'>Cube Root</a>
-
-	<h4>Exponentials</h4>
-
-	<a href='{{ url_for("main.general_exponential_transform") }}'>General Exponential</a>
-
-	<br>
-
-	<a href='{{ url_for("main.base_e_exponential_transform") }}'>Base e Exponential</a>
-
-	<h4>Logarithmics</h4>
-
-	<a href='{{ url_for("main.general_logarithmic_transform") }}'>General Logarithmic</a>
-
-	<br>
-
-	<a href='{{ url_for("main.base_e_logarithmic_transform") }}'>Base e Logarithmic</a>
-
-	</div>
-
+<h4>Choose a Study</h4>
+	<form action='' method='post'>
+		<input type='submit' name='submit_button' value='Transforms'>
+		<input type='submit' name='submit_button' value='Series of Numbers'>
+	</form>
 {% endblock %}
