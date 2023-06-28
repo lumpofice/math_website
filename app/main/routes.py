@@ -57,6 +57,8 @@ in.'''
     if request.method == 'POST':
         if request.form['submit_button'] == 'Precalculus':
             return redirect(url_for('main.precalculus'))
+        if request.form['submit_button'] == 'Calculus':
+            return redirect(url_for('main.calculus'))
     
     return render_template('index.html', title='Math Website') 
 
@@ -155,10 +157,17 @@ def series_of_numbers():
             title='Math Website')
 
 
+@bp.route('/calculus')
+@login_required
+def calculus():
+    return render_template('calculus/calculus.html', \
+            title='Math Website')
+
+
 @bp.route('/geometric_series', methods=['GET', 'POST'])
 def geometric_series():
-    '''This function constructs a graph of the geometric series, from parametes
-input by the user.'''
+    '''This function constructs a graph of the geometric series,
+from parameters input by the user.'''
     
     
     form = GeometricSeriesForm()
