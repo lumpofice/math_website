@@ -13,9 +13,7 @@ from app.main.forms import *
 from app.models import User
 from app.main import bp
 from app.main.geometric_series import GeometricSeries
-from app.main.polynomial_degree_1_transform import PolynomialDegree1Transform
-from app.main.polynomial_degree_2_transform import PolynomialDegree2Transform
-from app.main.polynomial_degree_3_transform import PolynomialDegree3Transform
+from app.main.polynomial_transform import PolynomialTransform
 from app.main.absolute_value_transform import AbsoluteValueTransform
 from app.main.reciprocal_degree_0_by_degree_1_transform import\
     ReciprocalDegree0ByDegree1Transform
@@ -225,8 +223,8 @@ transformations input by the user.'''
                 -np.inf, np.inf))
     
     
-        id_transform = PolynomialDegree1Transform()
-        id_transform.graph(form.horizontal_shift.data,\
+        transform = PolynomialTransform()
+        transform.polynomial_degree_1(form.horizontal_shift.data,\
             form.y_scalar.data, form.vertical_shift.data)
         
         
@@ -302,8 +300,8 @@ transformations input by the user.'''
                     -np.inf, form.vertical_shift.data))
     
     
-        square_transform = PolynomialDegree2Transform()
-        square_transform.graph(form.horizontal_shift.data, form.x_scalar.data,\
+        transform = PolynomialTransform()
+        transform.polynomial_degree_2(form.horizontal_shift.data, form.x_scalar.data,\
             form.x_reflection.data, form.y_scalar.data,\
             form.vertical_shift.data)
         
@@ -366,8 +364,8 @@ transformations input by the user.'''
                 -np.inf, np.inf))
     
     
-        cubed_transform = PolynomialDegree3Transform()
-        cubed_transform.graph(form.horizontal_shift.data, form.x_scalar.data,\
+        transform = PolynomialTransform()
+        transform.polynomial_degree_3(form.horizontal_shift.data, form.x_scalar.data,\
             form.x_reflection.data, form.y_scalar.data,\
             form.vertical_shift.data)
         
