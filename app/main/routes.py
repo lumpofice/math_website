@@ -17,12 +17,9 @@ from app.main.polynomial_transform import PolynomialTransform
 from app.main.absolute_value_transform import AbsoluteValueTransform
 from app.main.reciprocal_degree_0_by_degree_1_transform import\
     ReciprocalDegree0ByDegree1Transform
-from app.main.square_root_transform import SquareRootTransform
-from app.main.cube_root_transform import CubeRootTransform
-from app.main.general_exponential_transform import GeneralExponentialTransform
-from app.main.general_logarithmic_transform import GeneralLogarithmicTransform
-from app.main.base_e_exponential_transform import BaseEExponentialTransform
-from app.main.base_e_logarithmic_transform import BaseELogarithmicTransform
+from app.main.root_transform import RootTransform
+from app.main.exponential_transform import ExponentialTransform
+from app.main.logarithmic_transform import LogarithmicTransform
 
 '''importing computational libraries'''
 import numpy as np
@@ -620,8 +617,8 @@ transformations input by the user.'''
                     np.inf, form.vertical_shift.data))
     
     
-        square_root_transform = SquareRootTransform()
-        square_root_transform.graph(\
+        transform = RootTransform()
+        transform.square_root(\
             form.horizontal_shift.data, form.x_scalar.data,\
             form.x_reflection.data, form.y_scalar.data,\
             form.vertical_shift.data)
@@ -685,8 +682,8 @@ transformations input by the user.'''
                 -np.inf, np.inf))
     
     
-        cube_root_transform = CubeRootTransform()
-        cube_root_transform.graph(\
+        transform = RootTransform()
+        transform.cube_root(\
             form.horizontal_shift.data, form.x_scalar.data,\
             form.x_reflection.data,\
             form.y_scalar.data, form.vertical_shift.data)
@@ -769,8 +766,8 @@ transformations input by the user.'''
                     form.vertical_shift.data))
     
     
-        general_exponential_transform = GeneralExponentialTransform()
-        general_exponential_transform.graph(\
+        transform = ExponentialTransform()
+        transform.general_exponential(\
             form.base.data,\
             form.horizontal_shift.data, form.x_scalar.data,\
             form.x_reflection.data,\
@@ -855,8 +852,8 @@ transformations input by the user.'''
                     -np.inf, np.inf, (-1)*form.horizontal_shift.data))
     
     
-        general_logarithmic_transform = GeneralLogarithmicTransform()
-        general_logarithmic_transform.graph(\
+        transform = LogarithmicTransform()
+        transform.general_logarithmic(\
             form.base.data,\
             form.horizontal_shift.data, form.x_scalar.data,\
             form.x_reflection.data,\
@@ -941,8 +938,8 @@ transformations input by the user.'''
                     form.vertical_shift.data))
     
     
-        base_e_exponential_transform = BaseEExponentialTransform()
-        base_e_exponential_transform.graph(\
+        transform = ExponentialTransform()
+        transform.base_e_exponential(\
             form.horizontal_shift.data, form.x_scalar.data,\
             form.x_reflection.data,\
             form.y_scalar.data, form.vertical_shift.data)
@@ -1026,8 +1023,8 @@ transformations input by the user.'''
                     -np.inf, np.inf, (-1)*form.horizontal_shift.data))
     
     
-        base_e_logarithmic_transform = BaseELogarithmicTransform()
-        base_e_logarithmic_transform.graph(\
+        transform = LogarithmicTransform()
+        transform.base_e_logarithmic(\
             form.horizontal_shift.data, form.x_scalar.data,\
             form.x_reflection.data,\
             form.y_scalar.data, form.vertical_shift.data)
