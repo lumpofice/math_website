@@ -12,11 +12,11 @@ from app import db
 from app.main.forms import *
 from app.models import User
 from app.main import bp
-from app.main.geometric_series import GeometricSeries
+from app.main.series import Series
 from app.main.polynomial_transform import PolynomialTransform
 from app.main.absolute_value_transform import AbsoluteValueTransform
-from app.main.reciprocal_degree_0_by_degree_1_transform import\
-    ReciprocalDegree0ByDegree1Transform
+from app.main.reciprocal_transform import\
+    ReciprocalTransform
 from app.main.root_transform import RootTransform
 from app.main.exponential_transform import ExponentialTransform
 from app.main.logarithmic_transform import LogarithmicTransform
@@ -172,8 +172,8 @@ from parameters input by the user.'''
         flash('Base: {}, Scalar: {}, epsilon: {}, Large m: {}'\
             .format(form.base.data, form.scalar.data, form.epsilon.data,\
             form.large_m.data))
-        geo = GeometricSeries()
-        geo.graph(form.base.data, form.scalar.data, form.epsilon.data,\
+        series = Series()
+        series.geometric(form.base.data, form.scalar.data, form.epsilon.data,\
             form.large_m.data)
         return redirect(url_for('main.geometric_series_graph_results'))
     
@@ -510,8 +510,8 @@ based on transformations input by the user.'''
                 form.horizontal_shift.data, form.vertical_shift.data))
     
     
-        reciprocal_transform = ReciprocalDegree0ByDegree1Transform()
-        reciprocal_transform.graph(\
+        transform = ReciprocalTransform()
+        transform.reciprocal_degree_0_by_degree_1(\
             form.horizontal_shift.data, form.x_scalar.data,\
             form.x_reflection.data,\
             form.y_scalar.data, form.vertical_shift.data)

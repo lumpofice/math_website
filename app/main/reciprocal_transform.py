@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-class ReciprocalDegree0ByDegree1Transform():
+class ReciprocalTransform():
     """
     This class will serve as the template for constructing and graphing
     reciprocal functions with polynomials of degree 0 in the numerator and
@@ -16,7 +16,7 @@ class ReciprocalDegree0ByDegree1Transform():
         pass
     
     
-    def graph(self, h, x_scalar, x_reflection, y_scalar, k):
+    def reciprocal_degree_0_by_degree_1(self, h, x_scalar, x_reflection, y_scalar, k):
         """
         ORDER OF TRANSFORMATION:
         Let p be the parent function

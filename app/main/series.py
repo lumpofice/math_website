@@ -4,14 +4,14 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-class GeometricSeries():
+class Series():
     
     
     def __init__(self):
         pass
         
         
-    def graph(self, r, a, epsilon, large_m):
+    def geometric(self, r, a, epsilon, large_m):
         
         
         # We will plot the powers list as our domain, and we will plot the
