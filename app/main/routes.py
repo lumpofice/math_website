@@ -13,6 +13,7 @@ from app.main.forms import *
 from app.models import User
 from app.main import bp
 from app.main.series import Series
+from app.main.sequences_of_functions import SequencePointwise
 from app.main.polynomial_transform import PolynomialTransform
 from app.main.absolute_value_transform import AbsoluteValueTransform
 from app.main.reciprocal_transform import\
@@ -152,11 +153,33 @@ def series_of_numbers():
             title='Math Website')
 
 
-@bp.route('/calculus')
+@bp.route('/calculus', methods=['GET', 'POST'])
 @login_required
 def calculus():
+    if request.method == 'POST':
+        if request.form['submit_button'] == 'Sequences of Functions':
+            return redirect(url_for('main.sequences_of_functions'))
+
     return render_template('calculus/calculus.html', \
             title='Math Website')
+
+
+@bp.route('/sequences_of_functions', methods=['GET', 'POST'])
+@login_required
+def sequences_of_functions():
+    if request.method == 'POST':
+        if request.form['submit_button'] == 'Pointwise':
+            return redirect(url_for('main.sequences_of_functions_pointwise'))
+    return render_template(\
+            'calculus/sequences_of_functions/sequences_of_functions.html',\
+            title='Math Website')
+
+@bp.route('/sequences_of_functions_pointwise')
+@login_required
+def sequences_of_functions_pointwise():
+    return render_template(\
+            'calculus/sequences_of_functions/pointwise/'\
+            'sequences_of_functions_pointwise.html', title='Math Website')
 
 
 @bp.route('/geometric_series', methods=['GET', 'POST'])
@@ -191,6 +214,33 @@ from parameters input by the user.'''
     
     return render_template(\
         'precalculus/series_of_numbers/geometric_series_graph_results.html', \
+        title='Math Website')
+
+
+@bp.route('/pseq_par_x_par_over_par_x_plus_n_par', methods=['GET', 'POST'])
+def pseq_par_x_par_over_par_x_plus_n_par():
+    form = PSeqParXParOverParXPlusNParForm()
+
+    if form.validate_on_submit():
+        flash('epsilon: {}, x_input: {}'\
+            .format(form.epsilon.data, form.x_input.data))
+        sequence = SequencePointwise()
+        sequence.par_x_par_over_par_x_plus_n_par(form.epsilon.data, \
+            form.x_input.data)
+        return redirect(url_for(\
+            'main.pseq_par_x_par_over_par_x_plus_n_par_graph_results'))
+    return render_template(\
+        'calculus/sequences_of_functions/pointwise/'\
+        'pseq_par_x_par_over_par_x_plus_n_par.html', \
+        title='Math Website', form=form)
+
+
+@bp.route('/pseq_par_x_par_over_par_x_plus_n_par_graph_results', \
+        methods=['GET', 'POST'])
+def pseq_par_x_par_over_par_x_plus_n_par_graph_results():
+    return render_template(\
+        'calculus/sequences_of_functions/pointwise/'\
+        'pseq_par_x_par_over_par_x_plus_n_par_graph_results.html', \
         title='Math Website')
 
 

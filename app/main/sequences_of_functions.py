@@ -9,14 +9,14 @@ logging.getLogger('matplotlib.font_manager').disabled = True
 logging.debug('Start of program' + f'\n')
 
 
-class Pointwise():
+class SequencePointwise():
 
 
     def __init__(self):
         pass
 
 
-    def x_over_x_plus_n(self, epsilon, x):
+    def par_x_par_over_par_x_plus_n_par(self, epsilon, x):
         """This function plots each function $f_{n}(x)$, from a sequence of
     functions \{f_{n}\}_{n=1}^{\infty}, each with a doman and codmain of real
     numbers, from n=1 up to whatever value of n is required for the if conditional
@@ -159,7 +159,7 @@ class Pointwise():
                 
                 # Saving the figure to the static folder
                 fig.savefig(\
-                'app/static/images/x_over_x_plus_n.png')
+                'app/static/images/pseq_par_x_par_over_par_x_plus_n_par.png')
                 
                 flag = False
                 

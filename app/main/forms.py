@@ -66,6 +66,16 @@ geometric series.'''
     submit = SubmitField('Show Graph')
     
 
+class PSeqParXParOverParXPlusNParForm(FlaskForm):
+    x_input = FloatField('Choose a real value "x" between 1 and 30'\
+        ' inclusive', validators=[InputRequired(), NumberRange(1, 30)])
+    epsilon = FloatField('Choose an epsilon between 0.01 and 1 inclusive',\
+        validators=[InputRequired(),\
+        NumberRange(0.01, 1)])
+    submit = SubmitField('Show Graph')
+
+
+
 class PolynomialDegree1TransformForm(FlaskForm):
     '''The form users encounter when they venture to see a graph of the
 parent and transformed polynomial degree 1 functions.'''
