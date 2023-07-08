@@ -42,10 +42,10 @@ display.'''
 
     
     
-# FUNCTIONS---------------------------------------------------------------------
-# FUNCTIONS---------------------------------------------------------------------
-# FUNCTIONS---------------------------------------------------------------------
-# FUNCTIONS--------------------------------------------------------------------- 
+# FUNCTIONS--------------------------------------------------------------------
+# FUNCTIONS--------------------------------------------------------------------
+# FUNCTIONS--------------------------------------------------------------------
+# FUNCTIONS-------------------------------------------------------------------- 
     
 
 class GeometricSeriesForm(FlaskForm):
@@ -81,7 +81,8 @@ class PolynomialDegree1TransformForm(FlaskForm):
 parent and transformed polynomial degree 1 functions.'''
     
     
-    horizontal_shift = FloatField('Choose a horizontal shift between -5 and 5',\
+    horizontal_shift = FloatField(
+        'Choose a horizontal shift between -5 and 5',\
         validators=[InputRequired(), NumberRange(-5, 5)])
     y_scalar = FloatField('Choose a y_scalar between -5 and 5',\
         validators=[InputRequired(), NumberRange(-5, 5)])
@@ -95,7 +96,8 @@ class PolynomialDegree2TransformForm(FlaskForm):
 parent and transformed polynomial degree 2 functions.'''
     
     
-    horizontal_shift = FloatField('Choose a horizontal shift between -5 and 5',\
+    horizontal_shift = FloatField(\
+        'Choose a horizontal shift between -5 and 5',\
         validators=[InputRequired(), NumberRange(-5, 5)])
     x_scalar = FloatField(\
         'Choose a x_scalar between 0 and 5',\
@@ -115,7 +117,8 @@ class PolynomialDegree3TransformForm(FlaskForm):
 parent and transformed polynomial degree 3 functions.'''
     
     
-    horizontal_shift = FloatField('Choose a horizontal shift between -5 and 5',\
+    horizontal_shift = FloatField(\
+        'Choose a horizontal shift between -5 and 5',\
         validators=[InputRequired(), NumberRange(-5, 5)])
     x_scalar = FloatField(\
         'Choose a x_scalar between 0 and 5',\
@@ -159,7 +162,8 @@ class SquareRootTransformForm(FlaskForm):
 parent and transformed square root functions.'''
     
     
-    horizontal_shift = FloatField('Choose a horizontal shift between -5 and 5',\
+    horizontal_shift = FloatField(\
+        'Choose a horizontal shift between -5 and 5',\
         validators=[InputRequired(), NumberRange(-5, 5)])
     x_scalar = FloatField(\
         'Choose a x_scalar between 0 and 5',\
@@ -179,7 +183,8 @@ class CubeRootTransformForm(FlaskForm):
 parent and transformed cube root functions.'''
     
     
-    horizontal_shift = FloatField('Choose a horizontal shift between -5 and 5',\
+    horizontal_shift = FloatField(\
+        'Choose a horizontal shift between -5 and 5',\
         validators=[InputRequired(), NumberRange(-5, 5)])
     x_scalar = FloatField(\
         'Choose a x_scalar between 0 and 5',\
@@ -199,7 +204,8 @@ class AbsoluteValueTransformForm(FlaskForm):
 parent and transformed absolute value functions.'''
     
     
-    horizontal_shift = FloatField('Choose a horizontal shift between -5 and 5',\
+    horizontal_shift = FloatField(\
+        'Choose a horizontal shift between -5 and 5',\
         validators=[InputRequired(), NumberRange(-5, 5)])
     x_scalar = FloatField(\
         'Choose a x_scalar between 0 and 5',\
@@ -221,7 +227,8 @@ parent and transformed general exponential functions.'''
     
     base = FloatField('Choose a base between 0.1 and 3.1',\
         validators=[InputRequired(), NumberRange(0.1, 3.1)])
-    horizontal_shift = FloatField('Choose a horizontal shift between -5 and 5',\
+    horizontal_shift = FloatField(\
+        'Choose a horizontal shift between -5 and 5',\
         validators=[InputRequired(), NumberRange(-5, 5)])
     x_scalar = FloatField(\
         'Choose a x_scalar between 0 and 5',\
@@ -243,7 +250,8 @@ parent and transformed general logarithmic functions.'''
     
     base = FloatField('Choose a base between 0.1 and 3.1',\
         validators=[InputRequired(), NumberRange(0.1, 3.1)])
-    horizontal_shift = FloatField('Choose a horizontal shift between -5 and 5',\
+    horizontal_shift = FloatField(\
+        'Choose a horizontal shift between -5 and 5',\
         validators=[InputRequired(), NumberRange(-5, 5)])
     x_scalar = FloatField(\
         'Choose a x_scalar between 0 and 5',\
@@ -263,7 +271,8 @@ class BaseEExponentialTransformForm(FlaskForm):
 parent and transformed base e exponential functions.'''
     
     
-    horizontal_shift = FloatField('Choose a horizontal shift between -5 and 5',\
+    horizontal_shift = FloatField(\
+        'Choose a horizontal shift between -5 and 5',\
         validators=[InputRequired(), NumberRange(-5, 5)])
     x_scalar = FloatField(\
         'Choose a x_scalar between 0 and 5',\
@@ -283,7 +292,8 @@ class BaseELogarithmicTransformForm(FlaskForm):
 parent and transformed base e logarithmic functions.'''
     
     
-    horizontal_shift = FloatField('Choose a horizontal shift between -5 and 5',\
+    horizontal_shift = FloatField(\
+        'Choose a horizontal shift between -5 and 5',\
         validators=[InputRequired(), NumberRange(-5, 5)])
     x_scalar = FloatField(\
         'Choose a x_scalar between 0 and 5',\

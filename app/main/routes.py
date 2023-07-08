@@ -3,7 +3,8 @@ from datetime import datetime
 from langdetect import detect, LangDetectException
 
 '''importing flask methods and libraries'''
-from flask import render_template, flash, redirect, url_for, request, g, current_app
+from flask import render_template, flash, redirect, url_for, request, g,\
+        current_app
 from flask_login import current_user, login_required
 from flask_babel import get_locale
 
@@ -114,10 +115,10 @@ the app with the goal of displaying the 500 error message template.'''
         form=form)
 
 
-# FUNCTIONS---------------------------------------------------------------------
-# FUNCTIONS---------------------------------------------------------------------
-# FUNCTIONS---------------------------------------------------------------------
-# FUNCTIONS---------------------------------------------------------------------
+# FUNCTIONS--------------------------------------------------------------------
+# FUNCTIONS--------------------------------------------------------------------
+# FUNCTIONS--------------------------------------------------------------------
+# FUNCTIONS--------------------------------------------------------------------
 
 
 @bp.route('/precalculus', methods=['GET', 'POST']) 
@@ -348,7 +349,8 @@ transformations input by the user.'''
     
     
         transform = PolynomialTransform()
-        transform.polynomial_degree_2(form.horizontal_shift.data, form.x_scalar.data,\
+        transform.polynomial_degree_2(form.horizontal_shift.data, \
+            form.x_scalar.data,\
             form.x_reflection.data, form.y_scalar.data,\
             form.vertical_shift.data)
         
@@ -412,7 +414,8 @@ transformations input by the user.'''
     
     
         transform = PolynomialTransform()
-        transform.polynomial_degree_3(form.horizontal_shift.data, form.x_scalar.data,\
+        transform.polynomial_degree_3(form.horizontal_shift.data, \
+            form.x_scalar.data,\
             form.x_reflection.data, form.y_scalar.data,\
             form.vertical_shift.data)
         
@@ -523,8 +526,8 @@ def reciprocal_degree_0_by_degree_1_transform():
     '''This function constructs the graph of the parent reciprocal
 function, with polynomial degree 0 in the numerator and polynomial degree 1
 in the denominator, overlaid by a transformed reciprocal function, with
-polynomial degree 0 in the numerator and polynomial degree 1 in the denominator,
-based on transformations input by the user.'''
+polynomial degree 0 in the numerator and polynomial degree 1 in the 
+denominator, based on transformations input by the user.'''
     
     
     form = ReciprocalDegree0ByDegree1TransformForm()
@@ -799,7 +802,8 @@ transformations input by the user.'''
                     form.x_scalar.data,\
                     form.x_reflection.data, form.y_scalar.data,\
                     form.vertical_shift.data, -np.inf, np.inf,\
-                    form.vertical_shift.data, np.inf, form.vertical_shift.data))
+                    form.vertical_shift.data, np.inf, \
+                    form.vertical_shift.data))
                 
                 
             elif form.y_scalar.data < 0:
@@ -971,7 +975,8 @@ transformations input by the user.'''
                     form.x_scalar.data,\
                     form.x_reflection.data, form.y_scalar.data,\
                     form.vertical_shift.data, -np.inf, np.inf,\
-                    form.vertical_shift.data, np.inf, form.vertical_shift.data))
+                    form.vertical_shift.data, np.inf, \
+                    form.vertical_shift.data))
                 
                 
             elif form.y_scalar.data < 0:
