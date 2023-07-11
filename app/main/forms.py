@@ -75,6 +75,14 @@ class PSeqParXParOverParXPlusNParForm(FlaskForm):
     submit = SubmitField('Show Graph')
 
 
+class PSeqParNXParOverParOnePlusParNXParSquaredParForm(FlaskForm):
+    x_input = FloatField('Choose a real value "x" between 0.5 and 10'\
+            ' inclusive', validators=[InputRequired(),NumberRange(0.5, 10)])
+    epsilon = FloatField('Choose an epsilon between 0.001 and 0.01 inclusive',\
+            validators=[InputRequired(),\
+            NumberRange(0.001, 0.01)])
+    submit = SubmitField('Show Graph')
+
 
 class PolynomialDegree1TransformForm(FlaskForm):
     '''The form users encounter when they venture to see a graph of the

@@ -245,6 +245,38 @@ def pseq_par_x_par_over_par_x_plus_n_par_graph_results():
         title='Math Website')
 
 
+@bp.route('/pseq_par_nx_par_over_par_one_plus_par_nx_par_squared_par',\
+        methods=['GET', 'POST'])
+def pseq_par_nx_par_over_par_one_plus_par_nx_par_squared_par():
+    form = PSeqParNXParOverParOnePlusParNXParSquaredParForm()
+
+    if form.validate_on_submit():
+        flash('epsilon: {}, x_input: {}'\
+            .format(form.epsilon.data, form.x_input.data))
+        sequence = SequencePointwise()
+        sequence.par_nx_par_over_par_one_plus_par_nx_par_squared_par(\
+            form.epsilon.data, \
+            form.x_input.data)
+        return redirect(url_for(\
+            'main.pseq_par_nx_par_over_'\
+            'par_one_plus_par_nx_par_squared_par_graph_results'))
+    return render_template(\
+        'calculus/sequences_of_functions/pointwise/'\
+        'pseq_par_nx_par_over_par_one_plus_par_nx_par_squared_par.html', \
+        title='Math Website', form=form)
+
+
+@bp.route('/pseq_par_nx_par_over_par_one_plus_par_nx_par_squared_par_'\
+        'graph_results', \
+        methods=['GET', 'POST'])
+def pseq_par_nx_par_over_par_one_plus_par_nx_par_squared_par_graph_results():
+    return render_template(\
+        'calculus/sequences_of_functions/pointwise/'\
+        'pseq_par_nx_par_over_par_one_plus_par_nx_par_squared_par_'\
+        'graph_results.html', \
+        title='Math Website')
+
+
 @bp.route('/polynomial_degree_1_transform', methods=['GET', 'POST'])
 def polynomial_degree_1_transform():
     '''This function constructs the graph of the parent polynomial degree 1
