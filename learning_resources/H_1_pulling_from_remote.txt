@@ -1,6 +1,13 @@
-When pulling changes from the remote to the host, i) remove any files that have been removed in the remote and ii) run the following, (1), in the math_website console within the host site:
+When pulling changes from the remote to the host, i) remove any files that have been removed in the remote and ii) run one of the following in the math_website console within the host site:
 
 (1)----------------------------------------------------------------
 (venv)user: ~/math_website$: git fetch
+(venv)user: ~/math_website$: git pull
+-------------------------------------------------------------------
+
+(2)----------------------------------------------------------------
+(venv)user: ~/math_website$: git fetch
+(venv)user: ~/math_website$: git stash push --include-untracked
+(venv)user: ~/math_website$: git stash drop
 (venv)user: ~/math_website$: git pull
 -------------------------------------------------------------------
