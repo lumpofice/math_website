@@ -14,7 +14,7 @@ from app.main.forms import *
 from app.models import User
 from app.main import bp
 from app.main.series import Series
-from app.main.sequences_of_functions import SequencePointwise
+from app.main.sequences_of_functions import SequencePointwise, SequenceUniform
 from app.main.polynomial_transform import PolynomialTransform
 from app.main.absolute_value_transform import AbsoluteValueTransform
 from app.main.reciprocal_transform import\
@@ -171,9 +171,12 @@ def sequences_of_functions():
     if request.method == 'POST':
         if request.form['submit_button'] == 'Pointwise':
             return redirect(url_for('main.sequences_of_functions_pointwise'))
+        if request.form['submit_button'] == 'Uniform':
+            return redirect(url_for('main.sequences_of_functions_uniform'))
     return render_template(\
             'calculus/sequences_of_functions/sequences_of_functions.html',\
             title='Math Website')
+
 
 @bp.route('/sequences_of_functions_pointwise')
 @login_required
@@ -181,6 +184,14 @@ def sequences_of_functions_pointwise():
     return render_template(\
             'calculus/sequences_of_functions/pointwise/'\
             'sequences_of_functions_pointwise.html', title='Math Website')
+
+
+@bp.route('/sequences_of_functions_uniform')
+@login_required
+def sequences_of_functions_uniform():
+    return render_template(\
+            'calculus/sequences_of_functions/uniform/'\
+            'sequences_of_functions_uniform.html', title='Math Website')
 
 
 @bp.route('/geometric_series', methods=['GET', 'POST'])
@@ -306,6 +317,33 @@ def pseq_par_nx_par_over_par_one_plus_nx_par_graph_results():
         'calculus/sequences_of_functions/pointwise/'\
         'pseq_par_nx_par_over_par_one_plus_nx_par_'\
         'graph_results.html', \
+        title='Math Website')
+
+
+@bp.route('/useq_par_x_par_over_par_x_plus_n_par', methods=['GET', 'POST'])
+def useq_par_x_par_over_par_x_plus_n_par():
+    form = USeqParXParOverParXPlusNParForm()
+
+    if form.validate_on_submit():
+        flash('k: {}, x_input: {}, a_input: {}'\
+            .format(form.k.data, form.x_input.data, form.a_input.data))
+        sequence = SequenceUniform()
+        sequence.par_x_par_over_par_x_plus_n_par(form.k.data, \
+            form.x_input.data, form.a_input.data)
+        return redirect(url_for(\
+            'main.useq_par_x_par_over_par_x_plus_n_par_graph_results'))
+    return render_template(\
+        'calculus/sequences_of_functions/uniform/'\
+        'useq_par_x_par_over_par_x_plus_n_par.html', \
+        title='Math Website', form=form)
+
+
+@bp.route('/useq_par_x_par_over_par_x_plus_n_par_graph_results', \
+        methods=['GET', 'POST'])
+def useq_par_x_par_over_par_x_plus_n_par_graph_results():
+    return render_template(\
+        'calculus/sequences_of_functions/uniform/'\
+        'useq_par_x_par_over_par_x_plus_n_par_graph_results.html', \
         title='Math Website')
 
 

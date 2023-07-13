@@ -1,0 +1,16 @@
+{% extends 'base.html' %} <!-- This line loads the base.html code -->
+
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+
+<div> 
+
+    <h2>Uniform Convergence of Sequences of Functions</h2>
+
+    <a href='{{ url_for("main.useq_par_x_par_over_par_x_plus_n_par") }}'>f(x) = x / (x + n)</a><br>
+
+</div>
+
+{% endblock %}
+
