@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+	<head>
+		{%if title%}
+		<title>{{ title }}</title>
+		{% else %}
+		<title>Math Website</title>
+		{% endif %}
+		<meta name="viewport" content="width=device-width">
+		<link rel='stylesheet' href='{{ url_for("static", filename="styles/math_1001.css") }}'>
+		<script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+		<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  		<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+		<script type="text/javascript" src='{{ url_for("static", filename="js/math_1001.js") }}' defer></script>
+	</head>
+	<body>
+		<div id='opening'>
+			<div id='nav'>
+				<ul>
+					<li></li>
+					<li></li>
+				</ul>
+			</div>
+		</div>
+		{% block content %}
+			<div id='content'>
+				<div id='inclusion_exclusion'>
+					<p>Inclusion-Exclusion Principle</p>
+					<button id='inclusion_exclusion_button'>Generate Universe</button>
+				</div>
+			</div>
+			<div id='footer'>
+				<p>Authors whose works helped us develop this content:</p>
+				<ul>
+					<li><a href="https://medium.com/@cmmyers/how-i-made-an-interactive-venn-diagram-with-d3-fa723c55a148">Calder M. Myers</a></li>
+				</ul>
+			</div>
+		{% endblock %}
+	</body>
+</html>
