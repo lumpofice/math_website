@@ -25,7 +25,23 @@
 		{% block content %}
 			<div id='content'>
 				<div id='topic'>
-					<p>The 2x2 Board</p>
+					<h1>L-Trominoes</h1>
+					<p>Choose a tile. Fill in that tile&mdash;by clicking any edge of the tile&mdash;with your least favorite among the available colors. This tile will be referred to as "the removed tile". At any point, if you wish to unselect a tile, you may click the "No Color" button and click on any edge of a filled-in tile to unselect it.</p> 
+					<p>Fill in the remaining tiles with 3-tile L-shaped patterns. To ensure you are indeed covering the remaining tiles with only 3-tile L-shaped patterns, the easiest&mdash;on the eyes!&mdash;approach is to:</p> 
+					<ul>
+						<li class="topdown_list">First, choose a color different from that used for "the removed tile".</li>
+						<br>
+						<li class="topdown_list">Second, choose the first set of three tiles you wish to fill in an L-shaped pattern&mdash;again, click any edge of a tile to fill it in.</li>
+						<br>
+						<li class="topdown_list">From here, I recommend choosing a different color to fill in the next set of three tiles in an L-shaped pattern&mdash;it's easier on the eyes when you use different colors!</li>
+					</ul>
+					<p>If at any point you wish to unselect a tile, use the "No Color" button to do so. Continue the above steps until you run out of L-shapes on the board. Is the board completely filled in with color? That's the goal.</p>
+					<button id='none'>No Color</button>
+					<button id='green'>Green</button>
+					<button id='purple'>Purple</button>
+					<button id='orange'>Orange</button>
+					<button id='blue'>Blue</button>
+					<button id='brown'>Brown</button>
 					<div id='board'>
 					</div>
 				</div>

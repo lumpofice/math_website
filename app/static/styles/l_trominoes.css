@@ -54,6 +54,10 @@ li {
 	clear: left;
 }
 
+li.topdown_list {
+	display: block;
+}
+
 #footer {
 	font-size: 11px;
 	padding: 1rem .5rem;
