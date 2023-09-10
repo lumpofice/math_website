@@ -58,6 +58,8 @@ in.'''
             return redirect(url_for('main.calculus'))
         if request.form['submit_button'] == 'MATH 1001':
             return redirect(url_for('main.math_1001'))
+        if request.form['submit_button'] == 'L Trominoes':
+            return redirect(url_for('main.l_trominoes'))
     
     return render_template('index.html', title='Math Website') 
 
@@ -1213,3 +1215,7 @@ functions.'''
 @bp.route('/math_1001', methods=['GET', 'POST'])
 def math_1001():
     return render_template('math_1001.html', title='Math Website')
+
+@bp.route('/l_trominoes', methods=['GET', 'POST'])
+def l_trominoes():
+    return render_template('l_trominoes.html', title='Math Website')
