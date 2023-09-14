@@ -60,6 +60,8 @@ in.'''
             return redirect(url_for('main.math_1001'))
         if request.form['submit_button'] == 'L Trominoes':
             return redirect(url_for('main.l_trominoes'))
+        if request.form['submit_button'] == 'Peterson Graphs':
+            return redirect(url_for('main.peterson_graphs'))
     
     return render_template('index.html', title='Math Website') 
 
@@ -1219,3 +1221,7 @@ def math_1001():
 @bp.route('/l_trominoes', methods=['GET', 'POST'])
 def l_trominoes():
     return render_template('l_trominoes.html', title='Math Website')
+
+@bp.route('/peterson_graphs', methods=['GET', 'POST'])
+def peterson_graphs():
+    return render_template('peterson_graphs.html', title='Math Website')

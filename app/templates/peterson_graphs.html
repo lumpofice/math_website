@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+	<head>
+		{%if title%}
+		<title>{{ title }}</title>
+		{% else %}
+		<title>Math Website</title>
+		{% endif %}
+		<meta name="viewport" content="width=device-width">
+		<link rel='stylesheet' href='{{ url_for("static", filename="styles/peterson_graphs.css") }}'>
+		<script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+		<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  		<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+		<script type="text/javascript" src='{{ url_for("static", filename="js/peterson_graphs.js") }}' defer></script>
+	</head>
+	<body>
+		<div id='opening'>
+			<div id='nav'>
+				<ul>
+					<li></li>
+					<li></li>
+				</ul>
+			</div>
+		</div>
+		{% block content %}
+			<div id='content'>
+				<div id='topic'>
+					<h1>Peterson Graphs</h1>
+					<div id='peterson_graph'>
+					</div>
+				</div>
+			</div>
+			<div id='footer'>
+				<ul>
+					<li></li>
+				</ul>
+			</div>
+		{% endblock %}
+	</body>
+</html>
+
+

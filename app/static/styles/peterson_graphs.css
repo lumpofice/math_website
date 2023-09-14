@@ -1,0 +1,75 @@
+/*
+color-palette: ---------------------------------------------------------------
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+#cca2fa lavender
+#91d5e4 lighter blue
+#d079a2 pink
+#759e16 green
+#ffcd04 corn yellow
+#9977bd purple
+#f5ffde light yellow-green
+#696a61 gray mud-brown
+#e0620d bengal orange
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+*/
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-size: 1.3rem;
+	padding: 1rem .5rem;
+	line-height: 1.2;
+	max-width: 60rem;
+	margin: 0 auto;
+	color: #696a61;
+	background-color: rgba(117, 158, 22, 0.05);
+}
+
+#nav {
+	padding: 1rem .5rem;
+	margin: 0 auto;
+	text-align: center;
+	border-bottom: 8px double rgba(105, 106, 97, 0.3);
+	margin-bottom: 2rem; 
+}
+
+li {
+	display: inline;
+}
+
+#content {
+	overflow: auto;
+	height: 100%;
+}
+
+#topic {
+	padding: 1rem .5rem;
+	margin: 0 auto;
+	clear: left;
+}
+
+
+#footer {
+	font-size: 11px;
+	padding: 1rem .5rem;
+	margin: 0 auto;
+	text-align: left;
+	border-top: 8px double rgba(105, 106, 97, 0.3);
+	margin-top: 2rem; 
+}
+
+@media screen and (min-width: 15rem) {
+	body {
+		border-left: 4px solid rgba(105, 106, 97, 0.3);
+		border-right: 4px solid rgba(105, 106, 97, 0.3);
+		padding: 1rem 2rem;
+	}
+}
+
+
