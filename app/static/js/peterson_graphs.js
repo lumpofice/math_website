@@ -1,17 +1,17 @@
 const svg_width = 960;
-const svg_height = 800;
+const svg_height = 960;
 
 var svg = d3.select("#peterson_graph")
   .append("svg")
     .attr("viewBox", "0 0 " + svg_width + " " + svg_height);
 
-const inner_circle_radius = 120;
-const outer_circle_radius = 160;
+const inner_circle_radius = 440;
+const outer_circle_radius = 460;
 const x_center = svg_width/2;
 const y_center = svg_height/2;
 
-var N = 33;
-var k = 10;
+var N = 40;
+var k = 19;
 
 var angle_size = (Math.PI*2)/N;
 
@@ -32,7 +32,7 @@ for (var i = 0; i < N; i++) {
 	    .attr("y1", outer_y1)
 	    .attr("x2", outer_x2)
 	    .attr("y2", outer_y2)
-	    .attr("stroke", "#696a61")
+	    .attr("stroke", "#000000")
 	    .attr("stroke-width", 2);
 
 	var inner_x1 = x_center + 
@@ -51,6 +51,6 @@ for (var i = 0; i < N; i++) {
 	    .attr("y1", inner_y1)
 	    .attr("x2", inner_x2)
 	    .attr("y2", inner_y2)
-	    .attr("stroke", "#696a61")
+	    .attr("stroke", "#000000")
 	    .attr("stroke-width", 2);
 }
