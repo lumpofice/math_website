@@ -54,6 +54,9 @@ li {
 	clear: left;
 }
 
+.field {
+	width: 100px;
+}
 
 #footer {
 	font-size: 11px;

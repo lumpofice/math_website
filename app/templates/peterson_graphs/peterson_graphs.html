@@ -21,18 +21,19 @@
 		{% block content %}
 			<div id='content'>
 				<div id='topic'>
+					<h1>Peterson Graphs</h1>
 					<form action="" method="post" novalidate>
 						{{ form.hidden_tag() }}
 						<p>
 							{{ form.capital_N.label }}<br>
-							{{ form.capital_N(size=32) }}<br>
+							{{ form.capital_N(class="field") }}<br>
 							{% for error in form.capital_N.errors %}
 							<span style="color: red;">[{{ error }}]</span>
 							{% endfor %}
 						</p>
 						<p>
 							{{ form.little_k.label }}<br>
-							{{ form.little_k(size=32) }}<br>
+							{{ form.little_k(class="field") }}<br>
 							{% for error in form.little_k.errors %}
 							<span style="color: red;">[{{ error }}]</span>
 							{% endfor %}
