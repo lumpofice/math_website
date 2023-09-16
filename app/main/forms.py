@@ -337,6 +337,8 @@ parent and transformed base e logarithmic functions.'''
     submit = SubmitField('Show Graph')
 
 class PetersonGraphsForm(FlaskForm):
-    capital_N = IntegerField(validators=[InputRequired(), NumberRange(5, 50)])
-    little_k = IntegerField(validators=[InputRequired()])
+    capital_N = IntegerField('Choose a capital N between 5 and 50',\
+            validators=[InputRequired(), NumberRange(5, 50)])
+    little_k = IntegerField('Choose a little k between 1 and half of your capital N',\
+            validators=[InputRequired(), NumberRange(1)])
     submit = SubmitField('Generate Graph')

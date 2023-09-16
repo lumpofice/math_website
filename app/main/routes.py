@@ -1,6 +1,7 @@
 '''importing python libraries and modules'''
 from datetime import datetime
 from langdetect import detect, LangDetectException
+import xml.dom.minidom
 
 '''importing flask methods and libraries'''
 from flask import render_template, flash, redirect, url_for, request, g,\
@@ -1226,6 +1227,16 @@ def l_trominoes():
 def peterson_graphs():
     form = PetersonGraphsForm()
     if form.validate_on_submit():
-        pass
-    return render_template('peterson_graphs.html', title='Math Website',\
+        return redirect(url_for('main.peterson_graphs_results', 
+            N=form.capital_N.data,
+            k=form.little_k.data))
+    return render_template('peterson_graphs/peterson_graphs.html',\
+            title='Math Website',\
             form=form)
+
+@bp.route('/peterson_graphs_results/<N>/<k>')
+def peterson_graphs_results(N, k):
+    data = {'N': N, 'k': k}
+    return render_template(\
+        'peterson_graphs/peterson_graphs_results.html',\
+        title='Math Website', data=data)

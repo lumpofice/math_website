@@ -10,6 +10,12 @@ const outer_circle_radius = 460;
 const x_center = svg_width/2;
 const y_center = svg_height/2;
 
+var N = Number(json_N);
+var k = Number(json_k);
+
+if(k >= Math.ceil(N/2)){
+	k = Math.ceil((N/2) - 1)
+}
 
 var angle_size = (Math.PI*2)/N;
 

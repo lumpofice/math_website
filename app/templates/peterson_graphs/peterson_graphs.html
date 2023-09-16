@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+	<head>
+		{%if title%}
+		<title>{{ title }}</title>
+		{% else %}
+		<title>Math Website</title>
+		{% endif %}
+		<meta name="viewport" content="width=device-width">
+		<link rel='stylesheet' href='{{ url_for("static", filename="styles/peterson_graphs.css") }}'>
+	</head>
+	<body>
+		<div id='opening'>
+			<div id='nav'>
+				<ul>
+					<li></li>
+					<li></li>
+				</ul>
+			</div>
+		</div>
+		{% block content %}
+			<div id='content'>
+				<div id='topic'>
+					<form action="" method="post" novalidate>
+						{{ form.hidden_tag() }}
+						<p>
+							{{ form.capital_N.label }}<br>
+							{{ form.capital_N(size=32) }}<br>
+							{% for error in form.capital_N.errors %}
+							<span style="color: red;">[{{ error }}]</span>
+							{% endfor %}
+						</p>
+						<p>
+							{{ form.little_k.label }}<br>
+							{{ form.little_k(size=32) }}<br>
+							{% for error in form.little_k.errors %}
+							<span style="color: red;">[{{ error }}]</span>
+							{% endfor %}
+						</p>
+						<p>{{ form.submit() }}</p>
+					</form>
+				</div>
+			</div>
+			<div id='footer'>
+				<ul>
+					<li></li>
+				</ul>
+			</div>
+		{% endblock %}
+	</body>
+</html>
+
+
