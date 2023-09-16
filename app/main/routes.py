@@ -1224,4 +1224,8 @@ def l_trominoes():
 
 @bp.route('/peterson_graphs', methods=['GET', 'POST'])
 def peterson_graphs():
-    return render_template('peterson_graphs.html', title='Math Website')
+    form = PetersonGraphsForm()
+    if form.validate_on_submit():
+        pass
+    return render_template('peterson_graphs.html', title='Math Website',\
+            form=form)

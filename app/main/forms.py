@@ -335,3 +335,8 @@ parent and transformed base e logarithmic functions.'''
     vertical_shift = FloatField('Choose a vertical shift between -5 and 5',\
         validators=[InputRequired(), NumberRange(-5, 5)])
     submit = SubmitField('Show Graph')
+
+class PetersonGraphsForm(FlaskForm):
+    capital_N = IntegerField(validators=[InputRequired(), NumberRange(5, 50)])
+    little_k = IntegerField(validators=[InputRequired()])
+    submit = SubmitField('Generate Graph')

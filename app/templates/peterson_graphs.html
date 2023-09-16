@@ -12,6 +12,10 @@
 		<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   		<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 		<script type="text/javascript" src='{{ url_for("static", filename="js/peterson_graphs.js") }}' defer></script>
+		<script type="text/javascript">
+			var N = {{ form.capital_N.data|tojson }}
+			var k = {{ form.little_k.data|tojson }}
+		</script>
 	</head>
 	<body>
 		<div id='opening'>
@@ -25,6 +29,18 @@
 		{% block content %}
 			<div id='content'>
 				<div id='topic'>
+					<form action="" method="post" novalidate>
+						{{ form.hidden_tag() }}
+						<p>
+							{{ form.capital_N.label }}<br>
+							{{ form.capital_N(size=32) }}
+						</p>
+						<p>
+							{{ form.little_k.label }}
+							{{ form.little_k(size=32) }}
+						</p>
+						<p>{{ form.submit() }}</p>
+					</form>
 					<div id='peterson_graph'>
 					</div>
 				</div>
