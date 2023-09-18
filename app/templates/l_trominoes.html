@@ -12,6 +12,7 @@
 		<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   		<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 		<script type="text/javascript" src='{{ url_for("static", filename="js/l_trominoes.js") }}' defer></script>
+		<script type="module" src='{{ url_for("static", filename="js/l_trominoes_print.js") }}' defer></script>
 	</head>
 	<body>
 		<div id='opening'>
@@ -47,6 +48,11 @@
 					<button id='orange'>Orange</button>
 					<button id='blue'>Blue</button>
 					<button id='brown'>Brown</button>
+					<div class="container">
+					  <button id="svg"> svg</button>
+					  <button id="png"> png</button>
+					  <button id="pdf"> pdf</button>
+					</div>
 					<div id='board'>
 					</div>
 				</div>

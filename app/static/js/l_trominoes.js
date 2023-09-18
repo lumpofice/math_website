@@ -3,6 +3,7 @@ const svg_height = 800;
 
 var svg = d3.select("#board")
   .append("svg")
+    .attr("id", "print_svg")
     .attr("viewBox", "0 0 " + svg_width + " " + svg_height);
 
 function generate_board(n){
