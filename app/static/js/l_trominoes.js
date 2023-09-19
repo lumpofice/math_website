@@ -1,5 +1,5 @@
-const svg_width = 960;
-const svg_height = 800;
+var svg_width = 0;
+var svg_height = 0;
 
 var svg = d3.select("#board")
   .append("svg")
@@ -9,7 +9,11 @@ var svg = d3.select("#board")
 function generate_board(n){
 	svg.selectAll("*").remove();
 
+	svg_width = 960;
+	svg_height = 800;
 	
+	svg.attr("viewBox", "0 0 " + svg_width + " " + svg_height);
+
 	const bottom_offset = 20;
 	const board_bottom = bottom_offset;
 	

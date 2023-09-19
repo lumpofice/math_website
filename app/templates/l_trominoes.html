@@ -39,19 +39,19 @@
 					<p>If at any point you wish to unselect a tile, use the "No Color" button to do so. Continue the above steps until you run out of L-shapes on the board. Is the board completely filled in with color? That's the goal.</p>
 					<p>$$\text{All boards are of size} \hspace{4pt} 2^{n} \times 2^{n}$$</p>
 					<p>Choose which size board you would like to work with.</p>
-					<button onclick="generate_board(1)">n = 1</button><br>
-					<button onclick="generate_board(2)">n = 2</button><br>
-					<button onclick="generate_board(3)">n = 3</button><br>
-					<button id='none'>No Color</button>
-					<button id='green'>Green</button>
-					<button id='purple'>Purple</button>
-					<button id='orange'>Orange</button>
-					<button id='blue'>Blue</button>
-					<button id='brown'>Brown</button>
-					<div class="container">
-					  <button id="svg"> svg</button>
-					  <button id="png"> png</button>
-					  <button id="pdf"> pdf</button>
+					<div id='board_size'>
+						<button id='size_n' onclick="generate_board(1)">n = 1</button>
+						<button id='size_n' onclick="generate_board(2)">n = 2</button>
+						<button id='size_n' onclick="generate_board(3)">n = 3</button>
+					</div>
+					<div id='color_buttons'>
+						<button id='none'>No Color</button>
+						<button id='green'>Green</button>
+						<button id='purple'>Purple</button>
+						<button id='orange'>Orange</button>
+						<button id='blue'>Blue</button>
+						<button id='brown'>Brown</button>
+					  	<button id="pdf">Print the Board!</button>
 					</div>
 					<div id='board'>
 					</div>
