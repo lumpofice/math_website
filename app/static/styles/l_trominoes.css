@@ -58,6 +58,134 @@ li.topdown_list {
 	display: block;
 }
 
+#none {
+	background-color: #f5ffde;
+	color: #000000;
+	border-radius: 10px;
+	padding: 5px;
+	min-height: 23px;
+	min-width: 100px;
+	font-size: 18px;
+}
+
+#none:hover {
+	background-color: #696a61;
+	color: #ffcd04;
+	transition: 0.7s;
+}
+
+#none:active {
+	background-color: #f5ffde;
+	color: #000000;
+	transition: 0.1s;
+}
+
+#green {
+	background-color: #759e16;
+	color: #ffcd04;
+	border-radius: 10px;
+	padding: 5px;
+	min-height: 23px;
+	min-width: 100px;
+	font-size: 18px;
+}
+
+#green:hover {
+	background-color: #696a61;
+	transition: 0.7s;
+}
+
+#green:active {
+	background-color: #759e16;
+	transition: 0.1s;
+}
+
+#purple {
+	background-color: #9977bd;
+	color: #f5ffde;
+	border-radius: 10px;
+	padding: 5px;
+	min-height: 23px;
+	min-width: 100px;
+	font-size: 18px;
+}
+
+#purple:hover {
+	background-color: #696a61;
+	transition: 0.7s;
+}
+
+#purple:active {
+	background-color: #9977bd;
+	transition: 0.1s;
+}
+
+#orange {
+	background-color: #e0620d;
+	color: #000000;
+	border-radius: 10px;
+	padding: 5px;
+	min-height: 23px;
+	min-width: 100px;
+	font-size: 18px;
+}
+
+#orange:hover {
+	background-color: #696a61;
+	color: #ffcd04;
+	transition: 0.7s;
+}
+
+#orange:active {
+	background-color: #e0620d;
+	color: #000000;
+	transition: 0.1s;
+}
+
+#blue {
+	background-color: #91d5e4;
+	color: #000000;
+	border-radius: 10px;
+	padding: 5px;
+	min-height: 23px;
+	min-width: 100px;
+	font-size: 18px;
+}
+
+#blue:hover {
+	background-color: #696a61;
+	color: #ffcd04;
+	transition: 0.7s;
+}
+
+#blue:active {
+	background-color: #91d5e4;
+	color: #000000;
+	transition: 0.1s;
+}
+
+#brown {
+	background-color: #696a61;
+	color: #ffcd04;
+	border-radius: 10px;
+	padding: 5px;
+	min-height: 23px;
+	min-width: 100px;
+	font-size: 18px;
+}
+
+#brown:hover {
+	background-color: #ffcd04;
+	color: #000000;
+	transition: 0.7s;
+}
+
+#brown:active {
+	background-color: #696a61;
+	color: #ffcd04;
+	transition: 0.1s;
+}
+
 #footer {
 	font-size: 11px;
 	padding: 1rem .5rem;
