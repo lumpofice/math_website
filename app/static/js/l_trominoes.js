@@ -95,6 +95,19 @@ function generate_board(n){
 		    d3.select(this)
 		        .attr("fill", tile_color);
 	    });
+
+	var change_tile_color_yellow = document.getElementById("yellow");
+	var on_click_yellow = function(e) {
+		console.log('tile_color was ', tile_color);
+		tile_color = "#ffcd04";
+		console.log('Now, tile_color is ', tile_color);
+	}
+	change_tile_color_yellow.onclick = on_click_yellow;
+	svg.selectAll("rect.tile")
+	    .on("click", function() {
+		    d3.select(this)
+		        .attr("fill", tile_color);
+	    });
 	
 	var change_tile_color_orange = document.getElementById("orange");
 	var on_click_orange = function(e) {
