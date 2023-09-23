@@ -63,6 +63,8 @@ in.'''
             return redirect(url_for('main.l_trominoes'))
         if request.form['submit_button'] == 'Peterson Graphs':
             return redirect(url_for('main.peterson_graphs'))
+        if request.form['submit_button'] == 'Metric Topology':
+            return redirect(url_for('main.metric_topology'))
     
     return render_template('index.html', title='Math Website') 
 
@@ -1240,3 +1242,7 @@ def peterson_graphs_results(N, k):
     return render_template(\
         'peterson_graphs/peterson_graphs_results.html',\
         title='Math Website', data=data)
+
+@bp.route('/metric_topology', methods=['GET', 'POST'])
+def metric_topology():
+    return render_template('metric_topology.html', title='My Moving Arch')
