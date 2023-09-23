@@ -1245,4 +1245,4 @@ def peterson_graphs_results(N, k):
 
 @bp.route('/metric_topology', methods=['GET', 'POST'])
 def metric_topology():
-    return render_template('metric_topology.html', title='My Moving Arch')
+    return render_template('metric_topology.html', title='Math Website')
