@@ -26,7 +26,7 @@ rgba(117, 158, 22, 0.05) off-white
 	font-size: 2.1rem;
 }
 
-li {
+li.reference {
 	display: inline;
 	padding: .5rem 2rem;
 }
