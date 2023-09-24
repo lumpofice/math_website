@@ -39,7 +39,7 @@ function generate_board(n){
 			    .attr("y", board_bottom + (j*tile_width) + (j*padding))
 			    .attr("width", tile_width)
 			    .attr("height", tile_width)
-			    .attr("stroke", "#696a61")
+			    .attr("stroke", "#3a3a36")
 			    .attr("stroke-width", 2)
 			    .attr("fill", "none");
 			svg.append("rect")
@@ -48,7 +48,7 @@ function generate_board(n){
 			    .attr("y", board_bottom + (j*tile_width) + (j*padding))
 			    .attr("width", tile_width)
 			    .attr("height", tile_width)
-			    .attr("stroke", "#696a61")
+			    .attr("stroke", "#3a3a36")
 			    .attr("stroke-width", 15)
 			    .attr("stroke-opacity", 0)
 			    .attr("fill", "none");
@@ -138,7 +138,7 @@ function generate_board(n){
 	var change_tile_color_brown = document.getElementById("brown");
 	var on_click_brown = function(e) {
 		console.log('tile_color was ', tile_color);
-		tile_color = "#696a61";
+		tile_color = "#3a3a36";
 		console.log('Now, tile_color is ', tile_color);
 	}
 	change_tile_color_brown.onclick = on_click_brown;

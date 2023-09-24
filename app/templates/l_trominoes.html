@@ -1,69 +1,62 @@
-<!doctype html>
-<html>
-	<head>
-		{%if title%}
-		<title>{{ title }}</title>
-		{% else %}
-		<title>Math Website</title>
-		{% endif %}
-		<meta name="viewport" content="width=device-width">
-		<link rel='stylesheet' href='{{ url_for("static", filename="styles/l_trominoes.css") }}'>
-		<script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
-		<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  		<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-		<script type="text/javascript" src='{{ url_for("static", filename="js/l_trominoes.js") }}' defer></script>
-		<script type="module" src='{{ url_for("static", filename="js/l_trominoes_print.js") }}' defer></script>
-	</head>
-	<body>
-		<div id='opening'>
-			<div id='nav'>
-				<ul>
-					<li></li>
-					<li></li>
-				</ul>
+{% extends 'base.html' %}
+    {%- block head %}
+    <title>{% block title %}{{title|default}}{% endblock title %}</title>
+
+    {%- block metas %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%- endblock metas %}
+
+    {%- block styles %}
+    <!-- Bootstrap -->
+    <link href="{{bootstrap_find_resource('css/bootstrap.css', cdn='bootstrap')}}" rel="stylesheet"
+>
+    <link rel='stylesheet' href='{{ url_for("static", filename="styles/l_trominoes.css") }}'>
+    {%- endblock styles %}
+    <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/javascript" src='{{ url_for("static", filename="js/l_trominoes.js") }}' defer></script>
+    <script type="module" src='{{ url_for("static", filename="js/l_trominoes_print.js") }}' defer></script>
+    {%- endblock head %}
+
+    {% block app_content %}
+    	<div id='content'>
+		<div id='topic'>
+			<h1>L-Trominoes</h1>
+			<p>Choose a tile. Fill in that tile&mdash;by clicking any edge of the tile&mdash;with your least favorite among the available colors. This tile will be referred to as "the removed tile". At any point, if you wish to unselect a tile, you may click the "No Color" button and click on any edge of a filled-in tile to unselect it.</p>
+			<p>Fill in the remaining tiles with 3-tile L-shaped patterns. To ensure you are indeed covering the remaining tiles with only 3-tile L-shaped patterns, the easiest&mdash;on the eyes!&mdash;approach is to:</p>
+			<ul>
+				<li class="topdown_list">First, choose a color different from that used for "the removed tile".</li>
+				<br>
+				<li class="topdown_list">Second, choose the first set of three tiles you wish to fill in an L-shaped pattern&mdash;again, click any edge of a tile to fill it in.</li>
+				<br>
+				<li class="topdown_list">From here, I recommend choosing a different color to fill in the next set of three tiles in an L-shaped pattern&mdash;it's easier on the eyes when you use different colors!</li>
+			</ul>
+			<p>If at any point you wish to unselect a tile, use the "No Color" button to do so. Continue the above steps until you run out of L-shapes on the board. Is the board completely filled in with color? That's the goal.</p>
+			<p>$$\text{All boards are of size} \hspace{4pt} 2^{n} \times 2^{n}$$</p>
+			<p>Choose which size board you would like to work with.</p>
+			<div id='board_size'>
+				<button id='size_n' onclick="generate_board(1)">n = 1</button>
+				<button id='size_n' onclick="generate_board(2)">n = 2</button>
+				<button id='size_n' onclick="generate_board(3)">n = 3</button>
+			</div>
+			<div id='color_buttons'>
+				<button id='none'>No Color</button>
+				<button id='green'>Green</button>
+				<button id='purple'>Purple</button>
+				<button id='yellow'>Yellow</button>
+				<button id='orange'>Orange</button>
+				<button id='blue'>Blue</button>
+				<button id='brown'>Brown</button>
+			  	<button id="pdf">Print the Board!</button>
+			</div>
+			<div id='board'>
 			</div>
 		</div>
-		{% block content %}
-			<div id='content'>
-				<div id='topic'>
-					<h1>L-Trominoes</h1>
-					<p>Choose a tile. Fill in that tile&mdash;by clicking any edge of the tile&mdash;with your least favorite among the available colors. This tile will be referred to as "the removed tile". At any point, if you wish to unselect a tile, you may click the "No Color" button and click on any edge of a filled-in tile to unselect it.</p> 
-					<p>Fill in the remaining tiles with 3-tile L-shaped patterns. To ensure you are indeed covering the remaining tiles with only 3-tile L-shaped patterns, the easiest&mdash;on the eyes!&mdash;approach is to:</p> 
-					<ul>
-						<li class="topdown_list">First, choose a color different from that used for "the removed tile".</li>
-						<br>
-						<li class="topdown_list">Second, choose the first set of three tiles you wish to fill in an L-shaped pattern&mdash;again, click any edge of a tile to fill it in.</li>
-						<br>
-						<li class="topdown_list">From here, I recommend choosing a different color to fill in the next set of three tiles in an L-shaped pattern&mdash;it's easier on the eyes when you use different colors!</li>
-					</ul>
-					<p>If at any point you wish to unselect a tile, use the "No Color" button to do so. Continue the above steps until you run out of L-shapes on the board. Is the board completely filled in with color? That's the goal.</p>
-					<p>$$\text{All boards are of size} \hspace{4pt} 2^{n} \times 2^{n}$$</p>
-					<p>Choose which size board you would like to work with.</p>
-					<div id='board_size'>
-						<button id='size_n' onclick="generate_board(1)">n = 1</button>
-						<button id='size_n' onclick="generate_board(2)">n = 2</button>
-						<button id='size_n' onclick="generate_board(3)">n = 3</button>
-					</div>
-					<div id='color_buttons'>
-						<button id='none'>No Color</button>
-						<button id='green'>Green</button>
-						<button id='purple'>Purple</button>
-						<button id='yellow'>Yellow</button>
-						<button id='orange'>Orange</button>
-						<button id='blue'>Blue</button>
-						<button id='brown'>Brown</button>
-					  	<button id="pdf">Print the Board!</button>
-					</div>
-					<div id='board'>
-					</div>
-				</div>
-			</div>
-			<div id='footer'>
-				<ul>
-					<li></li>
-				</ul>
-			</div>
-		{% endblock %}
-	</body>
-</html>
-
+	</div>
+	<div id='footer'>
+		<ul>
+			<li></li>
+		</ul>
+	</div>
+    {% endblock %}

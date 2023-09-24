@@ -10,7 +10,7 @@ color-palette: ---------------------------------------------------------------
 #ffcd04 corn yellow
 #9977bd purple
 #f5ffde light yellow-green
-#696a61 gray mud-brown
+#3a3a36 gray mud-brown
 #e0620d bengal orange
 rgba(117, 158, 22, 0.05) off-white
 ------------------------------------------------------------------------------
@@ -22,13 +22,13 @@ rgba(117, 158, 22, 0.05) off-white
 	box-sizing: border-box;
 }
 
-body {
+/*body {
 	font-size: 1.3rem;
 	padding: 1rem .5rem;
 	line-height: 1.2;
 	max-width: 60rem;
 	margin: 0 auto;
-	color: #696a61;
+	color: #3a3a36;
 	background-color: rgba(117, 158, 22, 0.05);
 }
 
@@ -39,6 +39,7 @@ body {
 	border-bottom: 8px double rgba(105, 106, 97, 0.3);
 	margin-bottom: 2rem; 
 }
+*/
 
 li {
 	display: inline;
@@ -69,10 +70,11 @@ li.topdown_list {
 	background-color: rgba(208, 121, 166, 0.3);
 	color: #000000;
 	border-radius: 1px;
-	padding: 5px;
+	padding: 1px;
 	min-height: 18px;
 	min-width: 70px;
-	font-size: 12px;
+	font-size: 18px;
+	font-weight: bold;
 }
 
 #size_n:hover {
@@ -97,14 +99,15 @@ li.topdown_list {
 	background-color: rgba(117, 158, 22, 0.05);
 	color: #000000;
 	border-radius: 10px;
-	padding: 5px;
+	padding: 1px;
 	min-height: 23px;
 	min-width: 100px;
-	font-size: 18px;
+	font-size: 25px;
+	font-weight: bold;
 }
 
 #none:hover {
-	background-color: #696a61;
+	background-color: #3a3a36;
 	color: #ffcd04;
 	transition: 0.7s;
 }
@@ -119,14 +122,15 @@ li.topdown_list {
 	background-color: #759e16;
 	color: #000000;
 	border-radius: 10px;
-	padding: 5px;
+	padding: 1px;
 	min-height: 23px;
 	min-width: 100px;
-	font-size: 18px;
+	font-size: 25px;
+	font-weight: bold;
 }
 
 #green:hover {
-	background-color: #696a61;
+	background-color: #3a3a36;
 	color: #ffcd04; 
 	transition: 0.7s;
 }
@@ -139,16 +143,17 @@ li.topdown_list {
 
 #purple {
 	background-color: #9977bd;
-	color: #fcfcfc;
+	color: #000000;
 	border-radius: 10px;
-	padding: 5px;
+	padding: 1px;
 	min-height: 23px;
 	min-width: 100px;
-	font-size: 18px;
+	font-size: 25px;
+	font-weight: bold;
 }
 
 #purple:hover {
-	background-color: #696a61;
+	background-color: #3a3a36;
 	color: #ffcd04;
 	transition: 0.7s;
 }
@@ -163,14 +168,15 @@ li.topdown_list {
 	background-color: #ffcd04;
 	color: #000000;
 	border-radius: 10px;
-	padding: 5px;
+	padding: 1px;
 	min-height: 23px;
 	min-width: 100px;
-	font-size: 18px;
+	font-size: 25px;
+	font-weight: bold;
 }
 
 #yellow:hover {
-	background-color: #696a61;
+	background-color: #3a3a36;
 	color: #ffcd04;
 	transition: 0.7s;
 }
@@ -185,14 +191,15 @@ li.topdown_list {
 	background-color: #e0620d;
 	color: #000000;
 	border-radius: 10px;
-	padding: 5px;
+	padding: 1px;
 	min-height: 23px;
 	min-width: 100px;
-	font-size: 18px;
+	font-size: 25px;
+	font-weight: bold;
 }
 
 #orange:hover {
-	background-color: #696a61;
+	background-color: #3a3a36;
 	color: #ffcd04;
 	transition: 0.7s;
 }
@@ -207,14 +214,15 @@ li.topdown_list {
 	background-color: #91d5e4;
 	color: #000000;
 	border-radius: 10px;
-	padding: 5px;
+	padding: 1px;
 	min-height: 23px;
 	min-width: 100px;
-	font-size: 18px;
+	font-size: 25px;
+	font-weight: bold;
 }
 
 #blue:hover {
-	background-color: #696a61;
+	background-color: #3a3a36;
 	color: #ffcd04;
 	transition: 0.7s;
 }
@@ -226,13 +234,14 @@ li.topdown_list {
 }
 
 #brown {
-	background-color: #696a61;
+	background-color: #3a3a36;
 	color: #ffcd04;
 	border-radius: 10px;
-	padding: 5px;
+	padding: 1px;
 	min-height: 23px;
 	min-width: 100px;
-	font-size: 18px;
+	font-size: 25px;
+	font-weight: bold;
 }
 
 #brown:hover {
@@ -242,7 +251,7 @@ li.topdown_list {
 }
 
 #brown:active {
-	background-color: #696a61;
+	background-color: #3a3a36;
 	color: #ffcd04;
 	transition: 0.1s;
 }
@@ -251,10 +260,11 @@ li.topdown_list {
 	background-color: rgba(208, 121, 166, 0.3);
 	color: #000000;
 	border-radius: 1px;
-	padding: 5px;
+	padding: 1px;
 	min-height: 18px;
 	min-width: 70px;
-	font-size: 12px;
+	font-size: 18px;
+	font-weight: bold;
 }
 
 #pdf:hover {
@@ -274,15 +284,15 @@ li.topdown_list {
 	padding: 1rem .5rem;
 	margin: 0 auto;
 	text-align: left;
-	border-top: 8px double rgba(105, 106, 97, 0.3);
+	border-top: 8px double rgba(58, 58, 54, 0.3);
 	margin-top: 2rem; 
 }
 
-@media screen and (min-width: 15rem) {
+/*@media screen and (min-width: 15rem) {
 	body {
 		border-left: 4px solid rgba(105, 106, 97, 0.3);
 		border-right: 4px solid rgba(105, 106, 97, 0.3);
 		padding: 1rem 2rem;
 	}
 }
-
+*/

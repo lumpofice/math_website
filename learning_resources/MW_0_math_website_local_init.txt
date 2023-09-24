@@ -65,7 +65,9 @@ mysql> grant all privileges on <db>.* to '<user>'@'localhost';
 mysql> flush privileges;
 -------------------------------------------------------------------
 
-We need to change the code in (9) to that seen in (10):
+We need to change the code in (9), located in
+/venv/lib/python3.7/site-packages/flask/cli.py
+to that seen in (10):
 
 (9)----------------------------------------------------------------
         dotenv.load_dotenv(path, encoding="utf-8")
