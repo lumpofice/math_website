@@ -19,7 +19,7 @@ i_e_svg.append("line")
     .attr("y1", 0.01*i_e_h)
     .attr("x2", 2*i_e_w_by_3)
     .attr("y2", 0.01*i_e_h)
-    .attr("stroke", "#696a61")
+    .attr("stroke", "#3a3a36")
     .attr("stroke-width", 3);
 
 // right line
@@ -28,7 +28,7 @@ i_e_svg.append("line")
     .attr("y1", 0.01*i_e_h)
     .attr("x2", 2*i_e_w_by_3)
     .attr("y2", 3*(i_e_h/4) - 10)
-    .attr("stroke", "#696a61")
+    .attr("stroke", "#3a3a36")
     .attr("stroke-width", 3);
 
 // bottom line
@@ -37,7 +37,7 @@ i_e_svg.append("line")
     .attr("y1", 3*(i_e_h/4) - 10)
     .attr("x2", i_e_w_by_3/2)
     .attr("y2", 3*(i_e_h/4) - 10)
-    .attr("stroke", "#696a61")
+    .attr("stroke", "#3a3a36")
     .attr("stroke-width", 3);
 
 // left line
@@ -46,7 +46,7 @@ i_e_svg.append("line")
     .attr("y1", 3*(i_e_h/4) - 10)
     .attr("x2", i_e_w_by_3/2)
     .attr("y2", 0.01*i_e_h)
-    .attr("stroke", "#696a61")
+    .attr("stroke", "#3a3a36")
     .attr("stroke-width", 3);
 
 // Universe label
@@ -56,7 +56,7 @@ i_e_svg.append("text")
     .attr("y", 3*(i_e_h/4) - 30)
     .attr("font-family", "sans-serif")
     .attr("font-size", 30)
-    .attr("fill", "#696a61");
+    .attr("fill", "#3a3a36");
 
 const i_e_r = 115;
 
@@ -66,7 +66,7 @@ i_e_svg.append("circle")
     .attr("cy", i_e_h_by_3)
     .attr("r", i_e_r)
     .attr("fill", "none")
-    .attr("stroke", "#696a61")
+    .attr("stroke", "#3a3a36")
     .attr("stroke-width", 5)
     .attr("stroke-dasharray", "3 3");
 
@@ -80,7 +80,7 @@ i_e_svg.append("circle")
     .attr("cy", i_e_h_by_3)
     .attr("r", i_e_r)
     .attr("fill", "none")
-    .attr("stroke", "#696a61")
+    .attr("stroke", "#3a3a36")
     .attr("stroke-width", 5)
     .attr("stroke-dasharray", "3 3");
 
@@ -94,7 +94,7 @@ i_e_svg.append("circle")
     .attr("cy", bottom_circle_drop)
     .attr("r", i_e_r)
     .attr("fill", "none")
-    .attr("stroke", "#696a61")
+    .attr("stroke", "#3a3a36")
     .attr("stroke-width", 5)
     .attr("stroke-dasharray", "3 3");
 
@@ -122,19 +122,19 @@ i_e_svg.append("circle")
 //    .attr("cx", i_e_w_by_3)
 //    .attr("cy", i_e_h_by_3)
 //    .attr("r", 5)
-//    .attr("fill", "#696a61");
+//    .attr("fill", "#3a3a36");
 
 //i_e_point_1 = i_e_svg.append("circle")
 //    .attr("cx", i_e_w_by_3 + (offset)/2)
 //    .attr("cy", bottom_circle_drop)
 //    .attr("r", 5)
-//    .attr("fill", "#696a61");
+//    .attr("fill", "#3a3a36");
 
 //i_e_point_3 = i_e_svg.append("circle")
 //    .attr("cx", i_e_w_by_3 + (offset))
 //    .attr("cy", i_e_h_by_3)
 //    .attr("r", 5)
-//    .attr("fill", "#696a61");
+//    .attr("fill", "#3a3a36");
 
 // top equilateral triangle leg
 //----------------------------------------------------------------------------
@@ -171,7 +171,7 @@ i_e_svg.append("circle")
 //	    bottom_circle_drop - 
 //	    (offset/2)*Math.sin(Math.PI/3))
 //    .attr("r", 5)
-//    .attr("fill", "#696a61");
+//    .attr("fill", "#3a3a36");
 // ---------------------------------------------------------------------------
 // Given that the triangle is equilateral, the distance from the midpoint
 // of the right leg of the equilateral triangle to the top left corner point 
@@ -201,7 +201,7 @@ i_e_svg.append("circle")
 //	    bottom_circle_drop - 
 //	    (offset/2)*Math.sin(Math.PI/3))
 //    .attr("r", 5)
-//    .attr("fill", "#696a61");
+//    .attr("fill", "#3a3a36");
 
 // bottom right point of quadrilateral containing bottom right intersection
 // point
@@ -210,7 +210,7 @@ i_e_svg.append("circle")
 //    .attr("cx", i_e_w_by_3 + (offset/2) + offset)
 //    .attr("cy", bottom_circle_drop)
 //    .attr("r", 5)
-//    .attr("fill", "#696a61");
+//    .attr("fill", "#3a3a36");
 
 
 // To find the height of the triple intersection, we use half of the distance
@@ -227,7 +227,7 @@ const triple_intersection_height = Math.sqrt((i_e_r)**2 - ((offset)/2)**2);
 //    .attr("cx", i_e_w_by_3 + (offset)/2)
 //    .attr("cy", i_e_h_by_3 + triple_intersection_height)
 //    .attr("r", 5)
-//    .attr("fill", "#696a61");
+//    .attr("fill", "#3a3a36");
 //
 //
 //
@@ -242,7 +242,7 @@ const triple_intersection_height = Math.sqrt((i_e_r)**2 - ((offset)/2)**2);
 //	    (offset/2)*Math.sin(Math.PI/3) - 
 //    	    triple_intersection_height*Math.cos(Math.PI/3))
 //    .attr("r", 5)
-//    .attr("fill", "#696a61");
+//    .attr("fill", "#3a3a36");
 //
 //i_e_point_6 = i_e_svg.append("circle")
 //    .attr("cx", 
@@ -255,7 +255,7 @@ const triple_intersection_height = Math.sqrt((i_e_r)**2 - ((offset)/2)**2);
 //	    (offset/2)*Math.sin(Math.PI/3) - 
 //    	    triple_intersection_height*Math.cos(Math.PI/3))
 //    .attr("r", 5)
-//    .attr("fill", "#696a61");
+//    .attr("fill", "#3a3a36");
 
 // For point 8, we take a similar approach as the one we took for the
 // tiple_intersection_height variable
@@ -263,7 +263,7 @@ const triple_intersection_height = Math.sqrt((i_e_r)**2 - ((offset)/2)**2);
 //    .attr("cx", i_e_w_by_3 + offset/2)
 //    .attr("cy", i_e_h_by_3 - Math.sqrt((i_e_r)**2 - (offset/2)**2))
 //    .attr("r", 5)
-//    .attr("fill", "#696a61");
+//    .attr("fill", "#3a3a36");
 
 // We use a point at the bottom right corner point of the rhombus with leg
 // between the centers of the left circle and right circle (top-most leg)
@@ -291,7 +291,7 @@ const i_e_point_1_to_i_e_point_5_distance =
 //    	    bottom_circle_drop - 
 //	    i_e_point_1_to_i_e_point_5_distance*Math.sin(Math.PI/6))
 //    .attr("r", 5)
-//    .attr("fill", "#696a61");
+//    .attr("fill", "#3a3a36");
 //
 //i_e_point_2 = i_e_svg.append("circle")
 //    .attr("cx", 
@@ -303,7 +303,7 @@ const i_e_point_1_to_i_e_point_5_distance =
 //    	    bottom_circle_drop - 
 //	    i_e_point_1_to_i_e_point_5_distance*Math.sin(Math.PI/6))
 //    .attr("r", 5)
-//    .attr("fill", "#696a61");
+//    .attr("fill", "#3a3a36");
 
 // Here, we list the components of each point
 // point 8 -------------------------------------------------------------------
@@ -436,7 +436,7 @@ i_e_svg.append("text")
     .attr("y", i_e_h_by_3 - 40)
     .attr("font-family", "sans-serif")
     .attr("font-size", 30)
-    .attr("fill", "#696a61");
+    .attr("fill", "#3a3a36");
 
 i_e_svg.append("text")
     .attr("class", "menu_item")
@@ -445,7 +445,7 @@ i_e_svg.append("text")
     .attr("y", i_e_h_by_3 - 40)
     .attr("font-family", "sans-serif")
     .attr("font-size", 30)
-    .attr("fill", "#696a61");
+    .attr("fill", "#3a3a36");
 
 i_e_svg.append("text")
     .attr("class", "menu_item")
@@ -455,7 +455,7 @@ i_e_svg.append("text")
     .attr("y", 2*(i_e_h/3))
     .attr("font-family", "sans-serif")
     .attr("font-size", 30)
-    .attr("fill", "#696a61");
+    .attr("fill", "#3a3a36");
 
 var universe = 100;
 var left_umbrella = universe*0.25;
@@ -476,75 +476,75 @@ var honey_butter = right_iron + shield;
 
 i_e_svg.append("text")
     .attr("class", "conditions")
-    .text("Total customer count " + universe)
+    .text("Total customers " + universe)
     .attr("x", 0.01*i_e_w)
-    .attr("y", 3*(i_e_h_by_3) + 40)
+    .attr("y", 3*(i_e_h_by_3) + 20)
     .attr("font-family", "sans-serif")
-    .attr("font-size", 30)
-    .attr("fill", "#696a61");
+    .attr("font-size", 35)
+    .attr("fill", "#3a3a36");
 
 i_e_svg.append("text")
     .attr("class", "conditions")
-    .text("Those who like banana " + banana)
+    .text("Like banana " + banana)
     .attr("x", 0.01*i_e_w)
-    .attr("y", 3*(i_e_h_by_3) + 65)
+    .attr("y", 3*(i_e_h_by_3) + 50)
     .attr("font-family", "sans-serif")
-    .attr("font-size", 30)
-    .attr("fill", "#696a61");
+    .attr("font-size", 35)
+    .attr("fill", "#3a3a36");
 
 i_e_svg.append("text")
     .attr("class", "conditions")
-    .text("Those who like honey " + honey)
+    .text("Like honey " + honey)
     .attr("x", 0.01*i_e_w)
-    .attr("y", 3*(i_e_h_by_3) + 90)
+    .attr("y", 3*(i_e_h_by_3) + 80)
     .attr("font-family", "sans-serif")
-    .attr("font-size", 30)
-    .attr("fill", "#696a61");
+    .attr("font-size", 35)
+    .attr("fill", "#3a3a36");
 
 i_e_svg.append("text")
     .attr("class", "conditions")
-    .text("Those who like butter " + butter)
+    .text("Like butter " + butter)
     .attr("x", 0.01*i_e_w)
-    .attr("y", 3*(i_e_h_by_3) + 115)
+    .attr("y", 3*(i_e_h_by_3) + 110)
     .attr("font-family", "sans-serif")
-    .attr("font-size", 30)
-    .attr("fill", "#696a61");
+    .attr("font-size", 35)
+    .attr("fill", "#3a3a36");
 
 i_e_svg.append("text")
     .attr("class", "conditions")
-    .text("Those who like banana and honey " + banana_honey)
+    .text("Like banana and honey " + banana_honey)
     .attr("x", 0.45*i_e_w)
-    .attr("y", 3*(i_e_h_by_3) + 40)
+    .attr("y", 3*(i_e_h_by_3) + 20)
     .attr("font-family", "sans-serif")
-    .attr("font-size", 30)
-    .attr("fill", "#696a61");
+    .attr("font-size", 35)
+    .attr("fill", "#3a3a36");
 
 i_e_svg.append("text")
     .attr("class", "conditions")
-    .text("Those who like banana and butter " + banana_butter)
+    .text("Like banana and butter " + banana_butter)
     .attr("x", 0.45*i_e_w)
-    .attr("y", 3*i_e_h_by_3 + 65)
+    .attr("y", 3*i_e_h_by_3 + 50)
     .attr("font-family", "sans-serif")
-    .attr("font-size", 30)
-    .attr("fill", "#696a61");
+    .attr("font-size", 35)
+    .attr("fill", "#3a3a36");
 
 i_e_svg.append("text")
     .attr("class", "conditions")
-    .text("Those who like honey and butter " + honey_butter)
+    .text("Like honey and butter " + honey_butter)
     .attr("x", 0.45*i_e_w)
-    .attr("y", 3*i_e_h_by_3 + 90)
+    .attr("y", 3*i_e_h_by_3 + 80)
     .attr("font-family", "sans-serif")
-    .attr("font-size", 30)
-    .attr("fill", "#696a61");
+    .attr("font-size", 35)
+    .attr("fill", "#3a3a36");
 
 i_e_svg.append("text")
     .attr("class", "conditions")
-    .text("Those who like all three " + shield)
+    .text("Like all three " + shield)
     .attr("x", 0.45*i_e_w)
-    .attr("y", 3*i_e_h_by_3 + 115)
+    .attr("y", 3*i_e_h_by_3 + 110)
     .attr("font-family", "sans-serif")
-    .attr("font-size", 30)
-    .attr("fill", "#696a61");
+    .attr("font-size", 35)
+    .attr("fill", "#3a3a36");
 
 // Neither count
 i_e_svg.append("path")
@@ -558,8 +558,8 @@ i_e_svg.append("text")
     .attr("x", (i_e_w_by_3/2) + 20)
     .attr("y", 3*(i_e_h/4) - 60)
     .attr("font-family", "sans-serif")
-    .attr("font-size", 25)
-    .attr("fill", "#696a61")
+    .attr("font-size", 35)
+    .attr("fill", "#3a3a36")
     .attr("opacity", 0.0);
 
 for (const [n, point] of iron_points.entries()) {
@@ -595,8 +595,8 @@ for (const [n, point] of iron_points.entries()) {
 		    .attr("x", sum_x/3)
 		    .attr("y", sum_y/3)
 		    .attr("font-family", "sans-serif")
-		    .attr("font-size", 25)
-		    .attr("fill", "#696a61")
+		    .attr("font-size", 35)
+		    .attr("fill", "#3a3a36")
 		    .attr("opacity", 0.0);
 	} else if (n == 1) {
 		i_e_svg.append("path")
@@ -608,11 +608,11 @@ for (const [n, point] of iron_points.entries()) {
 		    .attr("class", "segment_4_5_6")
 		    .text(universe_array[1])
 		    .attr("text-anchor", "start")
-		    .attr("x", sum_x/3)
-		    .attr("y", sum_y/3 + 10)
+		    .attr("x", sum_x/3 - 25)
+		    .attr("y", sum_y/3 + 25)
 		    .attr("font-family", "sans-serif")
-		    .attr("font-size", 25)
-		    .attr("fill", "#696a61")
+		    .attr("font-size", 35)
+		    .attr("fill", "#3a3a36")
 		    .attr("opacity", 0.0);
 	} else {
 		i_e_svg.append("path")
@@ -624,11 +624,11 @@ for (const [n, point] of iron_points.entries()) {
 		    .attr("class", "segment_2_7_5")
 		    .text(universe_array[2])
 		    .attr("text-anchor", "end")
-		    .attr("x", sum_x/3)
-		    .attr("y", sum_y/3 + 10)
+		    .attr("x", sum_x/3 + 25)
+		    .attr("y", sum_y/3 + 25)
 		    .attr("font-family", "sans-serif")
-		    .attr("font-size", 25)
-		    .attr("fill", "#696a61")
+		    .attr("font-size", 35)
+		    .attr("fill", "#3a3a36")
 		    .attr("opacity", 0.0);
 	}
 }
@@ -670,8 +670,8 @@ for (const [n, point] of umbrella_points.entries()) {
 		    .attr("x", x_position)
 		    .attr("y", y_position)
 		    .attr("font-family", "sans-serif")
-		    .attr("font-size", 25)
-		    .attr("fill", "#696a61")
+		    .attr("font-size", 35)
+		    .attr("fill", "#3a3a36")
 		    .attr("opacity", 0.0);
 	} else if (n == 1) {
 		i_e_svg.append("path")
@@ -690,8 +690,8 @@ for (const [n, point] of umbrella_points.entries()) {
 		    .attr("x", x_position)
 		    .attr("y", y_position)
 		    .attr("font-family", "sans-serif")
-		    .attr("font-size", 25)
-		    .attr("fill", "#696a61")
+		    .attr("font-size", 35)
+		    .attr("fill", "#3a3a36")
 		    .attr("opacity", 0.0);
 	} else {
 		i_e_svg.append("path")
@@ -710,8 +710,8 @@ for (const [n, point] of umbrella_points.entries()) {
 		    .attr("x", x_position)
 		    .attr("y", y_position)
 		    .attr("font-family", "sans-serif")
-		    .attr("font-size", 25)
-		    .attr("fill", "#696a61")
+		    .attr("font-size", 35)
+		    .attr("fill", "#3a3a36")
 		    .attr("opacity", 0.0);
 	}
 }
@@ -748,8 +748,8 @@ for (const [n, point] of shield_points.entries()) {
 	    .attr("x", sum_x/3)
 	    .attr("y", sum_y/3)
 	    .attr("font-family", "sans-serif")
-	    .attr("font-size", 25)
-	    .attr("fill", "#696a61")
+	    .attr("font-size", 35)
+	    .attr("fill", "#3a3a36")
 	    .attr("opacity", 0.0);
 }
 
@@ -907,75 +907,75 @@ d3.select("#inclusion_exclusion_button")
 
 	i_e_svg.append("text")
 	    .attr("class", "conditions")
-	    .text("Total customer count " + universe)
+	    .text("Total customers " + universe)
 	    .attr("x", 0.01*i_e_w)
-	    .attr("y", 3*i_e_h_by_3 + 40)
+	    .attr("y", 3*i_e_h_by_3 + 20)
 	    .attr("font-family", "sans-serif")
-	    .attr("font-size", 30)
-	    .attr("fill", "#696a61");
+	    .attr("font-size", 35)
+	    .attr("fill", "#3a3a36");
 	
 	i_e_svg.append("text")
 	    .attr("class", "conditions")
-	    .text("Those who like banana " + banana)
+	    .text("Like banana " + banana)
 	    .attr("x", 0.01*i_e_w)
-	    .attr("y", 3*i_e_h_by_3 + 65)
+	    .attr("y", 3*i_e_h_by_3 + 50)
 	    .attr("font-family", "sans-serif")
-	    .attr("font-size", 30)
-	    .attr("fill", "#696a61");
+	    .attr("font-size", 35)
+	    .attr("fill", "#3a3a36");
 	
 	i_e_svg.append("text")
 	    .attr("class", "conditions")
-	    .text("Those who like honey " + honey)
+	    .text("Like honey " + honey)
 	    .attr("x", 0.01*i_e_w)
-	    .attr("y", 3*i_e_h_by_3 + 90)
+	    .attr("y", 3*i_e_h_by_3 + 80)
 	    .attr("font-family", "sans-serif")
-	    .attr("font-size", 30)
-	    .attr("fill", "#696a61");
+	    .attr("font-size", 35)
+	    .attr("fill", "#3a3a36");
 	
 	i_e_svg.append("text")
 	    .attr("class", "conditions")
-	    .text("Those who like butter " + butter)
+	    .text("Like butter " + butter)
 	    .attr("x", 0.01*i_e_w)
-	    .attr("y", 3*i_e_h_by_3 + 115)
+	    .attr("y", 3*i_e_h_by_3 + 110)
 	    .attr("font-family", "sans-serif")
-	    .attr("font-size", 30)
-	    .attr("fill", "#696a61");
+	    .attr("font-size", 35)
+	    .attr("fill", "#3a3a36");
 	
 	i_e_svg.append("text")
 	    .attr("class", "conditions")
-	    .text("Those who like banana and honey " + banana_honey)
+	    .text("Like banana and honey " + banana_honey)
 	    .attr("x", 0.45*i_e_w)
-	    .attr("y", 3*i_e_h_by_3 + 40)
+	    .attr("y", 3*i_e_h_by_3 + 20)
 	    .attr("font-family", "sans-serif")
-	    .attr("font-size", 30)
-	    .attr("fill", "#696a61");
+	    .attr("font-size", 35)
+	    .attr("fill", "#3a3a36");
 	
 	i_e_svg.append("text")
 	    .attr("class", "conditions")
-	    .text("Those who like banana and butter " + banana_butter)
+	    .text("Like banana and butter " + banana_butter)
 	    .attr("x", 0.45*i_e_w)
-	    .attr("y", 3*i_e_h_by_3 + 65)
+	    .attr("y", 3*i_e_h_by_3 + 50)
 	    .attr("font-family", "sans-serif")
-	    .attr("font-size", 30)
-	    .attr("fill", "#696a61");
+	    .attr("font-size", 35)
+	    .attr("fill", "#3a3a36");
 	
 	i_e_svg.append("text")
 	    .attr("class", "conditions")
-	    .text("Those who like honey and butter " + honey_butter)
+	    .text("Like honey and butter " + honey_butter)
 	    .attr("x", 0.45*i_e_w)
-	    .attr("y", 3*i_e_h_by_3 + 90)
+	    .attr("y", 3*i_e_h_by_3 + 80)
 	    .attr("font-family", "sans-serif")
-	    .attr("font-size", 30)
-	    .attr("fill", "#696a61");
+	    .attr("font-size", 35)
+	    .attr("fill", "#3a3a36");
 	
 	i_e_svg.append("text")
 	    .attr("class", "conditions")
-	    .text("Those who like all three " + shield)
+	    .text("Like all three " + shield)
 	    .attr("x", 0.45*i_e_w)
-	    .attr("y", 3*i_e_h_by_3 + 115)
+	    .attr("y", 3*i_e_h_by_3 + 110)
 	    .attr("font-family", "sans-serif")
-	    .attr("font-size", 30)
-	    .attr("fill", "#696a61");
+	    .attr("font-size", 35)
+	    .attr("fill", "#3a3a36");
 	
 	// Neither count
 	i_e_svg.append("text")
@@ -984,8 +984,8 @@ d3.select("#inclusion_exclusion_button")
 	    .attr("x", (i_e_w_by_3/2) + 20)
 	    .attr("y", 3*(i_e_h/4) - 60)
 	    .attr("font-family", "sans-serif")
-	    .attr("font-size", 25)
-	    .attr("fill", "#696a61")
+	    .attr("font-size", 35)
+	    .attr("fill", "#3a3a36")
 	    .attr("opacity", 0.0);
 
 	for (const [n, point] of iron_points.entries()) {
@@ -1016,30 +1016,30 @@ d3.select("#inclusion_exclusion_button")
 			    .attr("x", sum_x/3)
 			    .attr("y", sum_y/3)
 			    .attr("font-family", "sans-serif")
-			    .attr("font-size", 25)
-			    .attr("fill", "#696a61")
+			    .attr("font-size", 35)
+			    .attr("fill", "#3a3a36")
 			    .attr("opacity", 0.0);
 		} else if (n == 1) {
 			i_e_svg.append("text")
 			    .attr("class", "segment_4_5_6")
 			    .text(universe_array[1])
 			    .attr("text-anchor", "start")
-			    .attr("x", sum_x/3)
-			    .attr("y", sum_y/3 + 10)
+			    .attr("x", sum_x/3 - 25)
+			    .attr("y", sum_y/3 + 25)
 			    .attr("font-family", "sans-serif")
-			    .attr("font-size", 25)
-			    .attr("fill", "#696a61")
+			    .attr("font-size", 35)
+			    .attr("fill", "#3a3a36")
 			    .attr("opacity", 0.0);
 		} else {
 			i_e_svg.append("text")
 			    .attr("class", "segment_2_7_5")
 			    .text(universe_array[2])
 			    .attr("text-anchor", "end")
-			    .attr("x", sum_x/3)
-			    .attr("y", sum_y/3 + 10)
+			    .attr("x", sum_x/3 + 25)
+			    .attr("y", sum_y/3 + 25)
 			    .attr("font-family", "sans-serif")
-			    .attr("font-size", 25)
-			    .attr("fill", "#696a61")
+			    .attr("font-size", 35)
+			    .attr("fill", "#3a3a36")
 			    .attr("opacity", 0.0);
 		}
 	}
@@ -1076,8 +1076,8 @@ d3.select("#inclusion_exclusion_button")
 			    .attr("x", x_position)
 			    .attr("y", y_position)
 			    .attr("font-family", "sans-serif")
-			    .attr("font-size", 25)
-			    .attr("fill", "#696a61")
+			    .attr("font-size", 35)
+			    .attr("fill", "#3a3a36")
 			    .attr("opacity", 0.0);
 		} else if (n == 1) {
 	
@@ -1091,8 +1091,8 @@ d3.select("#inclusion_exclusion_button")
 			    .attr("x", x_position)
 			    .attr("y", y_position)
 			    .attr("font-family", "sans-serif")
-			    .attr("font-size", 25)
-			    .attr("fill", "#696a61")
+			    .attr("font-size", 35)
+			    .attr("fill", "#3a3a36")
 			    .attr("opacity", 0.0);
 		} else {
 	
@@ -1106,8 +1106,8 @@ d3.select("#inclusion_exclusion_button")
 			    .attr("x", x_position)
 			    .attr("y", y_position)
 			    .attr("font-family", "sans-serif")
-			    .attr("font-size", 25)
-			    .attr("fill", "#696a61")
+			    .attr("font-size", 35)
+			    .attr("fill", "#3a3a36")
 			    .attr("opacity", 0.0);
 		}
 	}
@@ -1139,8 +1139,8 @@ d3.select("#inclusion_exclusion_button")
 		    .attr("x", sum_x/3)
 		    .attr("y", sum_y/3)
 		    .attr("font-family", "sans-serif")
-		    .attr("font-size", 25)
-		    .attr("fill", "#696a61")
+		    .attr("font-size", 35)
+		    .attr("fill", "#3a3a36")
 		    .attr("opacity", 0.0);
 	}
     });

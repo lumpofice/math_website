@@ -84,10 +84,10 @@ li.topdown_list {
 	background-color: rgba(117, 158, 22, 0.05);
 	color: #000000;
 	border-radius: 10px;
-	padding: 1px;
+	padding: 5px;
 	min-height: 23px;
 	min-width: 100px;
-	font-size: 25px;
+	font-size: 20px;
 	font-weight: bold;
 }
 

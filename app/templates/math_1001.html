@@ -1,43 +1,37 @@
-<!doctype html>
-<html>
-	<head>
-		{%if title%}
-		<title>{{ title }}</title>
-		{% else %}
-		<title>Math Website</title>
-		{% endif %}
-		<meta name="viewport" content="width=device-width">
-		<link rel='stylesheet' href='{{ url_for("static", filename="styles/math_1001.css") }}'>
-		<script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
-		<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  		<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-		<script type="text/javascript" src='{{ url_for("static", filename="js/math_1001.js") }}' defer></script>
-	</head>
-	<body>
-		<div id='opening'>
-			<div id='nav'>
-				<ul>
-					<li></li>
-					<li></li>
-				</ul>
+{% extends 'base.html' %}
+    {%- block head %}
+    <title>{% block title %}{{title|default}}{% endblock title %}</title>
+
+    {%- block metas %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%- endblock metas %}
+
+    {%- block styles %}
+    <!-- Bootstrap -->
+    <link href="{{bootstrap_find_resource('css/bootstrap.css', cdn='bootstrap')}}" rel="stylesheet">
+    <link rel='stylesheet' href='{{ url_for("static", filename="styles/math_1001.css") }}'>
+    {%- endblock styles %}
+    <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/javascript" src='{{ url_for("static", filename="js/math_1001.js") }}' defer></script>
+    {%- endblock head %}
+
+    {% block app_content %}
+    	<div id='content'>
+		<div id='topic'>
+			<h1>Inclusion-Exclusion Principle</h1>
+			<p id="text">A group of people are surveyed about which foods they like, between banana, honey, and butter. The results of the survey are listed below the Venn diagram; use them to compute how many people belong to each subset. Hover over the different areas to reveal the cardinality of the respective subsets&mdash;hovering over the "Universe" square will reveal how many people in the survey like none of the items. Once you have completed the current setup, click the "New Count" button to produce a new set of numbers.</p>
+			<div id='inclusion_exclusion'>
+				<button id='inclusion_exclusion_button'>New Count</button>
 			</div>
 		</div>
-		{% block content %}
-			<div id='content'>
-				<div id='topic'>
-					<p>A group of people are surveyed about which foods they like, between banana, honey, and butter. The results of the survey are listed below the Venn diagram; use them to compute how many people belong to each subset. Hover over the different areas to reveal the cardinality of the respective subsets&mdash;hovering over the "Universe" square will reveal how many people in the survey like none of the items. Once you have completed the current setup, click the "Generate Universe" button to produce a new set of numbers.</p>
-					<div id='inclusion_exclusion'>
-						<p>Inclusion-Exclusion Principle</p>
-						<button id='inclusion_exclusion_button'>Generate Universe</button>
-					</div>
-				</div>
 			</div>
-			<div id='footer'>
-				<p>Authors whose works helped us develop this content:</p>
-				<ul>
-					<li><a href="https://medium.com/@cmmyers/how-i-made-an-interactive-venn-diagram-with-d3-fa723c55a148">Calder M. Myers</a></li>
-				</ul>
-			</div>
-		{% endblock %}
-	</body>
-</html>
+	<div id='footer'>
+		<p id="text">Authors whose works helped us develop this content:</p>
+		<ul>
+			<li id="text"><a href="https://medium.com/@cmmyers/how-i-made-an-interactive-venn-diagram-with-d3-fa723c55a148">Calder M. Myers</a></li>
+		</ul>
+	</div>
+    {% endblock %}
+
