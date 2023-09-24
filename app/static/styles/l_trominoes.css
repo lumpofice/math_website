@@ -28,6 +28,7 @@ rgba(117, 158, 22, 0.05) off-white
 
 li {
 	display: inline;
+	padding: .5rem 2rem;
 }
 
 #content {

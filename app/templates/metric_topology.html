@@ -1,147 +1,143 @@
-<!doctype html>
-<html>
-	<head>
-		{% if title %}
-		<title>{{ title }}</title>
-		{% else %}
-		<title>My Moving Arch</title>
-		{% endif %}
-		<meta name="viewport" content="width=device-width">
-		<link rel='stylesheet' href='{{ url_for("static", filename="styles/metric_topology.css") }}'>
-		<script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
-		<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  		<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-		<script type="text/javascript" src='{{ url_for("static", filename="js/metric_topology.js") }}' defer></script>
-	</head>
-	<body>
-		<div id='opening'>
-			<div id='nav'>
+{% extends 'base.html' %}
+    {%- block head %}
+    <title>{% block title %}{{title|default}}{% endblock title %}</title>
+
+    {%- block metas %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%- endblock metas %}
+
+    {%- block styles %}
+    <!-- Bootstrap -->
+    <link href="{{bootstrap_find_resource('css/bootstrap.css', cdn='bootstrap')}}" rel="stylesheet">
+    <link rel='stylesheet' href='{{ url_for("static", filename="styles/metric_topology.css") }}'>
+    {%- endblock styles %}
+    <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/javascript" src='{{ url_for("static", filename="js/metric_topology.js") }}' defer></script>
+    {%- endblock head %}
+
+    {% block app_content %}
+	<div id='content'>
+		<div id='lesson'>
+			<h1>Metric Topology</h1>	
+		</div>
+		<div id='topic'>	
+			<p id="text">Some companies sell their butter products by the box. Whether it be a box of 4 4oz packages of butter, or a box of 8 2oz packages of butter, the company sells that butter in the same size box. Conceivably, the company could sell that box as 1 16oz block of butter or 16 1oz packages of butter; they could sell it as a combination 4 2oz and 2 4oz packages; they could sell it as a combination of 14 1oz and 1 2oz package; any sizing and numbering combination of packages. In any of these scenarios, that entire block of butter represents the "space" of 100% of the purchased butter. A concept in mathemtics, consisting of breaking down 100% of a material contained within a given space to <em><span style="color: #6b4691; font-weight: bold;">every possible</span></em> package of some arbitrary size within that space, is what we aim to tackle below. Of course, what we will ultimately be dealing with is a space of numbers, but we can begin to think about this concept using something maleable like butter.</p> 
+			<p id="text">Let's emphasize again the words <em><span style="color: #6b4691; font-weight: bold;">every</span></em> and <em><span style="color: #6b4691; font-weight: bold;">possible</span></em> within the phrase:</p>
+			<p id="text">"...breaking down 100% of a material contained within a given space to <em><span style="color: #6b4691; font-weight: bold;">every possible</span></em> package of some arbitrary size within that space..."</p>
+			<p id="text">Take our attempt at drawing a 3-dimensional block of butter:</p>
+		</div>
+		<div id='block0'>
+		</div>
+		<div id='topic'>
+			<p id="text">This block of butter is rectangular in shape and has 6 sides. Taking a look directly at the shorter, square-shaped, right-facing side of this block of butter, indicated by the large <span style="color: #6b4691; font-weight: bold;">R</span>&mdash;the large <span style="color: #6b4691; font-weight: bold;">R</span> is not meant to indicate the longer, back-facing side of this block of butter&mdash; under two different conditions:
 				<ul>
+					<li class="topdown_list" id="text">i) the block of butter is in its whole form, before breaking it down to smaller packages</li>
+					<li class="topdown_list" id="text">ii) the block of butter has been broken down to 4 smaller packages&mdash;which many fondly refer to as "sticks"&mdash; of butter.</li>
 				</ul>
+			</p>
+		</div>
+		<div id='block1'>
+		</div>
+		<div id='block2'>
+		</div>
+		<div id='topic'>
+			<button id='center_point'>Show Center Points</button>
+		</div>
+		<div id='topic'>
+			<p id="text">we can see that each face&mdash;each face of a block or stick of butter extending out of view and into our screen&mdash;has a center. The centers of any of the arbitrarily sized packages within the larger space will be important later as we dive deeper into the concept. For now, let us be content with the fact that the centers exist, and let's click the button below to show these points so that we may free up some bandwidth between our ears.</p>
+			<p id="text">Breaking down 100% of the butter contained within its box to <em><span style="color: #6b4691; font-weight: bold;">every possible</span></em> stick of butter of some arbitrary size, to some degree of precision via technology, is possible. Of course, the naked eye cannot keep up with the technology, but here are two examples of what possibilities lie within such technological reaches</p>
+		</div>
+		<div id='block3'>
+		</div>
+		<div id='block4'>
+		</div>
+		<div id='topic'>
+			<p id="text">This is only 2 of uncountably infinite possibilities; the task of drawing every possiblility is impossible; as technology outpaces our naked eye, mathematics outpaces our technology! Given this, let's leave the butter sticks alone for the moment&mdash;much of what we do next does not make practical sense; spaces of numbers are too perfect and precise to be considered practical, anyway&mdash;and simply focus on these 2-dimensional drawings as we take a deeper dive into this concept. Currently, our "space"&mdash;box&mdash;of material has been broken down to several smaller "subsets"&mdash;packages&mdash;of multiple fixed sizes, with each subset being contained within the larger space. But is our space broken down to <em><span style="color: #6b4691; font-weight: bold;">every possible</span></em> subset of some arbitrary size? Would you agree that we could draw other subsets of different sizes anywhere within our larger space, even if there is overlap between them and the already existing subsets?</p>
+		</div>
+		<div id='block5'>
+			<button id='medium_size_rect_1_plus_3'>Draw Medium Size</button>
+			<button id='smaller_size_rect_1_plus_3'>Draw Smaller Size</button>
+			<button id='larger_size_rect_1_plus_3'>Draw Larger Size</button>
+		</div>
+		<div id='block6'>
+			<button id='medium_size_rect_4_plus_3'>Draw Medium Size</button>
+			<button id='smaller_size_rect_4_plus_3'>Draw Smaller Size</button>
+			<button id='larger_size_rect_4_plus_3'>Draw Larger Size</button>
+		</div>
+		<div id='topic'>
+			<p id="text">In fact, we can draw as many subsets as we would like inside of the larger space. Feel free to click the button below as many times as you wish&mdash;you will notice the range of possible subsets that may be drawn within the larger space, but keep in mind that this program does not account for <em><span style="color: #6b4691; font-weight: bold;">every possible</span></em> subset that may be drawn within the larger space.</p>
+		</div>
+		<div id='block9'>
+			<button id='rect_1_plus_many'>Draw a Subset</button>
+		</div>
+		<div id='topic'>	
+			<p id="text">Sticks of butter deviate from the typical exposition of the metric topology. The squares, however, correspond to a specific metric falling under the general form of this concept we call Metric Topology. To properly dive into this concept, we need an understanding of a few additional items.</p>
+		</div>
+		<div id='topic'>	
+			<h3>Topology</h3>
+			<p id="text">A topology on a larger space, say &#x1D54F;, is a collection, say &#964;, of elements of &#x1D54F; that follows three rules</p>
+			<ul>
+				<li class="topdown_list" id="text">i) Both &#x1D54F; and &#8709; belong to &#964;</li>
+				<li class="topdown_list" id="text">ii) The union of any collection of elements of &#964; belongs to &#964;</li>
+				<li class="topdown_list" id="text">iii) The intersection of any finite collection of elements of &#964; belongs to &#964;</li>
+			</ul>
+			<p id="text">Let's take a few moments to clear some things up:</p>
+			<ul>
+				<li class="topdown_list" id="text">&#8226; The symbol &#8709; is called the empty set. We will see this in math often enough, and it is meant to communicate that there is no element from the collection &#964; present. If elements from the larger collection &#964; were placed inside of boxes, think about the box containing the empty set as being&mdash;you guessed it&mdash;empty.</li>
+				<li class="topdown_list" id="text">&#8226; Think about a union as a combining of several boxes of elements into a single, larger box. Here is a formal definition:</li>
+			</ul>
+			<p id="text">$$\text{A}\cup\text{B} = \{x \hspace{4pt} : \hspace{4pt} x \in A \hspace{4pt} \text{or} \hspace{4pt} x \in B\}$$</p>
+			<p id="text">This mathematical statement, translated to English, reads: A union B is the set&mdash;open curly brace&mdash;of all objects x such that&mdash;the first x followed by the colon&mdash;x belongs to set A or x belongs to set B&mdash;the smooth-backed, e-shaped symbol is shorthand for the phrase "belongs to"&mdash;and we finally close the set with a second curly brace. The definition is not limited to two sets&mdash;the number of sets could be infinite, actually. For instance, think about that coffee mug, filled with the several-years' collection of purchased/borrowed/stolen pencils and pens, sitting on your work station. It use to be the case that those pencils and pens belonged to their own respective packaging; you might have even known which writing utensil came which package/victim. Now-a-days, when you reach for one of those writing utensils, it could have come from package A or package B or package C or ... We really don't need to worry about more than two sets in this discussion, however&mdash;that is a story for a different webpage. Here is a visual to help demonstrate the idea of a union of objects from two sets A and B.</p>
+			<div id='union'>
+				<p id="text">Press the button to see an example of a union.</p>
+				<button id='union_button'>Press to union</button>
+			</div>
+			<p id="text">The first thing we need to notice is that sets A and B both contain three elements: circles of different radii&mdash;these circles represent something precise in the context of the metric topology; we will discuss this later. Set A contains a circle of radius 15, one of radius 20, and one of radius 25, while set B contains a circle of radius 18, one of radius 23, and one of radius 28. Notice that all of the elements from set A and set B are present in set C when we take the union of sets A and B&mdash;when you press the button. This union of A and B is represented as A&#8746;B. As stated in the formal definition, to choose an object from set A&#8746;B means choosing an object that is contained within either A or B. If both sets A and B are members of topology &#964;, then by part ii) in the definition of a topology, we have the set A&#8746;B = C is a member of &#964;.</p>
+			<ul>
+				<li class="topdown_list" id="text">&#8226; Think about an intersection as a box that contains only the elements that are present in every box under consideration. Here is the formal definition:</li>
+			</ul>
+			<p id="text">$$\text{A}\cap\text{B} = \{x \hspace{4pt} : \hspace{4pt} x \in \text{A} \hspace{4pt} \text{and} \hspace{4pt} x \in \text{B} \}$$</p>
+			<p id="text">In English, this statement says that the intersection of A with B is the collection of all objects such that those objects appear in both A and B. Consider the coworker who retrieves the pens they allow others to borrow. Actually, imagine that this coworker designates a special collection of pens for such a purpose&mdash;this coworker might even be paying enough attention to know exactly who in the office has handled each of these pens! For the sake of simplicity, imagine only two coworkers, Coworker A and Coworker B, have bothered to borrow a pen from amongst those in the current collection&mdash;say, 11 pens total; some borrowed by Coworker A; some by Coworker B. If, within this collection, there are 3 pens that both Coworker A and Coworker B have borrowed, then there are only 3 pens that have been handled by both Coworker A and Coworker B, while the other 8 pens have been handled by either only Coworker A or by only Coworker B. Again, we are not limited to only two sets when dealing with such a concept, but there is no need to invite further headache for this discussion. Here is a visual to help communicate the idea of the intersection of two sets:</p>
+			<div id='intersection'>
+				<p id="text">Press the button to see an example of an intersection.</p>
+				<button id='intersection_button'>Press to intersect</button>
+			</div>
+			<div id='subset'>
+				<p id="text">You might have noticed the size of the box for the union is larger than either of the two sets whose elements comprise the union; the size of the box for the intersection is smaller than either of the two sets whose elements comprise the intersection. The next concept can now better be framed with these size differences in mind. When each member of one set appears within another set, we have what is mathematically referred to a a subset&mdash;yes, you've seen this word before! Remember those sticks of butter from earlier? Each stick of butter is a subset of the larger block of butter. Every time you pressed the buttons above, generating a new square within the larger square with each press, a new subset was drawn within the larger square. Let's look at a formal definition</p>
 			</div>
 		</div>
-		{% block content %}
-			<div id='content'>
-				<div id='lesson'>
-					<h1>Metric Topology</h1>	
-				</div>
-				<div id='topic'>	
-					<p>Some companies sell their butter products by the box. Whether it be a box of 4 4oz packages of butter, or a box of 8 2oz packages of butter, the company sells that butter in the same size box. Conceivably, the company could sell that box as 1 16oz block of butter or 16 1oz packages of butter; they could sell it as a combination 4 2oz and 2 4oz packages; they could sell it as a combination of 14 1oz and 1 2oz package; any sizing and numbering combination of packages. In any of these scenarios, that entire block of butter represents the "space" of 100% of the purchased butter. A concept in mathemtics, consisting of breaking down 100% of a material contained within a given space to <em><span style="color: #d079a2">every possible</span></em> package of some arbitrary size within that space, is what we aim to tackle below. Of course, what we will ultimately be dealing with is a space of numbers, but we can begin to think about this concept using something maleable like butter.</p> 
-					<p>Let's emphasize again the words <em><span style="color: #d079a2">every</span></em> and <em><span style="color: #d079a2">possible</span></em> within the phrase:</p>
-					<p>"...breaking down 100% of a material contained within a given space to <em><span style="color: #d079a2">every possible</span></em> package of some arbitrary size within that space..."</p>
-					<p>Take our attempt at drawing a 3-dimensional block of butter:</p>
-				</div>
-				<div id='block0'>
-				</div>
-				<div id='topic'>
-					<p>This block of butter is rectangular in shape and has 6 sides. Taking a look directly at the shorter, square-shaped, right-facing side of this block of butter, indicated by the large <span style="color: #d079a2">R</span>&mdash;the large <span style="color: #d079a2">R</span> is not meant to indicate the longer, back-facing side of this block of butter&mdash; under two different conditions:
-						<ul>
-							<li class="topdown_list">i) the block of butter is in its whole form, before breaking it down to smaller packages</li>
-							<li class="topdown_list">ii) the block of butter has been broken down to 4 smaller packages&mdash;which many fondly refer to as "sticks"&mdash; of butter.</li>
-						</ul>
-					</p>
-				</div>
-				<div id='block1'>
-				</div>
-				<div id='block2'>
-				</div>
-				<div id='topic'>
-					<button id='center_point'>Show Center Points</button>
-				</div>
-				<div id='topic'>
-					<p>we can see that each face&mdash;each face of a block or stick of butter extending out of view and into our screen&mdash;has a center. The centers of any of the arbitrarily sized packages within the larger space will be important later as we dive deeper into the concept. For now, let us be content with the fact that the centers exist, and let's click the button below to show these points so that we may free up some bandwidth between our ears.</p>
-					<p>Breaking down 100% of the butter contained within its box to <em><span style="color: #d079a2">every possible</span></em> stick of butter of some arbitrary size, to some degree of precision via technology, is possible. Of course, the naked eye cannot keep up with the technology, but here are two examples of what possibilities lie within such technological reaches</p>
-				</div>
-				<div id='block3'>
-				</div>
-				<div id='block4'>
-				</div>
-				<div id='topic'>
-					<p>This is only 2 of uncountably infinite possibilities; the task of drawing every possiblility is impossible; as technology outpaces our naked eye, mathematics outpaces our technology! Given this, let's leave the butter sticks alone for the moment&mdash;much of what we do next does not make practical sense; spaces of numbers are too perfect and precise to be considered practical, anyway&mdash;and simply focus on these 2-dimensional drawings as we take a deeper dive into this concept. Currently, our "space"&mdash;box&mdash;of material has been broken down to several smaller "subsets"&mdash;packages&mdash;of multiple fixed sizes, with each subset being contained within the larger space. But is our space broken down to <em><span style="color: #d079a2">every possible</span></em> subset of some arbitrary size? Would you agree that we could draw other subsets of different sizes anywhere within our larger space, even if there is overlap between them and the already existing subsets?</p>
-				</div>
-				<div id='block5'>
-					<button id='medium_size_rect_1_plus_3'>Draw Medium Size</button>
-					<button id='smaller_size_rect_1_plus_3'>Draw Smaller Size</button>
-					<button id='larger_size_rect_1_plus_3'>Draw Larger Size</button>
-				</div>
-				<div id='block6'>
-					<button id='medium_size_rect_4_plus_3'>Draw Medium Size</button>
-					<button id='smaller_size_rect_4_plus_3'>Draw Smaller Size</button>
-					<button id='larger_size_rect_4_plus_3'>Draw Larger Size</button>
-				</div>
-				<div id='topic'>
-					<p>In fact, we can draw as many subsets as we would like inside of the larger space. Feel free to click the button below as many times as you wish&mdash;you will notice the range of possible subsets that may be drawn within the larger space, but keep in mind that this program does not account for <em><span style="color: #d079a2">every possible</span></em> subset that may be drawn within the larger space.</p>
-				</div>
-				<div id='block9'>
-					<button id='rect_1_plus_many'>Draw a Subset</button>
-				</div>
-				<div id='topic'>	
-					<p>Sticks of butter deviate from the typical exposition of the metric topology. The squares, however, correspond to a specific metric falling under the general form of this concept we call Metric Topology. To properly dive into this concept, we need an understanding of a few additional items.</p>
-				</div>
-				<div id='topic'>	
-					<h3>Topology</h3>
-					<p>A topology on a larger space, say &#x1D54F;, is a collection, say &#964;, of elements of &#x1D54F; that follows three rules</p>
-					<ul>
-						<li class="topdown_list">i) Both &#x1D54F; and &#8709; belong to &#964;</li>
-						<li class="topdown_list">ii) The union of any collection of elements of &#964; belongs to &#964;</li>
-						<li class="topdown_list">iii) The intersection of any finite collection of elements of &#964; belongs to &#964;</li>
-					</ul>
-					<p>Let's take a few moments to clear some things up:</p>
-					<ul>
-						<li class="topdown_list">&#8226; The symbol &#8709; is called the empty set. We will see this in math often enough, and it is meant to communicate that there is no element from the collection &#964; present. If elements from the larger collection &#964; were placed inside of boxes, think about the box containing the empty set as being&mdash;you guessed it&mdash;empty.</li>
-						<li class="topdown_list">&#8226; Think about a union as a combining of several boxes of elements into a single, larger box. Here is a formal definition:</li>
-					</ul>
-					<p>$$\text{A}\cup\text{B} = \{x \hspace{4pt} : \hspace{4pt} x \in A \hspace{4pt} \text{or} \hspace{4pt} x \in B\}$$</p>
-					<p>This mathematical statement, translated to English, reads: A union B is the set&mdash;open curly brace&mdash;of all objects x such that&mdash;the first x followed by the colon&mdash;x belongs to set A or x belongs to set B&mdash;the smooth-backed, e-shaped symbol is shorthand for the phrase "belongs to"&mdash;and we finally close the set with a second curly brace. The definition is not limited to two sets&mdash;the number of sets could be infinite, actually. For instance, think about that coffee mug, filled with the several-years' collection of purchased/borrowed/stolen pencils and pens, sitting on your work station. It use to be the case that those pencils and pens belonged to their own respective packaging; you might have even known which writing utensil came which package/victim. Now-a-days, when you reach for one of those writing utensils, it could have come from package A or package B or package C or ... We really don't need to worry about more than two sets in this discussion, however&mdash;that is a story for a different webpage. Here is a visual to help demonstrate the idea of a union of objects from two sets A and B.</p>
-					<div id='union'>
-						<p>Press the button to see an example of a union.</p>
-						<button id='union_button'>Press to union</button>
-					</div>
-					<p>The first thing we need to notice is that sets A and B both contain three elements: circles of different radii&mdash;these circles represent something precise in the context of the metric topology; we will discuss this later. Set A contains a circle of radius 15, one of radius 20, and one of radius 25, while set B contains a circle of radius 18, one of radius 23, and one of radius 28. Notice that all of the elements from set A and set B are present in set C when we take the union of sets A and B&mdash;when you press the button. This union of A and B is represented as A&#8746;B. As stated in the formal definition, to choose an object from set A&#8746;B means choosing an object that is contained within either A or B. If both sets A and B are members of topology &#964;, then by part ii) in the definition of a topology, we have the set A&#8746;B = C is a member of &#964;.</p>
-					<ul>
-						<li class="topdown_list">&#8226; Think about an intersection as a box that contains only the elements that are present in every box under consideration. Here is the formal definition:</li>
-					</ul>
-					<p>$$\text{A}\cap\text{B} = \{x \hspace{4pt} : \hspace{4pt} x \in \text{A} \hspace{4pt} \text{and} \hspace{4pt} x \in \text{B} \}$$</p>
-					<p>In English, this statement says that the intersection of A with B is the collection of all objects such that those objects appear in both A and B. Consider the coworker who retrieves the pens they allow others to borrow. Actually, imagine that this coworker designates a special collection of pens for such a purpose&mdash;this coworker might even be paying enough attention to know exactly who in the office has handled each of these pens! For the sake of simplicity, imagine only two coworkers, Coworker A and Coworker B, have bothered to borrow a pen from amongst those in the current collection&mdash;say, 11 pens total; some borrowed by Coworker A; some by Coworker B. If, within this collection, there are 3 pens that both Coworker A and Coworker B have borrowed, then there are only 3 pens that have been handled by both Coworker A and Coworker B, while the other 8 pens have been handled by either only Coworker A or by only Coworker B. Again, we are not limited to only two sets when dealing with such a concept, but there is no need to invite further headache for this discussion. Here is a visual to help communicate the idea of the intersection of two sets:</p>
-					<div id='intersection'>
-						<p>Press the button to see an example of an intersection.</p>
-						<button id='intersection_button'>Press to intersect</button>
-					</div>
-					<div id='subset'>
-						<p>When each member of one set appears within another set, we have what is mathematically referred to a a subset&mdash;yes, you've seen this word before! Remember those sticks of butter from earlier? Each stick of butter is a subset of the larger block of butter. Every time you pressed the buttons above, generating a new square within the larger square with each press, a new subset was drawn within the larger square. Let's look at a formal definition</p>
-					</div>
-				</div>
-				<div id='topic'>	
-					<h3>Basis for a Topology</h3>
-				</div>
-				<div id='topic'>	
-					<h3>Metric</h3>
-				</div>
-				<div id='math0'>
-				</div>
-				<div id='math1'>
-				</div>
-				<div id='math2'>
-				</div>
-				<div id='ball0'>
-				</div>
-				<div class='featuredgallery0'>
-					<p class='gallery'>1 Larger Ball bordered by 15 Smaller Balls</p>
-				</div>
-				<div class='featuredgallery1'>
-					<p class='gallery'>570 Larger Balls, each bordered by 15 Smaller Balls</p>
-				</div>
+		<div id='topic'>	
+			<h3>Basis for a Topology</h3>
+		</div>
+		<div id='topic'>	
+			<h3>Metric</h3>
+		</div>
+		<div id='math0'>
+		</div>
+		<div id='math1'>
+		</div>
+		<div id='math2'>
+		</div>
+		<div id='ball0'>
+		</div>
+		<div class='featuredgallery0'>
+			<p class='gallery' id="text">1 Larger Ball bordered by 15 Smaller Balls</p>
+		</div>
+		<div class='featuredgallery1'>
+			<p class='gallery' id="text">570 Larger Balls, each bordered by 15 Smaller Balls</p>
+		</div>
 			</div>
-			<div id='footer'>
-				<p>Authors whose works helped us develop this content:</p>
-				<ul>
-					<li><a href="https://www.amazon.com/Topology-2nd-James-Munkres/dp/0131816292">James R. Munkres</a></li>
-					<li><a href="https://scottmurray.org/">Scott Murray</a></li>
-					<li><a href="https://observablehq.com/@martinascharrer">Martina Vives</a></li>
-					<li><a href="https://medium.com/@cmmyers/how-i-made-an-interactive-venn-diagram-with-d3-fa723c55a148">Calder M. Myers</a></li>
-				</ul>
-			</div>
-		{% endblock %}
-	</body>
-</html>
+	<div id='footer'>
+		<p id="text">Authors whose works helped us develop this content:</p>
+		<ul>
+			<li id="text"><a href="https://www.amazon.com/Topology-2nd-James-Munkres/dp/0131816292">James R. Munkres</a></li>
+			<li id="text"><a href="https://scottmurray.org/">Scott Murray</a></li>
+			<li id="text"><a href="https://observablehq.com/@martinascharrer">Martina Vives</a></li>
+			<li id="text"><a href="https://blog.miguelgrinberg.com/">Miguel Grinberg</a></li>
+		</ul>
+	</div>
+    {% endblock %}
+
 

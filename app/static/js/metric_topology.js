@@ -15,7 +15,7 @@ svg_block.append("text")
     .attr("y", h_block*(3/10))
     .attr("font-family", "sans-serif")
     .attr("font-size", "32px")
-    .attr("fill", "#696a61");
+    .attr("fill", "#3a3a36");
 
 
 // back-facing long edge of block
@@ -25,9 +25,9 @@ svg_block.append("line")
     .attr("y1", h_block*(1/10))
     .attr("x2", w_block*(13.87/15))
     .attr("y2", h_block*(1/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // bottom line
 svg_block.append("line")
@@ -35,9 +35,9 @@ svg_block.append("line")
     .attr("y1", h_block*(6/10))
     .attr("x2", w_block*(13.87/15))
     .attr("y2", h_block*(6/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // front-facing long edge of block
 // top line
@@ -46,9 +46,9 @@ svg_block.append("line")
     .attr("y1", h_block*(4/10))
     .attr("x2", w_block*(12/15))
     .attr("y2", h_block*(4/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // bottom line
 svg_block.append("line")
@@ -56,9 +56,9 @@ svg_block.append("line")
     .attr("y1", h_block*(9/10))
     .attr("x2", w_block*(12/15))
     .attr("y2", h_block*(9/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // right-facing short edge of block
 // top line
@@ -67,9 +67,9 @@ svg_block.append("line")
     .attr("y1", h_block*(4/10))
     .attr("x2", w_block*(13.87/15))
     .attr("y2", h_block*(1/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // left vertical line
 svg_block.append("line")
@@ -77,9 +77,9 @@ svg_block.append("line")
     .attr("y1", h_block*(4/10))
     .attr("x2", w_block*(12/15))
     .attr("y2", h_block*(9/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // bottom line
 svg_block.append("line")
@@ -87,9 +87,9 @@ svg_block.append("line")
     .attr("y1", h_block*(9/10))
     .attr("x2", w_block*(13.87/15))
     .attr("y2", h_block*(6/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // right vertical line
 svg_block.append("line")
@@ -97,9 +97,9 @@ svg_block.append("line")
     .attr("y1", h_block*(6/10))
     .attr("x2", w_block*(13.87/15))
     .attr("y2", h_block*(1/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // left-facing short edge of block
 // top line
@@ -108,9 +108,9 @@ svg_block.append("line")
     .attr("y1", h_block*(1/10))
     .attr("x2", w_block*(1/15))
     .attr("y2", h_block*(4/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // left vertical line
 svg_block.append("line")
@@ -118,9 +118,9 @@ svg_block.append("line")
     .attr("y1", h_block*(4/10))
     .attr("x2", w_block*(1/15))
     .attr("y2", h_block*(9/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // bottom line
 svg_block.append("line")
@@ -128,9 +128,9 @@ svg_block.append("line")
     .attr("y1", h_block*(9/10))
     .attr("x2", w_block*(2.87/15))
     .attr("y2", h_block*(6/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // right vertical line
 svg_block.append("line")
@@ -138,9 +138,9 @@ svg_block.append("line")
     .attr("y1", h_block*(6/10))
     .attr("x2", w_block*(2.87/15))
     .attr("y2", h_block*(1/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // Big R indicating the Right Face of this rectangular block of butter
 svg_block.append("text")
@@ -149,8 +149,8 @@ svg_block.append("text")
     .attr("y", h_block*(11/20))
     .attr("font-family", "sans-serif")
     .attr("font-size", "82px")
-    .attr("fill", "#d079a2")
-    .attr("stroke", "#696a61")
+    .attr("fill", "#6b4691")
+    .attr("stroke", "#3a3a36")
     .attr("stroke-width", 2);
 
 // Drawing a cross section of the BLOCK OF BUTTER ----------------------------
@@ -169,7 +169,7 @@ svg_cross_1_block.append("text")
     .attr("y", h_cross_block*(1/10))
     .attr("font-family", "sans-serif")
     .attr("font-size", "32px")
-    .attr("fill", "#696a61");
+    .attr("fill", "#3a3a36");
 
 // top line
 svg_cross_1_block.append("line")
@@ -177,9 +177,9 @@ svg_cross_1_block.append("line")
     .attr("y1", h_cross_block*(2/10))
     .attr("x2", w_cross_block*(12/15))
     .attr("y2", h_cross_block*(2/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // right vertical line
 svg_cross_1_block.append("line")
@@ -187,9 +187,9 @@ svg_cross_1_block.append("line")
     .attr("y1", h_cross_block*(2/10))
     .attr("x2", w_cross_block*(12/15))
     .attr("y2", h_cross_block*(8/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // bottom line
 svg_cross_1_block.append("line")
@@ -197,9 +197,9 @@ svg_cross_1_block.append("line")
     .attr("y1", h_cross_block*(8/10))
     .attr("x2", w_cross_block*(3/15))
     .attr("y2", h_cross_block*(8/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // left vertical line
 svg_cross_1_block.append("line")
@@ -207,9 +207,9 @@ svg_cross_1_block.append("line")
     .attr("y1", h_cross_block*(8/10))
     .attr("x2", w_cross_block*(3/15))
     .attr("y2", h_cross_block*(2/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 
 // Drawing a cross section of the BLOCK OF BUTTER after breaking it down -----
@@ -227,7 +227,7 @@ svg_cross_4_block.append("text")
     .attr("y", h_cross_block*(1/10))
     .attr("font-family", "sans-serif")
     .attr("font-size", "32px")
-    .attr("fill", "#696a61");
+    .attr("fill", "#3a3a36");
 
 // top line
 svg_cross_4_block.append("line")
@@ -235,9 +235,9 @@ svg_cross_4_block.append("line")
     .attr("y1", h_cross_block*(2/10))
     .attr("x2", w_cross_block*(12/15))
     .attr("y2", h_cross_block*(2/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // right vertical line
 svg_cross_4_block.append("line")
@@ -245,9 +245,9 @@ svg_cross_4_block.append("line")
     .attr("y1", h_cross_block*(2/10))
     .attr("x2", w_cross_block*(12/15))
     .attr("y2", h_cross_block*(8/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // bottom line
 svg_cross_4_block.append("line")
@@ -255,9 +255,9 @@ svg_cross_4_block.append("line")
     .attr("y1", h_cross_block*(8/10))
     .attr("x2", w_cross_block*(3/15))
     .attr("y2", h_cross_block*(8/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // left vertical line
 svg_cross_4_block.append("line")
@@ -265,9 +265,9 @@ svg_cross_4_block.append("line")
     .attr("y1", h_cross_block*(8/10))
     .attr("x2", w_cross_block*(3/15))
     .attr("y2", h_cross_block*(2/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // middle horizontal line
 svg_cross_4_block.append("line")
@@ -275,9 +275,9 @@ svg_cross_4_block.append("line")
     .attr("y1", h_cross_block*(5/10))
     .attr("x2", w_cross_block*(12/15))
     .attr("y2", h_cross_block*(5/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // middle vertical line
 svg_cross_4_block.append("line")
@@ -285,9 +285,9 @@ svg_cross_4_block.append("line")
     .attr("y1", h_cross_block*(2/10))
     .attr("x2", w_cross_block*(7.5/15))
     .attr("y2", h_cross_block*(8/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 
 
@@ -302,7 +302,7 @@ d3.select("#center_point")
 	
 	// center point
 	svg_cross_1_block.append("circle")
-	    .style("fill", "#696a61")
+	    .style("fill", "#3a3a36")
 	    .attr("cx", w_cross_block*(7.5/15))
 	    .attr("cy", h_cross_block*(5/10))
 	    .attr("r", 5);
@@ -316,28 +316,28 @@ d3.select("#center_point")
 	// center points
 	// top left
 	svg_cross_4_block.append("circle")
-	    .style("fill", "#696a61")
+	    .style("fill", "#3a3a36")
 	    .attr("cx", w_cross_block*(5.25/15))
 	    .attr("cy", h_cross_block*(3.5/10))
 	    .attr("r", 5);
 	
 	// top right
 	svg_cross_4_block.append("circle")
-	    .style("fill", "#696a61")
+	    .style("fill", "#3a3a36")
 	    .attr("cx", w_cross_block*(9.75/15))
 	    .attr("cy", h_cross_block*(3.5/10))
 	    .attr("r", 5);
 
 	// bottom left
 	svg_cross_4_block.append("circle")
-	    .style("fill", "#696a61")
+	    .style("fill", "#3a3a36")
 	    .attr("cx", w_cross_block*(5.25/15))
 	    .attr("cy", h_cross_block*(6.5/10))
 	    .attr("r", 5);
 
 	// bottom right
 	svg_cross_4_block.append("circle")
-	    .style("fill", "#696a61")
+	    .style("fill", "#3a3a36")
 	    .attr("cx", w_cross_block*(9.75/15))
 	    .attr("cy", h_cross_block*(6.5/10))
 	    .attr("r", 5);
@@ -360,9 +360,9 @@ svg_cross_3_and_1_several_block.append("line")
     .attr("y1", h_cross_block*(2/10))
     .attr("x2", w_cross_block*(12/15))
     .attr("y2", h_cross_block*(2/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // right vertical line
 svg_cross_3_and_1_several_block.append("line")
@@ -370,9 +370,9 @@ svg_cross_3_and_1_several_block.append("line")
     .attr("y1", h_cross_block*(2/10))
     .attr("x2", w_cross_block*(12/15))
     .attr("y2", h_cross_block*(8/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // bottom line
 svg_cross_3_and_1_several_block.append("line")
@@ -380,9 +380,9 @@ svg_cross_3_and_1_several_block.append("line")
     .attr("y1", h_cross_block*(8/10))
     .attr("x2", w_cross_block*(3/15))
     .attr("y2", h_cross_block*(8/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // left vertical line
 svg_cross_3_and_1_several_block.append("line")
@@ -390,9 +390,9 @@ svg_cross_3_and_1_several_block.append("line")
     .attr("y1", h_cross_block*(8/10))
     .attr("x2", w_cross_block*(3/15))
     .attr("y2", h_cross_block*(2/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // middle horizontal line
 svg_cross_3_and_1_several_block.append("line")
@@ -400,9 +400,9 @@ svg_cross_3_and_1_several_block.append("line")
     .attr("y1", h_cross_block*(5/10))
     .attr("x2", w_cross_block*(12/15))
     .attr("y2", h_cross_block*(5/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // middle vertical line
 svg_cross_3_and_1_several_block.append("line")
@@ -410,9 +410,9 @@ svg_cross_3_and_1_several_block.append("line")
     .attr("y1", h_cross_block*(2/10))
     .attr("x2", w_cross_block*(7.5/15))
     .attr("y2", h_cross_block*(8/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // left vertical line in bottom right stick of butter
 svg_cross_3_and_1_several_block.append("line")
@@ -420,9 +420,9 @@ svg_cross_3_and_1_several_block.append("line")
     .attr("y1", h_cross_block*(5/10))
     .attr("x2", w_cross_block*(9/15))
     .attr("y2", h_cross_block*(8/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // right vertical line in bottom right stick of butter
 svg_cross_3_and_1_several_block.append("line")
@@ -430,9 +430,9 @@ svg_cross_3_and_1_several_block.append("line")
     .attr("y1", h_cross_block*(5/10))
     .attr("x2", w_cross_block*(10.5/15))
     .attr("y2", h_cross_block*(8/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // top horizontal line in bottom right stick of butter
 svg_cross_3_and_1_several_block.append("line")
@@ -440,9 +440,9 @@ svg_cross_3_and_1_several_block.append("line")
     .attr("y1", h_cross_block*(6/10))
     .attr("x2", w_cross_block*(12/15))
     .attr("y2", h_cross_block*(6/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // bottom horizontal line in bottom right stick of butter
 svg_cross_3_and_1_several_block.append("line")
@@ -450,91 +450,91 @@ svg_cross_3_and_1_several_block.append("line")
     .attr("y1", h_cross_block*(7/10))
     .attr("x2", w_cross_block*(12/15))
     .attr("y2", h_cross_block*(7/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // center points
 // top left
 svg_cross_3_and_1_several_block.append("circle")
-    .style("fill", "#696a61")
+    .style("fill", "#3a3a36")
     .attr("cx", w_cross_block*(5.25/15))
     .attr("cy", h_cross_block*(3.5/10))
     .attr("r", 5);
 
 // top right
 svg_cross_3_and_1_several_block.append("circle")
-    .style("fill", "#696a61")
+    .style("fill", "#3a3a36")
     .attr("cx", w_cross_block*(9.75/15))
     .attr("cy", h_cross_block*(3.5/10))
     .attr("r", 5);
 
 // bottom left
 svg_cross_3_and_1_several_block.append("circle")
-    .style("fill", "#696a61")
+    .style("fill", "#3a3a36")
     .attr("cx", w_cross_block*(5.25/15))
     .attr("cy", h_cross_block*(6.5/10))
     .attr("r", 5);
 
 // bottom right, r1, c1
 svg_cross_3_and_1_several_block.append("circle")
-    .style("fill", "#696a61")
+    .style("fill", "#3a3a36")
     .attr("cx", w_cross_block*(8.25/15))
     .attr("cy", h_cross_block*(5.5/10))
     .attr("r", 5);
 
 // bottom right, r1, c2
 svg_cross_3_and_1_several_block.append("circle")
-    .style("fill", "#696a61")
+    .style("fill", "#3a3a36")
     .attr("cx", w_cross_block*(9.75/15))
     .attr("cy", h_cross_block*(5.5/10))
     .attr("r", 5);
 
 // bottom right, r1, c3
 svg_cross_3_and_1_several_block.append("circle")
-    .style("fill", "#696a61")
+    .style("fill", "#3a3a36")
     .attr("cx", w_cross_block*(11.25/15))
     .attr("cy", h_cross_block*(5.5/10))
     .attr("r", 5);
 
 // bottom right, r2, c1
 svg_cross_3_and_1_several_block.append("circle")
-    .style("fill", "#696a61")
+    .style("fill", "#3a3a36")
     .attr("cx", w_cross_block*(8.25/15))
     .attr("cy", h_cross_block*(6.5/10))
     .attr("r", 5);
 
 // bottom right, r2, c2
 svg_cross_3_and_1_several_block.append("circle")
-    .style("fill", "#696a61")
+    .style("fill", "#3a3a36")
     .attr("cx", w_cross_block*(9.75/15))
     .attr("cy", h_cross_block*(6.5/10))
     .attr("r", 5);
 
 // bottom right, r2, c3
 svg_cross_3_and_1_several_block.append("circle")
-    .style("fill", "#696a61")
+    .style("fill", "#3a3a36")
     .attr("cx", w_cross_block*(11.25/15))
     .attr("cy", h_cross_block*(6.5/10))
     .attr("r", 5);
 
 // bottom right, r3, c1
 svg_cross_3_and_1_several_block.append("circle")
-    .style("fill", "#696a61")
+    .style("fill", "#3a3a36")
     .attr("cx", w_cross_block*(8.25/15))
     .attr("cy", h_cross_block*(7.5/10))
     .attr("r", 5);
 
 // bottom right, r3, c2
 svg_cross_3_and_1_several_block.append("circle")
-    .style("fill", "#696a61")
+    .style("fill", "#3a3a36")
     .attr("cx", w_cross_block*(9.75/15))
     .attr("cy", h_cross_block*(7.5/10))
     .attr("r", 5);
 
 // bottom right, r3, c3
 svg_cross_3_and_1_several_block.append("circle")
-    .style("fill", "#696a61")
+    .style("fill", "#3a3a36")
     .attr("cx", w_cross_block*(11.25/15))
     .attr("cy", h_cross_block*(7.5/10))
     .attr("r", 5);
@@ -556,9 +556,9 @@ svg_cross_2_and_2_several_block.append("line")
     .attr("y1", h_cross_block*(2/10))
     .attr("x2", w_cross_block*(12/15))
     .attr("y2", h_cross_block*(2/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // middle vertical line in top left stick of butter
 svg_cross_2_and_2_several_block.append("line")
@@ -566,9 +566,9 @@ svg_cross_2_and_2_several_block.append("line")
     .attr("y1", h_cross_block*(2/10))
     .attr("x2", w_cross_block*(5.25/15))
     .attr("y2", h_cross_block*(5/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // middle horizontal line in top left stick of butter
 svg_cross_2_and_2_several_block.append("line")
@@ -576,9 +576,9 @@ svg_cross_2_and_2_several_block.append("line")
     .attr("y1", h_cross_block*(3.5/10))
     .attr("x2", w_cross_block*(7.5/15))
     .attr("y2", h_cross_block*(3.5/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // right vertical line
 svg_cross_2_and_2_several_block.append("line")
@@ -586,9 +586,9 @@ svg_cross_2_and_2_several_block.append("line")
     .attr("y1", h_cross_block*(2/10))
     .attr("x2", w_cross_block*(12/15))
     .attr("y2", h_cross_block*(8/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // bottom line
 svg_cross_2_and_2_several_block.append("line")
@@ -596,9 +596,9 @@ svg_cross_2_and_2_several_block.append("line")
     .attr("y1", h_cross_block*(8/10))
     .attr("x2", w_cross_block*(3/15))
     .attr("y2", h_cross_block*(8/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // left vertical line
 svg_cross_2_and_2_several_block.append("line")
@@ -606,9 +606,9 @@ svg_cross_2_and_2_several_block.append("line")
     .attr("y1", h_cross_block*(8/10))
     .attr("x2", w_cross_block*(3/15))
     .attr("y2", h_cross_block*(2/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // middle horizontal line
 svg_cross_2_and_2_several_block.append("line")
@@ -616,9 +616,9 @@ svg_cross_2_and_2_several_block.append("line")
     .attr("y1", h_cross_block*(5/10))
     .attr("x2", w_cross_block*(12/15))
     .attr("y2", h_cross_block*(5/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // middle vertical line
 svg_cross_2_and_2_several_block.append("line")
@@ -626,9 +626,9 @@ svg_cross_2_and_2_several_block.append("line")
     .attr("y1", h_cross_block*(2/10))
     .attr("x2", w_cross_block*(7.5/15))
     .attr("y2", h_cross_block*(8/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // left vertical line in bottom right stick of butter
 svg_cross_2_and_2_several_block.append("line")
@@ -636,9 +636,9 @@ svg_cross_2_and_2_several_block.append("line")
     .attr("y1", h_cross_block*(5/10))
     .attr("x2", w_cross_block*(9/15))
     .attr("y2", h_cross_block*(8/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // right vertical vertical line in bottom right stick of butter
 svg_cross_2_and_2_several_block.append("line")
@@ -646,9 +646,9 @@ svg_cross_2_and_2_several_block.append("line")
     .attr("y1", h_cross_block*(5/10))
     .attr("x2", w_cross_block*(10.5/15))
     .attr("y2", h_cross_block*(8/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // top horizontal line in bottom right stick of butter
 svg_cross_2_and_2_several_block.append("line")
@@ -656,9 +656,9 @@ svg_cross_2_and_2_several_block.append("line")
     .attr("y1", h_cross_block*(6/10))
     .attr("x2", w_cross_block*(12/15))
     .attr("y2", h_cross_block*(6/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // bottom horizontal line in bottom right stick of butter
 svg_cross_2_and_2_several_block.append("line")
@@ -666,112 +666,112 @@ svg_cross_2_and_2_several_block.append("line")
     .attr("y1", h_cross_block*(7/10))
     .attr("x2", w_cross_block*(12/15))
     .attr("y2", h_cross_block*(7/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // center points
 // top left, r1, c1
 svg_cross_2_and_2_several_block.append("circle")
-    .style("fill", "#696a61")
+    .style("fill", "#3a3a36")
     .attr("cx", w_cross_block*(4.13/15))
     .attr("cy", h_cross_block*(2.75/10))
     .attr("r", 5)
 
 // top left, r1, c2
 svg_cross_2_and_2_several_block.append("circle")
-    .style("fill", "#696a61")
+    .style("fill", "#3a3a36")
     .attr("cx", w_cross_block*(6.38/15))
     .attr("cy", h_cross_block*(2.75/10))
     .attr("r", 5)
 
 // top left, r2, c1
 svg_cross_2_and_2_several_block.append("circle")
-    .style("fill", "#696a61")
+    .style("fill", "#3a3a36")
     .attr("cx", w_cross_block*(4.13/15))
     .attr("cy", h_cross_block*(4.25/10))
     .attr("r", 5)
 
 // top left, r2, c2
 svg_cross_2_and_2_several_block.append("circle")
-    .style("fill", "#696a61")
+    .style("fill", "#3a3a36")
     .attr("cx", w_cross_block*(6.38/15))
     .attr("cy", h_cross_block*(4.25/10))
     .attr("r", 5)
 
 // top right
 svg_cross_2_and_2_several_block.append("circle")
-    .style("fill", "#696a61")
+    .style("fill", "#3a3a36")
     .attr("cx", w_cross_block*(9.75/15))
     .attr("cy", h_cross_block*(3.5/10))
     .attr("r", 5);
 
 // bottom left
 svg_cross_2_and_2_several_block.append("circle")
-    .style("fill", "#696a61")
+    .style("fill", "#3a3a36")
     .attr("cx", w_cross_block*(5.25/15))
     .attr("cy", h_cross_block*(6.5/10))
     .attr("r", 5);
 
 // bottom right, r1, c1
 svg_cross_2_and_2_several_block.append("circle")
-    .style("fill", "#696a61")
+    .style("fill", "#3a3a36")
     .attr("cx", w_cross_block*(8.25/15))
     .attr("cy", h_cross_block*(5.5/10))
     .attr("r", 5);
 
 // bottom right, r1, c2
 svg_cross_2_and_2_several_block.append("circle")
-    .style("fill", "#696a61")
+    .style("fill", "#3a3a36")
     .attr("cx", w_cross_block*(9.75/15))
     .attr("cy", h_cross_block*(5.5/10))
     .attr("r", 5);
 
 // bottom right, r1, c3
 svg_cross_2_and_2_several_block.append("circle")
-    .style("fill", "#696a61")
+    .style("fill", "#3a3a36")
     .attr("cx", w_cross_block*(11.25/15))
     .attr("cy", h_cross_block*(5.5/10))
     .attr("r", 5);
 
 // bottom right, r2, c1
 svg_cross_2_and_2_several_block.append("circle")
-    .style("fill", "#696a61")
+    .style("fill", "#3a3a36")
     .attr("cx", w_cross_block*(8.25/15))
     .attr("cy", h_cross_block*(6.5/10))
     .attr("r", 5);
 
 // bottom right, r2, c2
 svg_cross_2_and_2_several_block.append("circle")
-    .style("fill", "#696a61")
+    .style("fill", "#3a3a36")
     .attr("cx", w_cross_block*(9.75/15))
     .attr("cy", h_cross_block*(6.5/10))
     .attr("r", 5);
 
 // bottom right, r2, c3
 svg_cross_2_and_2_several_block.append("circle")
-    .style("fill", "#696a61")
+    .style("fill", "#3a3a36")
     .attr("cx", w_cross_block*(11.25/15))
     .attr("cy", h_cross_block*(6.5/10))
     .attr("r", 5);
 
 // bottom right, r3, c1
 svg_cross_2_and_2_several_block.append("circle")
-    .style("fill", "#696a61")
+    .style("fill", "#3a3a36")
     .attr("cx", w_cross_block*(8.25/15))
     .attr("cy", h_cross_block*(7.5/10))
     .attr("r", 5);
 
 // bottom right, r3, c2
 svg_cross_2_and_2_several_block.append("circle")
-    .style("fill", "#696a61")
+    .style("fill", "#3a3a36")
     .attr("cx", w_cross_block*(9.75/15))
     .attr("cy", h_cross_block*(7.5/10))
     .attr("r", 5);
 
 // bottom right, r3, c3
 svg_cross_2_and_2_several_block.append("circle")
-    .style("fill", "#696a61")
+    .style("fill", "#3a3a36")
     .attr("cx", w_cross_block*(11.25/15))
     .attr("cy", h_cross_block*(7.5/10))
     .attr("r", 5);
@@ -795,9 +795,9 @@ svg_rect_1_plus_3.append("line")
     .attr("y1", h_cross_block*(2/10))
     .attr("x2", w_cross_block*(12/15))
     .attr("y2", h_cross_block*(2/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // right vertical line
 svg_rect_1_plus_3.append("line")
@@ -805,9 +805,9 @@ svg_rect_1_plus_3.append("line")
     .attr("y1", h_cross_block*(2/10))
     .attr("x2", w_cross_block*(12/15))
     .attr("y2", h_cross_block*(8/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // bottom line
 svg_rect_1_plus_3.append("line")
@@ -815,9 +815,9 @@ svg_rect_1_plus_3.append("line")
     .attr("y1", h_cross_block*(8/10))
     .attr("x2", w_cross_block*(3/15))
     .attr("y2", h_cross_block*(8/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // left vertical line
 svg_rect_1_plus_3.append("line")
@@ -825,9 +825,9 @@ svg_rect_1_plus_3.append("line")
     .attr("y1", h_cross_block*(8/10))
     .attr("x2", w_cross_block*(3/15))
     .attr("y2", h_cross_block*(2/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // Drawing a medium size rectangle within ------------------------------------
 //
@@ -842,7 +842,7 @@ d3.select("#medium_size_rect_1_plus_3")
 	        .attr("y2", h_cross_block*(4/10))
 	        .style("stroke", "#91d5e4")
 	        .style("stroke-width", 5)
-	        .style("stroke-dasharray", "3 1");
+	        .style("stroke-dasharray", "12 3");
 
 	    // right vertical side
 	    svg_rect_1_plus_3.append("line")
@@ -852,7 +852,7 @@ d3.select("#medium_size_rect_1_plus_3")
 	        .attr("y2", h_cross_block*(6/10))
 	        .style("stroke", "#91d5e4")
 	        .style("stroke-width", 5)
-	        .style("stroke-dasharray", "3 1");
+	        .style("stroke-dasharray", "12 3");
 	    
 	    // bottom
 	    svg_rect_1_plus_3.append("line")
@@ -862,7 +862,7 @@ d3.select("#medium_size_rect_1_plus_3")
 	        .attr("y2", h_cross_block*(6/10))
 	        .style("stroke", "#91d5e4")
 	        .style("stroke-width", 5)
-	        .style("stroke-dasharray", "3 1");
+	        .style("stroke-dasharray", "12 3");
 
 	    // left vertical side
 	    svg_rect_1_plus_3.append("line")
@@ -872,7 +872,7 @@ d3.select("#medium_size_rect_1_plus_3")
 	        .attr("y2", h_cross_block*(4/10))
 	        .style("stroke", "#91d5e4")
 	        .style("stroke-width", 5)
-	        .style("stroke-dasharray", "3 1");
+	        .style("stroke-dasharray", "12 3");
     });
 
 // Drawing the smaller rectangle within --------------------------------------
@@ -888,7 +888,7 @@ d3.select("#smaller_size_rect_1_plus_3")
 	        .attr("y2", h_cross_block*(2.5/10))
 	        .style("stroke", "#91d5e4")
 	        .style("stroke-width", 5)
-	        .style("stroke-dasharray", "3 1");
+	        .style("stroke-dasharray", "12 3");
 
 	    // right vertical side
 	    svg_rect_1_plus_3.append("line")
@@ -898,7 +898,7 @@ d3.select("#smaller_size_rect_1_plus_3")
 	        .attr("y2", h_cross_block*(3.16/10))
 	        .style("stroke", "#91d5e4")
 	        .style("stroke-width", 5)
-	        .style("stroke-dasharray", "3 1");
+	        .style("stroke-dasharray", "12 3");
 	    
 	    // bottom
 	    svg_rect_1_plus_3.append("line")
@@ -908,7 +908,7 @@ d3.select("#smaller_size_rect_1_plus_3")
 	        .attr("y2", h_cross_block*(3.16/10))
 	        .style("stroke", "#91d5e4")
 	        .style("stroke-width", 5)
-	        .style("stroke-dasharray", "3 1");
+	        .style("stroke-dasharray", "12 3");
 
 	    // left vertical side
 	    svg_rect_1_plus_3.append("line")
@@ -918,7 +918,7 @@ d3.select("#smaller_size_rect_1_plus_3")
 	        .attr("y2", h_cross_block*(2.5/10))
 	        .style("stroke", "#91d5e4")
 	        .style("stroke-width", 5)
-	        .style("stroke-dasharray", "3 1");
+	        .style("stroke-dasharray", "12 3");
     });
 
 // Drawing the larger rectangle within ---------------------------------------
@@ -934,7 +934,7 @@ d3.select("#larger_size_rect_1_plus_3")
 	        .attr("y2", h_cross_block*(3.25/10))
 	        .style("stroke", "#91d5e4")
 	        .style("stroke-width", 5)
-	        .style("stroke-dasharray", "3 1");
+	        .style("stroke-dasharray", "12 3");
 
 	    // right vertical side
 	    svg_rect_1_plus_3.append("line")
@@ -944,7 +944,7 @@ d3.select("#larger_size_rect_1_plus_3")
 	        .attr("y2", h_cross_block*(7.25/10))
 	        .style("stroke", "#91d5e4")
 	        .style("stroke-width", 5)
-	        .style("stroke-dasharray", "3 1");
+	        .style("stroke-dasharray", "12 3");
 	    
 	    // bottom
 	    svg_rect_1_plus_3.append("line")
@@ -954,7 +954,7 @@ d3.select("#larger_size_rect_1_plus_3")
 	        .attr("y2", h_cross_block*(7.25/10))
 	        .style("stroke", "#91d5e4")
 	        .style("stroke-width", 5)
-	        .style("stroke-dasharray", "3 1");
+	        .style("stroke-dasharray", "12 3");
 
 	    // left vertical side
 	    svg_rect_1_plus_3.append("line")
@@ -964,7 +964,7 @@ d3.select("#larger_size_rect_1_plus_3")
 	        .attr("y2", h_cross_block*(3.25/10))
 	        .style("stroke", "#91d5e4")
 	        .style("stroke-width", 5)
-	        .style("stroke-dasharray", "3 1");
+	        .style("stroke-dasharray", "12 3");
     });
 
 
@@ -990,9 +990,9 @@ svg_rect_4_plus_3.append("line")
     .attr("y1", h_cross_block*(2/10))
     .attr("x2", w_cross_block*(12/15))
     .attr("y2", h_cross_block*(2/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // right vertical line
 svg_rect_4_plus_3.append("line")
@@ -1000,9 +1000,9 @@ svg_rect_4_plus_3.append("line")
     .attr("y1", h_cross_block*(2/10))
     .attr("x2", w_cross_block*(12/15))
     .attr("y2", h_cross_block*(8/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // bottom line
 svg_rect_4_plus_3.append("line")
@@ -1010,9 +1010,9 @@ svg_rect_4_plus_3.append("line")
     .attr("y1", h_cross_block*(8/10))
     .attr("x2", w_cross_block*(3/15))
     .attr("y2", h_cross_block*(8/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // left vertical line
 svg_rect_4_plus_3.append("line")
@@ -1020,9 +1020,9 @@ svg_rect_4_plus_3.append("line")
     .attr("y1", h_cross_block*(8/10))
     .attr("x2", w_cross_block*(3/15))
     .attr("y2", h_cross_block*(2/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // middle horizontal line
 svg_rect_4_plus_3.append("line")
@@ -1030,9 +1030,9 @@ svg_rect_4_plus_3.append("line")
     .attr("y1", h_cross_block*(5/10))
     .attr("x2", w_cross_block*(12/15))
     .attr("y2", h_cross_block*(5/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // middle vertical line
 svg_rect_4_plus_3.append("line")
@@ -1040,9 +1040,9 @@ svg_rect_4_plus_3.append("line")
     .attr("y1", h_cross_block*(2/10))
     .attr("x2", w_cross_block*(7.5/15))
     .attr("y2", h_cross_block*(8/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 
 
@@ -1059,7 +1059,7 @@ d3.select("#medium_size_rect_4_plus_3")
 	        .attr("y2", h_cross_block*(4/10))
 	        .style("stroke", "#d079a2")
 	        .style("stroke-width", 5)
-	        .style("stroke-dasharray", "3 1");
+	        .style("stroke-dasharray", "12 3");
 
 	    // right vertical side
 	    svg_rect_4_plus_3.append("line")
@@ -1069,7 +1069,7 @@ d3.select("#medium_size_rect_4_plus_3")
 	        .attr("y2", h_cross_block*(6/10))
 	        .style("stroke", "#d079a2")
 	        .style("stroke-width", 5)
-	        .style("stroke-dasharray", "3 1");
+	        .style("stroke-dasharray", "12 3");
 	    
 	    // bottom
 	    svg_rect_4_plus_3.append("line")
@@ -1079,7 +1079,7 @@ d3.select("#medium_size_rect_4_plus_3")
 	        .attr("y2", h_cross_block*(6/10))
 	        .style("stroke", "#d079a2")
 	        .style("stroke-width", 5)
-	        .style("stroke-dasharray", "3 1");
+	        .style("stroke-dasharray", "12 3");
 
 	    // left vertical side
 	    svg_rect_4_plus_3.append("line")
@@ -1089,7 +1089,7 @@ d3.select("#medium_size_rect_4_plus_3")
 	        .attr("y2", h_cross_block*(4/10))
 	        .style("stroke", "#d079a2")
 	        .style("stroke-width", 5)
-	        .style("stroke-dasharray", "3 1");
+	        .style("stroke-dasharray", "12 3");
     });
 
 // Drawing the smaller rectangle within --------------------------------------
@@ -1105,7 +1105,7 @@ d3.select("#smaller_size_rect_4_plus_3")
 	        .attr("y2", h_cross_block*(2.5/10))
 	        .style("stroke", "#d079a2")
 	        .style("stroke-width", 5)
-	        .style("stroke-dasharray", "3 1");
+	        .style("stroke-dasharray", "12 3");
 
 	    // right vertical side
 	    svg_rect_4_plus_3.append("line")
@@ -1115,7 +1115,7 @@ d3.select("#smaller_size_rect_4_plus_3")
 	        .attr("y2", h_cross_block*(3.16/10))
 	        .style("stroke", "#d079a2")
 	        .style("stroke-width", 5)
-	        .style("stroke-dasharray", "3 1");
+	        .style("stroke-dasharray", "12 3");
 	    
 	    // bottom
 	    svg_rect_4_plus_3.append("line")
@@ -1125,7 +1125,7 @@ d3.select("#smaller_size_rect_4_plus_3")
 	        .attr("y2", h_cross_block*(3.16/10))
 	        .style("stroke", "#d079a2")
 	        .style("stroke-width", 5)
-	        .style("stroke-dasharray", "3 1");
+	        .style("stroke-dasharray", "12 3");
 
 	    // left vertical side
 	    svg_rect_4_plus_3.append("line")
@@ -1135,7 +1135,7 @@ d3.select("#smaller_size_rect_4_plus_3")
 	        .attr("y2", h_cross_block*(2.5/10))
 	        .style("stroke", "#d079a2")
 	        .style("stroke-width", 5)
-	        .style("stroke-dasharray", "3 1");
+	        .style("stroke-dasharray", "12 3");
     });
 
 // Drawing the larger rectangle within ---------------------------------------
@@ -1151,7 +1151,7 @@ d3.select("#larger_size_rect_4_plus_3")
 	        .attr("y2", h_cross_block*(3.25/10))
 	        .style("stroke", "#d079a2")
 	        .style("stroke-width", 5)
-	        .style("stroke-dasharray", "3 1");
+	        .style("stroke-dasharray", "12 3");
 
 	    // right vertical side
 	    svg_rect_4_plus_3.append("line")
@@ -1161,7 +1161,7 @@ d3.select("#larger_size_rect_4_plus_3")
 	        .attr("y2", h_cross_block*(7.25/10))
 	        .style("stroke", "#d079a2")
 	        .style("stroke-width", 5)
-	        .style("stroke-dasharray", "3 1");
+	        .style("stroke-dasharray", "12 3");
 	    
 	    // bottom
 	    svg_rect_4_plus_3.append("line")
@@ -1171,7 +1171,7 @@ d3.select("#larger_size_rect_4_plus_3")
 	        .attr("y2", h_cross_block*(7.25/10))
 	        .style("stroke", "#d079a2")
 	        .style("stroke-width", 5)
-	        .style("stroke-dasharray", "3 1");
+	        .style("stroke-dasharray", "12 3");
 
 	    // left vertical side
 	    svg_rect_4_plus_3.append("line")
@@ -1181,7 +1181,7 @@ d3.select("#larger_size_rect_4_plus_3")
 	        .attr("y2", h_cross_block*(3.25/10))
 	        .style("stroke", "#d079a2")
 	        .style("stroke-width", 5)
-	        .style("stroke-dasharray", "3 1");
+	        .style("stroke-dasharray", "12 3");
     });
 
 
@@ -1209,9 +1209,9 @@ svg_rect_1_plus_many.append("line")
     .attr("y1", h_rect*(1/10))
     .attr("x2", w_rect*(12/15))
     .attr("y2", h_rect*(1/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // right vertical line
 svg_rect_1_plus_many.append("line")
@@ -1219,9 +1219,9 @@ svg_rect_1_plus_many.append("line")
     .attr("y1", h_rect*(1/10))
     .attr("x2", w_rect*(12/15))
     .attr("y2", h_rect*(9/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // bottom line
 svg_rect_1_plus_many.append("line")
@@ -1229,9 +1229,9 @@ svg_rect_1_plus_many.append("line")
     .attr("y1", h_rect*(9/10))
     .attr("x2", w_rect*(3/15))
     .attr("y2", h_rect*(9/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 // left vertical line
 svg_rect_1_plus_many.append("line")
@@ -1239,14 +1239,14 @@ svg_rect_1_plus_many.append("line")
     .attr("y1", h_rect*(9/10))
     .attr("x2", w_rect*(3/15))
     .attr("y2", h_rect*(1/10))
-    .style("stroke", "#696a61")
+    .style("stroke", "#3a3a36")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3");
+    .style("stroke-dasharray", "12 3");
 
 d3.select("#rect_1_plus_many")
     .on("click", function() {
 
-	    var colors = ["#cca2fa", "#91d5e4", "#d079a2"];
+	    var colors = ["#6b4691", "#91d5e4", "#d079a2"];
 
 	    const random_color = Math.floor(Math.random()*colors.length);
     	
@@ -1278,7 +1278,7 @@ d3.select("#rect_1_plus_many")
 	    	        .attr("y2", w_rect*((j+scalar)/10))
 	    	        .style("stroke", colors[random_color])
 	    	        .style("stroke-width", 5)
-	    	        .style("stroke-dasharray", "3 3");
+	    	        .style("stroke-dasharray", "12 3");
 
 
             	    // right vertical
@@ -1289,7 +1289,7 @@ d3.select("#rect_1_plus_many")
 	    	        .attr("y2", w_rect*((n+scalar)/10))
 	    	        .style("stroke", colors[random_color])
 	    	        .style("stroke-width", 5)
-	    	        .style("stroke-dasharray", "3 3");
+	    	        .style("stroke-dasharray", "12 3");
             	    
 	    	    // bottom
 	    	    svg_rect_1_plus_many.append("line")
@@ -1299,7 +1299,7 @@ d3.select("#rect_1_plus_many")
 	    	        .attr("y2", w_rect*((n+scalar)/10))
 	    	        .style("stroke", colors[random_color])
 	    	        .style("stroke-width", 5)
-	    	        .style("stroke-dasharray", "3 3");
+	    	        .style("stroke-dasharray", "12 3");
             	    
 	    	    // left vertical
 	    	    svg_rect_1_plus_many.append("line")
@@ -1309,7 +1309,7 @@ d3.select("#rect_1_plus_many")
 	    	        .attr("y2", w_rect*((j+scalar)/10))
 	    	        .style("stroke", colors[random_color])
 	    	        .style("stroke-width", 5)
-	    	        .style("stroke-dasharray", "3 3");
+	    	        .style("stroke-dasharray", "12 3");
 	    }
 	    else if (k_minus_i == 2) {
 		    let j = 1;
@@ -1325,7 +1325,7 @@ d3.select("#rect_1_plus_many")
 	    	        .attr("y2", w_rect*((j+scalar)/10))
 	    	        .style("stroke", colors[random_color])
 	    	        .style("stroke-width", 5)
-	    	        .style("stroke-dasharray", "3 3");
+	    	        .style("stroke-dasharray", "12 3");
 
 
             	    // right vertical
@@ -1336,7 +1336,7 @@ d3.select("#rect_1_plus_many")
 	    	        .attr("y2", w_rect*((n+scalar)/10))
 	    	        .style("stroke", colors[random_color])
 	    	        .style("stroke-width", 5)
-	    	        .style("stroke-dasharray", "3 3");
+	    	        .style("stroke-dasharray", "12 3");
             	    
 	    	    // bottom
 	    	    svg_rect_1_plus_many.append("line")
@@ -1346,7 +1346,7 @@ d3.select("#rect_1_plus_many")
 	    	        .attr("y2", w_rect*((n+scalar)/10))
 	    	        .style("stroke", colors[random_color])
 	    	        .style("stroke-width", 5)
-	    	        .style("stroke-dasharray", "3 3");
+	    	        .style("stroke-dasharray", "12 3");
             	    
 	    	    // left vertical
 	    	    svg_rect_1_plus_many.append("line")
@@ -1356,7 +1356,7 @@ d3.select("#rect_1_plus_many")
 	    	        .attr("y2", w_rect*((j+scalar)/10))
 	    	        .style("stroke", colors[random_color])
 	    	        .style("stroke-width", 5)
-	    	        .style("stroke-dasharray", "3 3");
+	    	        .style("stroke-dasharray", "12 3");
 	    } 
 	    else if (k_minus_i == 3) {
 		    let j = 1;
@@ -1372,7 +1372,7 @@ d3.select("#rect_1_plus_many")
 	    	        .attr("y2", w_rect*((j+scalar)/10))
 	    	        .style("stroke", colors[random_color])
 	    	        .style("stroke-width", 5)
-	    	        .style("stroke-dasharray", "3 3");
+	    	        .style("stroke-dasharray", "12 3");
 
 
             	    // right vertical
@@ -1383,7 +1383,7 @@ d3.select("#rect_1_plus_many")
 	    	        .attr("y2", w_rect*((n+scalar)/10))
 	    	        .style("stroke", colors[random_color])
 	    	        .style("stroke-width", 5)
-	    	        .style("stroke-dasharray", "3 3");
+	    	        .style("stroke-dasharray", "12 3");
             	    
 	    	    // bottom
 	    	    svg_rect_1_plus_many.append("line")
@@ -1393,7 +1393,7 @@ d3.select("#rect_1_plus_many")
 	    	        .attr("y2", w_rect*((n+scalar)/10))
 	    	        .style("stroke", colors[random_color])
 	    	        .style("stroke-width", 5)
-	    	        .style("stroke-dasharray", "3 3");
+	    	        .style("stroke-dasharray", "12 3");
             	    
 	    	    // left vertical
 	    	    svg_rect_1_plus_many.append("line")
@@ -1403,7 +1403,7 @@ d3.select("#rect_1_plus_many")
 	    	        .attr("y2", w_rect*((j+scalar)/10))
 	    	        .style("stroke", colors[random_color])
 	    	        .style("stroke-width", 5)
-	    	        .style("stroke-dasharray", "3 3");
+	    	        .style("stroke-dasharray", "12 3");
 	    }
 	    else if (k_minus_i == 4) {
 		    let j = 1;
@@ -1419,7 +1419,7 @@ d3.select("#rect_1_plus_many")
 	    	        .attr("y2", w_rect*((j+scalar)/10))
 	    	        .style("stroke", colors[random_color])
 	    	        .style("stroke-width", 5)
-	    	        .style("stroke-dasharray", "3 3");
+	    	        .style("stroke-dasharray", "12 3");
 
 
             	    // right vertical
@@ -1430,7 +1430,7 @@ d3.select("#rect_1_plus_many")
 	    	        .attr("y2", w_rect*((n+scalar)/10))
 	    	        .style("stroke", colors[random_color])
 	    	        .style("stroke-width", 5)
-	    	        .style("stroke-dasharray", "3 3");
+	    	        .style("stroke-dasharray", "12 3");
             	    
 	    	    // bottom
 	    	    svg_rect_1_plus_many.append("line")
@@ -1440,7 +1440,7 @@ d3.select("#rect_1_plus_many")
 	    	        .attr("y2", w_rect*((n+scalar)/10))
 	    	        .style("stroke", colors[random_color])
 	    	        .style("stroke-width", 5)
-	    	        .style("stroke-dasharray", "3 3");
+	    	        .style("stroke-dasharray", "12 3");
             	    
 	    	    // left vertical
 	    	    svg_rect_1_plus_many.append("line")
@@ -1450,7 +1450,7 @@ d3.select("#rect_1_plus_many")
 	    	        .attr("y2", w_rect*((j+scalar)/10))
 	    	        .style("stroke", colors[random_color])
 	    	        .style("stroke-width", 5)
-	    	        .style("stroke-dasharray", "3 3");
+	    	        .style("stroke-dasharray", "12 3");
 	    } 
 	    else {
 		    let p = Math.floor(Math.random()*9) + 3;
@@ -1468,7 +1468,7 @@ d3.select("#rect_1_plus_many")
 	    	        .attr("y2", w_rect*((j+scalar)/10))
 	    	        .style("stroke", colors[random_color])
 	    	        .style("stroke-width", 5)
-	    	        .style("stroke-dasharray", "3 3");
+	    	        .style("stroke-dasharray", "12 3");
 
 
             	    // right vertical
@@ -1479,7 +1479,7 @@ d3.select("#rect_1_plus_many")
 	    	        .attr("y2", w_rect*((n+scalar)/10))
 	    	        .style("stroke", colors[random_color])
 	    	        .style("stroke-width", 5)
-	    	        .style("stroke-dasharray", "3 3");
+	    	        .style("stroke-dasharray", "12 3");
             	    
 	    	    // bottom
 	    	    svg_rect_1_plus_many.append("line")
@@ -1489,7 +1489,7 @@ d3.select("#rect_1_plus_many")
 	    	        .attr("y2", w_rect*((n+scalar)/10))
 	    	        .style("stroke", colors[random_color])
 	    	        .style("stroke-width", 5)
-	    	        .style("stroke-dasharray", "3 3");
+	    	        .style("stroke-dasharray", "12 3");
             	    
 	    	    // left vertical
 	    	    svg_rect_1_plus_many.append("line")
@@ -1499,7 +1499,7 @@ d3.select("#rect_1_plus_many")
 	    	        .attr("y2", w_rect*((j+scalar)/10))
 	    	        .style("stroke", colors[random_color])
 	    	        .style("stroke-width", 5)
-	    	        .style("stroke-dasharray", "3 3");
+	    	        .style("stroke-dasharray", "12 3");
 	    } 
     });
 
@@ -1527,7 +1527,7 @@ svg_union.append("text")
     .attr("y", ((h_union/2) - 60))
     .attr("font-family", "sans-serif")
     .attr("font-size", "30px")
-    .attr("fill", "#696a61");
+    .attr("fill", "#3a3a36");
 
 // box of circles set 2 label
 svg_union.append("text")
@@ -1536,7 +1536,7 @@ svg_union.append("text")
     .attr("y", ((h_union/2) - 60))
     .attr("font-family", "sans-serif")
     .attr("font-size", "30px")
-    .attr("fill", "#696a61");
+    .attr("fill", "#3a3a36");
 
 // box of circles sets 1 and 2 label
 svg_union.append("text")
@@ -1545,7 +1545,7 @@ svg_union.append("text")
     .attr("y", ((h_union/2) - 60))
     .attr("font-family", "sans-serif")
     .attr("font-size", "30px")
-    .attr("fill", "#696a61");
+    .attr("fill", "#3a3a36");
 
 // box of circles set 1
 //
@@ -1555,7 +1555,7 @@ svg_union.append("line")
     .attr("y1", ((h_union/2) - 50))
     .attr("x2", 190)
     .attr("y2", ((h_union/2) - 50))
-    .attr("stroke", "#696a61")
+    .attr("stroke", "#3a3a36")
     .attr("stroke-width", 3);
 
 // right vertical line
@@ -1564,7 +1564,7 @@ svg_union.append("line")
     .attr("y1", ((h_union/2) - 50))
     .attr("x2", 190)
     .attr("y2", ((h_union/2) + 50))
-    .attr("stroke", "#696a61")
+    .attr("stroke", "#3a3a36")
     .attr("stroke-width", 3);
 
 // bottom line
@@ -1573,7 +1573,7 @@ svg_union.append("line")
     .attr("y1", ((h_union/2) + 50))
     .attr("x2", 5)
     .attr("y2", ((h_union/2) + 50))
-    .attr("stroke", "#696a61")
+    .attr("stroke", "#3a3a36")
     .attr("stroke-width", 3);
 
 // left vertical line
@@ -1582,7 +1582,7 @@ svg_union.append("line")
     .attr("y1", ((h_union/2) + 50))
     .attr("x2", 5)
     .attr("y2", ((h_union/2) - 50))
-    .attr("stroke", "#696a61")
+    .attr("stroke", "#3a3a36")
     .attr("stroke-width", 3);
     
 // box of circles set 2
@@ -1593,7 +1593,7 @@ svg_union.append("line")
     .attr("y1", ((h_union/2) - 50))
     .attr("x2", 430)
     .attr("y2", ((h_union/2) - 50))
-    .attr("stroke", "#696a61")
+    .attr("stroke", "#3a3a36")
     .attr("stroke-width", 3);
 
 // right vertical line
@@ -1602,7 +1602,7 @@ svg_union.append("line")
     .attr("y1", ((h_union/2) - 50))
     .attr("x2", 430)
     .attr("y2", ((h_union/2) + 50))
-    .attr("stroke", "#696a61")
+    .attr("stroke", "#3a3a36")
     .attr("stroke-width", 3);
 
 // bottom line
@@ -1611,7 +1611,7 @@ svg_union.append("line")
     .attr("y1", ((h_union/2) + 50))
     .attr("x2", 220)
     .attr("y2", ((h_union/2) + 50))
-    .attr("stroke", "#696a61")
+    .attr("stroke", "#3a3a36")
     .attr("stroke-width", 3);
 
 // left vertical line
@@ -1620,7 +1620,7 @@ svg_union.append("line")
     .attr("y1", ((h_union/2) + 50))
     .attr("x2", 220)
     .attr("y2", ((h_union/2) - 50))
-    .attr("stroke", "#696a61")
+    .attr("stroke", "#3a3a36")
     .attr("stroke-width", 3);
 
 // box of circles sets 1 and 2
@@ -1631,7 +1631,7 @@ svg_union.append("line")
     .attr("y1", ((h_union/2) - 50))
     .attr("x2", 880)
     .attr("y2", ((h_union/2) - 50))
-    .attr("stroke", "#696a61")
+    .attr("stroke", "#3a3a36")
     .attr("stroke-width", 3);
 
 // right vertical line
@@ -1640,7 +1640,7 @@ svg_union.append("line")
     .attr("y1", ((h_union/2) - 50))
     .attr("x2", 880)
     .attr("y2", ((h_union/2) + 50))
-    .attr("stroke", "#696a61")
+    .attr("stroke", "#3a3a36")
     .attr("stroke-width", 3);
 
 // bottom line
@@ -1649,7 +1649,7 @@ svg_union.append("line")
     .attr("y1", ((h_union/2) + 50))
     .attr("x2", 450)
     .attr("y2", ((h_union/2) + 50))
-    .attr("stroke", "#696a61")
+    .attr("stroke", "#3a3a36")
     .attr("stroke-width", 3);
 
 // left vertical line
@@ -1658,7 +1658,7 @@ svg_union.append("line")
     .attr("y1", ((h_union/2) + 50))
     .attr("x2", 450)
     .attr("y2", ((h_union/2) - 50))
-    .attr("stroke", "#696a61")
+    .attr("stroke", "#3a3a36")
     .attr("stroke-width", 3);
 
 var circle_union_set_1 = svg_union.selectAll(".circle_union_set_1")
@@ -1676,7 +1676,7 @@ circle_union_set_1.attr("cx", function(d, i) {
 	.attr("fill", "#f5ffde")
 	.attr("stroke", "#759e16")
 	.attr("stroke-width", 3)
-	.attr("stroke-dasharray", "1 2")
+	.attr("stroke-dasharray", "12 3")
 	.attr("class", "circle_union_set_1");
 
 svg_union.selectAll(".text_union_set_1")
@@ -1692,8 +1692,9 @@ svg_union.selectAll(".text_union_set_1")
 	})
     .attr("y", (h_union/2)+5)
     .attr("font-family", "sans-serif")
-    .attr("font-size", "15px")
-    .attr("fill", "#696a61")
+    .attr("font-size", "18px")
+    .attr("font-weight", "900")
+    .attr("fill", "#3a3a36")
     .attr("class", "text_union_set_1");
     
 
@@ -1712,7 +1713,7 @@ circle_union_set_2.attr("cx", function(d, i) {
 	.attr("fill", "#f5ffde")
 	.attr("stroke", "#759e16")
 	.attr("stroke-width", 3)
-	.attr("stroke-dasharray", "1 2")
+	.attr("stroke-dasharray", "12 3")
 	.attr("class", "circle_union_set_2");
 
 svg_union.selectAll(".text_union_set_2")
@@ -1728,8 +1729,9 @@ svg_union.selectAll(".text_union_set_2")
 	})
     .attr("y", (h_union/2)+5)
     .attr("font-family", "sans-serif")
-    .attr("font-size", "15px")
-    .attr("fill", "#696a61")
+    .attr("font-size", "18px")
+    .attr("font-weight", "900")
+    .attr("fill", "#3a3a36")
     .attr("class", "text_union_set_2");
 
 d3.select("#union_button")
@@ -1743,7 +1745,7 @@ d3.select("#union_button")
 	        .duration(2000)
 	        .on("start", function() {
 			d3.select(this)
-			    .attr("fill", "#696a61")
+			    .attr("fill", "#3a3a36")
 			    .attr("r", 3);
 		})
 	        .attr("cx", function(d, i) {
@@ -1758,7 +1760,7 @@ d3.select("#union_button")
 	    		    .attr("fill", "#f5ffde")
 	    		    .attr("stroke", "#759e16")
 	    		    .attr("stroke-width", 3)
-			    .attr("stroke-dasharray", "1 2")
+			    .attr("stroke-dasharray", "12 3")
 	    		    .attr("r", function(d) {
 	    			return d;
 	    		    })
@@ -1785,13 +1787,14 @@ d3.select("#union_button")
 	    	})
 	        .attr("y", (h_union/2)+5)
 	        .attr("font-family", "sans-serif")
-	        .attr("fill", "#696a61")
+	        .attr("fill", "#3a3a36")
 	        .on("end", function() {
 			d3.select(this)
 			    .transition()
 			    .duration(1000)
 			    .ease(d3.easeLinear)
-			    .attr("font-size","15px")
+   			    .attr("font-size", "18px")
+   			    .attr("font-weight", "900");
 		})
 	        .attr("class", "union_text");
 
@@ -1828,7 +1831,7 @@ svg_intersection.append("text")
     .attr("y", ((h_intersection/2) - 60))
     .attr("font-family", "sans-serif")
     .attr("font-size", "30px")
-    .attr("fill", "#696a61");
+    .attr("fill", "#3a3a36");
 
 // box of circles set 2 label
 svg_intersection.append("text")
@@ -1837,7 +1840,7 @@ svg_intersection.append("text")
     .attr("y", ((h_intersection/2) - 60))
     .attr("font-family", "sans-serif")
     .attr("font-size", "30px")
-    .attr("fill", "#696a61");
+    .attr("fill", "#3a3a36");
 
 // box of circles set 1 intersected with set 2 label
 svg_intersection.append("text")
@@ -1846,7 +1849,7 @@ svg_intersection.append("text")
     .attr("y", ((h_intersection/2) - 60))
     .attr("font-family", "sans-serif")
     .attr("font-size", "30px")
-    .attr("fill", "#696a61");
+    .attr("fill", "#3a3a36");
 
 // box of circles set 1
 //
@@ -1856,7 +1859,7 @@ svg_intersection.append("line")
     .attr("y1", ((h_intersection/2) - 50))
     .attr("x2", 190)
     .attr("y2", ((h_intersection/2) - 50))
-    .attr("stroke", "#696a61")
+    .attr("stroke", "#3a3a36")
     .attr("stroke-width", 3);
 
 // right vertical line
@@ -1865,7 +1868,7 @@ svg_intersection.append("line")
     .attr("y1", ((h_intersection/2) - 50))
     .attr("x2", 190)
     .attr("y2", ((h_intersection/2) + 50))
-    .attr("stroke", "#696a61")
+    .attr("stroke", "#3a3a36")
     .attr("stroke-width", 3);
 
 // bottom line
@@ -1874,7 +1877,7 @@ svg_intersection.append("line")
     .attr("y1", ((h_intersection/2) + 50))
     .attr("x2", 5)
     .attr("y2", ((h_intersection/2) + 50))
-    .attr("stroke", "#696a61")
+    .attr("stroke", "#3a3a36")
     .attr("stroke-width", 3);
 
 // left vertical line
@@ -1883,7 +1886,7 @@ svg_intersection.append("line")
     .attr("y1", ((h_intersection/2) + 50))
     .attr("x2", 5)
     .attr("y2", ((h_intersection/2) - 50))
-    .attr("stroke", "#696a61")
+    .attr("stroke", "#3a3a36")
     .attr("stroke-width", 3);
     
 // box of circles set 2
@@ -1894,7 +1897,7 @@ svg_intersection.append("line")
     .attr("y1", ((h_intersection/2) - 50))
     .attr("x2", 430)
     .attr("y2", ((h_intersection/2) - 50))
-    .attr("stroke", "#696a61")
+    .attr("stroke", "#3a3a36")
     .attr("stroke-width", 3);
 
 // right vertical line
@@ -1903,7 +1906,7 @@ svg_intersection.append("line")
     .attr("y1", ((h_intersection/2) - 50))
     .attr("x2", 430)
     .attr("y2", ((h_intersection/2) + 50))
-    .attr("stroke", "#696a61")
+    .attr("stroke", "#3a3a36")
     .attr("stroke-width", 3);
 
 // bottom line
@@ -1912,7 +1915,7 @@ svg_intersection.append("line")
     .attr("y1", ((h_intersection/2) + 50))
     .attr("x2", 220)
     .attr("y2", ((h_intersection/2) + 50))
-    .attr("stroke", "#696a61")
+    .attr("stroke", "#3a3a36")
     .attr("stroke-width", 3);
 
 // left vertical line
@@ -1921,7 +1924,7 @@ svg_intersection.append("line")
     .attr("y1", ((h_intersection/2) + 50))
     .attr("x2", 220)
     .attr("y2", ((h_intersection/2) - 50))
-    .attr("stroke", "#696a61")
+    .attr("stroke", "#3a3a36")
     .attr("stroke-width", 3);
 
 // box of circles set 1 intersected with set 2
@@ -1932,7 +1935,7 @@ svg_intersection.append("line")
     .attr("y1", ((h_intersection/2) - 50))
     .attr("x2", 590)
     .attr("y2", ((h_intersection/2) - 50))
-    .attr("stroke", "#696a61")
+    .attr("stroke", "#3a3a36")
     .attr("stroke-width", 3);
 
 // right vertical line
@@ -1941,7 +1944,7 @@ svg_intersection.append("line")
     .attr("y1", ((h_intersection/2) - 50))
     .attr("x2", 590)
     .attr("y2", ((h_intersection/2) + 50))
-    .attr("stroke", "#696a61")
+    .attr("stroke", "#3a3a36")
     .attr("stroke-width", 3);
 
 // bottom line
@@ -1950,7 +1953,7 @@ svg_intersection.append("line")
     .attr("y1", ((h_intersection/2) + 50))
     .attr("x2", 450)
     .attr("y2", ((h_intersection/2) + 50))
-    .attr("stroke", "#696a61")
+    .attr("stroke", "#3a3a36")
     .attr("stroke-width", 3);
 
 // left vertical line
@@ -1959,7 +1962,7 @@ svg_intersection.append("line")
     .attr("y1", ((h_intersection/2) + 50))
     .attr("x2", 450)
     .attr("y2", ((h_intersection/2) - 50))
-    .attr("stroke", "#696a61")
+    .attr("stroke", "#3a3a36")
     .attr("stroke-width", 3);
 
 var circle_intersection_set_1 = svg_intersection.selectAll(".circle_intersection_set_1")
@@ -1977,7 +1980,7 @@ circle_intersection_set_1.attr("cx", function(d, i) {
 	.attr("fill", "#f5ffde")
 	.attr("stroke", "#759e16")
 	.attr("stroke-width", 3)
-	.attr("stroke-dasharray", "1 2")
+	.attr("stroke-dasharray", "12 3")
 	.attr("class", "circle_intersection_set_1");
 
 svg_intersection.selectAll(".text_intersection_set_1")
@@ -1993,8 +1996,9 @@ svg_intersection.selectAll(".text_intersection_set_1")
 	})
     .attr("y", (h_intersection/2)+5)
     .attr("font-family", "sans-serif")
-    .attr("font-size", "15px")
-    .attr("fill", "#696a61")
+    .attr("font-size", "18px")
+    .attr("font-weight", "900")
+    .attr("fill", "#3a3a36")
     .attr("class", "text_intersection_set_1");
     
 
@@ -2013,7 +2017,7 @@ circle_intersection_set_2.attr("cx", function(d, i) {
 	.attr("fill", "#f5ffde")
 	.attr("stroke", "#759e16")
 	.attr("stroke-width", 3)
-	.attr("stroke-dasharray", "1 2")
+	.attr("stroke-dasharray", "12 3")
 	.attr("class", "circle_intersection_set_2");
 
 svg_intersection.selectAll(".text_intersection_set_2")
@@ -2029,8 +2033,9 @@ svg_intersection.selectAll(".text_intersection_set_2")
 	})
     .attr("y", (h_intersection/2)+5)
     .attr("font-family", "sans-serif")
-    .attr("font-size", "15px")
-    .attr("fill", "#696a61")
+    .attr("font-size", "18px")
+    .attr("font-weight", "900")
+    .attr("fill", "#3a3a36")
     .attr("class", "text_intersection_set_2");
 
 d3.select("#intersection_button")
@@ -2044,7 +2049,7 @@ d3.select("#intersection_button")
 	        .duration(2000)
 	        .on("start", function() {
 			d3.select(this)
-			    .attr("fill", "#696a61")
+			    .attr("fill", "#3a3a36")
 			    .attr("r", 3);
 		})
 	        .attr("cx", function(d, i) {
@@ -2059,7 +2064,7 @@ d3.select("#intersection_button")
 	    		    .attr("fill", "#f5ffde")
 	    		    .attr("stroke", "#759e16")
 	    		    .attr("stroke-width", 3)
-			    .attr("stroke-dasharray", "1 2")
+			    .attr("stroke-dasharray", "12 3")
 	    		    .attr("r", function(d) {
 	    			return d;
 	    		    })
@@ -2086,80 +2091,21 @@ d3.select("#intersection_button")
 	    	})
 	        .attr("y", (h_intersection/2)+5)
 	        .attr("font-family", "sans-serif")
-	        .attr("fill", "#696a61")
+	        .attr("fill", "#3a3a36")
 	        .on("end", function() {
 			d3.select(this)
 			    .transition()
 			    .duration(1000)
 			    .ease(d3.easeLinear)
-			    .attr("font-size","15px")
+			    .attr("font-size","18px")
+			    .attr("font-weight", "900");
 		})
 	        .attr("class", "intersection_text");
 
     });
 
-// Size of union vs size of intersection vs size of unioned/intersected sets
-svg_intersection.append("text")
-    .text("Notice, compared to the sizes of A and B,")
-    .attr("x", 600)
-    .attr("y", ((h_intersection/2) - 70))
-    .attr("font-family", "sans-serif")
-    .attr("font-size", "18px")
-    .attr("fill", "#696a61");
 
-// Size of union vs size of intersection vs size of unioned/intersected sets
-svg_intersection.append("text")
-    .text("the size of the union is larger, while")
-    .attr("x", 600)
-    .attr("y", ((h_intersection/2) - 50))
-    .attr("font-family", "sans-serif")
-    .attr("font-size", "18px")
-    .attr("fill", "#696a61");
 
-// Size of union vs size of intersection vs size of unioned/intersected sets
-svg_intersection.append("text")
-    .text("the size of the intersection is smaller.")
-    .attr("x", 600)
-    .attr("y", ((h_intersection/2) - 30))
-    .attr("font-family", "sans-serif")
-    .attr("font-size", "18px")
-    .attr("fill", "#696a61");
-
-// Size of union vs size of intersection vs size of unioned/intersected sets
-svg_intersection.append("text")
-    .text("This difference in size of sets,")
-    .attr("x", 600)
-    .attr("y", ((h_intersection/2) - 10))
-    .attr("font-family", "sans-serif")
-    .attr("font-size", "18px")
-    .attr("fill", "#696a61");
-
-// Size of union vs size of intersection vs size of unioned/intersected sets
-svg_intersection.append("text")
-    .text("such that all elements in one set")
-    .attr("x", 600)
-    .attr("y", ((h_intersection/2) + 10))
-    .attr("font-family", "sans-serif")
-    .attr("font-size", "18px")
-    .attr("fill", "#696a61");
-
-// Size of union vs size of intersection vs size of unioned/intersected sets
-svg_intersection.append("text")
-    .text("appear as elements in another,")
-    .attr("x", 600)
-    .attr("y", ((h_intersection/2) + 30))
-    .attr("font-family", "sans-serif")
-    .attr("font-size", "18px")
-    .attr("fill", "#696a61");
-
-// Size of union vs size of intersection vs size of unioned/intersected sets
-svg_intersection.append("text")
-    .text("can be communicated symbolically.")
-    .attr("x", 600)
-    .attr("y", ((h_intersection/2) + 50))
-    .attr("font-family", "sans-serif")
-    .attr("font-size", "18px")
-    .attr("fill", "#696a61");
 
 
 
@@ -2226,7 +2172,7 @@ for (let i = 23; i < 960; i = i + distance_0) {
 	);
 	
 	svg_for_line_0.append("path")
-	    .style("stroke", "#9977bd")
+	    .style("stroke", "#6b4691")
 	    .style("stroke-width", parenthesis_width)
 	    .attr("d", parenthesis_open_0)
 	    .attr("fill", "none");
@@ -2243,7 +2189,7 @@ for (let i = 23; i < 960; i = i + distance_0) {
 	);
 
 	svg_for_line_0.append("path")
-	    .style("stroke", "#9977bd")
+	    .style("stroke", "#6b4691")
 	    .style("stroke-width", parenthesis_width)
 	    .attr("d", parenthesis_close_0)
 	    .attr("fill", "none");
@@ -2273,9 +2219,9 @@ for (var i = 23 + distance_0/2;
 	);
 	
 	svg_for_line_0.append("path")
-	    .style("stroke", "#696a61")
+	    .style("stroke", "#3a3a36")
 	    .style("stroke-width", parenthesis_width)
-	    .style("stroke-dasharray", "3 3")
+	    .style("stroke-dasharray", "12 3")
 	    .attr("d", parenthesis_middles_open_0)
 	    .attr("fill", "none");
 }
@@ -2295,9 +2241,9 @@ for (var i = 23 + distance_0 + distance_0/2;
 	);
 
 	svg_for_line_0.append("path")
-	    .style("stroke", "#696a61")
+	    .style("stroke", "#3a3a36")
 	    .style("stroke-width", parenthesis_width)
-	    .style("stroke-dasharray", "3 3")
+	    .style("stroke-dasharray", "12 3")
 	    .attr("d", parenthesis_middles_close_0)
 	    .attr("fill", "none");
 }
@@ -2351,7 +2297,7 @@ for (let i = 23; i < 960; i = i + distance_1) {
 	);
 	
 	svg_for_line_1.append("path")
-	    .style("stroke", "#9977bd")
+	    .style("stroke", "#6b4691")
 	    .style("stroke-width", parenthesis_width)
 	    .attr("d", parenthesis_open_1)
 	    .attr("fill", "none");
@@ -2368,7 +2314,7 @@ for (let i = 23; i < 960; i = i + distance_1) {
 	);
 
 	svg_for_line_1.append("path")
-	    .style("stroke", "#9977bd")
+	    .style("stroke", "#6b4691")
 	    .style("stroke-width", parenthesis_width)
 	    .attr("d", parenthesis_close_1)
 	    .attr("fill", "none");
@@ -2398,9 +2344,9 @@ for (var i = 23 + distance_1/2;
 	);
 	
 	svg_for_line_1.append("path")
-	    .style("stroke", "#696a61")
+	    .style("stroke", "#3a3a36")
 	    .style("stroke-width", parenthesis_width)
-	    .style("stroke-dasharray", "3 3")
+	    .style("stroke-dasharray", "12 3")
 	    .attr("d", parenthesis_middles_open_1)
 	    .attr("fill", "none");
 }	
@@ -2420,9 +2366,9 @@ for (var i = 23 + distance_1 + distance_1/2;
 	);
 
 	svg_for_line_1.append("path")
-	    .style("stroke", "#696a61")
+	    .style("stroke", "#3a3a36")
 	    .style("stroke-width", parenthesis_width)
-	    .style("stroke-dasharray", "3 3")
+	    .style("stroke-dasharray", "12 3")
 	    .attr("d", parenthesis_middles_close_1)
 	    .attr("fill", "none");
 }
@@ -2475,7 +2421,7 @@ for (let i = 23; i < 960; i = i + distance_2) {
 	);
 	
 	svg_for_line_2.append("path")
-	    .style("stroke", "#9977bd")
+	    .style("stroke", "#6b4691")
 	    .style("stroke-width", parenthesis_width)
 	    .attr("d", parenthesis_open_2)
 	    .attr("fill", "none");
@@ -2492,7 +2438,7 @@ for (let i = 23; i < 960; i = i + distance_2) {
 	);
 
 	svg_for_line_2.append("path")
-	    .style("stroke", "#9977bd")
+	    .style("stroke", "#6b4691")
 	    .style("stroke-width", parenthesis_width)
 	    .attr("d", parenthesis_close_2)
 	    .attr("fill", "none");
@@ -2522,9 +2468,9 @@ for (var i = 23 + distance_2/2;
 	);
 	
 	svg_for_line_2.append("path")
-	    .style("stroke", "#696a61")
+	    .style("stroke", "#3a3a36")
 	    .style("stroke-width", parenthesis_width)
-	    .style("stroke-dasharray", "3 3")
+	    .style("stroke-dasharray", "12 3")
 	    .attr("d", parenthesis_middles_open_2)
 	    .attr("fill", "none");
 }	
@@ -2544,9 +2490,9 @@ for (var i = 23 + distance_2 + distance_2/2;
 	);
 
 	svg_for_line_2.append("path")
-	    .style("stroke", "#696a61")
+	    .style("stroke", "#3a3a36")
 	    .style("stroke-width", parenthesis_width)
-	    .style("stroke-dasharray", "3 3")
+	    .style("stroke-dasharray", "12 3")
 	    .attr("d", parenthesis_middles_close_2)
 	    .attr("fill", "none");
 }
@@ -2575,19 +2521,19 @@ var epsilon_delta_svg = d3.select("#ball0")
 
 // The epsilon ball ----------------------------------------------------------
 epsilon_delta_svg.append("circle")
-    .style("stroke", "#9977bd")
+    .style("stroke", "#6b4691")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3")
-    .style("fill", "#759e16")
+    .style("stroke-dasharray", "12 3")
+    .style("fill", "#6b4691")
     .attr("cx", width_epsilon_delta_svg/2)
     .attr("cy", height_epsilon_delta_svg/2)
     .attr("r", epsilon_ball_radius);
 
 // The delta ball ------------------------------------------------------------
 epsilon_delta_svg.append("circle")
-    .style("stroke", "#9977bd")
+    .style("stroke", "#6b4691")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3")
+    .style("stroke-dasharray", "12 3")
     .style("fill", "#f5ffde")
     .attr("cx", (width_epsilon_delta_svg/2) - 110)
     .attr("cy", (height_epsilon_delta_svg/2) - 90)
@@ -2642,7 +2588,7 @@ epsilon_delta_svg.append("line")
     .attr("y2", 
 	    (height_epsilon_delta_svg/2 - 90)
 	    + Math.sqrt((delta_ball_radius**2)/2))
-    .style("stroke", "#759e16")
+    .style("stroke", "#6b4691")
     .style("stroke-width", 5);
 
 // Radius delta symbol -------------------------------------------------------
@@ -2652,7 +2598,7 @@ epsilon_delta_svg.append("text")
     .attr("y", height_epsilon_delta_svg/2 -90 + 55)
     .attr("font-family", "sans-serif")
     .attr("font-size", "42px")
-    .attr("fill", "#759e16");
+    .attr("fill", "#6b4691");
 
 // Point x in epsilon ball --------------------------------------------------- 
 epsilon_delta_svg.append("text")
@@ -2676,17 +2622,17 @@ epsilon_delta_svg.append("text")
     .attr("y", height_epsilon_delta_svg/2 - 90)
     .attr("font-family", "sans-serif")
     .attr("font-size", "42px")
-    .attr("fill", "#759e16");
+    .attr("fill", "#6b4691");
 
 epsilon_delta_svg.append("circle")
-    .style("fill", "#759e16")
+    .style("fill", "#6b4691")
     .attr("cx", width_epsilon_delta_svg/2 - 110)
     .attr("cy", height_epsilon_delta_svg/2 - 90)
     .attr("r", 5);
 
 // Point z in delta ball -----------------------------------------------------
 epsilon_delta_svg.append("circle")
-    .style("fill", "#759e16")
+    .style("fill", "#6b4691")
     .attr("cx", width_epsilon_delta_svg/2 - 90)
     .attr("cy", height_epsilon_delta_svg/2 - 170)
     .attr("r", 5);
@@ -2697,7 +2643,7 @@ epsilon_delta_svg.append("text")
     .attr("y", height_epsilon_delta_svg/2 - 170)
     .attr("font-family", "sans-serif")
     .attr("font-size", "42px")
-    .attr("fill", "#759e16");
+    .attr("fill", "#6b4691");
 
 
 
@@ -2752,9 +2698,9 @@ var svg_nodes_set_0 = d3.select(".featuredgallery0")
 
 // larger space in which the circles reside
 svg_nodes_set_0.append("circle")
-    .style("stroke", "#9977bd")
+    .style("stroke", "#6b4691")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3")
+    .style("stroke-dasharray", "12 3")
     .style("fill", "none")
     .attr("cx", w_0/2)
     .attr("cy", h_0/2)
@@ -2818,8 +2764,8 @@ var w_1 = 960;
 var h_1 = 380;
 
 
-var color_scale = ["rgba(105, 106, 97, 0.6)", 
-	"rgba(153, 119, 189, 0.6)"];
+var color_scale = ["rgba(107, 70, 145, 0.6)", 
+	"rgba(58, 58, 54, 0.6)"];
 
 // smaller_circle_radii_1 = radii_1*(266/1000)
 const smaller_circle_radii_1 = 2.66;
@@ -2864,9 +2810,9 @@ var svg_nodes_set_1 = d3.select(".featuredgallery1")
 
 // larger space in which the circles reside
 svg_nodes_set_1.append("circle")
-    .style("stroke", "#9977bd")
+    .style("stroke", "#6b4691")
     .style("stroke-width", 5)
-    .style("stroke-dasharray", "3 3")
+    .style("stroke-dasharray", "12 3")
     .style("fill", "none")
     .attr("cx", w_1/2)
     .attr("cy", h_1/2)
