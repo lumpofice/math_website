@@ -8,8 +8,7 @@
 
     {%- block styles %}
     <!-- Bootstrap -->
-    <link href="{{bootstrap_find_resource('css/bootstrap.css', cdn='bootstrap')}}" rel="stylesheet"
->
+    <link href="{{bootstrap_find_resource('css/bootstrap.css', cdn='bootstrap')}}" rel="stylesheet">
     <link rel='stylesheet' href='{{ url_for("static", filename="styles/l_trominoes.css") }}'>
     {%- endblock styles %}
     <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
@@ -23,18 +22,18 @@
     	<div id='content'>
 		<div id='topic'>
 			<h1>L-Trominoes</h1>
-			<p>Choose a tile. Fill in that tile&mdash;by clicking any edge of the tile&mdash;with your least favorite among the available colors. This tile will be referred to as "the removed tile". At any point, if you wish to unselect a tile, you may click the "No Color" button and click on any edge of a filled-in tile to unselect it.</p>
-			<p>Fill in the remaining tiles with 3-tile L-shaped patterns. To ensure you are indeed covering the remaining tiles with only 3-tile L-shaped patterns, the easiest&mdash;on the eyes!&mdash;approach is to:</p>
+			<p id="text">Choose a tile. Fill in that tile&mdash;by clicking any edge of the tile&mdash;with your least favorite among the available colors. This tile will be referred to as "the removed tile". At any point, if you wish to unselect a tile, you may click the "No Color" button and click on any edge of a filled-in tile to unselect it.</p>
+			<p id="text">Fill in the remaining tiles with 3-tile L-shaped patterns. To ensure you are indeed covering the remaining tiles with only 3-tile L-shaped patterns, the easiest&mdash;on the eyes!&mdash;approach is to:</p>
 			<ul>
-				<li class="topdown_list">First, choose a color different from that used for "the removed tile".</li>
+				<li class="topdown_list" id="text">First, choose a color different from that used for "the removed tile".</li>
 				<br>
-				<li class="topdown_list">Second, choose the first set of three tiles you wish to fill in an L-shaped pattern&mdash;again, click any edge of a tile to fill it in.</li>
+				<li class="topdown_list" id="text">Second, choose the first set of three tiles you wish to fill in an L-shaped pattern&mdash;again, click any edge of a tile to fill it in.</li>
 				<br>
-				<li class="topdown_list">From here, I recommend choosing a different color to fill in the next set of three tiles in an L-shaped pattern&mdash;it's easier on the eyes when you use different colors!</li>
+				<li class="topdown_list" id="text">From here, I recommend choosing a different color to fill in the next set of three tiles in an L-shaped pattern&mdash;it's easier on the eyes when you use different colors!</li>
 			</ul>
-			<p>If at any point you wish to unselect a tile, use the "No Color" button to do so. Continue the above steps until you run out of L-shapes on the board. Is the board completely filled in with color? That's the goal.</p>
-			<p>$$\text{All boards are of size} \hspace{4pt} 2^{n} \times 2^{n}$$</p>
-			<p>Choose which size board you would like to work with.</p>
+			<p id="text">If at any point you wish to unselect a tile, use the "No Color" button to do so. Continue the above steps until you run out of L-shapes on the board. Is the board completely filled in with color? That's the goal.</p>
+			<p id="text">$$\text{All boards are of size} \hspace{4pt} 2^{n} \times 2^{n}$$</p>
+			<p id="text">Choose which size board you would like to work with.</p>
 			<div id='board_size'>
 				<button id='size_n' onclick="generate_board(1)">n = 1</button>
 				<button id='size_n' onclick="generate_board(2)">n = 2</button>
@@ -55,8 +54,9 @@
 		</div>
 	</div>
 	<div id='footer'>
+		<p id="text">Authors whose works helped us develop this content:</p>
 		<ul>
-			<li></li>
+			<li id="text"><a href="https://blog.miguelgrinberg.com/">Miguel Grinberg</a></li>
 		</ul>
 	</div>
     {% endblock %}
