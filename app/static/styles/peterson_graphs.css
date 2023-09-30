@@ -5,13 +5,14 @@ color-palette: ---------------------------------------------------------------
 ------------------------------------------------------------------------------
 #cca2fa lavender
 #91d5e4 lighter blue
-#d079a2 pink
+#d079a2 and rgba(208, 121, 166, 0.3) pink
 #759e16 green
 #ffcd04 corn yellow
 #9977bd purple
 #f5ffde light yellow-green
-#696a61 gray mud-brown
+#3a3a36 gray mud-brown
 #e0620d bengal orange
+rgba(117, 158, 22, 0.05) off-white
 ------------------------------------------------------------------------------
 ------------------------------------------------------------------------------
 ------------------------------------------------------------------------------
@@ -21,26 +22,21 @@ color-palette: ---------------------------------------------------------------
 	box-sizing: border-box;
 }
 
-body {
-	font-size: 1.3rem;
-	padding: 1rem .5rem;
-	line-height: 1.2;
-	max-width: 60rem;
-	margin: 0 auto;
-	color: #000000;
-	background-color: #ffffff;
+#text {
+	font-size: 2.1rem;
 }
 
-#nav {
-	padding: 1rem .5rem;
-	margin: 0 auto;
-	text-align: center;
-	border-bottom: 8px double rgba(0, 0, 0, 0.3); 
-	margin-bottom: 2rem;
-}
-
-li {
+li.reference {
 	display: inline;
+	padding: .5rem 2rem;
+}
+
+li.owner {
+	display: table-cell;
+	width: 25%;
+	vertical-align: bottom;
+	text-align: right;
+	padding: .5rem 2rem;
 }
 
 #content {
@@ -59,18 +55,12 @@ li {
 }
 
 #footer {
-	font-size: 11px;
 	padding: 1rem .5rem;
 	margin: 0 auto;
 	text-align: left;
-	border-top: 8px double rgba(0, 0, 0, 0.3);
+	border-top: 8px double rgba(58, 58, 54, 0.3);
 	margin-top: 2rem; 
 }
 
-@media screen and (min-width: 15rem) {
-	body {
-		padding: 1rem 2rem;
-	}
-}
 
 

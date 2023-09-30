@@ -1,54 +1,52 @@
-<!doctype html>
-<html>
-	<head>
-		{%if title%}
-		<title>{{ title }}</title>
-		{% else %}
-		<title>Math Website</title>
-		{% endif %}
-		<meta name="viewport" content="width=device-width">
-		<link rel='stylesheet' href='{{ url_for("static", filename="styles/peterson_graphs.css") }}'>
-	</head>
-	<body>
-		<div id='opening'>
-			<div id='nav'>
-				<ul>
-					<li></li>
-					<li></li>
-				</ul>
-			</div>
+{% extends 'base.html' %}
+    {%- block head %}
+    <title>{% block title %}{{title|default}}{% endblock title %}</title>
+
+    {%- block metas %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%- endblock metas %}
+
+    {%- block styles %}
+    <!-- Bootstrap -->
+    <link href="{{bootstrap_find_resource('css/bootstrap.css', cdn='bootstrap')}}" rel="stylesheet">
+    <link rel='stylesheet' href='{{ url_for("static", filename="styles/peterson_graphs.css") }}'>
+    {%- endblock styles %}
+    <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    {%- endblock head %}
+    
+    {% block app_content %}
+	<div id='content'>
+		<div id='topic'>
+			<h1>Peterson Graphs</h1>
+			<form action="" method="post" novalidate>
+				{{ form.hidden_tag() }}
+				<p>
+					{{ form.capital_N.label }}<br>
+					{{ form.capital_N(class="field") }}<br>
+					{% for error in form.capital_N.errors %}
+					<span style="color: red;">[{{ error }}]</span>
+					{% endfor %}
+				</p>
+				<p>
+					{{ form.little_k.label }}<br>
+					{{ form.little_k(class="field") }}<br>
+					{% for error in form.little_k.errors %}
+					<span style="color: red;">[{{ error }}]</span>
+					{% endfor %}
+				</p>
+				<p>{{ form.submit() }}</p>
+			</form>
 		</div>
-		{% block content %}
-			<div id='content'>
-				<div id='topic'>
-					<h1>Peterson Graphs</h1>
-					<form action="" method="post" novalidate>
-						{{ form.hidden_tag() }}
-						<p>
-							{{ form.capital_N.label }}<br>
-							{{ form.capital_N(class="field") }}<br>
-							{% for error in form.capital_N.errors %}
-							<span style="color: red;">[{{ error }}]</span>
-							{% endfor %}
-						</p>
-						<p>
-							{{ form.little_k.label }}<br>
-							{{ form.little_k(class="field") }}<br>
-							{% for error in form.little_k.errors %}
-							<span style="color: red;">[{{ error }}]</span>
-							{% endfor %}
-						</p>
-						<p>{{ form.submit() }}</p>
-					</form>
-				</div>
-			</div>
-			<div id='footer'>
-				<ul>
-					<li></li>
-				</ul>
-			</div>
-		{% endblock %}
-	</body>
-</html>
+	</div>
+	<div id='footer'>
+		<p id="text">Authors whose works helped us develop this content:</p>
+		<ul>
+			<li id="text" class="reference"><a href="https://blog.miguelgrinberg.com/">Miguel Grinberg</a></li>
+			<li id="text" class="owner">Created by Jonathan Parker</li>
+		</ul>
+	</div>
+    {% endblock %}
 
 

@@ -31,6 +31,14 @@ li.reference {
 	padding: .5rem 2rem;
 }
 
+li.owner {
+	display: table-cell;
+	width: 25%;
+	vertical-align: bottom;
+	text-align: right;
+	padding: .5rem 2rem;
+}
+
 #content {
 	overflow: auto;
 	height: 100%;
