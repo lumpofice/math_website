@@ -1223,7 +1223,23 @@ def math_1001():
 
 @bp.route('/l_trominoes', methods=['GET', 'POST'])
 def l_trominoes():
-    return render_template('l_trominoes.html', title='Math Website')
+    return render_template(
+            'l_trominoes/l_trominoes.html', title='Math Website')
+
+@bp.route('/l_trominoes/2_x_2', methods=['GET', 'POST'])
+def l_trominoes_2_x_2():
+    return render_template(
+            'l_trominoes/l_trominoes_2_x_2.html', title='Math Website')
+
+@bp.route('/l_trominoes/4_x_4', methods=['GET', 'POST'])
+def l_trominoes_4_x_4():
+    return render_template(
+            'l_trominoes/l_trominoes_4_x_4.html', title='Math Website')
+
+@bp.route('/l_trominoes/8_x_8', methods=['GET', 'POST'])
+def l_trominoes_8_x_8():
+    return render_template(
+            'l_trominoes/l_trominoes_8_x_8.html', title='Math Website')
 
 @bp.route('/peterson_graphs', methods=['GET', 'POST'])
 def peterson_graphs():

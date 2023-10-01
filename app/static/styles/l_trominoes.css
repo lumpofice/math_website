@@ -39,6 +39,11 @@ li.owner {
 	padding: .5rem 2rem;
 }
 
+li.subview {
+	padding: .5rem 2rem;
+	display: block;
+}
+
 #content {
 	overflow: auto;
 	height: 100%;
