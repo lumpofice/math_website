@@ -8,9 +8,16 @@ var svg = d3.select("#board")
 
 function generate_board(n){
 	svg.selectAll("*").remove();
-
+	
 	svg_width = 960;
-	svg_height = 800;
+
+	if (n == 1) {
+		svg_height = 450;
+	} else if (n == 2) {
+		svg_height = 500;
+	} else {
+		svg_height = 600;
+	}
 	
 	svg.attr("viewBox", "0 0 " + svg_width + " " + svg_height);
 
@@ -18,7 +25,7 @@ function generate_board(n){
 	const board_bottom = bottom_offset;
 	
 	const board_width = 400;
-	const left_offset = 100;
+	const left_offset = 20;
 	
 	var user_chosen_segmentation = n;
 	var tile_width = board_width/(2**user_chosen_segmentation);
