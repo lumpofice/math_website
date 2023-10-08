@@ -2527,7 +2527,9 @@ epsilon_delta_svg.append("circle")
     .style("fill", "#6b4691")
     .attr("cx", width_epsilon_delta_svg/2)
     .attr("cy", height_epsilon_delta_svg/2)
-    .attr("r", epsilon_ball_radius);
+    .attr("r", epsilon_ball_radius)
+    .attr("role", "img")
+    .attr("aria-labelledby", "The epsilon ball");
 
 // The delta ball ------------------------------------------------------------
 epsilon_delta_svg.append("circle")

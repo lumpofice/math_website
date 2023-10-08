@@ -1245,7 +1245,7 @@ def l_trominoes_8_x_8():
 @bp.route('/l_trominoes/8_x_8/a2_1', methods=['GET', 'POST'])
 def l_trominoes_8_x_8_a2_1():
     return render_template(
-            'l_trominoes/l_trominoes_8_x_8/l_trominoes_8_x_8_a2_1.html', 
+            'l_trominoes/l_trominoes_8_x_8/a2_1/l_trominoes_8_x_8_a2_1.html', 
             title='Math Website')
 
 @bp.route('/peterson_graphs', methods=['GET', 'POST'])
