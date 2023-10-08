@@ -2517,7 +2517,8 @@ var epsilon_delta_svg = d3.select("#ball0")
 	    "0 0 " 
 	    + width_epsilon_delta_svg 
 	    + " " 
-	    + height_epsilon_delta_svg);
+	    + height_epsilon_delta_svg)
+    .attr("aria-labelledby", "The epsilon ball");
 
 // The epsilon ball ----------------------------------------------------------
 epsilon_delta_svg.append("circle")
@@ -2527,9 +2528,7 @@ epsilon_delta_svg.append("circle")
     .style("fill", "#6b4691")
     .attr("cx", width_epsilon_delta_svg/2)
     .attr("cy", height_epsilon_delta_svg/2)
-    .attr("r", epsilon_ball_radius)
-    .attr("role", "img")
-    .attr("aria-labelledby", "The epsilon ball");
+    .attr("r", epsilon_ball_radius);
 
 // The delta ball ------------------------------------------------------------
 epsilon_delta_svg.append("circle")
