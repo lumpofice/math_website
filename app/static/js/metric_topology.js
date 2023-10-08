@@ -2530,7 +2530,9 @@ epsilon_delta_svg.append("circle")
     .attr("r", epsilon_ball_radius)
     .attr("role", "img")
   .append("title")
-    .text("epsilon ball");
+    .text("epsilon ball")
+  .append("desc")
+    .text("This is a ball of radius epsilon.");
 
 // The delta ball ------------------------------------------------------------
 epsilon_delta_svg.append("circle")
