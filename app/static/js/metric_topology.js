@@ -2105,9 +2105,124 @@ d3.select("#intersection_button")
     });
 
 
+// Basis Set B_3 that is a subset of B_1 intersect B_2
+var w_svg_basis_set_3 = 960;
+var h_svg_basis_set_3 = 640;
+
+var svg_basis_set_3 = d3.select("#basis_set_3")
+  .append("svg")
+    .attr("viewBox", "0 0 " + w_svg_basis_set_3 + " " + h_svg_basis_set_3);
+
+// top line of outer square
+svg_basis_set_3.append("line")
+    .attr("x1", w_svg_basis_set_3*(2/10))
+    .attr("y1", h_svg_basis_set_3*(0.5/10))
+    .attr("x2", w_svg_basis_set_3*(8/10))
+    .attr("y2", h_svg_basis_set_3*(0.5/10))
+    .attr("stroke", "#3a3a36")
+    .attr("stroke-dasharray", "12 3")
+    .attr("stroke-width", 5);
+
+// right vertical line of outer square
+svg_basis_set_3.append("line")
+    .attr("x1", w_svg_basis_set_3*(8/10))
+    .attr("y1", h_svg_basis_set_3*(0.5/10))
+    .attr("x2", w_svg_basis_set_3*(8/10))
+    .attr("y2", h_svg_basis_set_3*(9.5/10))
+    .attr("stroke", "#3a3a36")
+    .attr("stroke-dasharray", "12 3")
+    .attr("stroke-width", 5);
+
+// bottom line of outer square
+svg_basis_set_3.append("line")
+    .attr("x1", w_svg_basis_set_3*(8/10))
+    .attr("y1", h_svg_basis_set_3*(9.5/10))
+    .attr("x2", w_svg_basis_set_3*(2/10))
+    .attr("y2", h_svg_basis_set_3*(9.5/10))
+    .attr("stroke", "#3a3a36")
+    .attr("stroke-dasharray", "12 3")
+    .attr("stroke-width", 5);
+
+// left vertical line of outer square
+svg_basis_set_3.append("line")
+    .attr("x1", w_svg_basis_set_3*(2/10))
+    .attr("y1", h_svg_basis_set_3*(9.5/10))
+    .attr("x2", w_svg_basis_set_3*(2/10))
+    .attr("y2", h_svg_basis_set_3*(0.5/10))
+    .attr("stroke", "#3a3a36")
+    .attr("stroke-dasharray", "12 3")
+    .attr("stroke-width", 5);
+
+// B_1 basis set: top right square
+svg_basis_set_3.append("text")
+    .text("B")
+    .attr("x", w_svg_basis_set_3*(6/10) + 50)
+    .attr("y", h_svg_basis_set_3*(3.5/10))
+    .attr("font-family", "sans-serif")
+    .attr("font-size", "30px")
+    .attr("fill", "#3a3a36")
+  .append("tspan")
+    .text("1")
+    .attr("font-size", "30px")
+    .attr("fill", "#3a3a36")
+    .attr("dx", ".1rem")
+    .attr("dy", ".8rem");
 
 
+// left vertical line of top right square
+svg_basis_set_3.append("line")
+    .attr("x1", w_svg_basis_set_3*(4/10))
+    .attr("y1", h_svg_basis_set_3*(0.5/10))
+    .attr("x2", w_svg_basis_set_3*(4/10))
+    .attr("y2", h_svg_basis_set_3*(6.5/10))
+    .attr("stroke", "#3a3a36")
+    .attr("stroke-dasharray", "12 3")
+    .attr("stroke-width", 5);
 
+// bottom line of top right square
+svg_basis_set_3.append("line")
+    .attr("x1", w_svg_basis_set_3*(4/10))
+    .attr("y1", h_svg_basis_set_3*(6.5/10))
+    .attr("x2", w_svg_basis_set_3*(8/10))
+    .attr("y2", h_svg_basis_set_3*(6.5/10))
+    .attr("stroke", "#3a3a36")
+    .attr("stroke-dasharray", "12 3")
+    .attr("stroke-width", 5);
+
+// B_2 basis set: bottom left square
+svg_basis_set_3.append("text")
+    .text("B")
+    .attr("x", w_svg_basis_set_3*(3.5/10) - 50)
+    .attr("y", h_svg_basis_set_3*(6.5/10))
+    .attr("font-family", "sans-serif")
+    .attr("font-size", "30px")
+    .attr("fill", "#3a3a36")
+  .append("tspan")
+    .text("2")
+    .attr("font-size", "30px")
+    .attr("fill", "#3a3a36")
+    .attr("dx", ".1rem")
+    .attr("dy", ".8rem");
+
+// right vertical line of bottom left square
+svg_basis_set_3.append("line")
+    .attr("x1", w_svg_basis_set_3*(6/10))
+    .attr("y1", h_svg_basis_set_3*(9.5/10))
+    .attr("x2", w_svg_basis_set_3*(6/10))
+    .attr("y2", h_svg_basis_set_3*(3.5/10))
+    .attr("stroke", "#3a3a36")
+    .attr("stroke-dasharray", "12 3")
+    .attr("stroke-width", 5);
+
+// top line of bottom left square
+svg_basis_set_3.append("line")
+    .attr("x1", w_svg_basis_set_3*(6/10))
+    .attr("y1", h_svg_basis_set_3*(3.5/10))
+    .attr("x2", w_svg_basis_set_3*(2/10))
+    .attr("y2", h_svg_basis_set_3*(3.5/10))
+    .attr("stroke", "#3a3a36")
+    .attr("stroke-dasharray", "12 3")
+    .attr("stroke-width", 5);
 
 
 
