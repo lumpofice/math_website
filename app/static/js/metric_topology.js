@@ -2169,7 +2169,7 @@ svg_basis_set_3.append("text")
     .attr("dy", ".8rem");
 
 
-// left vertical line of top right square
+// left vertical line of top right square B1
 svg_basis_set_3.append("line")
     .attr("x1", w_svg_basis_set_3*(4/10))
     .attr("y1", h_svg_basis_set_3*(0.5/10))
@@ -2179,7 +2179,7 @@ svg_basis_set_3.append("line")
     .attr("stroke-dasharray", "12 3")
     .attr("stroke-width", 5);
 
-// bottom line of top right square
+// bottom line of top right square B1
 svg_basis_set_3.append("line")
     .attr("x1", w_svg_basis_set_3*(4/10))
     .attr("y1", h_svg_basis_set_3*(6.5/10))
@@ -2204,7 +2204,7 @@ svg_basis_set_3.append("text")
     .attr("dx", ".1rem")
     .attr("dy", ".8rem");
 
-// right vertical line of bottom left square
+// right vertical line of bottom left square B2
 svg_basis_set_3.append("line")
     .attr("x1", w_svg_basis_set_3*(6/10))
     .attr("y1", h_svg_basis_set_3*(9.5/10))
@@ -2214,7 +2214,7 @@ svg_basis_set_3.append("line")
     .attr("stroke-dasharray", "12 3")
     .attr("stroke-width", 5);
 
-// top line of bottom left square
+// top line of bottom left square B2
 svg_basis_set_3.append("line")
     .attr("x1", w_svg_basis_set_3*(6/10))
     .attr("y1", h_svg_basis_set_3*(3.5/10))
@@ -2223,6 +2223,63 @@ svg_basis_set_3.append("line")
     .attr("stroke", "#3a3a36")
     .attr("stroke-dasharray", "12 3")
     .attr("stroke-width", 5);
+
+// B_3 basis set: middle square
+svg_basis_set_3.append("text")
+    .text("B")
+    .attr("x", w_svg_basis_set_3*(5/10) - 25)
+    .attr("y", h_svg_basis_set_3*(4.75/10))
+    .attr("font-family", "sans-serif")
+    .attr("font-size", "30px")
+    .attr("fill", "#3a3a36")
+  .append("tspan")
+    .text("3")
+    .attr("font-size", "30px")
+    .attr("fill", "#3a3a36")
+    .attr("dx", ".1rem")
+    .attr("dy", ".8rem");
+
+// top line of middle square B3
+svg_basis_set_3.append("line")
+    .attr("x1", w_svg_basis_set_3*(4.5/10))
+    .attr("y1", h_svg_basis_set_3*(4/10))
+    .attr("x2", w_svg_basis_set_3*(5.5/10))
+    .attr("y2", h_svg_basis_set_3*(4/10))
+    .attr("stroke", "#3a3a36")
+    .attr("stroke-dasharray", "12 3")
+    .attr("stroke-width", 5);
+
+// right vertical line of middle square B3
+svg_basis_set_3.append("line")
+    .attr("x1", w_svg_basis_set_3*(5.5/10))
+    .attr("y1", h_svg_basis_set_3*(4/10))
+    .attr("x2", w_svg_basis_set_3*(5.5/10))
+    .attr("y2", h_svg_basis_set_3*(5.5/10))
+    .attr("stroke", "#3a3a36")
+    .attr("stroke-dasharray", "12 3")
+    .attr("stroke-width", 5);
+
+// bottom line of middle square B3
+svg_basis_set_3.append("line")
+    .attr("x1", w_svg_basis_set_3*(5.5/10))
+    .attr("y1", h_svg_basis_set_3*(5.5/10))
+    .attr("x2", w_svg_basis_set_3*(4.5/10))
+    .attr("y2", h_svg_basis_set_3*(5.5/10))
+    .attr("stroke", "#3a3a36")
+    .attr("stroke-dasharray", "12 3")
+    .attr("stroke-width", 5);
+
+// left vertical line of middle square B3
+svg_basis_set_3.append("line")
+    .attr("x1", w_svg_basis_set_3*(4.5/10))
+    .attr("y1", h_svg_basis_set_3*(5.5/10))
+    .attr("x2", w_svg_basis_set_3*(4.5/10))
+    .attr("y2", h_svg_basis_set_3*(4/10))
+    .attr("stroke", "#3a3a36")
+    .attr("stroke-dasharray", "12 3")
+    .attr("stroke-width", 5);
+
+
 
 
 
