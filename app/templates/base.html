@@ -37,7 +37,6 @@
 					<li><a href='{{ url_for("main.l_trominoes", username=current_user.username) }}' style="font-size: 18px; color: #000000; font-weight: bold; font-family: courier, monospace;">{{ _('L-Trominoes') }}</a></li>
 					<li><a href='{{ url_for("main.peterson_graphs", username=current_user.username) }}' style="font-size: 18px; color: #000000; font-weight: bold; font-family: courier, monospace;">{{ _('Peterson Graphs') }}</a></li>
 					<li><a href='{{ url_for("main.math_1001", username=current_user.username) }}' style="font-size: 18px; color: #000000; font-weight: bold; font-family: courier, monospace;">{{ _('MATH 1001') }}</a></li>
-                    			<li><a href='{{ url_for("auth.login") }}' style="font-size: 18px; color: #000000; font-weight: bold; font-family: courier, monospace;">{{ _('Login') }}</a></li>
 				{% else %}
 					<li><a href='{{ url_for("main.l_trominoes", username=current_user.username) }}' style="font-size: 18px; color: #000000; font-weight: bold; font-family: courier, monospace;">{{ _('L_Trominoes') }}</a></li>
 					<li><a href='{{ url_for("main.peterson_graphs", username=current_user.username) }}' style="font-size: 18px; color: #000000; font-weight: bold; font-family: courier, monospace;">{{ _('Peterson Graphs') }}</a></li>

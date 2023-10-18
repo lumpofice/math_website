@@ -46,7 +46,6 @@ field.'''
     
 @bp.route('/', methods=['GET', 'POST'])
 @bp.route('/index', methods=['GET', 'POST'])
-@login_required
 def index():
     '''This is the homepage of the site. The @login_required decorator from
 Flask-Login sets accessibility restrictions to only those users who are logged
@@ -131,7 +130,6 @@ the app with the goal of displaying the 500 error message template.'''
 
 
 @bp.route('/precalculus', methods=['GET', 'POST']) 
-@login_required
 def precalculus():
     '''This is the page on which I am keeping score of the success students
 are meeting in my course. The @login_required decorator from
@@ -149,14 +147,12 @@ in.'''
             title='Math Website')
 
 @bp.route('/transforms')
-@login_required
 def transforms():
     return render_template('precalculus/transforms/transforms.html',\
             title='Math Website')
 
 
 @bp.route('/series_of_numbers')
-@login_required
 def series_of_numbers():
     return render_template(\
             'precalculus/series_of_numbers/series_of_numbers.html',\
@@ -164,7 +160,6 @@ def series_of_numbers():
 
 
 @bp.route('/calculus', methods=['GET', 'POST'])
-@login_required
 def calculus():
     if request.method == 'POST':
         if request.form['submit_button'] == 'Sequences of Functions':
@@ -175,7 +170,6 @@ def calculus():
 
 
 @bp.route('/sequences_of_functions', methods=['GET', 'POST'])
-@login_required
 def sequences_of_functions():
     if request.method == 'POST':
         if request.form['submit_button'] == 'Pointwise':
@@ -188,7 +182,6 @@ def sequences_of_functions():
 
 
 @bp.route('/sequences_of_functions_pointwise')
-@login_required
 def sequences_of_functions_pointwise():
     return render_template(\
             'calculus/sequences_of_functions/pointwise/'\
@@ -196,7 +189,6 @@ def sequences_of_functions_pointwise():
 
 
 @bp.route('/sequences_of_functions_uniform')
-@login_required
 def sequences_of_functions_uniform():
     return render_template(\
             'calculus/sequences_of_functions/uniform/'\
