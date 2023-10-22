@@ -2105,7 +2105,12 @@ d3.select("#intersection_button")
     });
 
 
-// Basis Set B_3 that is a subset of B_1 intersect B_2
+
+
+
+
+
+// Basis Set B3 that is a subset of B1 intersect B2
 var w_svg_basis_set_3 = 960;
 var h_svg_basis_set_3 = 640;
 
@@ -2153,7 +2158,7 @@ svg_basis_set_3.append("line")
     .attr("stroke-dasharray", "12 3")
     .attr("stroke-width", 5);
 
-// B_1 basis set: top right square
+// B1 basis set: top right square
 svg_basis_set_3.append("text")
     .text("B")
     .attr("x", w_svg_basis_set_3*(6/10) + 50)
@@ -2189,7 +2194,7 @@ svg_basis_set_3.append("line")
     .attr("stroke-dasharray", "12 3")
     .attr("stroke-width", 5);
 
-// B_2 basis set: bottom left square
+// B2 basis set: bottom left square
 svg_basis_set_3.append("text")
     .text("B")
     .attr("x", w_svg_basis_set_3*(3.5/10) - 50)
@@ -2224,11 +2229,11 @@ svg_basis_set_3.append("line")
     .attr("stroke-dasharray", "12 3")
     .attr("stroke-width", 5);
 
-// B_3 basis set: middle square
+// B3 basis set: middle square
 svg_basis_set_3.append("text")
     .text("B")
-    .attr("x", w_svg_basis_set_3*(5/10) - 25)
-    .attr("y", h_svg_basis_set_3*(4.75/10))
+    .attr("x", w_svg_basis_set_3*(4.6/10))
+    .attr("y", h_svg_basis_set_3*(4.5/10))
     .attr("font-family", "sans-serif")
     .attr("font-size", "30px")
     .attr("fill", "#3a3a36")
@@ -2278,6 +2283,173 @@ svg_basis_set_3.append("line")
     .attr("stroke", "#3a3a36")
     .attr("stroke-dasharray", "12 3")
     .attr("stroke-width", 5);
+
+// point z in the intersection of B1 and B2
+svg_basis_set_3.append("text")
+    .text("z")
+    .attr("x", w_svg_basis_set_3*(5.25/10))
+    .attr("y", h_svg_basis_set_3*(5.1/10))
+    .attr("font-family", "sans-serif")
+    .attr("font-size", "30px")
+    .attr("fill", "#3a3a36");
+    
+svg_basis_set_3.append("circle")
+    .attr("cx", w_svg_basis_set_3*(5.1/10))
+    .attr("cy", h_svg_basis_set_3*(5.1/10))
+    .attr("r", 10)
+    .attr("stroke", "#3a3a36")
+    .attr("stroke-width", 1)
+    .attr("fill", "#3a3a36");
+
+
+
+
+
+
+
+
+
+// Basis B contained within open set U
+var w_svg_basis_in_open_set = 960;
+var h_svg_basis_in_open_set = 640;
+
+var svg_basis_in_open_set = d3.select("#basis_in_open_set")
+  .append("svg")
+    .attr("viewBox", 
+	    "0 0 " + w_svg_basis_in_open_set + " " + h_svg_basis_in_open_set);
+
+// space X
+svg_basis_in_open_set.append("text")
+    .text("X")
+    .attr("x", w_svg_basis_in_open_set*(2.5/10))
+    .attr("y", h_svg_basis_in_open_set*(1.5/10))
+    .attr("font-family", "sans-serif")
+    .attr("font-size", "60px")
+    .attr("fill", "#3a3a36");
+
+// top line of outer square space X
+svg_basis_in_open_set.append("line")
+    .attr("x1", w_svg_basis_in_open_set*(2/10))
+    .attr("y1", h_svg_basis_in_open_set*(0.5/10))
+    .attr("x2", w_svg_basis_in_open_set*(8/10))
+    .attr("y2", h_svg_basis_in_open_set*(0.5/10))
+    .attr("stroke", "#3a3a36")
+    .attr("stroke-dasharray", "12 3")
+    .attr("stroke-width", 5);
+
+// right vertical line of outer square space X
+svg_basis_in_open_set.append("line")
+    .attr("x1", w_svg_basis_in_open_set*(8/10))
+    .attr("y1", h_svg_basis_in_open_set*(0.5/10))
+    .attr("x2", w_svg_basis_in_open_set*(8/10))
+    .attr("y2", h_svg_basis_in_open_set*(9.5/10))
+    .attr("stroke", "#3a3a36")
+    .attr("stroke-dasharray", "12 3")
+    .attr("stroke-width", 5);
+
+// bottom line of outer square space X
+svg_basis_in_open_set.append("line")
+    .attr("x1", w_svg_basis_in_open_set*(8/10))
+    .attr("y1", h_svg_basis_in_open_set*(9.5/10))
+    .attr("x2", w_svg_basis_in_open_set*(2/10))
+    .attr("y2", h_svg_basis_in_open_set*(9.5/10))
+    .attr("stroke", "#3a3a36")
+    .attr("stroke-dasharray", "12 3")
+    .attr("stroke-width", 5);
+
+// left vertical line of outer square space X
+svg_basis_in_open_set.append("line")
+    .attr("x1", w_svg_basis_in_open_set*(2/10))
+    .attr("y1", h_svg_basis_in_open_set*(9.5/10))
+    .attr("x2", w_svg_basis_in_open_set*(2/10))
+    .attr("y2", h_svg_basis_in_open_set*(0.5/10))
+    .attr("stroke", "#3a3a36")
+    .attr("stroke-dasharray", "12 3")
+    .attr("stroke-width", 5);
+
+// open set U in space X
+svg_basis_in_open_set.append("text")
+    .text("U")
+    .attr("x", w_svg_basis_in_open_set*(4.2/10))
+    .attr("y", h_svg_basis_in_open_set*(3.5/10))
+    .attr("font-family", "sans-serif")
+    .attr("font-size", "50px")
+    .attr("fill", "#3a3a36");
+
+svg_basis_in_open_set.append("circle")
+    .attr("cx", w_svg_basis_in_open_set*(5.5/10))
+    .attr("cy", h_svg_basis_in_open_set*(5.5/10))
+    .attr("r", 215)
+    .attr("stroke", "#3a3a36")
+    .attr("stroke-width", 5)
+    .attr("stroke-dasharray", "12 3")
+    .attr("fill", "none");
+
+// basis element B in open set U
+svg_basis_in_open_set.append("text")
+    .text("B")
+    .attr("x", w_svg_basis_in_open_set*(6.5/10))
+    .attr("y", h_svg_basis_in_open_set*(4.5/10))
+    .attr("font-family", "sans-serif")
+    .attr("font-size", "50px")
+    .attr("fill", "#3a3a36");
+
+// top line of basis element
+svg_basis_in_open_set.append("line")
+    .attr("x1", w_svg_basis_in_open_set*(5/10))
+    .attr("y1", h_svg_basis_in_open_set*(3.5/10))
+    .attr("x2", w_svg_basis_in_open_set*(7/10))
+    .attr("y2", h_svg_basis_in_open_set*(3.5/10))
+    .attr("stroke", "#3a3a36")
+    .attr("stroke-dasharray", "12 3")
+    .attr("stroke-width", 5);
+
+// right vertical line of basis element
+svg_basis_in_open_set.append("line")
+    .attr("x1", w_svg_basis_in_open_set*(7/10))
+    .attr("y1", h_svg_basis_in_open_set*(3.5/10))
+    .attr("x2", w_svg_basis_in_open_set*(7/10))
+    .attr("y2", h_svg_basis_in_open_set*(6.5/10))
+    .attr("stroke", "#3a3a36")
+    .attr("stroke-dasharray", "12 3")
+    .attr("stroke-width", 5);
+
+// bottom line of basis element
+svg_basis_in_open_set.append("line")
+    .attr("x1", w_svg_basis_in_open_set*(7/10))
+    .attr("y1", h_svg_basis_in_open_set*(6.5/10))
+    .attr("x2", w_svg_basis_in_open_set*(5/10))
+    .attr("y2", h_svg_basis_in_open_set*(6.5/10))
+    .attr("stroke", "#3a3a36")
+    .attr("stroke-dasharray", "12 3")
+    .attr("stroke-width", 5);
+
+// left vertical line of basis element
+svg_basis_in_open_set.append("line")
+    .attr("x1", w_svg_basis_in_open_set*(5/10))
+    .attr("y1", h_svg_basis_in_open_set*(6.5/10))
+    .attr("x2", w_svg_basis_in_open_set*(5/10))
+    .attr("y2", h_svg_basis_in_open_set*(3.5/10))
+    .attr("stroke", "#3a3a36")
+    .attr("stroke-dasharray", "12 3")
+    .attr("stroke-width", 5);
+
+// little z element of open set U
+svg_basis_in_open_set.append("text")
+    .text("z")
+    .attr("x", w_svg_basis_in_open_set*(5.65/10))
+    .attr("y", h_svg_basis_in_open_set*(5.7/10))
+    .attr("font-family", "sans-serif")
+    .attr("font-size", "30px")
+    .attr("fill", "#3a3a36");
+
+svg_basis_in_open_set.append("circle")
+    .attr("cx", w_svg_basis_in_open_set*(5.5/10))
+    .attr("cy", h_svg_basis_in_open_set*(5.5/10))
+    .attr("r", 10)
+    .attr("stroke", "#3a3a36")
+    .attr("stroke-width", 1)
+    .attr("fill", "#3a3a36");
 
 
 
