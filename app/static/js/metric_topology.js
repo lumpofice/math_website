@@ -2455,3 +2455,297 @@ svg_basis_in_open_set.append("circle")
 
 
 
+// Distance between a point y in open set U and the boundary of U
+//
+//
+//
+var w_svg_boundary_distance = 960;
+var h_svg_boundary_distance = 640;
+
+var svg_boundary_distance = d3.select("#boundary_distance")
+  .append("svg")
+    .attr("viewBox", 
+    	"0 0 " + w_svg_boundary_distance + " " + h_svg_boundary_distance);
+
+// open set U
+svg_boundary_distance.append("text")
+    .text("U")
+    .attr("x", w_svg_boundary_distance*(2.5/10))
+    .attr("y", h_svg_boundary_distance*(1.5/10))
+    .attr("font-family", "sans-serif")
+    .attr("font-size", "60px")
+    .attr("fill", "#3a3a36");
+
+// top line of outer square open U
+svg_boundary_distance.append("line")
+    .attr("x1", w_svg_boundary_distance*(2/10))
+    .attr("y1", h_svg_boundary_distance*(0.5/10))
+    .attr("x2", w_svg_boundary_distance*(8/10))
+    .attr("y2", h_svg_boundary_distance*(0.5/10))
+    .attr("stroke", "#3a3a36")
+    .attr("stroke-dasharray", "12 3")
+    .attr("stroke-width", 5);
+
+// right vertical line of outer square open U
+svg_boundary_distance.append("line")
+    .attr("x1", w_svg_boundary_distance*(8/10))
+    .attr("y1", h_svg_boundary_distance*(0.5/10))
+    .attr("x2", w_svg_boundary_distance*(8/10))
+    .attr("y2", h_svg_boundary_distance*(9.5/10))
+    .attr("stroke", "#3a3a36")
+    .attr("stroke-dasharray", "12 3")
+    .attr("stroke-width", 5);
+
+// bottom line of outer square open U
+svg_boundary_distance.append("line")
+    .attr("x1", w_svg_boundary_distance*(8/10))
+    .attr("y1", h_svg_boundary_distance*(9.5/10))
+    .attr("x2", w_svg_boundary_distance*(2/10))
+    .attr("y2", h_svg_boundary_distance*(9.5/10))
+    .attr("stroke", "#3a3a36")
+    .attr("stroke-dasharray", "12 3")
+    .attr("stroke-width", 5);
+
+// left vertical line of outer square open U
+svg_boundary_distance.append("line")
+    .attr("x1", w_svg_boundary_distance*(2/10))
+    .attr("y1", h_svg_boundary_distance*(9.5/10))
+    .attr("x2", w_svg_boundary_distance*(2/10))
+    .attr("y2", h_svg_boundary_distance*(0.5/10))
+    .attr("stroke", "#3a3a36")
+    .attr("stroke-dasharray", "12 3")
+    .attr("stroke-width", 5);
+
+// basis element B_d(x) in open U
+svg_boundary_distance.append("text")
+    .text("B")
+    .attr("x", w_svg_boundary_distance*(4.2/10))
+    .attr("y", h_svg_boundary_distance*(3.5/10))
+    .attr("font-family", "sans-serif")
+    .attr("font-size", "50px")
+    .attr("fill", "#3a3a36")
+  .append("tspan")
+    .text("d")
+    .attr("font-size", "30px")
+    .attr("fill", "#3a3a36")
+    .attr("dx", ".1rem")
+    .attr("dy", ".8rem");
+
+svg_boundary_distance.append("text")
+    .text("(x)")
+    .attr("x", w_svg_boundary_distance*(4.8/10))
+    .attr("y", h_svg_boundary_distance*(3.5/10))
+    .attr("font-family", "sans-serif")
+    .attr("font-size", "50px")
+    .attr("fill", "#3a3a36");
+
+svg_boundary_distance.append("circle")
+    .attr("cx", w_svg_boundary_distance*(5.5/10))
+    .attr("cy", h_svg_boundary_distance*(5.5/10))
+    .attr("r", 215)
+    .attr("stroke", "#3a3a36")
+    .attr("stroke-width", 5)
+    .attr("stroke-dasharray", "12 3")
+    .attr("fill", "none");
+
+// little x center point of basis element B_d(x)
+svg_boundary_distance.append("text")
+    .text("x")
+    .attr("x", w_svg_boundary_distance*(5.65/10))
+    .attr("y", h_svg_boundary_distance*(5.7/10))
+    .attr("font-family", "sans-serif")
+    .attr("font-size", "30px")
+    .attr("fill", "#3a3a36");
+
+svg_boundary_distance.append("circle")
+    .attr("cx", w_svg_boundary_distance*(5.5/10))
+    .attr("cy", h_svg_boundary_distance*(5.5/10))
+    .attr("r", 10)
+    .attr("stroke", "#3a3a36")
+    .attr("stroke-width", 1)
+    .attr("fill", "#3a3a36");
+
+// little y element of basis element B_d(x)
+svg_boundary_distance.append("text")
+    .text("y")
+    .attr("x", w_svg_boundary_distance*(6.85/10))
+    .attr("y", h_svg_boundary_distance*(4.35/10))
+    .attr("font-family", "sans-serif")
+    .attr("font-size", "30px")
+    .attr("fill", "#3a3a36");
+
+svg_boundary_distance.append("circle")
+    .attr("cx", w_svg_boundary_distance*(6.7/10))
+    .attr("cy", h_svg_boundary_distance*(4.4/10))
+    .attr("r", 10)
+    .attr("stroke", "#3a3a36")
+    .attr("stroke-width", 1)
+    .attr("fill", "#3a3a36");
+
+// Epsilon Ball for distance between point y in U and the boundary of U
+//
+//
+//
+var w_svg_epsilon_ball = 960;
+var h_svg_epsilon_ball = 640;
+
+var svg_epsilon_ball = d3.select("#epsilon_ball")
+  .append("svg")
+    .attr("viewBox", 
+    	"0 0 " + w_svg_epsilon_ball + " " + h_svg_epsilon_ball);
+
+// basis element B_d(x) in open U
+svg_epsilon_ball.append("text")
+    .text("B")
+    .attr("x", w_svg_epsilon_ball*(3.2/10))
+    .attr("y", h_svg_epsilon_ball*(2.5/10))
+    .attr("font-family", "sans-serif")
+    .attr("font-size", "50px")
+    .attr("fill", "#3a3a36")
+  .append("tspan")
+    .text("d")
+    .attr("font-size", "30px")
+    .attr("fill", "#3a3a36")
+    .attr("dx", ".1rem")
+    .attr("dy", ".8rem");
+
+svg_epsilon_ball.append("text")
+    .text("(x)")
+    .attr("x", w_svg_epsilon_ball*(3.8/10))
+    .attr("y", h_svg_epsilon_ball*(2.5/10))
+    .attr("font-family", "sans-serif")
+    .attr("font-size", "50px")
+    .attr("fill", "#3a3a36");
+
+svg_epsilon_ball.append("circle")
+    .attr("cx", w_svg_epsilon_ball*(5/10))
+    .attr("cy", h_svg_epsilon_ball*(5/10))
+    .attr("r", 300)
+    .attr("stroke", "#3a3a36")
+    .attr("stroke-width", 5)
+    .attr("stroke-dasharray", "12 3")
+    .attr("fill", "none");
+
+// little x center point of basis element B_d(x)
+svg_epsilon_ball.append("text")
+    .text("x")
+    .attr("x", w_svg_epsilon_ball*(5.2/10))
+    .attr("y", h_svg_epsilon_ball*(5.3/10))
+    .attr("font-family", "sans-serif")
+    .attr("font-size", "30px")
+    .attr("fill", "#3a3a36");
+
+var x_horizontal = 5/10;
+var x_vertical = 5/10;
+
+svg_epsilon_ball.append("circle")
+    .attr("cx", w_svg_epsilon_ball*(x_horizontal))
+    .attr("cy", h_svg_epsilon_ball*(x_vertical))
+    .attr("r", 10)
+    .attr("stroke", "#3a3a36")
+    .attr("stroke-width", 1)
+    .attr("fill", "#3a3a36");
+
+// little y element of basis element B_d(x)
+svg_epsilon_ball.append("text")
+    .text("y")
+    .attr("x", w_svg_epsilon_ball*(6.85/10))
+    .attr("y", h_svg_epsilon_ball*(4.7/10))
+    .attr("font-family", "sans-serif")
+    .attr("font-size", "30px")
+    .attr("fill", "#3a3a36");
+
+var y_horizontal = 6.7/10;
+var y_vertical = 4.4/10;
+
+svg_epsilon_ball.append("circle")
+    .attr("cx", w_svg_epsilon_ball*(y_horizontal))
+    .attr("cy", h_svg_epsilon_ball*(y_vertical))
+    .attr("r", 10)
+    .attr("stroke", "#3a3a36")
+    .attr("stroke-width", 1)
+    .attr("fill", "#3a3a36");
+
+// Finding the distance from x to the boundary of B_d(x)
+//
+// right triangle with hypotenuse between x and y
+var vertical_difference = Math.abs(
+	h_svg_epsilon_ball*y_vertical - h_svg_epsilon_ball*x_vertical
+);
+var horizontal_difference = Math.abs(
+	w_svg_epsilon_ball*y_horizontal - w_svg_epsilon_ball*x_horizontal
+);
+var euclidean_difference = Math.sqrt(
+	(vertical_difference)**2 + (horizontal_difference)**2
+);
+// change in horizontal from x to boundary of B_d(x)
+// along the line running through x and y
+var x_boundary_horizontal = (300/euclidean_difference)*horizontal_difference;
+var x_boundary_vertical = (300/euclidean_difference)*vertical_difference;
+
+svg_epsilon_ball.append("circle")
+    .attr("cx", w_svg_epsilon_ball*x_horizontal + x_boundary_horizontal)
+    .attr("cy", h_svg_epsilon_ball*x_vertical - x_boundary_vertical)
+    .attr("r", 10)
+    .attr("stroke", "#3a3a36")
+    .attr("stroke-width", 1)
+    .attr("fill", "#3a3a36");
+
+// line between point x and the boundary, through point y
+svg_epsilon_ball.append("line")
+    .attr("x1", w_svg_epsilon_ball*x_horizontal)
+    .attr("y1", h_svg_epsilon_ball*x_vertical)
+    .attr("x2", w_svg_epsilon_ball*x_horizontal + x_boundary_horizontal)
+    .attr("y2", h_svg_epsilon_ball*x_vertical - x_boundary_vertical)
+    .attr("stroke", "#3a3a36")
+    .attr("stroke-dasharray", "12 3")
+    .attr("stroke-width", 5);
+
+// drawing epsilon ball, B_e(y), of radius e around center y
+svg_epsilon_ball.append("circle")
+    .attr("cx", w_svg_epsilon_ball*(y_horizontal))
+    .attr("cy", h_svg_epsilon_ball*(y_vertical))
+    .attr("r", 115)
+    .attr("stroke", "#3a3a36")
+    .attr("stroke-width", 5)
+    .attr("stroke-dasharray", "12 3")
+    .attr("fill", "none");
+
+svg_epsilon_ball.append("text")
+    .text("B")
+    .attr("x", w_svg_epsilon_ball*(6/10))
+    .attr("y", h_svg_epsilon_ball*(3.6/10))
+    .attr("font-family", "sans-serif")
+    .attr("font-size", "50px")
+    .attr("fill", "#3a3a36")
+  .append("tspan")
+    .text("e")
+    .attr("font-size", "30px")
+    .attr("fill", "#3a3a36")
+    .attr("dx", ".1rem")
+    .attr("dy", ".8rem");
+
+svg_epsilon_ball.append("text")
+    .text("(y)")
+    .attr("x", w_svg_epsilon_ball*(6.6/10))
+    .attr("y", h_svg_epsilon_ball*(3.6/10))
+    .attr("font-family", "sans-serif")
+    .attr("font-size", "50px")
+    .attr("fill", "#3a3a36");
+
+// little z element of epsilon ball B_{e}(y)
+svg_epsilon_ball.append("text")
+    .text("z")
+    .attr("x", w_svg_epsilon_ball*(7.65/10))
+    .attr("y", h_svg_epsilon_ball*(4.7/10))
+    .attr("font-family", "sans-serif")
+    .attr("font-size", "30px")
+    .attr("fill", "#3a3a36");
+
+svg_epsilon_ball.append("circle")
+    .attr("cx", w_svg_epsilon_ball*(7.5/10))
+    .attr("cy", h_svg_epsilon_ball*(4.5/10))
+    .attr("r", 10)
+    .attr("stroke", "#3a3a36")
+    .attr("stroke-width", 1)
+    .attr("fill", "#3a3a36");

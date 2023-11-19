@@ -117,10 +117,10 @@
 					$$B_{3} \subset B_{1} \cap B_{2}$$
 				</li>
 			</ul>
-			<p id="text">Remember the points for each face of a stick of butter extending out of view and into our screens discusse above? Assume that a collection of sticks of butter serves as a basis for the topology on the larger block of butter&mdash;still with me? Think about the two conditions for basis of a topology like this:</p>
+			<p id="text">Remember the points for each face of a stick of butter extending out of view and into our screens discussed above? Assume that a collection of sticks of butter serves as a basis for the topology on the larger block of butter&mdash;still with me? Think about the two conditions for basis of a topology like this:</p>
 			<ul>
 				<li class="topdown_list" id="text">i) For each molecule of butter in the larger block of butter, there exists a stick of butter within the block containing that molecule&mdash;think about the points of the faces for those sticks of butter.</li>
-				<li class="topdown_list" id="text">ii) If for any molecule of butter, let's call it \(z\), within the larger block of butter there exists two possible sticks of butter that both would contain that molecule, there must be a third stick of butter contained with their overlap that also contains that molecule (see the figure below).   
+				<li class="topdown_list" id="text">ii) If for any molecule of butter, let's call it \(z\), within the larger block of butter, there exists two possible sticks of butter that both contain that molecule, there must be a third stick of butter contained within their overlap that also contains that molecule (see the figure below).   
 				</li>
 			</ul>
 			<div id='basis_set_3'></div>
@@ -153,10 +153,18 @@
 			<ul>
 				<li class="topdown_list" id="text">&#8226; \(\hspace{4pt} d(x, z) \lt d(x, y) + d(y, z)\)</li>
 			</ul>
-			<p id="text">As mentioned above, a metric is a measuring device, and we will be using it here to show that, for a space \(\mathbb{X}\) fashioned with a metric, there is distance between the boundary of a set, \(U\), and any point within the set, assuming the set is open. We will need an object called an epsilon ball to help us with this task. Epsilon is a Greek letter, \(\epsilon\), and an epsilon ball is a set of elements that all lie within some distance, epsilon, of one another. Think about, in the movies, when a bad guy escapes police custody. Police put up a perimeter; higher ranking officers bark orders at lower ranking officers to comb every backstreet and alleyway within a 10-block radius; a crescendo of suspenseful music ushers us into the next scene. Well, the perimeter is the ball. The 10-block radius is epsilon.</p> 
+			<p id="text">As mentioned above, a metric is a measuring device, and it can be used to show that, for a space \(\mathbb{X}\) fashioned with a metric, there is distance between the boundary of an open set, \(U\), and any point within that set, assuming the set is open. We will need an object called an epsilon ball to help us with this task. Epsilon is a Greek letter, \(\epsilon\), and an epsilon ball is a set of elements that all lie within some distance, epsilon, referred to as the radius of the epsilon ball, of one another. The center of an epsilon ball is one point in open set \(U\) from which we wish to show the existence of a non-zero distance to the boundary of \(U\). Let \(\hspace{2pt} y \hspace{2pt}\) be in the open set \(U\). Since \(U\) is open, there exists a basis element, \(B_{d}(x)\), that contains \(\hspace{2pt} y \hspace{2pt}\) and is a subset of \(U\). This basis element, \(B_{d}(x)\), is an epsilon ball, with a center point, \(x\), and radius, \(d\). We give it the subscript and radius \(d\) so as to distinguish it from the epsilon ball, \(B_{e}(y)\), that will be centered at our chosen point, \(y\). Our job is to use the metric to show that there exists an epsilon ball that is centered at \(\hspace{2pt} y \hspace{2pt}\) and contained in \(U\).</p> 
+			<div id='boundary_distance'></div>
+			<p id="text">Let's focus on the epsilon ball with radius \(d\). Visually, we can draw another epsilon ball, \(B_{e}(y)\), of radius, \(e\), around our element, \(y\), such that \(\hspace{2pt} y \hspace{2pt}\) is the center of that ball and the ball is contained in the epsilon ball, \(B_{d}(x)\), and thus is also contained in \(U\). But we need to show this, mathematically. This can be done by showing that the distance between any element, \(z\), in \(B_{e}(y)\) is less than \(d\), which is the distance between \(x\) and the boundary of \(B_{d}(x)\). Why will this suffice? The goal is to show that \(B_{e}(y)\) is an epsilon ball with center \(\hspace{2pt} y \hspace{2pt}\) and contained in \(U\). Since \(B_{d}(x) \subset U\), if we can show \(B_{e}(y) \subset B_{d}(x)\), then we deduce that \(B_{e}(y) \subset U\).</p>
+			<div id='epsilon_ball'></div>
+			<p id="text">Let \(e = d - d(x, y)\). We have that \(d(x, y) \hspace{4pt}\)&lt;\(\hspace{4pt} d\). So, when \(z\) is an element in \(B_{e}(y)\), we have</p>
+			<p id="text">\(d(x, z) \leq d(x, y) + d(y, z) \hspace{4pt}\)&lt;\(\hspace{4pt} d(x, y) + e = d(x, y) + (d - d(x, y)) = d\)</p>
+			<p id="text">In summary, we have \(d(x, z) \hspace{4pt}\)&lt;\(\hspace{4pt} d\).</p>
+			<p id="text">Since \(z\) was chosen arbitrarily, we know that this inequality must hold for all elements in \(B_{e}(y)\). Thus, \(B_{e}(y) \subset B_{d}(x) \subset U\), giving us \(B_{e}(y) \subset U\), which is what we wanted.</p>
 			<p id="text">There is a definition that will tie all of these concepts together for us.</p>
 			<hr>
 			<p id="text">Every open set, \(U\), of a space \(\mathbb{X}\), where space \(\mathbb{X}\) is fashioned with a metric, is a union of epsilon balls.</p>
+			<hr>
 		</div>
 	</div>
 	<div id='footer'>
@@ -164,7 +172,6 @@
 		<ul>
 			<li id="text" class="reference"><a href="https://www.amazon.com/Topology-2nd-James-Munkres/dp/0131816292">James R. Munkres</a></li>
 			<li id="text" class="reference"><a href="https://scottmurray.org/">Scott Murray</a></li>
-			<li id="text" class="reference"><a href="https://observablehq.com/@martinascharrer">Martina Vives</a></li>
 			<li id="text" class="reference"><a href="https://blog.miguelgrinberg.com/">Miguel Grinberg</a></li>
 			<li id="text" class="owner">Created by Jonathan Parker</li>
 		</ul>
