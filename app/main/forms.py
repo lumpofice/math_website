@@ -76,14 +76,22 @@ class PSeqParXParOverParXPlusNParForm(FlaskForm):
 
 
 class USeqParXParOverParXPlusNParForm(FlaskForm):
-    a_input = FloatField('Choose a real value "a" between 1 and 100'\
-        ' inclusive', validators=[InputRequired(), NumberRange(1, 100)])
-    x_input = FloatField('Choose a real value "x" between 0 and a'\
+    x_input = FloatField('Choose a real value "x" between 0 and 50'\
         ' inclusive', validators=[InputRequired(), \
-        NumberRange(0, 1)])
+        NumberRange(0, 50)])
     k = FloatField('Choose an integer k between 100 and 1000 inclusive',\
         validators=[InputRequired(),\
         NumberRange(100, 1000)])
+    submit = SubmitField('Show Graph')
+
+
+class USeqParXParPlusParOneOverNParForm(FlaskForm):
+    x_input = FloatField('Choose a real value "x" between 0.2 and 1'\
+        ' inclusive', validators=[InputRequired(), \
+        NumberRange(0.2, 1)])
+    k = FloatField('Choose an integer "k" between 1 and 100 inclusive',\
+        validators=[InputRequired(),\
+        NumberRange(1, 100)])
     submit = SubmitField('Show Graph')
 
 
