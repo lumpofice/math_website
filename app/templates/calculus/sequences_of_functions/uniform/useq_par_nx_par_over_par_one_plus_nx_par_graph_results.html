@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block app_content %}
+	<h1>Sequence of Functions Graph Results</h1>
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles/matplotlib_graphs.css') }}">
+	<img
+		src='{{url_for (
+		"static", filename="images/useq_par_nx_par_over_par_one_plus_nx_par.png"
+		) }}' align='middle'
+		/>
+{% endblock %}
+

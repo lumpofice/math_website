@@ -348,6 +348,33 @@ def useq_par_x_par_over_par_x_plus_n_par_graph_results():
         title='Math Website')
 
 
+@bp.route('/useq_par_nx_par_over_par_one_plus_nx_par', methods=['GET', 'POST'])
+def useq_par_nx_par_over_par_one_plus_nx_par():
+    form = USeqParNXParOverParOnePlusNXParForm()
+
+    if form.validate_on_submit():
+        flash('k: {}, x_input: {}, a: 0.1'\
+            .format(form.k.data, form.x_input.data))
+        sequence = SequenceUniform()
+        sequence.par_nx_par_over_par_one_plus_nx_par(form.k.data, \
+            form.x_input.data)
+        return redirect(url_for(\
+            'main.useq_par_nx_par_over_par_one_plus_nx_par_graph_results'))
+    return render_template(\
+        'calculus/sequences_of_functions/uniform/'\
+        'useq_par_nx_par_over_par_one_plus_nx_par.html', \
+        title='Math Website', form=form)
+
+
+@bp.route('/useq_par_nx_par_over_par_one_plus_nx_par_graph_results', \
+        methods=['GET', 'POST'])
+def useq_par_nx_par_over_par_one_plus_nx_par_graph_results():
+    return render_template(\
+        'calculus/sequences_of_functions/uniform/'\
+        'useq_par_nx_par_over_par_one_plus_nx_par_graph_results.html', \
+        title='Math Website')
+
+
 @bp.route('/useq_par_x_par_plus_par_one_over_n_par', methods=['GET', 'POST'])
 def useq_par_x_par_plus_par_one_over_n_par():
     form = USeqParXParPlusParOneOverNParForm()

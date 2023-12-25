@@ -94,6 +94,14 @@ class USeqParXParPlusParOneOverNParForm(FlaskForm):
         NumberRange(1, 100)])
     submit = SubmitField('Show Graph')
 
+class USeqParNXParOverParOnePlusNXParForm(FlaskForm):
+    x_input = FloatField('Choose a real value "x" between 0.1 and 2'\
+        ' inclusive', validators=[InputRequired(), \
+        NumberRange(0.1, 2)])
+    k = FloatField('Choose an integer "k" between 20 and 200 inclusive',\
+        validators=[InputRequired(),\
+        NumberRange(20, 200)])
+    submit = SubmitField('Show Graph')
 
 class PSeqParNXParOverParOnePlusParNXParSquaredParForm(FlaskForm):
     x_input = FloatField('Choose a real value "x" between 0.5 and 10'\
