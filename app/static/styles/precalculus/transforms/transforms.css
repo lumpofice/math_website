@@ -1,0 +1,48 @@
+/*
+color-palette: ---------------------------------------------------------------
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+#cca2fa lavender
+#91d5e4 lighter blue
+#d079a2 and rgba(208, 121, 166, 0.3) pink
+#759e16 green
+#ffcd04 corn yellow
+#6b4691 and rgba(107, 70, 145, 0.6) purple
+#f5ffde light yellow-green
+#3a3a36 and rgba(58, 58, 54, 0.6) gray mud-brown
+#e0620d bengal orange
+#rgba(117, 158, 22, 0.05) off-white
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+*/
+
+* {
+	box-sizing: border-box;
+}
+
+h1 {
+	text-align: center;
+}
+
+#text {
+	font-size: 2.1rem;
+}
+
+li.owner {
+	display: table-cell;
+	width: 25%;
+	vertical-align: bottom;
+	text-align: right;
+	padding: .5rem 2rem;
+}
+
+#footer {
+	padding: 1rem .5rem;
+	margin: 0 auto;
+	text-align: left;
+	border-top: 8px double rgba(58, 58, 54, 0.3);
+	margin-top: 2rem; 
+}
+

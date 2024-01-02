@@ -2,59 +2,61 @@
 
 {% import 'bootstrap/wtf.html' as wtf %}
 
+    {%- block head %}
+    <title>{% block title %}{{title|default}}{% endblock title %}</title>
+
+    {%- block metas %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%- endblock metas %}
+
+    {%- block styles %}
+    <!-- Bootstrap -->
+    <link href="{{bootstrap_find_resource('css/bootstrap.css', cdn='bootstrap')}}" rel="stylesheet">
+    <link rel='stylesheet' href='{{ url_for("static", filename="styles/precalculus/transforms/transforms.css") }}'>
+    {%- endblock styles %}
+    <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    {%- endblock head %}
 {% block app_content %}
-
-<div> 
-
-    <h2>Transforms</h2>
-
-        <h4>Polynomials</h4>
-
-	<a href='{{ url_for("main.polynomial_degree_1_transform") }}'>Polynomial Degree 1</a>
-
+        <p id="text">Polynomials</p>
+	<a id="text" href='{{ url_for("main.polynomial_degree_1_transform") }}'>Polynomial Degree 1</a>
 	<br>
-
-	<a href='{{ url_for("main.polynomial_degree_2_transform") }}'>Polynomial Degree 2</a>
-
+	<a id="text" href='{{ url_for("main.polynomial_degree_2_transform") }}'>Polynomial Degree 2</a>
 	<br>
-
-	<a href='{{ url_for("main.polynomial_degree_3_transform") }}'>Polynomial Degree 3</a>
-
+	<a id="text" href='{{ url_for("main.polynomial_degree_3_transform") }}'>Polynomial Degree 3</a>
 	<br>
-
-	<h4>Absolute Value</h4>
-
-	<a href='{{ url_for("main.absolute_value_transform" )}}'>Absolute Value</a>
-
-	<h4>Reciprocals</h4>
-
-	<a href='{{ url_for("main.reciprocal_degree_0_by_degree_1_transform") }}'>Reciprocal Degree 0 by Degree 1</a>
-
-	<h4>Radicals</h4>
-
-	<a href='{{ url_for("main.square_root_transform") }}'>Square Root</a>
-
 	<br>
-
-	<a href='{{ url_for("main.cube_root_transform") }}'>Cube Root</a>
-
-	<h4>Exponentials</h4>
-
-	<a href='{{ url_for("main.general_exponential_transform") }}'>General Exponential</a>
-
+	<p id="text">Absolute Value</p>
+	<a id="text" href='{{ url_for("main.absolute_value_transform" )}}'>Absolute Value</a>
 	<br>
-
-	<a href='{{ url_for("main.base_e_exponential_transform") }}'>Base e Exponential</a>
-
-	<h4>Logarithmics</h4>
-
-	<a href='{{ url_for("main.general_logarithmic_transform") }}'>General Logarithmic</a>
-
 	<br>
-
-	<a href='{{ url_for("main.base_e_logarithmic_transform") }}'>Base e Logarithmic</a>
-
+	<p id="text">Reciprocals</p>
+	<a id="text" href='{{ url_for("main.reciprocal_degree_0_by_degree_1_transform") }}'>Reciprocal Degree 0 by Degree 1</a>
+	<br>
+	<br>
+	<p id="text">Radicals</p>
+	<a id="text" href='{{ url_for("main.square_root_transform") }}'>Square Root</a>
+	<br>
+	<a id="text" href='{{ url_for("main.cube_root_transform") }}'>Cube Root</a>
+	<br>
+	<br>
+	<p id="text">Exponentials</p>
+	<a id="text" href='{{ url_for("main.general_exponential_transform") }}'>General Exponential</a>
+	<br>
+	<a id="text" href='{{ url_for("main.base_e_exponential_transform") }}'>Base e Exponential</a>
+	<br>
+	<br>
+	<p id="text">Logarithmics</p>
+	<a id="text" href='{{ url_for("main.general_logarithmic_transform") }}'>General Logarithmic</a>
+	<br>
+	<a id="text" href='{{ url_for("main.base_e_logarithmic_transform") }}'>Base e Logarithmic</a>
 	</div>
-
+	<div id='footer'>
+		<ul>
+			<li id="text" class="owner">Created by Jonathan Parker</li>
+		</ul>
+	</div>
 {% endblock %}
 

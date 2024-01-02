@@ -2,8 +2,25 @@
 
 {% import 'bootstrap/wtf.html' as wtf %}
 
+    {%- block head %}
+    <title>{% block title %}{{title|default}}{% endblock title %}</title>
+
+    {%- block metas %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%- endblock metas %}
+
+    {%- block styles %}
+    <!-- Bootstrap -->
+    <link href="{{bootstrap_find_resource('css/bootstrap.css', cdn='bootstrap')}}" rel="stylesheet">
+    <link rel='stylesheet' href='{{ url_for("static", filename="styles/precalculus/precalculus.css") }}'>
+    {%- endblock styles %}
+    <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    {%- endblock head %}
 {% block app_content %}
-<h4>Choose a Study</h4>
+    	<p id="text">Choose a Study</p>
 	<form action='' method='post'>
 	    <div>
 		<input type='submit' name='submit_button' value='Transforms'>
@@ -12,4 +29,9 @@
 		<input type='submit' name='submit_button' value='Series of Numbers'>
 	    </div>
 	</form>
+	<div id='footer'>
+		<ul>
+			<li id="text" class="owner">Created by Jonathan Parker</li>
+		</ul>
+	</div>
 {% endblock %}
